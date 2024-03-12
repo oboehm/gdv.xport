@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 20124 by Oli B.
+ * Copyright (c) 2009 - 2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -85,15 +85,16 @@ public class TeildatensatzTest extends AbstractSatzTest {
     }
 
     /**
-     * Test-Methode fuer {@link Teildatensatz#getFeld(String)}.
+     * Test-Methode fuer {@link Teildatensatz#getFeld(Bezeichner)}.
      */
     @Test
-    public void testGetFeldString() {
+    public void testGetFeldBezeichner() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
-        Feld feld = new NumFeld(Bezeichner.of("Hello"), 5, ByteAdresse.of(55));
+        Bezeichner hello = Bezeichner.of("Hello");
+        Feld feld = new NumFeld(hello, 5, ByteAdresse.of(55));
         feld.setInhalt("World");
         tds.add(feld);
-        assertEquals(feld, tds.getFeld("Hello"));
+        assertEquals(feld, tds.getFeld(hello));
     }
 
     @Test
@@ -116,9 +117,9 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Zeichen satznummer = new Zeichen(Bezeichner.of("Satznummer"), ByteAdresse.of(256));
         satznummer.setInhalt('1');
         tds.add(satznummer);
-        assertEquals(satznummer, tds.getFeld(satznummer.getBezeichnung()));
+        assertEquals(satznummer, tds.getFeld(satznummer.getBezeichner()));
         tds.remove(satznummer.getBezeichnung());
-        Executable executable = () -> tds.getFeld(satznummer.getBezeichnung());
+        Executable executable = () -> tds.getFeld(satznummer.getBezeichner());
         IllegalArgumentException assertThrows = assertThrows(IllegalArgumentException.class, executable);
         MatcherAssert.assertThat("Exception sollte Bezeichner und Satzart beschreiben", assertThrows.getMessage(),
                 allOf(containsString(satznummer.getBezeichner().toString()), containsString("Satzart 0100")));

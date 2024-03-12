@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2023 by Oli B.
+ * Copyright (c) 2014-2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -110,7 +110,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     @Test
     public void testGetVorsatz() {
         SatzXml vorsatz = xmlService.getSatzart(SatzTyp.of(1));
-        Feld version = vorsatz.getFeld("Satzart 0100");
+        Feld version = vorsatz.getFeld(Bezeichner.SATZART_0100);
         assertNotNull(version);
     }
 

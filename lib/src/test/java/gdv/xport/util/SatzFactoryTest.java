@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2021 by Oli B.
+ * Copyright (c) 2009 - 2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,7 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
@@ -72,7 +69,7 @@ public final class SatzFactoryTest {
     @Test
     public void testGetSatzInt() {
         Satz satz = getSatz(1);
-        assertNotNull(satz.getFeld(Bezeichner.VERSION_SATZART_0100));
+        assertNotNull(satz.getFeld(Bezeichner.SATZART_0100));
     }
 
     /**
@@ -82,7 +79,7 @@ public final class SatzFactoryTest {
     @Test
     public void testGetSatz342() {
         Satz satz342 = getSatz(342);
-        Feld dokumenttyp = satz342.getFeld("Dokumenttyp");
+        Feld dokumenttyp = satz342.getFeld(Bezeichner.of("Dokumenttyp"));
         assertEquals(2, dokumenttyp.getAnzahlBytes());
         assertEquals(46, dokumenttyp.getByteAdresse());
     }
@@ -101,7 +98,7 @@ public final class SatzFactoryTest {
         Datensatz unsupported = new Datensatz(SatzTyp.of("0123"));
         unsupported.setVuNummer("56789");
         unsupported.setSparte(88);
-        unsupported.add(new NumFeld(Bezeichner.of("zweiundvierzig"), 4, 200, 42));
+        unsupported.add(new NumFeld(Bezeichner.of("zweiundvierzig"), 4, ByteAdresse.of(200), 42));
         String content = unsupported.toLongString();
         Satz imported = SatzFactory.getSatz(content);
         assertEquals(content, imported.toLongString());

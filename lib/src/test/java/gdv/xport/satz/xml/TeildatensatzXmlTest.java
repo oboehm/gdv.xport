@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 by Oli B.
+ * Copyright (c) 2014-2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,10 +20,12 @@ package gdv.xport.satz.xml;
 
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.ByteAdresse;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.TeildatensatzTest;
+import org.hamcrest.MatcherAssert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -67,13 +69,13 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
     }
 
     /**
-     * Test-Methode fuer {@link Teildatensatz#getFeld(String)}. Bei dem
+     * Test-Methode fuer {@link Teildatensatz#getFeld(Bezeichner)}. Bei dem
      * verwendeten Feld "Anredeschluessel" handelt es sich laut Handbuch um ein
      * alphanumerisches Feld von Byte 43 bis 43 (Laenge = 1).
      */
     @Override
     @Test
-    public void testGetFeldString() {
+    public void testGetFeldBezeichner() {
         checkFeld(Bezeichner.ANREDESCHLUESSEL, 1, 43);
     }
 
@@ -131,11 +133,11 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
             satz100.getTeildatensatz(1).getFeld(new Bezeichner("Leerstellen"));
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
-            assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(), 
+            MatcherAssert.assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
                     allOf(containsString("Leerstellen"), containsString("Satzart 0100")));
         }
         
-        checkLeerstellen(2, new AlphaNumFeld(Bezeichner.LEERSTELLEN, 3, 247));
+        checkLeerstellen(2, new AlphaNumFeld(Bezeichner.LEERSTELLEN, 3, ByteAdresse.of(247)));
     }
 
     private void checkLeerstellen(final int satznummer, final Feld expected) {
@@ -151,7 +153,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
     @Test
     public void testGetLeerstellenSafe() {
         assertFalse(satz100.getTeildatensatz(1).hasFeld(Bezeichner.of("Leerstellen")));
-        checkLeerstellen(2, new AlphaNumFeld(Bezeichner.LEERSTELLEN, 3, 247));
+        checkLeerstellen(2, new AlphaNumFeld(Bezeichner.LEERSTELLEN, 3, ByteAdresse.of(247)));
     }
 
     /**

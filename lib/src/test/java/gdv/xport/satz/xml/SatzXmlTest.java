@@ -160,7 +160,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
 
     private static void checkTeildatensatz(final Teildatensatz tds) {
         checkSatzart(tds);
-        Feld feld = tds.getFeld("VU-Nummer");
+        Feld feld = tds.getFeld(Bezeichner.VU_NR);
         assertNotNull("VU-Nummer missing", feld);
         assertEquals(5, feld.getAnzahlBytes());
         assertEquals(5, feld.getByteAdresse());
@@ -294,7 +294,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     public void testSatz210() throws XMLStreamException {
         SatzXml satz210 = getSatz("Satz0210.xml");
         assertNotNull(satz210.getFeld(Bezeichner.ERWEITERTER_BERVERSV_SCHLUESSEL));
-        assertNotNull(satz210.getFeld(Bezeichner.SATZ_NR_1));
+        assertNotNull(satz210.getFeld(Bezeichner.SATZNUMMER));
     }
 
     /**

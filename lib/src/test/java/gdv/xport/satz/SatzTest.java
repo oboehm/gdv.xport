@@ -137,14 +137,14 @@ public final class SatzTest extends AbstractSatzTest {
     }
 
     /**
-     * Test method for {@link gdv.xport.satz.Satz#getFeld(java.lang.String)}.
+     * Test method for {@link gdv.xport.satz.Satz#getFeld(Bezeichner)}.
      * Fuer ein Feld, das nicht existiert, wird nicht mehr NULL_FELD als
      * Ergebnis erwartet sondern eine IllegalArgumentException.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testGetFeld() {
         try {
-            satz.getFeld("hemmernet");
+            satz.getFeld(Bezeichner.of("hemmernet"));
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
             assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
@@ -153,16 +153,8 @@ public final class SatzTest extends AbstractSatzTest {
         }
     }
 
-//    @Test
-//    public void testGetFeldWagnis2() {
-//        Satz satz = XmlService.getInstance().getSatzart(SatzTyp.of("0220.140"));
-//        Bezeichner wagnis2 = new Bezeichner("Wagnis", "Wagnis2");
-//        Feld feld = satz.getFeld(wagnis2);
-//        assertEquals(wagnis2, feld.getBezeichner());
-//    }
-    
     /**
-     * Test method for {@link gdv.xport.satz.Satz#getFeld(java.lang.String)}.
+     * Test method for {@link gdv.xport.satz.Satz#getFeld(Bezeichner)}.
      * Fuer ein Feld, das nicht existiert, wird nicht mehr NULL_FELD als
      * Ergebnis erwartet sondern eine IllegalArgumentException.
      */
@@ -275,10 +267,11 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testImport() throws IOException {
         Satz x = new Datensatz(SatzTyp.of(210));
-        x.add(new AlphaNumFeld(new Bezeichner("F1"), 5, ByteAdresse.of(5)));
+        Bezeichner f1 = Bezeichner.of("F1");
+        x.add(new AlphaNumFeld(f1, 5, ByteAdresse.of(5)));
         x.importFrom(INPUT_SATZ_210);
         assertEquals(210, x.getSatzart());
-        assertEquals("Hello", x.getFeld("F1").getInhalt());
+        assertEquals("Hello", x.getFeld(f1).getInhalt());
         assertEquals(INPUT_SATZ_210.trim(), x.toLongString().trim());
     }
 

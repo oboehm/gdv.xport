@@ -178,8 +178,8 @@ public class Vorsatz extends Satz {
      * @param endDatum   im Format "TTMMJJJJ"
      */
     public void setErstellungsZeitraum(final String startDatum, final String endDatum) {
-        Datum von = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM, 70);
-        Datum bis = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS, 78);
+        Datum von = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM, ByteAdresse.of(70));
+        Datum bis = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS, ByteAdresse.of(78));
         von.setInhalt(startDatum);
         bis.setInhalt(endDatum);
 
@@ -213,7 +213,7 @@ public class Vorsatz extends Satz {
 
     public Datum getErstellungsZeitraumVon() {
         String vonBis = getErstellungsZeitraum();
-        Datum von = new Datum(ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, 70);
+        Datum von = new Datum(ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, ByteAdresse.of(70));
         von.setInhalt(vonBis.substring(0, 8));
         return von;
     }
@@ -224,7 +224,7 @@ public class Vorsatz extends Satz {
 
     public Datum getErstellungsZeitraumBis() {
         String vonBis = getErstellungsZeitraum();
-        Datum bis = new Datum(ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, 78);
+        Datum bis = new Datum(ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, ByteAdresse.of(78));
         bis.setInhalt(vonBis.substring(8));
         return bis;
     }
@@ -260,7 +260,10 @@ public class Vorsatz extends Satz {
      *            Bezeichner-Konstanten gewaehlt werden, die mit "VERSION_"
      *            anfangen.
      * @return Version des gewuenschten Bezeichners
+     * @deprecated bitte {@link #getVersion(Bezeichner)} verwenden
+     *             (TODO: wird mit v8 oder v9 entsorgt)
      */
+    @Deprecated
     public String getVersion(final String bezeichner) {
         return this.getFeld(bezeichner).getInhalt();
     }

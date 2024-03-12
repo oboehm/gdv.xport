@@ -118,7 +118,7 @@ public final class SatzRegistryTest {
 
     private String getVersionSatzart0052(Vorsatz vorsatz) {
         vorsatz.setVersion(SatzTyp.of("0052"));
-        Feld version = vorsatz.getFeld(Bezeichner.VERSION_SATZART_0052);
+        Feld version = vorsatz.getFeld(Bezeichner.SATZART_0052);
         return version.getInhalt();
     }
 
@@ -143,16 +143,16 @@ public final class SatzRegistryTest {
         checkWagnis(221, 10, 13, 1);
     }
 
-    private void checkWagnis31(int satzart) {
-        Satz wagnis13 = f2018.getSatz(SatzTyp.of(satzart, 10, 13, 1));
-        assertEquals(satzart, wagnis13.getSatzart());
-        assertEquals(10, wagnis13.getSparte());
-        MatcherAssert.assertThat(wagnis13.getWagnisart(), either(is("1")).or(is("3")));
-        for (int nr = 1; nr <= wagnis13.getNumberOfTeildatensaetze(); nr++) {
-            Teildatensatz tds = wagnis13.getTeildatensatz(nr);
-            assertEquals(nr, tds.getSatznummer().toInt());
-        }
-    }
+//    private void checkWagnis31(int satzart) {
+//        Satz wagnis13 = f2018.getSatz(SatzTyp.of(satzart, 10, 13, 1));
+//        assertEquals(satzart, wagnis13.getSatzart());
+//        assertEquals(10, wagnis13.getSparte());
+//        MatcherAssert.assertThat(wagnis13.getWagnisart(), either(is("1")).or(is("3")));
+//        for (int nr = 1; nr <= wagnis13.getNumberOfTeildatensaetze(); nr++) {
+//            Teildatensatz tds = wagnis13.getTeildatensatz(nr);
+//            assertEquals(nr, tds.getSatznummer().toInt());
+//        }
+//    }
 
     @Test
     public void testSatz220Tds6() {
@@ -204,7 +204,7 @@ public final class SatzRegistryTest {
 
     @Test
     public void testGetSatz2013() {
-        Satz satz = SatzRegistry.getInstance("VUVM2013.xml").getSatz(SatzTyp.of("0230.030"), "1.0");
+        Satz satz = SatzRegistry.getSatz(SatzTyp.of("0230.030"), "1.0");
         assertEquals(SatzTyp.of("0230.030"), satz.getSatzTyp());
         assertEquals("1.0", satz.getVersion());
     }
@@ -238,12 +238,13 @@ public final class SatzRegistryTest {
         // prüfe Datensatz 3: 0820, VsNr=59999999999, Bemerkung=Hier die Bemerkung D1
         assertEquals("SatzTyp stimmt nicht", SatzTyp.of("0820"), datensatz3.getSatzTyp());
         assertEquals("VsNr stimmt nicht", "59999999999", datensatz3.getVersicherungsscheinNummer());
-        assertEquals("Bemerkung stimmt nicht", "Hier die Bemerkung D1", datensatz3.getFeld("Bemerkung").getInhalt().trim());
+        Bezeichner bemerkung = Bezeichner.of("Bemerkung");
+        assertEquals("Bemerkung stimmt nicht", "Hier die Bemerkung D1", datensatz3.getFeld(bemerkung).getInhalt().trim());
 
         // prüfe Datensatz 6: 0820, VsNr=59999999998, Bemerkung=Hier die Bemerkung D2
         assertEquals("SatzTyp stimmt nicht", SatzTyp.of("0820"), datensatz6.getSatzTyp());
         assertEquals("VsNr stimmt nicht", "59999999998", datensatz6.getVersicherungsscheinNummer());
-        assertEquals("Bemerkung stimmt nicht", "Hier die Bemerkung D2", datensatz6.getFeld("Bemerkung").getInhalt().trim());
+        assertEquals("Bemerkung stimmt nicht", "Hier die Bemerkung D2", datensatz6.getFeld(bemerkung).getInhalt().trim());
 
         // pack Methode muss funktionieren
         try {
