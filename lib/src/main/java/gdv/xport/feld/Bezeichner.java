@@ -1945,19 +1945,14 @@ public final class Bezeichner implements Serializable {
 
     private static Bezeichner getBezeichner(String name) {
         for (Bezeichner bez : CONSTANTS) {
-            if (name.equalsIgnoreCase(bez.getTechnischerName())) {
-                return bez;
-            }
-        }
-        for (Bezeichner bez : CONSTANTS) {
             if (name.equalsIgnoreCase(bez.getName())) {
                 return bez;
             }
         }
-        if (name.endsWith("000")) {
-            LOG.debug("Will look for '{}' without trailing '000'.", name);
-            return of(name.substring(0, name.length() - 3));
-        }
+//        if (name.endsWith("000")) {
+//            LOG.debug("Will look for '{}' without trailing '000'.", name);
+//            return of(name.substring(0, name.length() - 3));
+//        }
         LOG.debug("Will generate new Bezeichner '{}'.", name);
         return new Bezeichner(name);
     }
