@@ -38,6 +38,7 @@ import java.io.*;
 import java.lang.reflect.Constructor;
 import java.util.*;
 
+import static gdv.xport.feld.Bezeichner.BEZEICHNUNG_PERSONENGRUPPE;
 import static gdv.xport.feld.Bezeichner.SATZART;
 
 /**
@@ -544,7 +545,22 @@ public abstract class Satz implements Cloneable {
         return false;
     }
 
-    /**
+	/**
+	 * Fraegt ab, ob das entsprechende Feld vorhanden ist.
+	 *
+	 * @param adresse gewuenschter Bezeichner des Feldes
+	 * @return true / false
+	 */
+	public boolean hasFeld(final ByteAdresse adresse) {
+		for (Teildatensatz tds : teildatensatz) {
+			if (tds.hasFeld(adresse)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
      * Liefert das gewuenschte Feld.
      *
      * @param bezeichner gewuenschter Bezeichner des Feldes
@@ -734,10 +750,14 @@ public abstract class Satz implements Cloneable {
      * @return true, falls Sparten-Feld vorhanden ist
 	 * @since 0.9
 	 */
-  public boolean hasSparte()
-  {
-    return hasFeld(Bezeichner.of(Kopffelder1bis7.SPARTE.getBezeichnung()));
-	}
+  public boolean hasSparte() {
+	  ByteAdresse adresseSparte = ByteAdresse.of(11);
+	  if (hasFeld(adresseSparte)) {
+		  return getFeld(adresseSparte).getBezeichner().equals(Bezeichner.SPARTE);
+	  } else {
+		  return false;
+	  }
+  }
 
 	/**
      * Schaut nach einem Feld "WAGNISART" und liefert true zurueck, falls es
@@ -786,10 +806,9 @@ public abstract class Satz implements Cloneable {
      * @since 0.9
 	 */
 	@JsonIgnore
-  public int getSparte()
-  {
-    NumFeld sparte = (NumFeld) this.getFeld(Kopffelder1bis7.SPARTE.getBezeichner());
-	    return sparte.toInt();
+	public int getSparte() {
+		NumFeld sparte = (NumFeld) this.getFeld(ByteAdresse.of(11));
+		return sparte.toInt();
 	}
 
     /**

@@ -83,10 +83,16 @@ public class ByteAdresse extends Number implements Fachwert {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ByteAdresse that = (ByteAdresse) o;
-        return adresse == that.adresse;
+        if (o instanceof ByteAdresse) {
+            ByteAdresse that = (ByteAdresse) o;
+            return adresse == that.adresse;
+        } else if (o instanceof Integer) {
+            return intValue() == (Integer) o;
+        } else if (o instanceof Long) {
+            return longValue() == (Long) o;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -107,7 +113,7 @@ public class ByteAdresse extends Number implements Fachwert {
         @Override
         public Integer validate(Integer n) {
             if ((n < 1) || (n > 256)) {
-                throw new InvalidValueException(n, "Adresse", Range.between(1, 256));
+                throw new InvalidValueException(n, "Adresse", Range.of(1, 256));
             }
             return n;
         }

@@ -482,6 +482,22 @@ public class Teildatensatz extends Satz {
     }
 
     /**
+     * Ueberprueft, ein Feld mit der angegebenen Adresse vorhanden ist.
+     *
+     * @param adresse gesuchte Adresse
+     * @return true, if successful
+     * @since 7.1
+     */
+    public boolean hasFeld(final ByteAdresse adresse) {
+        for (Feld f : datenfelder) {
+            if (adresse.intValue() == f.getByteAdresse()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Liefert alle Felder in der Reihenfolge innerhalb des Teildatensatzes
      * zurueck.
      *

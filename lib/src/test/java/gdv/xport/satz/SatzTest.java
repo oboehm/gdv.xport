@@ -547,6 +547,13 @@ public final class SatzTest extends AbstractSatzTest {
         return satz;
     }
 
+    @Test
+    public void testHasFeld() {
+        Satz satz300 = SatzRegistry.getInstance().getSatz(SatzTyp.of(300));
+        assertTrue(satz300.hasFeld(Bezeichner.SPARTE));
+        assertTrue(satz300.hasFeld(ByteAdresse.of(11)));
+    }
+
 
 
     static class TestSatz extends Satz {

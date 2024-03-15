@@ -5,11 +5,13 @@ import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
+import patterntesting.runtime.junit.ObjectTester;
 
 import java.util.Map;
 
 import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit-Tests fuer gdv.xport.feld.ByteAdresse.
@@ -62,6 +64,20 @@ public final class ByteAdresseTest {
         } catch (UnsupportedOperationException mayhappen) {
             LOG.info("{}.toMap() schlug fehl:", adresse, mayhappen);
         }
+    }
+
+    @Test
+    public void testEquals() {
+        ByteAdresse a = ByteAdresse.of(11);
+        ByteAdresse b = ByteAdresse.of(11);
+        ObjectTester.assertEquals(a, b);
+    }
+
+    @Test
+    public void testEqualsWithInt() {
+        int n = 42;
+        ByteAdresse a = ByteAdresse.of(n);
+        assertTrue(a.equals(n));
     }
 
 }
