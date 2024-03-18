@@ -753,7 +753,7 @@ public abstract class Satz implements Cloneable {
   public boolean hasSparte() {
 	  ByteAdresse adresseSparte = ByteAdresse.of(11);
 	  if (hasFeld(adresseSparte)) {
-		  return getFeld(adresseSparte).getBezeichner().equals(Bezeichner.SPARTE);
+		  return getFeld(adresseSparte).getBezeichner().isVariantOf(Bezeichner.SPARTE);
 	  } else {
 		  return false;
 	  }

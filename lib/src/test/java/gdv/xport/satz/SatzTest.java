@@ -559,6 +559,10 @@ public final class SatzTest extends AbstractSatzTest {
         Satz bausparen = SatzRegistry.getInstance().getSatz(SatzTyp.of("0210.580"));
         assertTrue(bausparen.hasSparte());
         assertEquals(580, bausparen.getSparte());
+        for (Teildatensatz tds : bausparen.getTeildatensaetze()) {
+            assertTrue(tds.hasSparte());
+            assertEquals(580, tds.getSparte());
+        }
     }
 
 

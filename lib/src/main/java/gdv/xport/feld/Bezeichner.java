@@ -1139,7 +1139,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_LEISTUNGSFALL = new Bezeichner("Sonstiger Bezugsberechtigter im Leistungsfall");
     public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_TODESFALL = new Bezeichner("Sonstiger Bezugsberechtigter im Todesfall");
     public static final Bezeichner SOZIALVERSICHERUNG_NUMMER = new Bezeichner("Sozialversicherung Nummer");
-    public static final Bezeichner SPARTE = new Bezeichner("Sparte");
+    public static final Bezeichner SPARTE = new Bezeichner("Sparte", "Sparte", "Produkt");
     public static final Bezeichner SPARTE2 = new Bezeichner("Sparte2", "Sparte2");
     public static final Bezeichner SPARTE_SA0100_TD5_FELD15 = SPARTE2;
     public static final Bezeichner SPARVORGANG = new Bezeichner("Sparvorgang");
