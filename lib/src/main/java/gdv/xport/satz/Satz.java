@@ -700,7 +700,7 @@ public abstract class Satz implements Cloneable {
 		if (teildatensatz.length > 0) {
 			return teildatensatz[0].getSatzartFeld();
 		} else {
-			return new NumFeld(SATZART, 4, 1);
+			return new NumFeld(SATZART, 4, ByteAdresse.of(1));
 		}
 	}
 
@@ -753,7 +753,8 @@ public abstract class Satz implements Cloneable {
   public boolean hasSparte() {
 	  ByteAdresse adresseSparte = ByteAdresse.of(11);
 	  if (hasFeld(adresseSparte)) {
-		  return getFeld(adresseSparte).getBezeichner().isVariantOf(Bezeichner.SPARTE);
+		  Bezeichner bezeichner = getFeld(adresseSparte).getBezeichner();
+		  return bezeichner.equals(Bezeichner.SPARTE) || getFeld(adresseSparte).getBezeichner().isVariantOf(Bezeichner.SPARTE);
 	  } else {
 		  return false;
 	  }
@@ -807,6 +808,10 @@ public abstract class Satz implements Cloneable {
 	 */
 	@JsonIgnore
 	public int getSparte() {
+		if (!hasSparte()) {
+			throw new IllegalArgumentException(
+					this.toShortString() + " hat kein Feld \"Sparte\" an Pos 11 in den Kopfdaten!");
+		}
 		NumFeld sparte = (NumFeld) this.getFeld(ByteAdresse.of(11));
 		return sparte.toInt();
 	}

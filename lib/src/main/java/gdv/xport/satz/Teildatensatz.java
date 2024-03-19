@@ -291,8 +291,8 @@ public class Teildatensatz extends Satz {
      * <p>
      * Falls kein Feld mit dem Bezeichner vorhanden ist, wird eine
      * {@link IllegalArgumentException} geworfen. Ebenso wenn das Feld
-     * nicht eindeutig ist. Dann gibt es eine {@link NotUniqueException}
-     * (Ausnahme: Satznummer).
+     * nicht eindeutig ist und unterschiedliche Werte hat. Dann gibt es
+     * eine {@link NotUniqueException} (Ausnahme: Satznummer).
      * </p>
      * @param bezeichner gewuenschter Bezeichner des Feldes
      * @return das gesuchte Feld
@@ -307,7 +307,7 @@ public class Teildatensatz extends Satz {
             }
             throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
                     + " nicht vorhanden!");
-        } else if ((found.size() > 1)) {
+        } else if (found.size() > 1) {
             checkUniqueness(found);
         }
         return found.get(0);
@@ -333,6 +333,13 @@ public class Teildatensatz extends Satz {
                 }
             }
         }
+//        String technischerName = bezeichner.getTechnischerName();
+//        char last = technischerName.charAt(technischerName.length()-1);
+//        if (!Character.isDigit(last)) {
+//            for (int i = 2; i <= 12; i++) {
+//                found.addAll(getAllFelder(Bezeichner.of(technischerName + i)));
+//            }
+//        }
         return found;
     }
 
@@ -376,44 +383,6 @@ public class Teildatensatz extends Satz {
      * @return das Feld (z.B. mit der Satzart)
      */
     public Feld getFeld(int nr) {
-//     int myNr = nr;
-//     switch (this.getGdvSatzartName()) {
-//      case "0100":
-//        if (("1").equals(this.getSatznummer()
-//            .getInhalt()) && myNr == 27)
-//          myNr--;
-//        break;
-//      case "0210.050":
-//        if (("1").equals(this.getSatznummer()
-//            .getInhalt()) && myNr == 35)
-//          myNr--;
-//        break;
-//      case "0220.010.13.1":
-//        if (("1").equals(this.getSatznummer()
-//            .getInhalt()) && myNr == 46)
-//          myNr--;
-//        break;
-//      case "0600":
-//        if (("2").equals(this.getSatznummer()
-//            .getInhalt()) && myNr == 13)
-//        {
-//          myNr--;
-//        }
-//        else if (("3").equals(this.getSatznummer()
-//            .getInhalt()) && myNr == 14)
-//          myNr--;
-//
-//        break;
-//      case "9950":
-//      case "9951":
-//        if (("1").equals(this.getSatznummer()
-//            .getInhalt()) && myNr == 11)
-//          myNr--;
-//        break;
-//      default:
-//        break;
-//    }
-//        return (Feld) getFelder().toArray()[myNr - 1];
         Feld[] array = getFelder().toArray(new Feld[0]);
         if (nr > array.length) {
             LOG.info("Feld {} in {} wird auf letztes Feld {} abgebildet.", nr, toShortString(), array.length);

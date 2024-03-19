@@ -348,6 +348,13 @@ public class TeildatensatzTest extends AbstractSatzTest {
         assertEquals(z2, tds.getFeld(b));
     }
 
+    @Test
+    public void testGetMultipleFeldAbrechnungVermittler() {
+        Teildatensatz tds = SATZ_REGISTRY.getSatz(SatzTyp.of("0300")).getTeildatensatz(1);
+        tds.setFeld(ByteAdresse.of(147), "1");
+        assertEquals("1", tds.getFeld(Bezeichner.of("Abrechnung Vermittler 2")).getInhalt());
+        //assertThrows(NotUniqueException.class, () -> tds.getFeld(Bezeichner.of("Abrechnung Vermittler")));
+    }
 
     @Test
     public void testSetNotUniqFeld() {
