@@ -20,7 +20,6 @@ package gdv.xport.satz.xml;
 
 import gdv.xport.config.Config;
 import gdv.xport.util.NotRegisteredException;
-import gdv.xport.util.NotUniqueException;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.XmlHelper;
 import org.apache.logging.log4j.LogManager;
@@ -334,19 +333,6 @@ public class XmlService {
         }
     }
 
-//    /**
-//     * Ueber diese Methode kann man eigene Satzarten an der aktuellen Instanz
-//     * registrieren. Eigene Satzarten duerfen im Bereich von 800 - 900 liegen.
-//     *
-//     * @param uri URI der Resource (z.B. "classpath:/mein/satz.xml")
-//     * @throws IOException        the io exception
-//     * @throws XMLStreamException the xml stream exception
-//     * @since 6.1
-//     */
-//    public void registerSatzart(URI uri) throws XMLStreamException, IOException {
-//        registerSatzart(SatzXml.of(uri));
-//    }
-
     private void registerSatzart(SatzXml satz) {
         List<SatzTyp> supportedSatzTypen = satz.getSupportedSatzTypen();
         if (supportedSatzTypen.isEmpty()) {
@@ -362,53 +348,6 @@ public class XmlService {
     private void registerSatzart(SatzTyp type, SatzXml satz) {
         satz.init(type);
         this.satzarten.put(type, satz);
-    }
-
-    /**
-     * Liefert den Satz zur gewuenschten Satzart. Falls es mehr wie einen Satz zur
-     * gesuchten Satzart gibt (d.h. wenn es mehrere Sparten gibt), wird eine
-     * {@link NotUniqueException} geworfen.
-     * <p>
-     * Urspruenglich war diese Methoden fuer Satzarten wie 100 oder 200 vorgesehen,
-     * die keine Sparte besitzen. Fuer andere Satzarten wird deswegen eine
-     * {@link NotUniqueException} geworfen, da die Methode dafuer nicht verwendet
-     * werden soll. Seit v0.9 ist die durch {@link SatzTyp} gekapselt.
-     * </p>
-     *
-     * @param satzart z.B. 100 fuer Satz100 (Adressteil)
-     * @return die entsprechende Satzart
-     * @deprecated wird durch {@link #getSatzart(SatzTyp)} abgeloest
-     */
-    @Deprecated
-    public SatzXml getSatzart(final int satzart)  {
-        SatzXml satz = this.satzarten.get(SatzTyp.of(Integer.toString(satzart)));
-        if (satz != null) {
-            return new SatzXml(satz);
-        }
-        List<SatzTyp> satzTypen = new ArrayList<>();
-        for (SatzTyp satzNr : this.satzarten.keySet()) {
-            if (satzNr.getSatzart() == satzart) {
-                satzTypen.add(satzNr);
-            }
-        }
-        if (satzTypen.isEmpty()) {
-            throw new NotRegisteredException(satzart);
-        }
-        if (satzTypen.size() > 1) {
-            checkSatzarten(satzTypen);
-        }
-        return new SatzXml(this.satzarten.get(satzTypen.get(0)));
-  }
-
-    private static void checkSatzarten(List<SatzTyp> satzTypen) {
-        SatzTyp first = satzTypen.get(0);
-        for (int i = 1; i < satzTypen.size(); i++) {
-            if (first.getSparte() != satzTypen.get(i)
-                                              .getSparte()) {
-                throw new NotUniqueException("Sparte for Satzart " + first.getSatzart()
-                        + " is missing: " + satzTypen);
-            }
-        }
     }
 
     /**
