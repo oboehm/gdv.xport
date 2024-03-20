@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009-2020 by Oli B.
+ * Copyright (c) 2009-2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.PushbackReader;
+import java.util.Optional;
 
 import static gdv.xport.feld.Bezeichner.*;
 
@@ -245,9 +246,9 @@ public class Datensatz extends Satz {
 
 	private void initBausparenart(int art) {
 		if (!hasBausparenArt()) {
-			addAll(new AlphaNumFeld(ART1, 1, 44));
+			addAll(new AlphaNumFeld(ART_580, 1, 44));
 		}
-        setFeld(ART1, art);
+        setFeld(ART_580, art);
 	}
 
 	/**
@@ -330,13 +331,27 @@ public class Datensatz extends Satz {
 	 * Gets the sparte feld.
 	 *
 	 * @return die Sparte als Feld
+	 * @deprecated seit 7.1 durch getFeldSparte() ersetzt
 	 */
+	@Deprecated
 	public NumFeld getSparteFeld() {
-		return this.sparte;
+		return getFeldSparte().get();
 	}
 
+	/**
+	 * Diese Methode dient als Ersatz fuer die getSparte()- und hasSparte()-
+	 * Implementierung, die durch den Mehrdeutigkeit von "Sparte" in die Irre
+	 * fuehren koennen.
+	 *
+	 * @return liefert immer ein Sparte-Feld an Byte-Adresse 11
+	 * @since  7.1
+	 */
+	@Override
+	public Optional<NumFeld> getFeldSparte() {
+		return Optional.of(sparte);
+	}
 
-  /**
+	/**
    * Wenn der Datensatz ein Element fuer eine Untersparte hat, wird 'true'
    * zurueckgegeben. Dies ist z.B. fuer Satz 220.580.1 (Bausparen) der Fall.
    *

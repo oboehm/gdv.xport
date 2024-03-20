@@ -1869,7 +1869,7 @@ public final class Bezeichner implements Serializable {
                 return true;
             }
         }
-        return false;
+        return equals(other);
     }
 
     /**

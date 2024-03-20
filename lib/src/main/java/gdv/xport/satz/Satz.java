@@ -750,15 +750,9 @@ public abstract class Satz implements Cloneable {
      * @return true, falls Sparten-Feld vorhanden ist
 	 * @since 0.9
 	 */
-  public boolean hasSparte() {
-	  ByteAdresse adresseSparte = ByteAdresse.of(11);
-	  if (hasFeld(adresseSparte)) {
-		  Bezeichner bezeichner = getFeld(adresseSparte).getBezeichner();
-		  return bezeichner.equals(Bezeichner.SPARTE) || getFeld(adresseSparte).getBezeichner().isVariantOf(Bezeichner.SPARTE);
-	  } else {
-		  return false;
-	  }
-  }
+	public boolean hasSparte() {
+		return getFeldSparte().isPresent();
+	}
 
 	/**
      * Schaut nach einem Feld "WAGNISART" und liefert true zurueck, falls es
@@ -802,21 +796,48 @@ public abstract class Satz implements Cloneable {
 	 * Liefert den Inhalt des Sparten-Felds. Vorher sollte allerdings mittels
 	 * {@link #hasSparte()} geprueft werden, ob der Satz ein Sparten-Feld
 	 * besitzt.
+	 * <p>
+	 * Anmerkung: diese Methode liefert nicht die Sparte, sondern den Inhalt
+	 * des Spartenfelds an Byte-Adresse 11 zurueck. Im Normalfall entspricht
+	 * dies der Sparte, kann aber in Sonderfaellen davon abweichen.
+	 * </p>
 	 *
      * @return die Sparte
      * @since 0.9
 	 */
 	@JsonIgnore
 	public int getSparte() {
-		if (!hasSparte()) {
+		Optional<NumFeld> sparte = getFeldSparte();
+		if (sparte.isPresent()) {
+			return sparte.get().toInt();
+		} else {
 			throw new IllegalArgumentException(
 					this.toShortString() + " hat kein Feld \"Sparte\" an Pos 11 in den Kopfdaten!");
 		}
-		NumFeld sparte = (NumFeld) this.getFeld(ByteAdresse.of(11));
-		return sparte.toInt();
 	}
 
-    /**
+	/**
+	 * Diese Methode dient als Ersatz fuer die getSparte()- und hasSparte()-
+	 * Implementierung, die durch den Mehrdeutigkeit von "Sparte" in die Irre
+	 * fuehren koennen.
+	 *
+	 * @return Optional.empty() fuer Vor- und Nachsatz, ansonsten Sparte-Feld
+	 * 	       an Byte-Adresse 11
+	 * @since  7.1
+	 */
+	@JsonIgnore
+	public Optional<NumFeld> getFeldSparte() {
+		ByteAdresse adresseSparte = ByteAdresse.of(11);
+		if (hasFeld(adresseSparte)) {
+			Feld feld = getFeld(adresseSparte);
+			if (feld.getBezeichner().isVariantOf(Bezeichner.SPARTE)) {
+				return Optional.of((NumFeld) feld);
+			}
+		}
+		return Optional.empty();
+	}
+
+	/**
      * Liefert den Inhalt des Wagnisart-Felds. Vorher sollte allerdings mittels
      * {@link #hasWagnisart()} geprueft werden, ob der Satz ein Wagnisart-Feld
      * besitzt.
@@ -1095,20 +1116,6 @@ public abstract class Satz implements Cloneable {
 		if (reader.read(cbuf, 0, 256) == -1) {
 			throw new EOFException("can't read 256 bytes from " + reader);
 		}
-	}
-
-	/**
-	 * Liest 4 Bytes, um die Satzart zu bestimmen und stellt die Bytes
-	 * anschliessend wieder zurueck in den Reader.
-	 *
-	 * @param reader the reader
-	 * @return Satzart
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @deprecated wurde nach {@link Importer#readSatzart()} verschoben
-	 */
-	@Deprecated
-	public static int readSatzart(final PushbackLineNumberReader reader) throws IOException {
-		return Importer.of(reader).readSatzart();
 	}
 
     /**
