@@ -556,12 +556,15 @@ public final class SatzTest extends AbstractSatzTest {
 
     @Test
     public void testHasSparteAsProdukt() {
-        Satz bausparen = SatzRegistry.getInstance().getSatz(SatzTyp.of("0210.580"));
+        SatzTyp satzTyp = SatzTyp.of("0210.580");
+        Satz bausparen = SatzRegistry.getInstance().getSatz(satzTyp);
         assertTrue(bausparen.hasSparte());
         assertEquals(580, bausparen.getSparte());
+        assertEquals(satzTyp, bausparen.getSatzTyp());
         for (Teildatensatz tds : bausparen.getTeildatensaetze()) {
             assertTrue(tds.hasSparte());
             assertEquals(580, tds.getSparte());
+            assertEquals(satzTyp, tds.getSatzTyp());
         }
     }
 
