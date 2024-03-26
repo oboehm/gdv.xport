@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2012 by Oli B.
+ * Copyright (c) 2009 - 2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -562,8 +562,8 @@ public final class SatzTest extends AbstractSatzTest {
         assertEquals(580, bausparen.getSparte());
         assertEquals(satzTyp, bausparen.getSatzTyp());
         for (Teildatensatz tds : bausparen.getTeildatensaetze()) {
-            assertTrue(tds.hasSparte());
-            assertEquals(580, tds.getSparte());
+            assertTrue(tds.getFeldSparte().isPresent());
+            assertEquals(580, tds.getFeldSparte().get().toInt());
             assertEquals(satzTyp, tds.getSatzTyp());
         }
     }

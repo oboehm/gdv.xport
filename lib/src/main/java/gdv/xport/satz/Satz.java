@@ -725,22 +725,25 @@ public abstract class Satz implements Cloneable {
 	public SatzTyp getSatzTyp() {
 		if (StringUtils.isNotEmpty(this.gdvSatzartName)) {
 			return SatzTyp.of(this.gdvSatzartName);
-	    } else if (this.hasSparte()) {
-					if (this.hasWagnisart() && this.getWagnisart().matches("\\d")) {
-				return SatzTyp.of(this.getSatzart(), this.getSparte(),
-						Integer.parseInt(this.getWagnisart()));
-					} else if (this.hasKrankenFolgeNr() && this.getKrankenFolgeNr().matches("\\d")) {
-						return SatzTyp.of(this.getSatzart(), this.getSparte(),
-								Integer.parseInt(this.getKrankenFolgeNr()));
-					} else if (this.hasBausparenArt() && this.getBausparenArt().matches("\\d")) {
-						return SatzTyp.of(this.getSatzart(), this.getSparte(),
-								Integer.parseInt(this.getBausparenArt()));
-			} else {
-				return SatzTyp.of(this.getSatzart(), this.getSparte());
-			}
 	    } else {
-	        return SatzTyp.of(this.getSatzart());
-	    }
+			Optional<NumFeld> sparte = getFeldSparte();
+			if (sparte.isPresent()) {
+				if (this.hasWagnisart() && this.getWagnisart().matches("\\d")) {
+					return SatzTyp.of(this.getSatzart(), sparte.get().toInt(),
+							Integer.parseInt(this.getWagnisart()));
+				} else if (this.hasKrankenFolgeNr() && this.getKrankenFolgeNr().matches("\\d")) {
+					return SatzTyp.of(this.getSatzart(), sparte.get().toInt(),
+							Integer.parseInt(this.getKrankenFolgeNr()));
+				} else if (this.hasBausparenArt() && this.getBausparenArt().matches("\\d")) {
+					return SatzTyp.of(this.getSatzart(), sparte.get().toInt(),
+							Integer.parseInt(this.getBausparenArt()));
+				} else {
+					return SatzTyp.of(this.getSatzart(), sparte.get().toInt());
+				}
+			} else {
+				return SatzTyp.of(this.getSatzart());
+			}
+		}
 	}
 
 	/**
@@ -749,7 +752,10 @@ public abstract class Satz implements Cloneable {
 	 *
      * @return true, falls Sparten-Feld vorhanden ist
 	 * @since 0.9
+	 * @deprecated bitte {@link #getFeldSparte()}.isPresent() verwenden
+	 *             // TODO: mit v9 entsorgen
 	 */
+	@Deprecated
 	public boolean hasSparte() {
 		return getFeldSparte().isPresent();
 	}
@@ -773,24 +779,22 @@ public abstract class Satz implements Cloneable {
 	 * @since 18.04.2018
 	 */
     public boolean hasKrankenFolgeNr() {
-        return this.getSatzart() == 220 && this.getSparte() == 20
+        return this.getSatzart() == 220 && this.getFeldSparte().get().toInt() == 20
                 && (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
                         || this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF));
     }
 
 	/**
-  /**
-   * Schaut nach dem 9. Feld in Satzart 220, Sparte 580 (Bausparen) und liefert true zurueck, falls
-   * es existiert.
-   *
-   * @return true, falls das Feld existiert
-   * @since 30.06.2021
-   */
-  public boolean hasBausparenArt()
-  {
-    return this.getSatzart() == 220 && this.getSparte() == 580
-        && (this.hasFeld(Bezeichner.ART_580));
-  }
+	 * Schaut nach dem 9. Feld in Satzart 220, Sparte 580 (Bausparen) und liefert true zurueck, falls
+	 * es existiert.
+	 *
+	 * @return true, falls das Feld existiert
+	 * @since 30.06.2021
+	 */
+	public boolean hasBausparenArt() {
+		return this.getSatzart() == 220 && this.getFeldSparte().get().toInt() == 580
+				&& (this.hasFeld(Bezeichner.ART_580));
+	}
 
 	/**
 	 * Liefert den Inhalt des Sparten-Felds. Vorher sollte allerdings mittels
@@ -804,7 +808,10 @@ public abstract class Satz implements Cloneable {
 	 *
      * @return die Sparte
      * @since 0.9
+	 * @deprecated bitte {@link #getFeldSparte()}.get().toInt() verwenden
+	 *             // TODO: mit v9 entsorgen
 	 */
+	@Deprecated
 	@JsonIgnore
 	public int getSparte() {
 		Optional<NumFeld> sparte = getFeldSparte();

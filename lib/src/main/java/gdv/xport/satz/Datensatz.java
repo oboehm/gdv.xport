@@ -280,16 +280,6 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Gets the sparte.
-	 *
-	 * @return die Sparte als int
-	 */
-	@Override
-    public int getSparte() {
-		return this.sparte.toInt();
-	}
-
-	/**
      * Manche Satzarten wie Bausparen haben eine Element fuer die Untersparte,
      * im Feld Wagnisart oder Art abgespeichert. Dies ist z.B. fuer Satz
      * 220.580.1 (Bausparen) der Fall.
@@ -312,26 +302,11 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Ueberprueft, ob der Datensatz ueberhaupt eine Sparte gesetzt hat.
-	 *
-	 * @return true, if successful
-	 * @since 0.6
-	 */
-	@Override
-    public boolean hasSparte() {
-        /*
-         * @Oli: die Abfrage auf Existenz von "sparte" ist noetig, damit es beim Debugging nicht in
-         *       "Satz.toString()" zur RuntimeException kommen kann, solange das Datensatz-Objekt noch
-         *       nicht fertig ist.
-         */
-		return this.sparte != null &&  !this.sparte.isEmpty() && this.getSparte() > 0;
-	}
-
-	/**
 	 * Gets the sparte feld.
 	 *
 	 * @return die Sparte als Feld
 	 * @deprecated seit 7.1 durch getFeldSparte() ersetzt
+	 * 			   // TODO: mit v9 entsorgen
 	 */
 	@Deprecated
 	public NumFeld getSparteFeld() {
