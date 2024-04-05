@@ -15,6 +15,10 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 - Teildatensatz.getFeld(int) auf maximale Feld-Anzahl beschränkt
 
+### Breaking Changes
+
+- SatzTyp.hasSparte() liefert true, wenn laut GDV ein Spartenteil vorhanden ist (auch wenn 0 im Spartenteil steht)
+
 
 ## [7.0.1] - 2024-01-26
 

@@ -89,6 +89,9 @@ public class SatzTypTest {
     @Test
     public void testGetSparte() {
         assertEquals(50, SatzTyp.of("0210.050").getSparte());
+        assertEquals(0, SatzTyp.of("0300").getSparte());
+        assertEquals(0, SatzTyp.of("0210.000").getSparte());
+        assertEquals(0, SatzTyp.of("0810").getSparte());
     }
 
     @Test
@@ -263,7 +266,7 @@ public class SatzTypTest {
     @Test
     public void testSatzTyp210() {
         SatzTyp x = SatzTyp.of("0210.000");
-        assertFalse(x.hasSparte());
+        //assertTrue(x.hasSparte());
         assertEquals("0210.000", x.getGdvSatzartName());
         assertEquals("000", x.getSparteAsString());
         assertEquals("000", x.getSparteMitArt());

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2021 by Oli B.
+ * Copyright (c) 2013-2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,10 @@
 
 package gdv.xport.util;
 
-import gdv.xport.io.Importer;
-import gdv.xport.io.PushbackLineNumberReader;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ValidationException;
-import java.io.IOException;
 import java.util.Arrays;
 
 /**
@@ -177,31 +174,21 @@ public class SatzTyp {
 			array[i] = (short) args[i];
 		}
 		int satzart = array[0];
-		if ((array.length == 2) && (satzart == 220) && (array[1] == 10)) {
+		if ((array.length == 1) && isAllgemeineSatzart(satzart)) {
 			array = ArrayUtils.add(array, (short) 0);
-		}
-    	if ((array.length == 3) && (satzart == 220 || satzart == 221) && (array[1] == 10) && (array[2] > 0)) {
-			array = ArrayUtils.add(array, (short) 1);
+		} else {
+			if ((array.length == 2) && (satzart == 220) && (array[1] == 10)) {
+				array = ArrayUtils.add(array, (short) 0);
+			}
+			if ((array.length == 3) && (satzart == 220 || satzart == 221) && (array[1] == 10) && (array[2] > 0)) {
+				array = ArrayUtils.add(array, (short) 1);
+			}
 		}
 		return array;
 	}
 
 	private static boolean isAllgemeineSatzart(int satzart) {
 		return (satzart == 210) || (satzart == 211) || (satzart == 220) || (satzart == 221);
-	}
-
-	/**
-	 * Bestimmt den SatzTyp eines Datensatzes.
-	 *
-	 * @param reader  Reader
-	 * @param satzart Satzart, z.B. 100
-	 * @return den ermittelten SatzTyp
-	 * @throws IOException bei Lesefehlern
-	 * @deprecated wurde nach {@link Importer#readSatzTyp(int)} verschoben
-	 */
-	@Deprecated
-	public static SatzTyp readSatzTyp(PushbackLineNumberReader reader, int satzart) throws IOException {
-		return Importer.of(reader).readSatzTyp(satzart);
 	}
 
 	private boolean isAllgemeineSatzart() {
@@ -218,12 +205,20 @@ public class SatzTyp {
 	}
 
 	/**
-	 * Gets the sparte.
+	 * Liefert den Inhalt des Spartenteils (kann auch 0 sein!).</br>
+	 * Die Rueckgabe von 0 bedeutet, dass entweder der Inhalt des Spartenteils
+	 * dieses Objektes 0 ist oder kein Spartenteil vorhanden ist. Dann ggfs.
+	 * abhaengig von Satzart direkt im Satz das Feld an ByteAdresse 011 pruefen! Das
+	 * gilt besonders bei frei definierten Satzarten "0800" bis "0899" (siehe
+	 * {@link #hasSparte()})
 	 *
-	 * @return the sparte
+	 * @return Inhalt des Spartenteils oder 0
 	 */
 	public int getSparte() {
-		return teil[1];
+		if (hasSparte() && teil.length > 1)
+			return teil[1];
+		else
+			return 0;
 	}
 
 	/**
@@ -364,6 +359,8 @@ public class SatzTyp {
 	 * Dies ist die laufende Nummer bei der Wagnisart.
 	 *
 	 * @return the lfd nummer
+	 * @deprecated bitte {@link #getGdvSatzartNummer()} verwenden // TODO: mit v9
+	 *             entsorgen
 	 */
 	public int getTeildatensatzNummer() {
 		assertTrue("TeildatensatzNummer", hasTeildatensatzNummer());
@@ -371,17 +368,19 @@ public class SatzTyp {
 	}
 
 	/**
-   * Dies ist die laufende Nummer bei der Wagnisart (4. Teil im GdvSatzartNamen bei Leben).
-   *
-   * @return the GdvSatzartNummer
-   */
-  public int getGdvSatzartNummer() {
-    assertTrue("GdvSatzartNummer", hasGdvSatzartNummer());
-    return teil.length > 3 ? teil[3] : 0;
-  }
+	 * Dies ist die laufende Nummer bei der Wagnisart (4. Teil im GdvSatzartNamen
+	 * bei Leben) (nur GDV-Sparte "010"!)
+	 *
+	 * @return the GdvSatzartNummer
+	 */
+	public int getGdvSatzartNummer() {
+		assertTrue("GdvSatzartNummer", hasGdvSatzartNummer());
+		return teil.length > 3 ? teil[3] : 0;
+	}
 
-  /**
-   * Liefert true zurueck, wenn in diesem Objekt die Sparte gesetzt ist.
+	/**
+	 * Liefert true zurueck, wenn entweder bei diesem Objekt ein Spartenteil
+	 * vorhanden ist oder die Satzart gemaess GDV eine Sparte hat (an Pos 011).
 	 *
 	 * @return true, if successful
 	 */
@@ -390,35 +389,12 @@ public class SatzTyp {
 	}
 
 	/**
-	 * Wird nicht mehr benoetigt und wird mit v7 entfernt.
-	 *
-	 * @return true, false
-	 * @deprecated Begriff "Parent" ist mehrdeutig
-	 */
-	@Deprecated
-	public boolean hasParent() {
-		return teil.length > 1;
-	}
-
-	/**
-	 * Wird nicht mehr benoetigt und wird mit v7 entfernt.
-	 *
-	 * @return SatzTyp des Parents
-	 * @deprecated Begriff "Parent" ist mehrdeutig
-	 */
-	@Deprecated
-	public SatzTyp getParent() {
-		String parent = StringUtils.substringBeforeLast(this.toString(), ".");
-		return SatzTyp.of(parent);
-	}
-
-	/**
-   * Liefert true zurueck, wenn in diesem Objekt die Wagnisart gesetzt ist.
+	 * Liefert true zurueck, wenn in diesem Objekt die Wagnisart gesetzt ist.
 	 *
 	 * @return true, if successful
 	 */
 	public boolean hasWagnisart() {
-    return teil.length > 2 && teil[2] >= 0 && getSparte() == 10;
+		return teil.length > 2 && teil[2] >= 0 && getSparte() == 10;
 	}
 
 	/**
@@ -644,8 +620,8 @@ public class SatzTyp {
 					case 70:
 					case 80:
 					case 110:
-          case 130:
-          case 140:
+					case 130:
+					case 140:
 					case 170:
 					case 190:
 					case 510:
@@ -659,42 +635,43 @@ public class SatzTyp {
 					case 580:
 						validateLength(args, 3);
 						break;
+					case 10:
+						validateLength(args, 4);
 				}
 			}
 		}
 
-    private void validateSatzart0221(int[] args)
-    {
-      if (args.length > 1)
-      {
-        switch (args[1])
-        {
-          case 0:
-          case 30:
-          case 40:
-          case 51:
-          case 52:
-          case 53:
-          case 54:
-          case 55:
-          case 59:
-          case 70:
-          case 80:
-          case 110:
-          case 130:
-          case 140:
-          case 170:
-          case 190:
-          case 510:
-          case 550:
-          case 560:
-          case 570:
-          case 684:
-            validateLength(args, 2);
-            break;
-        }
-      }
-    }
+		private void validateSatzart0221(int[] args) {
+			if (args.length > 1) {
+				switch (args[1]) {
+					case 0:
+					case 30:
+					case 40:
+					case 51:
+					case 52:
+					case 53:
+					case 54:
+					case 55:
+					case 59:
+					case 70:
+					case 80:
+					case 110:
+					case 130:
+					case 140:
+					case 170:
+					case 190:
+					case 510:
+					case 550:
+					case 560:
+					case 570:
+					case 684:
+						validateLength(args, 2);
+						break;
+					case 10:
+						validateLength(args, 4);
+				}
+			}
+		}
 
 		/**
 		 * Der Unterschied zu validate liegt nur in der ausgeloesten Exception.
