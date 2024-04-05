@@ -82,7 +82,7 @@ public class Version extends Feld {
         MAPPING.put(Bezeichner.SATZART_0550_SCHADENABRECHNUNG, SatzTyp.of("0550"));
         MAPPING.put(Bezeichner.SATZART_0600, SatzTyp.of("0600"));
         MAPPING.put(Bezeichner.SATZART_9951_MIME, SatzTyp.of("9951"));
-        MAPPING.put(Bezeichner.VERSION_SATZART_9999, SatzTyp.of("9999"));
+        MAPPING.put(Bezeichner.SATZART_9999, SatzTyp.of("9999"));
     }
 
     /**
@@ -170,11 +170,11 @@ public class Version extends Feld {
         }
         for (Map.Entry<Bezeichner, SatzTyp> entry : MAPPING.entrySet()) {
             if (satzTyp.equals(entry.getValue())) {
-                return new Version(entry.getKey(), 1);
+                return new Version(entry.getKey(), ByteAdresse.of(1));
             }
         }
         String name = "Satzart " + satzTyp;
-        return new Version(Bezeichner.of(name), 1);
+        return new Version(Bezeichner.of(name), ByteAdresse.of(1));
     }
 
     /**
