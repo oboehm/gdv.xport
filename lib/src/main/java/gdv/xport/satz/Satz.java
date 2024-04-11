@@ -23,12 +23,10 @@ import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.Importer;
 import gdv.xport.io.PushbackLineNumberReader;
-import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
-import net.sf.oval.Validator;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -38,7 +36,6 @@ import java.io.*;
 import java.lang.reflect.Constructor;
 import java.util.*;
 
-import static gdv.xport.feld.Bezeichner.BEZEICHNUNG_PERSONENGRUPPE;
 import static gdv.xport.feld.Bezeichner.SATZART;
 
 /**
@@ -69,7 +66,7 @@ public abstract class Satz implements Cloneable {
    * gdv-online.de
    */
   private String gdvSatzartName = "";
-    private final AlphaNumFeld satzVersion = new AlphaNumFeld(Bezeichner.of("Version"), 3, 1, Align.LEFT);
+    private final AlphaNumFeld satzVersion = new AlphaNumFeld(Bezeichner.of("Version"), 3, ByteAdresse.of(1), Align.LEFT);
 
 	/**
 	 * Mit diesem Konstruktor wird ein Satz fuer die entsprechende Satzart
@@ -522,10 +519,7 @@ public abstract class Satz implements Cloneable {
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @return das gesuchte Feld
 	 * @throws IllegalArgumentException falls es das Feld nicht gibt
-	 * @deprecated bitte getFeld(Bezeichner) verwenden
-	 * 			   (TODO: wird mit v8 oder v9 entsorgt)
 	 */
-	@Deprecated
 	public Feld getFeld(final String name) throws IllegalArgumentException {
 		return this.getFeld(Bezeichner.of(name));
 	}
@@ -622,7 +616,7 @@ public abstract class Satz implements Cloneable {
     	Betrag betrag = getFeld(bezeichner, Betrag.class);
     	Feld vorzeichen = getVorzeichenOf(bezeichner);
     	BetragMitVorzeichen bmv = new BetragMitVorzeichen(Bezeichner.of(bezeichner.getName() + " mit Vorzeichen"),
-				betrag.getAnzahlBytes()+1, betrag.getByteAdresse());
+				betrag.getAnzahlBytes()+1, ByteAdresse.of(betrag.getByteAdresse()));
     	bmv.setInhalt(betrag.getInhalt() + vorzeichen.getInhalt());
     	return bmv;
 	}
@@ -752,10 +746,7 @@ public abstract class Satz implements Cloneable {
 	 *
      * @return true, falls Sparten-Feld vorhanden ist
 	 * @since 0.9
-	 * @deprecated bitte {@link #getFeldSparte()}.isPresent() verwenden
-	 *             // TODO: mit v9 entsorgen
 	 */
-	@Deprecated
 	public boolean hasSparte() {
 		return getFeldSparte().isPresent();
 	}
@@ -808,10 +799,7 @@ public abstract class Satz implements Cloneable {
 	 *
      * @return die Sparte
      * @since 0.9
-	 * @deprecated bitte {@link #getFeldSparte()}.get().toInt() verwenden
-	 *             // TODO: mit v9 entsorgen
 	 */
-	@Deprecated
 	@JsonIgnore
 	public int getSparte() {
 		Optional<NumFeld> sparte = getFeldSparte();
@@ -984,32 +972,32 @@ public abstract class Satz implements Cloneable {
         }
 	}
 
-	/**
-	 * Ermittelt die Satzlaenge. Je nachdem, ob das Zeilenende aus keinem, einem
-	 * oder zwei Zeichen besteht, wird 256, 257 oder 258 zurueckgegeben.
-	 *
-	 * @param s der komplette Satz
-	 * @return 256, 257 oder 258
-     * @since 0.4
-	 */
-	protected final int getSatzlength(final String s) {
-		int satzlength = 256;
-		try {
-			char c256 = s.charAt(256);
-			if ((c256 == '\n') || (c256 == '\r')) {
-				satzlength = 257;
-			}
-			if (s.length() > satzlength) {
-				char c257 = s.charAt(257);
-				if ((c257 == '\n') || (c257 == '\r')) {
-					satzlength = 258;
-				}
-			}
-		} catch (StringIndexOutOfBoundsException e) {
-			LOG.trace("end of string \"" + s + "\" reached", e);
-		}
-		return satzlength;
-	}
+//	/**
+//	 * Ermittelt die Satzlaenge. Je nachdem, ob das Zeilenende aus keinem, einem
+//	 * oder zwei Zeichen besteht, wird 256, 257 oder 258 zurueckgegeben.
+//	 *
+//	 * @param s der komplette Satz
+//	 * @return 256, 257 oder 258
+//     * @since 0.4
+//	 */
+//	protected final int getSatzlength(final String s) {
+//		int satzlength = 256;
+//		try {
+//			char c256 = s.charAt(256);
+//			if ((c256 == '\n') || (c256 == '\r')) {
+//				satzlength = 257;
+//			}
+//			if (s.length() > satzlength) {
+//				char c257 = s.charAt(257);
+//				if ((c257 == '\n') || (c257 == '\r')) {
+//					satzlength = 258;
+//				}
+//			}
+//		} catch (StringIndexOutOfBoundsException e) {
+//			LOG.trace("end of string \"" + s + "\" reached", e);
+//		}
+//		return satzlength;
+//	}
 
 	/**
 	 * Import von einem {@link InputStream}.
@@ -1177,7 +1165,6 @@ public abstract class Satz implements Cloneable {
 	}
 
 	private boolean canBeMergedWith(Satz other) {
-		ByteAdresse vsNrAdresse = ByteAdresse.of(14);
 		for (Teildatensatz otherTds : other.teildatensatz) {
 			Zeichen satznr = otherTds.getSatznummer();
 			Feld versicherungscheinnr = otherTds.getFeld(ByteAdresse.VERSICHERUNGSSCHEINNUMMER);
