@@ -277,6 +277,350 @@
 				<ntabhaengig>0</ntabhaengig>
 			</feldreferenz>
 		</satzende>
+	<felder>
+		<feld referenz="BN-2003.02.11.22.49.47.214">
+			<name>Satzart</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>4</minimaleLaenge>
+			<bytes>4</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.47.314">
+			<name>Trennzeichen</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.47.344">
+			<name>Spartenverzeichnis</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>14.06.2018 13:45:55</letzteAenderung>
+			<minimaleLaenge>3</minimaleLaenge>
+			<bytes>3</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung>
+				<br />
+			</bemerkung>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.47.364">
+			<name>Satznummer (N)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>17.02.2015 10:10:12</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:32:52</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.54.264">
+			<name>VU-Nummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>17.09.2009 10:58:36</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung>Das VU-Nr.-Verzeichnis kann bei der Bundesanstalt für Finanzdienstleistungsaufsicht in Bonn angefordert werden (Graurheindorfer Str. 108, 53117 Bonn, www.bafin.de).</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:41:28</letzteAenderung>
+				<technischerName />
+				<bemerkung>
+					<br />
+				</bemerkung>
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.346">
+			<name>Bündelungskennzeichen</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.366">
+			<name>Versicherungsschein-Nummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>04.02.2010 14:55:29</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>17</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung>
+				Zu den - innerhalb der Versicherungsscheinnummer - nicht zulässigen Sonderzeichen zählen auch "Leerzeichen".
+				<br />
+				<br />
+				Zulässig sind Ziffern und Buchstaben (ohne Umlaute und ß)
+			</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.396">
+			<name>Folgenummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>18.03.2004 11:03:49</letzteAenderung>
+			<minimaleLaenge>2</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung>
+				<br />
+			</bemerkung>
+			<wertetabelle>
+				<name>Folgenummer</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>18.03.2004 11:03:49</letzteAenderung>
+				<technischerName>Folgenummer</technischerName>
+				<bemerkung>
+					Zeitraum der Lieferung: 01.01.04  -  25.01.04, Vertragsnummer: 4711. Beispiel:
+					<br />
+					Bestandsänderung, Folgenummer 01, 01.01.04;
+					<br />
+					Inkasso, Folgenummer 01, 01.01.04;
+					<br />
+					Bestandsänderung, Folgenummer 02, 05.01.04;
+					<br />
+					Bestandsänderung, Folgenummer 03, 10.01.04;
+					<br />
+					Bestandsänderung, Folgenummer 04, 15.01.04;
+					<br />
+					Bestandsänderung, Folgenummer 05, 16.01.04;
+					<br />
+					Inkasso, Folgenummer 06, 18.01.04;
+					<br />
+					Prov.-Verrechung, Folgenummer 07, 19.01.04;
+					<br />
+					Bestandsänderung, Folgenummer 08, 20.01.04, 11:20;
+					<br />
+					Bestandsänderung, Folgenummer 09, 20.01.04, 11:30.
+					<br />
+					<br />
+					Versicherungsunternehmen, die Bestandsänderung und Inkasso in einem Verarbeitungsgang durchführen, vergeben dafür die gleiche Folgenummer. Zu einer Ver-tragsnummer mehrere Bestandsänderungen oder Inkassosätze geliefert, muss die Folgenummer entsprechend erhöht werden. Innerhalb eines Vorganges bleibt die Folgenummer für alle Satzarten konstant.
+				</bemerkung>
+				<anlagennummer>2</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.426">
+			<name>Geschäftsstelle / Vermittler</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>10</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.476">
+			<name>Datum</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>02.02.2007 16:43:11</letzteAenderung>
+			<minimaleLaenge>8</minimaleLaenge>
+			<bytes>8</bytes>
+			<datentyp combobox="datentypbox">Datum</datentyp>
+			<nachkommastellen />
+			<bemerkung>Tag/Monat/Jahr (TTMMJJJJ)</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:05:13</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.686">
+			<name>JaNein</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>JaNein</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>Janein</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>nein</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+						<letzteAenderung>01.01.2000 00:00:00</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>ja</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+						<letzteAenderung>01.01.2000 00:00:00</letzteAenderung>
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.59.572">
+			<name>Referenznummer (7 Byte) </name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:31:30</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>7</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:31:30</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.01.695">
+			<name>Prozentsatz (3,2 Stellen)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>17.09.2009 12:57:42</letzteAenderung>
+			<minimaleLaenge>5</minimaleLaenge>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Fließkomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+			<bemerkung>(3,2 Stellen)</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>03.06.2009 11:58:24</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.03.818">
+			<name>Satznummer (AN)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:32:46</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:32:46</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.04.308">
+			<name>KM_Stand</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:20:28</letzteAenderung>
+			<minimaleLaenge>7</minimaleLaenge>
+			<bytes>7</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:20:28</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+	</felder>
+
 	</satzart>
 
 </satzarten>
