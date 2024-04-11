@@ -266,7 +266,7 @@ public class SatzTypTest {
     @Test
     public void testSatzTyp210() {
         SatzTyp x = SatzTyp.of("0210.000");
-        //assertTrue(x.hasSparte());
+        assertTrue(x.hasSparte());
         assertEquals("0210.000", x.getGdvSatzartName());
         assertEquals("000", x.getSparteAsString());
         assertEquals("000", x.getSparteMitArt());
