@@ -385,7 +385,7 @@ public class SatzTyp {
 	 * @return true, if successful
 	 */
 	public boolean hasSparte() {
-		return teil.length > 1 && teil[1] > 0;
+		return teil.length > 1;
 	}
 
 	/**

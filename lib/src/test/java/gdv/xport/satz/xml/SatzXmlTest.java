@@ -27,6 +27,8 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.util.SatzTyp;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -53,6 +55,7 @@ import static org.junit.Assert.*;
  * @since 1.0 (31.07.2014)
  */
 public class SatzXmlTest extends AbstractDatensatzTest {
+	private static final Logger LOG = LogManager.getLogger(SatzXmlTest.class);
 
     private static SatzXml satz100;
 
@@ -85,9 +88,12 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         XMLEventReader parser = createXMLEventReader(resource);
         try {
             SatzXml satz = new SatzXml(parser);
-            Map<String, FeldXml> felder = getFelder();
-            satz.setFelder(felder);
-            setUp(satz);
+			if (satz.getTeildatensatz(1).getFelder().size() < 2) {
+				LOG.info("In uebergebener resource \"{}\" fehlen die Felder! Werden aus Pool ergaenzt!", resource );
+                Map<String, FeldXml> felder = getFelder();
+                satz.setFelder(felder);
+                setUp(satz);
+			}
             return satz;
         } finally {
             parser.close();
@@ -124,7 +130,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
      */
     @Test
     public void testGetSparte() {
-        NumFeld sparte = satz100.getSparteFeld();
+        NumFeld sparte = satz100.getFeldSparte().get();
         assertEquals(3, sparte.getAnzahlBytes());
         assertEquals(11, sparte.getByteAdresse());
         assertEquals("Sparte", sparte.getBezeichnung());
