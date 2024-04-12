@@ -17,7 +17,16 @@
  */
 package gdv.xport.tools;
 
+import gdv.xport.util.SatzTyp;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Der SatzartenScanner liest die Online-Beschreibung der Satzarten, die fuer
@@ -42,6 +51,18 @@ public final class SatzartenScanner {
 
     public URI getURI() {
         return uri;
+    }
+
+    public List<SatzTyp> getSatzarten() throws IOException {
+        List<SatzTyp> satzarten = new ArrayList<>();
+        Document doc = Jsoup.connect(uri.toString()).get();
+        Element table = doc.selectXpath("/html/body/table/tbody/tr/td[3]/table[3]").get(0);
+        Elements rows = table.select("tr");
+        for (int i = 2; i < rows.size(); i++) {
+            String text = rows.get(i).select("td").get(0).text();
+            satzarten.add(SatzTyp.of(text));
+        }
+        return satzarten;
     }
 
 }

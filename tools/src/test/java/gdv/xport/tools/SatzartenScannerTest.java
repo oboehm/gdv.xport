@@ -18,10 +18,14 @@
 
 package gdv.xport.tools;
 
+import gdv.xport.util.SatzTyp;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.net.URI;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
@@ -35,6 +39,12 @@ class SatzartenScannerTest {
     void getURI() {
         URI uri = scanner.getURI();
         assertNotNull(uri);
+    }
+
+    @Test
+    void getSatzarten() throws IOException {
+        List<SatzTyp> satzarten = scanner.getSatzarten();
+        assertFalse(satzarten.isEmpty());
     }
 
 }

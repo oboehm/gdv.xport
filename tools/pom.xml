@@ -25,6 +25,11 @@
       <artifactId>gdv-xport-lib</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.17.2</version>
+    </dependency>
   </dependencies>
 
   <description>
