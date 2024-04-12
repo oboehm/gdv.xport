@@ -55,12 +55,23 @@ public final class SatzartenScanner {
 
     public List<SatzTyp> getSatzarten() throws IOException {
         List<SatzTyp> satzarten = new ArrayList<>();
+        for (String[] values : getTableValues()) {
+            satzarten.add(SatzTyp.of(values[0]));
+        }
+        return satzarten;
+    }
+
+    private List<String[]> getTableValues() throws IOException {
+        List<String[]> satzarten = new ArrayList<>();
         Document doc = Jsoup.connect(uri.toString()).get();
         Element table = doc.selectXpath("/html/body/table/tbody/tr/td[3]/table[3]").get(0);
         Elements rows = table.select("tr");
         for (int i = 2; i < rows.size(); i++) {
-            String text = rows.get(i).select("td").get(0).text();
-            satzarten.add(SatzTyp.of(text));
+            String[] values = new String[3];
+            for (int j = 0; j < values.length; j++) {
+                values[j] = rows.get(i).select("td").get(j).text();
+            }
+            satzarten.add(values);
         }
         return satzarten;
     }
