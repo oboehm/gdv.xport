@@ -21,12 +21,15 @@ package gdv.xport.tools;
 import gdv.xport.util.SatzTyp;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit-Tests fuer {@link SatzartenScanner}.
@@ -45,6 +48,19 @@ class SatzartenScannerTest {
     void getSatzarten() throws IOException {
         List<SatzTyp> satzarten = scanner.getSatzarten();
         assertFalse(satzarten.isEmpty());
+    }
+
+    @Test
+    void exportAsProperties() throws IOException {
+        File file = new File("target", "satzarten.properties");
+        scanner.exportAsProperties(file);
+        assertTrue(file.exists());
+        Properties props = new Properties();
+        try (FileReader reader = new FileReader(file, StandardCharsets.UTF_8)) {
+            props.load(reader);
+            assertFalse(props.isEmpty());
+            assertEquals(props.getProperty("0052"), "Gesch\u00e4ftsvorfall - Vorsatz");
+        }
     }
 
 }

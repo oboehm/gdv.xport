@@ -18,13 +18,19 @@
 package gdv.xport.tools;
 
 import gdv.xport.util.SatzTyp;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +45,7 @@ import java.util.List;
  */
 public final class SatzartenScanner {
 
+    private static final Logger log = LogManager.getLogger(SatzartenScanner.class);
     private final URI uri;
 
     public SatzartenScanner() {
@@ -59,6 +66,16 @@ public final class SatzartenScanner {
             satzarten.add(SatzTyp.of(values[0]));
         }
         return satzarten;
+    }
+
+    public void exportAsProperties(File file) throws IOException {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
+            List<String[]> values = getTableValues();
+            for (String[] value : values) {
+                writer.printf("%s=%s\n", value[0], value[1]);
+            }
+        }
+        log.info("{} Zeilen wurde nach {} geschrieben.", getTableValues().size(), file);
     }
 
     private List<String[]> getTableValues() throws IOException {
