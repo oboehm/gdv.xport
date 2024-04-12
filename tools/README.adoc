@@ -1,0 +1,15 @@
+= Was ist gdv-xport-tools?
+
+Mit v3 wurde die Generierung der Datensätze auf der XML-Beschreibung http://www.gdv-online.de/vuvm/index.htm[gdv-online] vollständig umgestellt.
+Da die Original-XML-Beschreibung für die Entwicklung zu umfangreich ist (ca. 8 MB), wurde sie u.a. mit Boardmitteln (`GdvXmlFormatter`) auf die notwendigen Angaben reduziert (ca. 2 MB).
+Diese "Boardmittel" sind aber für den Import und Export von GDV-Datensätzen nicht nötig und wurden daher aus folgenden Gründen aus link:../lib/README.adoc[gdv-xport-lib] ausgegliedert:
+
+* Vereinfachung der gdv-xport-lib
+* Reduktion der Abhängigkeiten
+
+Mit der Reduktion der Abhängigkeiten verringert sich auch die Angriffsfläche durch abhängige Bibliotheken.
+
+
+== Weitere Infos
+
+oberstes link:../README.md[README]

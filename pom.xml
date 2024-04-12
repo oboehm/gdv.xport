@@ -11,12 +11,20 @@
   <groupId>com.github.oboehm</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>pom</packaging>
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
   <version>7.0.2-SNAPSHOT</version>
   <name>GDV.XPort</name>
 
   <modules>
     <module>lib</module>
     <module>service</module>
+    <module>tools</module>
 <!--    <module>deprecated</module>-->
   </modules>
 
