@@ -7,6 +7,7 @@
 /gdv-xport.log
 **/target/
 lib/gdv-xport-lib.iml
+.DS_Store
 
 ### IntelliJ IDEA ###
 .idea
