@@ -519,7 +519,10 @@ public abstract class Satz implements Cloneable {
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @return das gesuchte Feld
 	 * @throws IllegalArgumentException falls es das Feld nicht gibt
+	 * @deprecated bitte getFeld(Bezeichner) verwenden
+	 * 			   (TODO: wird mit v8 oder v9 entsorgt)
 	 */
+	@Deprecated
 	public Feld getFeld(final String name) throws IllegalArgumentException {
 		return this.getFeld(Bezeichner.of(name));
 	}
@@ -850,20 +853,23 @@ public abstract class Satz implements Cloneable {
     }
 
 	/**
-	 * Liefert den Inhalt des 10. Feldes in Satzart 220, Sparte 20 (Kranken). Vorhersollte allerdings
-	 * mittels {@link #hasKrankenFolgeNr()} geprueft werden, ob der Satz eine KrankenfolgeNr-Feld
-	 * besitzt.
+	 * Liefert den Inhalt des Feldes, in dessen Bezeichnung "Folge-Nr" oder
+	 * "Folgenummer" gefolgt von "zur laufenden" vorkommt (ByteAdresse 48), wenn es
+	 * existiert.
 	 * <p>
+	 * Die Methode funktioniert bei allen Satzarten und besonders auch bei frei
+	 * definierten Satzarten!
+	 * </p>
 	 *
-	 * @return die KrankenFolgeNr
+	 * @return die KrankenFolgeNr (wenn vorhanden)
 	 */
 	@JsonIgnore
 	public final String getKrankenFolgeNr() {
-		if (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)) {
-			return this.getFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF).getInhalt();
-		} else {
-			return this.getFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF).getInhalt();
+		if (this.hasKrankenFolgeNr()) {
+			return this.getFeld(ByteAdresse.of(48)).getInhalt();
 		}
+
+		return "";
 	}
 
   /**

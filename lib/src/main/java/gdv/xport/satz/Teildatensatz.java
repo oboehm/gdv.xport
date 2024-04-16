@@ -457,6 +457,7 @@ public class Teildatensatz extends Satz {
      * @return true, if successful
      * @since 7.1
      */
+	@Override
     public boolean hasFeld(final ByteAdresse adresse) {
         for (Feld f : datenfelder) {
             if (adresse.intValue() == f.getByteAdresse()) {
