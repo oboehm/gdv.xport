@@ -20,9 +20,16 @@ package gdv.xport.util;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.validation.ValidationException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Properties;
+import java.util.Set;
 
 /**
  * Der SatzTyp ist eine Repraesentation des Namens einer GDV-Satzdefinition bzw. seiner Bestandteile.
@@ -87,6 +94,8 @@ import java.util.Arrays;
  */
 public class SatzTyp {
 
+	private static final Logger LOG = LogManager.getLogger(SatzTyp.class);
+	private static final Set<int[]> satzarten = loadSatzarten();
 	private static final Validator VALIDATOR = new Validator();
 	private final short[] teil;
 
@@ -541,62 +550,82 @@ public class SatzTyp {
 		 */
 		public int[] validate(int[] args) {
 			validateLength(args, 4);
-			switch(args[0]) {
-				case 1:
-				case 9999:
-					validateLength(args, 1);
-					break;
-				case 52:
-				case 100:
-				case 102:
-				case 200:
-				case 202:
-				case 210:
-        case 211:
-        case 212:
-        case 222:
-        case 225:
-				case 230:
-        case 250:
-        case 251:
-				case 260:
-				case 270:
-				case 280:
-				case 291:
-				case 292:
-				case 293:
-				case 294:
-				case 295:
-				case 300:
-				case 342:
-				case 350:
-				case 352:
-				case 362:
-				case 372:
-				case 382:
-				case 390:
-				case 392:
-				case 400:
-				case 410:
-				case 420:
-				case 430:
-				case 450:
-				case 500:
-				case 550:
-				case 600:
-				case 9950:
-				case 9951:
-				case 9952:
-					validateLength(args, 2);
-					break;
-				case 220:
-					validateSatzart0220(args);
-					break;
-        case 221:
-          validateSatzart0221(args);
-          break;
+			if ((800 <= args[0]) && (args[0] <= 900)) {
+				LOG.debug("Freie Satzart {} wird nicht weiter untersucht.", args[0]);
+				return args;
 			}
+			if (!isInSatzarten(args)) {
+				if ((args.length == 2) || (args[args.length-1] < 0)) {
+					LOG.debug("Satzart {} gibt es nicht, wird aber akzeptiert.", Arrays.toString(args));
+				} else {
+					throw new ValidationException("unbekannte Satzart: " + Arrays.toString(args));
+				}
+			}
+//			switch(args[0]) {
+//				case 1:
+//				case 9999:
+//					validateLength(args, 1);
+//					break;
+//				case 52:
+//				case 100:
+//				case 102:
+//				case 200:
+//				case 202:
+//				case 210:
+//        case 211:
+//        case 212:
+//        case 222:
+//        case 225:
+//				case 230:
+//        case 250:
+//        case 251:
+//				case 260:
+//				case 270:
+//				case 280:
+//				case 291:
+//				case 292:
+//				case 293:
+//				case 294:
+//				case 295:
+//				case 300:
+//				case 342:
+//				case 350:
+//				case 352:
+//				case 362:
+//				case 372:
+//				case 382:
+//				case 390:
+//				case 392:
+//				case 400:
+//				case 410:
+//				case 420:
+//				case 430:
+//				case 450:
+//				case 500:
+//				case 550:
+//				case 600:
+//				case 9950:
+//				case 9951:
+//				case 9952:
+//					validateLength(args, 2);
+//					break;
+//				case 220:
+//					validateSatzart0220(args);
+//					break;
+//        case 221:
+//          validateSatzart0221(args);
+//          break;
+//			}
 			return args;
+		}
+
+		private static boolean isInSatzarten(int[] args) {
+			for (int[] satzart : satzarten) {
+				if (Arrays.equals(satzart, args)) {
+					return true;
+				}
+			}
+			return false;
 		}
 
 		private static void validateLength(int[] args, int max) {
@@ -605,73 +634,73 @@ public class SatzTyp {
 			}
 		}
 
-		private void validateSatzart0220(int[] args) {
-			if (args.length > 1) {
-				switch (args[1]) {
-					case 0:
-					case 30:
-					case 40:
-					case 51:
-					case 52:
-					case 53:
-					case 54:
-					case 55:
-					case 59:
-					case 70:
-					case 80:
-					case 110:
-					case 130:
-					case 140:
-					case 170:
-					case 190:
-					case 510:
-					case 550:
-					case 560:
-					case 570:
-					case 684:
-						validateLength(args, 2);
-						break;
-					case 20:
-					case 580:
-						validateLength(args, 3);
-						break;
-					case 10:
-						validateLength(args, 4);
-				}
-			}
-		}
-
-		private void validateSatzart0221(int[] args) {
-			if (args.length > 1) {
-				switch (args[1]) {
-					case 0:
-					case 30:
-					case 40:
-					case 51:
-					case 52:
-					case 53:
-					case 54:
-					case 55:
-					case 59:
-					case 70:
-					case 80:
-					case 110:
-					case 130:
-					case 140:
-					case 170:
-					case 190:
-					case 510:
-					case 550:
-					case 560:
-					case 570:
-					case 684:
-						validateLength(args, 2);
-						break;
-					case 10:
-						validateLength(args, 4);
-				}
-			}
-		}
+//		private void validateSatzart0220(int[] args) {
+//			if (args.length > 1) {
+//				switch (args[1]) {
+//					case 0:
+//					case 30:
+//					case 40:
+//					case 51:
+//					case 52:
+//					case 53:
+//					case 54:
+//					case 55:
+//					case 59:
+//					case 70:
+//					case 80:
+//					case 110:
+//					case 130:
+//					case 140:
+//					case 170:
+//					case 190:
+//					case 510:
+//					case 550:
+//					case 560:
+//					case 570:
+//					case 684:
+//						validateLength(args, 2);
+//						break;
+//					case 20:
+//					case 580:
+//						validateLength(args, 3);
+//						break;
+//					case 10:
+//						validateLength(args, 4);
+//				}
+//			}
+//		}
+//
+//		private void validateSatzart0221(int[] args) {
+//			if (args.length > 1) {
+//				switch (args[1]) {
+//					case 0:
+//					case 30:
+//					case 40:
+//					case 51:
+//					case 52:
+//					case 53:
+//					case 54:
+//					case 55:
+//					case 59:
+//					case 70:
+//					case 80:
+//					case 110:
+//					case 130:
+//					case 140:
+//					case 170:
+//					case 190:
+//					case 510:
+//					case 550:
+//					case 560:
+//					case 570:
+//					case 684:
+//						validateLength(args, 2);
+//						break;
+//					case 10:
+//						validateLength(args, 4);
+//				}
+//			}
+//		}
 
 		/**
 		 * Der Unterschied zu validate liegt nur in der ausgeloesten Exception.
@@ -758,4 +787,24 @@ public class SatzTyp {
     }
     return ret;
   }
+
+	private static Set<int[]> loadSatzarten() {
+		Set<int[]> satzarten = new HashSet<>();
+		Properties properties = loadProperties("satzarten.properties");
+		for (String key : properties.stringPropertyNames()) {
+			satzarten.add(toIntArray(key, "."));
+		}
+		return satzarten;
+	}
+
+	private static Properties loadProperties(String resourceName) {
+		try (InputStream istream = SatzTyp.class.getResourceAsStream(resourceName)) {
+			Properties properties = new Properties();
+			properties.load(istream);
+			return properties;
+		} catch (IOException ex) {
+			throw new IllegalArgumentException("Resource '" + resourceName + "' nicht gefunden", ex);
+		}
+	}
+
 }

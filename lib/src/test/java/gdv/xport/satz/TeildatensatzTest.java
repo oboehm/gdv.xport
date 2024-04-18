@@ -99,7 +99,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
 
     @Test
     public void testGetFeldByteAdresse() {
-        Teildatensatz tds = new Teildatensatz(SatzTyp.of(4711), 1);
+        Teildatensatz tds = new Teildatensatz(SatzTyp.of(811), 1);
         ByteAdresse adresse = ByteAdresse.of(11);
         Feld feld = new NumFeld(Bezeichner.PRODUKTNAME, 47, adresse);
         tds.add(feld);
@@ -274,7 +274,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
 
     @Test
     public void testGetSatznummerInvalid() {
-        Teildatensatz tds = new Teildatensatz(SatzTyp.of(123), 1);
+        Teildatensatz tds = new Teildatensatz(SatzTyp.of(800), 1);
         Zeichen nr = new Zeichen(Bezeichner.SATZNUMMER, ByteAdresse.of(222), '0');
         new Satznummer(nr);
         tds.add(nr);
