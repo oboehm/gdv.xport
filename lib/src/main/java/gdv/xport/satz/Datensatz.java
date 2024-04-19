@@ -156,11 +156,7 @@ public class Datensatz extends Satz {
 		this.sparte.setInhalt(other.sparte.getInhalt());
 	}
 
-    /**
-	 * Kann von Unterklassen verwendet werden, um die Teildatensaetze
-	 * aufzusetzen.
-	 */
-	protected void setUpTeildatensaetze() {
+	private void setUpTeildatensaetze() {
 		for (Teildatensatz tds : this.getTeildatensaetze()) {
 			setUpTeildatensatz(tds);
 		}

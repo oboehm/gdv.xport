@@ -21,6 +21,7 @@ package gdv.xport.satz.xml;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.config.Config;
 import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Teildatensatz;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.XmlHelper;
 import org.apache.logging.log4j.LogManager;
@@ -89,14 +90,6 @@ public class SatzXml extends Datensatz {
         super(orig);
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Datensatz#setUpTeildatensaetze()
-     */
-    @Override
-    protected void setUpTeildatensaetze() {
-        this.removeAllTeildatensaetze();
-    }
-
     private void parse(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
@@ -134,6 +127,11 @@ public class SatzXml extends Datensatz {
             } else if (XmlHelper.isStartElement(event, "satzende")) {
                 LOG.trace("<{}> is reached.", element);
                 tds.setSatzende(new Satzende(reader, event.asStartElement()));
+                Teildatensatz first = getTeildatensatz(1);
+                if (!(first instanceof TeildatensatzXml)) {
+                    LOG.debug("Initialer Teildatensatz {} wird entfernt.", first);
+                    removeTeildatensatz(1);
+                }
                 this.add(tds);
                 return;
             }

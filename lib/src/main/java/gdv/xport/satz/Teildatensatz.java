@@ -54,7 +54,7 @@ public class Teildatensatz extends Satz {
      * @param satzTyp z.B. 0220.050
      */
     public Teildatensatz(final SatzTyp satzTyp) {
-        super();
+        super(satzTyp, 0);
         this.initDatenfelder(satzTyp);
     }
 
