@@ -225,7 +225,7 @@ public class Datensatz extends Satz {
 	 * @param satztyp SatzTyp, z.B. "0220.010.13.1"
 	 * @since 5.1
 	 */
-	public void init(SatzTyp satztyp)  {
+	public void init(SatzTyp satztyp) {
 		if (satztyp.hasSparte()) {
 			setSparte(satztyp.getSparte());
 		}
@@ -259,8 +259,8 @@ public class Datensatz extends Satz {
 	public void setSparte(final int x) {
 		this.sparte.setInhalt(x);
 		for (Teildatensatz tds : getTeildatensaetze()) {
-			if (tds.getFelder().size() > 3) {
-				tds.getFeld(4).setInhalt(x);
+			if (tds.hasSparte()) {
+				tds.setFeld(SPARTE, Integer.toString(x));
 			}
 		}
 	}

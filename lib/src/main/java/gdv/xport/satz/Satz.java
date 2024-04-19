@@ -786,7 +786,8 @@ public abstract class Satz implements Cloneable {
 	 * @since 30.06.2021
 	 */
 	public boolean hasBausparenArt() {
-		return this.getSatzart() == 220 && this.getFeldSparte().get().toInt() == 580
+		Optional<NumFeld> feldSparte = this.getFeldSparte();
+		return this.getSatzart() == 220 && feldSparte.isPresent() && feldSparte.get().toInt() == 580
 				&& (this.hasFeld(Bezeichner.ART_580));
 	}
 
