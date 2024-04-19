@@ -33,6 +33,7 @@ import java.io.Writer;
 import java.util.*;
 
 import static gdv.xport.feld.Bezeichner.SATZART;
+import static gdv.xport.feld.Bezeichner.SPARTE;
 
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
@@ -284,6 +285,16 @@ public class Teildatensatz extends Satz {
             throw new IllegalArgumentException(String.format(
                     "%s: illegal value '%s' for %s", this.toShortString(), value, x), iae);
         }
+    }
+
+    public void setSparte(final int x) {
+        NumFeld numFeld = new NumFeld(SPARTE, 3, ByteAdresse.of(11));
+        if (!hasFeld(SPARTE)) {
+            add(numFeld);
+        } else {
+            numFeld = getFeld(SPARTE, NumFeld.class);
+        }
+        numFeld.setInhalt(x);
     }
 
     /**

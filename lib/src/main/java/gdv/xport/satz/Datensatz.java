@@ -255,9 +255,7 @@ public class Datensatz extends Satz {
 	public void setSparte(final int x) {
 		this.sparte.setInhalt(x);
 		for (Teildatensatz tds : getTeildatensaetze()) {
-			if (tds.hasSparte()) {
-				tds.setFeld(SPARTE, Integer.toString(x));
-			}
+			tds.setSparte(x);
 		}
 	}
 
