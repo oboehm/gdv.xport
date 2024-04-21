@@ -297,6 +297,11 @@ public class Teildatensatz extends Satz {
         numFeld.setInhalt(x);
     }
 
+    @Override
+    public int getSparte() {
+        return getFeld(SPARTE, NumFeld.class).toInt();
+    }
+
     /**
      * Liefert das gewuenschte Feld.
      * <p>

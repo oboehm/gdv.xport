@@ -210,7 +210,14 @@ public class SatzXml extends Datensatz {
         for (int n = 1; n <= this.getNumberOfTeildatensaetze(); n++) {
             TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(n);
             tdsXml.updateWith(felder);
+            updateSparte(tdsXml);
             //updateSatznummer(n, tdsXml);
+        }
+    }
+
+    private void updateSparte(TeildatensatzXml tdsXml) {
+        if (tdsXml.hasSparte()) {
+            tdsXml.setSparte(getSatzTyp().getSparte());
         }
     }
 

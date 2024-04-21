@@ -204,6 +204,8 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         try {
             SatzXml satz220 = new SatzXml(parser);
             assertEquals(220, satz220.getSatzart());
+            Map<String, FeldXml> xmlFelder = XmlService.parseFelder(parser);
+            satz220.setFelder(xmlFelder);
             assertEquals(580, satz220.getSparte());
             assertEquals(1, satz220.getArt());
         } finally {
