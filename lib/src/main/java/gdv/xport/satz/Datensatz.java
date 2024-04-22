@@ -31,7 +31,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.PushbackReader;
-import java.util.Optional;
 
 import static gdv.xport.feld.Bezeichner.*;
 
@@ -45,8 +44,6 @@ import static gdv.xport.feld.Bezeichner.*;
 public class Datensatz extends Satz {
 
 	private static final Logger LOG = LogManager.getLogger(Datensatz.class);
-	/** 3 Zeichen, Byte 11 - 13. */
-  	private final NumFeld sparte = new NumFeld(Kopffelder1bis7.SPARTE);
 
 	/**
 	 * Default-Konstruktor (wird zur Registrierung bei der {@link gdv.xport.util.SatzFactory}
@@ -153,7 +150,7 @@ public class Datensatz extends Satz {
 	 */
 	public Datensatz(final Datensatz other) {
 		super(other, other.cloneTeildatensaetze());
-		this.sparte.setInhalt(other.sparte.getInhalt());
+		//this.sparte.setInhalt(other.sparte.getInhalt());
 	}
 
 	private void setUpTeildatensaetze() {
@@ -173,7 +170,9 @@ public class Datensatz extends Satz {
 	 * @since 0.4
 	 */
 	protected void setUpTeildatensatz(final Teildatensatz tds) {
-		setUpTeildatensatz(tds, this.sparte);
+		NumFeld sparte = new NumFeld(SPARTE, 3, ByteAdresse.of(11));
+		sparte.setInhalt(getSatzTyp().getSatzart());
+		setUpTeildatensatz(tds, sparte);
 	}
 
 	protected static void setUpTeildatensatz(final Teildatensatz tds, final NumFeld sparte) {
@@ -253,10 +252,15 @@ public class Datensatz extends Satz {
 	 * @param x z.B. 70 (Rechtsschutz)
 	 */
 	public void setSparte(final int x) {
-		this.sparte.setInhalt(x);
+		//this.sparte.setInhalt(x);
 		for (Teildatensatz tds : getTeildatensaetze()) {
 			tds.setSparte(x);
 		}
+	}
+
+	@Override
+	public int getSparte() {
+		return getTeildatensatz(1).getSparte();
 	}
 
 	/**
@@ -307,18 +311,18 @@ public class Datensatz extends Satz {
 		return getFeldSparte().get();
 	}
 
-	/**
-	 * Diese Methode dient als Ersatz fuer die getSparte()- und hasSparte()-
-	 * Implementierung, die durch den Mehrdeutigkeit von "Sparte" in die Irre
-	 * fuehren koennen.
-	 *
-	 * @return liefert immer ein Sparte-Feld an Byte-Adresse 11
-	 * @since  7.1
-	 */
-	@Override
-	public Optional<NumFeld> getFeldSparte() {
-		return Optional.of(sparte);
-	}
+//	/**
+//	 * Diese Methode dient als Ersatz fuer die getSparte()- und hasSparte()-
+//	 * Implementierung, die durch den Mehrdeutigkeit von "Sparte" in die Irre
+//	 * fuehren koennen.
+//	 *
+//	 * @return liefert immer ein Sparte-Feld an Byte-Adresse 11
+//	 * @since  7.1
+//	 */
+//	@Override
+//	public Optional<NumFeld> getFeldSparte() {
+//		return Optional.of(sparte);
+//	}
 
 	/**
    * Wenn der Datensatz ein Element fuer eine Untersparte hat, wird 'true'
