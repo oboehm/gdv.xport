@@ -42,7 +42,7 @@ import static gdv.xport.feld.Bezeichner.SPARTE;
  * @author ob@aosd.de
  * @since 04.10.2009
  */
-public class Teildatensatz extends Satz {
+public class Teildatensatz extends Datensatz {
 
     private static final Logger LOG = LogManager.getLogger(Teildatensatz.class);
     private final Collection<Feld> datenfelder = Config.getInstance().isDebug() ? new TreeSet<>() : new ArrayList<>();
@@ -81,8 +81,8 @@ public class Teildatensatz extends Satz {
      * @param satz        z.B. 100
      * @param nr          Nummer des Teildatensatzes (zwischen 1 und 9)
      */
-    public Teildatensatz(final Satz satz, final int nr) {
-        super(satz, 0);
+    public Teildatensatz(final Datensatz satz, final int nr) {
+        super(satz);
         initSatznummer(satz.getSatzTyp(), nr);
     }
 
@@ -93,7 +93,7 @@ public class Teildatensatz extends Satz {
      * @param other der andere Teildatensatz
      */
     public Teildatensatz(final Teildatensatz other) {
-        super(other, 0);
+        super(other);
         this.satznummer = other.satznummer;
         for (Feld f : other.datenfelder) {
             Feld copy = (Feld) f.clone();

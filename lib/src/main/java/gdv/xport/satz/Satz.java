@@ -432,6 +432,7 @@ public abstract class Satz implements Cloneable {
 	 * @return Vermittler
 	 * @since 5.2
 	 */
+	@JsonIgnore
 	public final String getVermittler() {
 		return getFeld(Bezeichner.VERMITTLER).getInhalt().trim();
 	}

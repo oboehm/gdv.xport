@@ -138,8 +138,10 @@ public class Datensatz extends Satz {
 
 	protected Datensatz(final SatzTyp satzTyp, final int n, final Config cfg) {
 		super(satzTyp, n, cfg);
-		this.init(satzTyp);
-		this.setUpTeildatensaetze();
+		if (n > 0) {
+			this.init(satzTyp);
+			this.setUpTeildatensaetze();
+		}
 	}
 
 	/**
@@ -307,6 +309,7 @@ public class Datensatz extends Satz {
 	 * 			   // TODO: mit v9 entsorgen
 	 */
 	@Deprecated
+	@JsonIgnore
 	public NumFeld getSparteFeld() {
 		return getFeldSparte().get();
 	}
@@ -402,6 +405,7 @@ public class Datensatz extends Satz {
 	 * @return die Folgenummer
 	 * @since 0.3
 	 */
+	@JsonIgnore
 	public int getFolgenummer() {
     NumFeld folgenummer = (NumFeld) this.getFeld(Kopffelder1bis7.FOLGENUMMER.getBezeichner());
 		return folgenummer.toInt();
