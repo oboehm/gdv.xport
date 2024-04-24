@@ -239,4 +239,11 @@ public class DatensatzTest extends AbstractDatensatzTest {
         assertEquals(30, tds1.getSatzart());
     }
 
+    @Test
+    public void testSetSparteNichtExistent()
+    {
+    	Datensatz vor= (Datensatz) SatzRegistry.getInstance().getSatz(SatzTyp.of(1));
+    	assertThrows(IllegalArgumentException.class, () -> vor.setSparte(20));
+    }
+
 }

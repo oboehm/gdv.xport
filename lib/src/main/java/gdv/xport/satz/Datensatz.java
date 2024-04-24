@@ -24,13 +24,11 @@ import gdv.xport.feld.*;
 import gdv.xport.io.Importer;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
-import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.io.PushbackReader;
 
 import static gdv.xport.feld.Bezeichner.*;
 
@@ -267,7 +265,7 @@ public class Datensatz extends Satz {
 
 	/**
 	 * Setzt die Sparte. Der uebergebene String kann dabei auch die Art der
-	 * Sparte enthalten.
+	 * Sparte enthalten. Es wird die Sparte extrahiert.
 	 *
 	 * @param x z.B. "580.01" fuer Sparte 580, Art 01
 	 */
@@ -409,50 +407,6 @@ public class Datensatz extends Satz {
 	public int getFolgenummer() {
     NumFeld folgenummer = (NumFeld) this.getFeld(Kopffelder1bis7.FOLGENUMMER.getBezeichner());
 		return folgenummer.toInt();
-	}
-
-	/**
-     * Liest 49 Bytes, um die Folge-Nr. in Satzart 220, Sparte 20 (Kranken) zu bestimmen und stellt die Bytes
-     * anschliessend wieder zurueck in den Reader.
-     *
-     * @param reader muss mind. einen Pushback-Puffer von 14 Zeichen
-     * bereitstellen
-     * @return Folge-Nr
-     * @throws IOException falls was schief gegangen ist
-	 * @deprecated wurde nach {@link Importer#readKrankenFolgeNr()} verschoben (TODO: wird mit v8 entfennt)
-     */
-	@Deprecated
-    public static int readKrankenFolgeNr(final PushbackLineNumberReader reader) throws IOException {
-		return Importer.of(reader).readKrankenFolgeNr();
-    }
-
-    /**
-     * Liest 45 Bytes, um die Bauspar-Art in Satzart 220, Sparte 580 (Bausparen)
-     * zu bestimmen und stellt die Bytes anschliessend wieder zurueck in den
-     * Reader.
-     *
-     * @param reader muss mind. einen Pushback-Puffer von 14 Zeichen bereitstellen
-     * @return Folge-Nr
-     * @throws IOException falls was schief gegangen ist
-	 * @deprecated wurde nach {@link Importer#readBausparenArt()} verschoben
-     */
-	@Deprecated
-    public static int readBausparenArt(final PushbackLineNumberReader reader) throws IOException {
-		return Importer.of(reader).readBausparenArt();
-	}
-
-	/**
-	 * Liest 1 Byte, um die Wagnisart zu bestimmen und stellt das Byte
-	 * anschliessend wieder zurueck in den Reader.
-	 *
-     * @param reader muss mind. einen Pushback-Puffer von 60 Zeichen bereitstellen
-	 * @return Wagnisart
-	 * @throws IOException falls was schief gegangen ist
-	 * @deprecated wurde nach {@link Importer#readWagnisart()} verschoben
-	 */
-	@Deprecated
-	public static WagnisartLeben readWagnisart(final PushbackReader reader) throws IOException {
-		return Importer.of(reader).readWagnisart();
 	}
 
 	/**
