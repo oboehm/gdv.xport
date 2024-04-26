@@ -747,49 +747,69 @@ public abstract class Satz implements Cloneable {
 	/**
 	 * Schaut nach einem Feld "SPARTE" und liefert true zurueck, falls es
 	 * existiert.
+	 * <p>
+	 * Anmerkung: Diese Methode macht nur beim Datensatz Sinn. Daher wird diese
+	 * Methode ab V9 nicht mehr in Satz zur Verfuegung stehen.
+	 * </p>
 	 *
      * @return true, falls Sparten-Feld vorhanden ist
 	 * @since 0.9
 	 */
+	// TODO: mit v9 entsorgen
 	public boolean hasSparte() {
-		return getFeldSparte().isPresent();
+		LOG.warn("hasSparte() steht ab v9 nur noch im Datensatz zur Verfuegung.");
+		return false;
 	}
 
 	/**
      * Schaut nach einem Feld "WAGNISART" und liefert true zurueck, falls es
      * existiert.
+	 * <p>
+	 * Anmerkung: Diese Methode macht nur beim Datensatz Sinn. Daher wird diese
+	 * Methode ab V9 nicht mehr in Satz zur Verfuegung stehen.
+	 * </p>
      *
      * @return true, falls Wagnisart-Feld vorhanden ist
      * @since 1.0
 	 */
+	// TODO: mit v9 entsorgen
 	public boolean hasWagnisart() {
-	    return this.hasFeld((Bezeichner.WAGNISART));
+		LOG.warn("hasWagnisart() steht ab v9 nur noch im Datensatz zur Verfuegung.");
+	    return false;
 	}
 
 	/**
      * Schaut nach dem 10. Feld in Satzart 220, Sparte 20 (Kranken) und liefert
      * true zurueck, falls es existiert.
-	 * 
+	 * <p>
+	 * Anmerkung: Diese Methode macht nur beim Datensatz Sinn. Daher wird diese
+	 * Methode ab V9 nicht mehr in Satz zur Verfuegung stehen.
+	 * </p>
+	 *
 	 * @return true, falls das Feld existiert
 	 * @since 18.04.2018
 	 */
+	// TODO: mit v9 entsorgen
     public boolean hasKrankenFolgeNr() {
-        return this.getSatzart() == 220 && this.getFeldSparte().get().toInt() == 20
-                && (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
-                        || this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF));
+		LOG.warn("hasKrankenFolgeNr() steht ab v9 nur noch im Datensatz zur Verfuegung.");
+        return false;
     }
 
 	/**
 	 * Schaut nach dem 9. Feld in Satzart 220, Sparte 580 (Bausparen) und liefert true zurueck, falls
 	 * es existiert.
+	 * <p>
+	 * Anmerkung: Diese Methode macht nur beim Datensatz Sinn. Daher wird diese
+	 * Methode ab V9 nicht mehr in Satz zur Verfuegung stehen.
+	 * </p>
 	 *
 	 * @return true, falls das Feld existiert
 	 * @since 30.06.2021
 	 */
+	// TODO: mit v9 entsorgen
 	public boolean hasBausparenArt() {
-		Optional<NumFeld> feldSparte = this.getFeldSparte();
-		return this.getSatzart() == 220 && feldSparte.isPresent() && feldSparte.get().toInt() == 580
-				&& (this.hasFeld(Bezeichner.ART_580));
+		LOG.warn("hasBausparenArt() steht ab v9 nur noch im Datensatz zur Verfuegung.");
+		return false;
 	}
 
 	/**
@@ -797,23 +817,19 @@ public abstract class Satz implements Cloneable {
 	 * {@link #hasSparte()} geprueft werden, ob der Satz ein Sparten-Feld
 	 * besitzt.
 	 * <p>
-	 * Anmerkung: diese Methode liefert nicht die Sparte, sondern den Inhalt
-	 * des Spartenfelds an Byte-Adresse 11 zurueck. Im Normalfall entspricht
-	 * dies der Sparte, kann aber in Sonderfaellen davon abweichen.
+	 * Anmerkung: Diese Methode macht nur beim Datensatz Sinn. Daher wird diese
+	 * Methode ab V9 nicht mehr in Satz zur Verfuegung stehen.
 	 * </p>
 	 *
      * @return die Sparte
      * @since 0.9
 	 */
+	// TODO: mit v9 entsorgen
 	@JsonIgnore
 	public int getSparte() {
-		Optional<NumFeld> sparte = getFeldSparte();
-		if (sparte.isPresent()) {
-			return sparte.get().toInt();
-		} else {
-			throw new IllegalArgumentException(
-					this.toShortString() + " hat kein Feld \"Sparte\" an Pos 11 in den Kopfdaten!");
-		}
+		LOG.warn("getSparte() steht ab v9 nur noch im Datensatz zur Verfuegung.");
+		throw new IllegalArgumentException(
+				this.toShortString() + " hat kein Feld \"Sparte\" an Pos 11 in den Kopfdaten!");
 	}
 
 	/**
@@ -827,13 +843,6 @@ public abstract class Satz implements Cloneable {
 	 */
 	@JsonIgnore
 	public Optional<NumFeld> getFeldSparte() {
-		ByteAdresse adresseSparte = ByteAdresse.of(11);
-		if (hasFeld(adresseSparte)) {
-			Feld feld = getFeld(adresseSparte);
-			if (feld.getBezeichner().isVariantOf(Bezeichner.SPARTE)) {
-				return Optional.of((NumFeld) feld);
-			}
-		}
 		return Optional.empty();
 	}
 

@@ -29,6 +29,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import static gdv.xport.feld.Bezeichner.*;
 
@@ -209,7 +210,7 @@ public class Datensatz extends Satz {
 	@Override
 	public void addFiller() {
 		for (Teildatensatz tds : this.getTeildatensaetze()) {
-			tds.add(new AlphaNumFeld((LEERSTELLEN), 213, 43));
+			tds.add(new AlphaNumFeld((LEERSTELLEN), 213, ByteAdresse.of(43)));
 		}
 	}
 
@@ -234,14 +235,14 @@ public class Datensatz extends Satz {
 
 	private void initWagnisart(int art) {
 		if (!hasWagnisart()) {
-			addAll(new AlphaNumFeld(WAGNISART, 1, 60));
+			addAll(new AlphaNumFeld(WAGNISART, 1, ByteAdresse.of(60)));
 		}
         setFeld(WAGNISART, Integer.toString(art).substring(0, 1));
 	}
 
 	private void initBausparenart(int art) {
 		if (!hasBausparenArt()) {
-			addAll(new AlphaNumFeld(ART_580, 1, 44));
+			addAll(new AlphaNumFeld(ART_580, 1, ByteAdresse.of(44)));
 		}
         setFeld(ART_580, art);
 	}
@@ -258,6 +259,11 @@ public class Datensatz extends Satz {
 		}
 	}
 
+	/**
+	 * Liefert den Inhalt des Sparten-Felds an Byte-Adresse 11.
+	 *
+	 * @return die Sparte
+	 */
 	@Override
 	public int getSparte() {
 		return getTeildatensatz(1).getSparte();
@@ -275,6 +281,43 @@ public class Datensatz extends Satz {
 	    if ((parts.length > 1) && getGdvSatzartName().isEmpty()) {
 			this.setGdvSatzartName(String.format("%04d.%s", getSatzart(), x));
 	    }
+	}
+
+	/**
+	 * Schaut nach einem Feld "WAGNISART" und liefert true zurueck, falls es
+	 * existiert.
+	 *
+	 * @return true, falls Wagnisart-Feld vorhanden ist
+	 * @since 1.0
+	 */
+	public boolean hasWagnisart() {
+		return this.hasFeld((Bezeichner.WAGNISART));
+	}
+
+	/**
+	 * Schaut nach dem 10. Feld in Satzart 220, Sparte 20 (Kranken) und liefert
+	 * true zurueck, falls es existiert.
+	 *
+	 * @return true, falls das Feld existiert
+	 * @since 18.04.2018
+	 */
+	public boolean hasKrankenFolgeNr() {
+		return this.getSatzart() == 220 && this.getFeldSparte().get().toInt() == 20
+				&& (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
+				|| this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF));
+	}
+
+	/**
+	 * Schaut nach dem 9. Feld in Satzart 220, Sparte 580 (Bausparen) und liefert true zurueck, falls
+	 * es existiert.
+	 *
+	 * @return true, falls das Feld existiert
+	 * @since 30.06.2021
+	 */
+	public boolean hasBausparenArt() {
+		Optional<NumFeld> feldSparte = this.getFeldSparte();
+		return this.getSatzart() == 220 && feldSparte.isPresent() && feldSparte.get().toInt() == 580
+				&& (this.hasFeld(Bezeichner.ART_580));
 	}
 
 	/**
@@ -312,28 +355,47 @@ public class Datensatz extends Satz {
 		return getFeldSparte().get();
 	}
 
-//	/**
-//	 * Diese Methode dient als Ersatz fuer die getSparte()- und hasSparte()-
-//	 * Implementierung, die durch den Mehrdeutigkeit von "Sparte" in die Irre
-//	 * fuehren koennen.
-//	 *
-//	 * @return liefert immer ein Sparte-Feld an Byte-Adresse 11
-//	 * @since  7.1
-//	 */
-//	@Override
-//	public Optional<NumFeld> getFeldSparte() {
-//		return Optional.of(sparte);
-//	}
+	/**
+	 * Schaut nach einem Feld "SPARTE" und liefert true zurueck, falls es
+	 * existiert.
+	 *
+	 * @return true, falls Sparten-Feld vorhanden ist
+	 * @since 0.9
+	 */
+	public boolean hasSparte() {
+		return getFeldSparte().isPresent();
+	}
 
 	/**
-   * Wenn der Datensatz ein Element fuer eine Untersparte hat, wird 'true'
-   * zurueckgegeben. Dies ist z.B. fuer Satz 220.580.1 (Bausparen) der Fall.
-   *
-   * @return true, falls der Datensatz eine Untersparte hat.
-   */
-    public boolean hasSatzartNummer() {
-        return !this.getGdvSatzartNummer().isEmpty();
-  }
+	 * Diese Methode dient als Ersatz fuer die getSparte()- und hasSparte()-
+	 * Implementierung, die durch den Mehrdeutigkeit von "Sparte" in die Irre
+	 * fuehren koennen.
+	 *
+	 * @return Optional.empty() fuer Vor- und Nachsatz, ansonsten Sparte-Feld
+	 * 	       an Byte-Adresse 11
+	 * @since  7.1
+	 */
+	@JsonIgnore
+	public Optional<NumFeld> getFeldSparte() {
+		ByteAdresse adresseSparte = ByteAdresse.of(11);
+		if (hasFeld(adresseSparte)) {
+			Feld feld = getFeld(adresseSparte);
+			if (feld.getBezeichner().isVariantOf(Bezeichner.SPARTE)) {
+				return Optional.of((NumFeld) feld);
+			}
+		}
+		return Optional.empty();
+	}
+
+//	/**
+//   * Wenn der Datensatz ein Element fuer eine Untersparte hat, wird 'true'
+//   * zurueckgegeben. Dies ist z.B. fuer Satz 220.580.1 (Bausparen) der Fall.
+//   *
+//   * @return true, falls der Datensatz eine Untersparte hat.
+//   */
+//    public boolean hasSatzartNummer() {
+//        return !this.getGdvSatzartNummer().isEmpty();
+//  }
 
 	/**
 	 * Sets the vu nummer.
