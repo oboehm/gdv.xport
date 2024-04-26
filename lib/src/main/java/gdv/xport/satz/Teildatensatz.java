@@ -47,7 +47,7 @@ public class Teildatensatz extends Datensatz {
     private static final Logger LOG = LogManager.getLogger(Teildatensatz.class);
     private final Collection<Feld> datenfelder = Config.getInstance().isDebug() ? new TreeSet<>() : new ArrayList<>();
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
-    protected Satznummer satznummer = new Satznummer();
+    private Satznummer satznummer = new Satznummer();
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
@@ -101,11 +101,6 @@ public class Teildatensatz extends Datensatz {
         }
     }
 
-    /**
-     * Inits the satznummer.
-     *
-     * @param nr the nr
-     */
     private void initSatznummer(final SatzTyp satzTyp, final int nr) {
         if ((nr < 1) || (nr > 9)) {
             throw new IllegalArgumentException("Satznummer (" + nr
