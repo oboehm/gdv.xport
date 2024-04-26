@@ -106,8 +106,12 @@ public class Teildatensatz extends Datensatz {
             throw new IllegalArgumentException("Satznummer (" + nr
                     + ") muss zwischen 1 und 9 liegen");
         }
-        this.satznummer.setInhalt(Character.forDigit(nr, 10));
+        setSatznummer(nr);
         this.initDatenfelder(satzTyp);
+    }
+
+    private void setSatznummer(int nr) {
+        satznummer.setInhalt(Character.forDigit(nr, 10));
     }
 
     private void initDatenfelder(SatzTyp satzTyp) {
