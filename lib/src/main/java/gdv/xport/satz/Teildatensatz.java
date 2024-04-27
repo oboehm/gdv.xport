@@ -68,7 +68,7 @@ public class Teildatensatz extends Datensatz {
      */
     public Teildatensatz(final SatzTyp satzTyp, final int nr) {
         this(satzTyp);
-        initSatznummer(satzTyp, nr);
+        setSatznummer(nr);
         this.setGdvSatzartName(satzTyp.toString());
  		if (satzTyp.hasGdvSatzartNummer())
 			this.setGdvSatzartNummer(String.valueOf(satzTyp.getGdvSatzartNummer()));
@@ -83,7 +83,8 @@ public class Teildatensatz extends Datensatz {
      */
     public Teildatensatz(final Datensatz satz, final int nr) {
         super(satz);
-        initSatznummer(satz.getSatzTyp(), nr);
+        initDatenfelder(satz.getSatzTyp());
+        setSatznummer(nr);
     }
 
     /**
@@ -101,13 +102,12 @@ public class Teildatensatz extends Datensatz {
         }
     }
 
-    private void initSatznummer(final SatzTyp satzTyp, final int nr) {
+    private void setSatznummer(int nr) {
         if ((nr < 1) || (nr > 9)) {
             throw new IllegalArgumentException("Satznummer (" + nr
                     + ") muss zwischen 1 und 9 liegen");
         }
-        setSatznummer(nr);
-        this.initDatenfelder(satzTyp);
+        this.satznummer.setInhalt(Character.forDigit(nr, 10));
     }
 
     private void setSatznummer(int nr) {
