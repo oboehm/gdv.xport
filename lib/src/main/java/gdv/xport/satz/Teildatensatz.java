@@ -129,7 +129,7 @@ public class Teildatensatz extends Datensatz {
      * @return Satznummer als einzelnes Zeichen ('1' ... '9')
      * @since 5.0
      */
-    public Zeichen getSatznummer() {
+    public Satznummer getSatznummer() {
         if ((this.satznummer.getByteAdresse() == 256) && hasFeld(Bezeichner.SATZNUMMER)) {
             Satznummer nr = getFeld(Bezeichner.SATZNUMMER, Satznummer.class);
             if (nr.isEmpty() || nr.isInvalid()) {
@@ -137,7 +137,7 @@ public class Teildatensatz extends Datensatz {
             }
             this.satznummer = nr;
         }
-        return new Zeichen(this.satznummer);
+        return this.satznummer;
     }
 
     /**
