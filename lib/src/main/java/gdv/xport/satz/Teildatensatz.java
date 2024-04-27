@@ -110,10 +110,6 @@ public class Teildatensatz extends Datensatz {
         this.satznummer.setInhalt(Character.forDigit(nr, 10));
     }
 
-    private void setSatznummer(int nr) {
-        satznummer.setInhalt(Character.forDigit(nr, 10));
-    }
-
     private void initDatenfelder(SatzTyp satzTyp) {
         NumFeld satzart = new NumFeld((SATZART), 4, ByteAdresse.of(1)).mitConfig(getConfig());
         satzart.setInhalt(satzTyp.getSatzart());
