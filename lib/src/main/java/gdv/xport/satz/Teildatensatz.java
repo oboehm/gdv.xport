@@ -33,6 +33,7 @@ import java.io.Writer;
 import java.util.*;
 
 import static gdv.xport.feld.Bezeichner.SATZART;
+import static gdv.xport.feld.Bezeichner.SPARTE;
 
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
@@ -41,12 +42,12 @@ import static gdv.xport.feld.Bezeichner.SATZART;
  * @author ob@aosd.de
  * @since 04.10.2009
  */
-public class Teildatensatz extends Satz {
+public class Teildatensatz extends Datensatz {
 
     private static final Logger LOG = LogManager.getLogger(Teildatensatz.class);
     private final Collection<Feld> datenfelder = Config.getInstance().isDebug() ? new TreeSet<>() : new ArrayList<>();
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
-    protected Satznummer satznummer = new Satznummer();
+    private Satznummer satznummer = new Satznummer();
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
@@ -54,7 +55,7 @@ public class Teildatensatz extends Satz {
      * @param satzTyp z.B. 0220.050
      */
     public Teildatensatz(final SatzTyp satzTyp) {
-        super();
+        super(satzTyp, 0);
         this.initDatenfelder(satzTyp);
     }
 
@@ -67,7 +68,7 @@ public class Teildatensatz extends Satz {
      */
     public Teildatensatz(final SatzTyp satzTyp, final int nr) {
         this(satzTyp);
-        initSatznummer(satzTyp, nr);
+        setSatznummer(nr);
         this.setGdvSatzartName(satzTyp.toString());
  		if (satzTyp.hasGdvSatzartNummer())
 			this.setGdvSatzartNummer(String.valueOf(satzTyp.getGdvSatzartNummer()));
@@ -80,9 +81,10 @@ public class Teildatensatz extends Satz {
      * @param satz        z.B. 100
      * @param nr          Nummer des Teildatensatzes (zwischen 1 und 9)
      */
-    public Teildatensatz(final Satz satz, final int nr) {
-        super(satz, 0);
-        initSatznummer(satz.getSatzTyp(), nr);
+    public Teildatensatz(final Datensatz satz, final int nr) {
+        super(satz);
+        initDatenfelder(satz.getSatzTyp());
+        setSatznummer(nr);
     }
 
     /**
@@ -92,7 +94,7 @@ public class Teildatensatz extends Satz {
      * @param other der andere Teildatensatz
      */
     public Teildatensatz(final Teildatensatz other) {
-        super(other, 0);
+        super(other);
         this.satznummer = other.satznummer;
         for (Feld f : other.datenfelder) {
             Feld copy = (Feld) f.clone();
@@ -100,18 +102,12 @@ public class Teildatensatz extends Satz {
         }
     }
 
-    /**
-     * Inits the satznummer.
-     *
-     * @param nr the nr
-     */
-    private void initSatznummer(final SatzTyp satzTyp, final int nr) {
+    private void setSatznummer(int nr) {
         if ((nr < 1) || (nr > 9)) {
             throw new IllegalArgumentException("Satznummer (" + nr
                     + ") muss zwischen 1 und 9 liegen");
         }
         this.satznummer.setInhalt(Character.forDigit(nr, 10));
-        this.initDatenfelder(satzTyp);
     }
 
     private void initDatenfelder(SatzTyp satzTyp) {
@@ -286,6 +282,21 @@ public class Teildatensatz extends Satz {
         }
     }
 
+    public void setSparte(final int x) {
+        NumFeld numFeld = new NumFeld(SPARTE, 3, ByteAdresse.of(11));
+        if (!hasFeld(SPARTE)) {
+            add(numFeld);
+        } else {
+            numFeld = getFeld(SPARTE, NumFeld.class);
+        }
+        numFeld.setInhalt(x);
+    }
+
+    @Override
+    public int getSparte() {
+        return getFeld(SPARTE, NumFeld.class).toInt();
+    }
+
     /**
      * Liefert das gewuenschte Feld.
      * <p>
@@ -457,6 +468,7 @@ public class Teildatensatz extends Satz {
      * @return true, if successful
      * @since 7.1
      */
+	@Override
     public boolean hasFeld(final ByteAdresse adresse) {
         for (Feld f : datenfelder) {
             if (adresse.intValue() == f.getByteAdresse()) {

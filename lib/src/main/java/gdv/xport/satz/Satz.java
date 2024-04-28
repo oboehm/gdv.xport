@@ -432,6 +432,7 @@ public abstract class Satz implements Cloneable {
 	 * @return Vermittler
 	 * @since 5.2
 	 */
+	@JsonIgnore
 	public final String getVermittler() {
 		return getFeld(Bezeichner.VERMITTLER).getInhalt().trim();
 	}
@@ -519,7 +520,10 @@ public abstract class Satz implements Cloneable {
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @return das gesuchte Feld
 	 * @throws IllegalArgumentException falls es das Feld nicht gibt
+	 * @deprecated bitte getFeld(Bezeichner) verwenden
+	 * 			   (TODO: wird mit v8 oder v9 entsorgt)
 	 */
+	@Deprecated
 	public Feld getFeld(final String name) throws IllegalArgumentException {
 		return this.getFeld(Bezeichner.of(name));
 	}
@@ -743,48 +747,69 @@ public abstract class Satz implements Cloneable {
 	/**
 	 * Schaut nach einem Feld "SPARTE" und liefert true zurueck, falls es
 	 * existiert.
+	 * <p>
+	 * Anmerkung: Diese Methode macht nur beim Datensatz Sinn. Daher wird diese
+	 * Methode ab V9 nicht mehr in Satz zur Verfuegung stehen.
+	 * </p>
 	 *
      * @return true, falls Sparten-Feld vorhanden ist
 	 * @since 0.9
 	 */
+	// TODO: mit v9 entsorgen
 	public boolean hasSparte() {
-		return getFeldSparte().isPresent();
+		LOG.warn("hasSparte() steht ab v9 nur noch im Datensatz zur Verfuegung.");
+		return false;
 	}
 
 	/**
      * Schaut nach einem Feld "WAGNISART" und liefert true zurueck, falls es
      * existiert.
+	 * <p>
+	 * Anmerkung: Diese Methode macht nur beim Datensatz Sinn. Daher wird diese
+	 * Methode ab V9 nicht mehr in Satz zur Verfuegung stehen.
+	 * </p>
      *
      * @return true, falls Wagnisart-Feld vorhanden ist
      * @since 1.0
 	 */
+	// TODO: mit v9 entsorgen
 	public boolean hasWagnisart() {
-	    return this.hasFeld((Bezeichner.WAGNISART));
+		LOG.warn("hasWagnisart() steht ab v9 nur noch im Datensatz zur Verfuegung.");
+	    return false;
 	}
 
 	/**
      * Schaut nach dem 10. Feld in Satzart 220, Sparte 20 (Kranken) und liefert
      * true zurueck, falls es existiert.
-	 * 
+	 * <p>
+	 * Anmerkung: Diese Methode macht nur beim Datensatz Sinn. Daher wird diese
+	 * Methode ab V9 nicht mehr in Satz zur Verfuegung stehen.
+	 * </p>
+	 *
 	 * @return true, falls das Feld existiert
 	 * @since 18.04.2018
 	 */
+	// TODO: mit v9 entsorgen
     public boolean hasKrankenFolgeNr() {
-        return this.getSatzart() == 220 && this.getFeldSparte().get().toInt() == 20
-                && (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
-                        || this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF));
+		LOG.warn("hasKrankenFolgeNr() steht ab v9 nur noch im Datensatz zur Verfuegung.");
+        return false;
     }
 
 	/**
 	 * Schaut nach dem 9. Feld in Satzart 220, Sparte 580 (Bausparen) und liefert true zurueck, falls
 	 * es existiert.
+	 * <p>
+	 * Anmerkung: Diese Methode macht nur beim Datensatz Sinn. Daher wird diese
+	 * Methode ab V9 nicht mehr in Satz zur Verfuegung stehen.
+	 * </p>
 	 *
 	 * @return true, falls das Feld existiert
 	 * @since 30.06.2021
 	 */
+	// TODO: mit v9 entsorgen
 	public boolean hasBausparenArt() {
-		return this.getSatzart() == 220 && this.getFeldSparte().get().toInt() == 580
-				&& (this.hasFeld(Bezeichner.ART_580));
+		LOG.warn("hasBausparenArt() steht ab v9 nur noch im Datensatz zur Verfuegung.");
+		return false;
 	}
 
 	/**
@@ -792,23 +817,19 @@ public abstract class Satz implements Cloneable {
 	 * {@link #hasSparte()} geprueft werden, ob der Satz ein Sparten-Feld
 	 * besitzt.
 	 * <p>
-	 * Anmerkung: diese Methode liefert nicht die Sparte, sondern den Inhalt
-	 * des Spartenfelds an Byte-Adresse 11 zurueck. Im Normalfall entspricht
-	 * dies der Sparte, kann aber in Sonderfaellen davon abweichen.
+	 * Anmerkung: Diese Methode macht nur beim Datensatz Sinn. Daher wird diese
+	 * Methode ab V9 nicht mehr in Satz zur Verfuegung stehen.
 	 * </p>
 	 *
      * @return die Sparte
      * @since 0.9
 	 */
+	// TODO: mit v9 entsorgen
 	@JsonIgnore
 	public int getSparte() {
-		Optional<NumFeld> sparte = getFeldSparte();
-		if (sparte.isPresent()) {
-			return sparte.get().toInt();
-		} else {
-			throw new IllegalArgumentException(
-					this.toShortString() + " hat kein Feld \"Sparte\" an Pos 11 in den Kopfdaten!");
-		}
+		LOG.warn("getSparte() steht ab v9 nur noch im Datensatz zur Verfuegung.");
+		throw new IllegalArgumentException(
+				this.toShortString() + " hat kein Feld \"Sparte\" an Pos 11 in den Kopfdaten!");
 	}
 
 	/**
@@ -822,13 +843,6 @@ public abstract class Satz implements Cloneable {
 	 */
 	@JsonIgnore
 	public Optional<NumFeld> getFeldSparte() {
-		ByteAdresse adresseSparte = ByteAdresse.of(11);
-		if (hasFeld(adresseSparte)) {
-			Feld feld = getFeld(adresseSparte);
-			if (feld.getBezeichner().isVariantOf(Bezeichner.SPARTE)) {
-				return Optional.of((NumFeld) feld);
-			}
-		}
 		return Optional.empty();
 	}
 
@@ -850,20 +864,23 @@ public abstract class Satz implements Cloneable {
     }
 
 	/**
-	 * Liefert den Inhalt des 10. Feldes in Satzart 220, Sparte 20 (Kranken). Vorhersollte allerdings
-	 * mittels {@link #hasKrankenFolgeNr()} geprueft werden, ob der Satz eine KrankenfolgeNr-Feld
-	 * besitzt.
+	 * Liefert den Inhalt des Feldes, in dessen Bezeichnung "Folge-Nr" oder
+	 * "Folgenummer" gefolgt von "zur laufenden" vorkommt (ByteAdresse 48), wenn es
+	 * existiert.
 	 * <p>
+	 * Die Methode funktioniert bei allen Satzarten und besonders auch bei frei
+	 * definierten Satzarten!
+	 * </p>
 	 *
-	 * @return die KrankenFolgeNr
+	 * @return die KrankenFolgeNr (wenn vorhanden)
 	 */
 	@JsonIgnore
 	public final String getKrankenFolgeNr() {
-		if (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)) {
-			return this.getFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF).getInhalt();
-		} else {
-			return this.getFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF).getInhalt();
+		if (this.hasKrankenFolgeNr()) {
+			return this.getFeld(ByteAdresse.of(48)).getInhalt();
 		}
+
+		return "";
 	}
 
   /**

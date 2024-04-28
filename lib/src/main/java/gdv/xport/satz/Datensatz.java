@@ -24,13 +24,11 @@ import gdv.xport.feld.*;
 import gdv.xport.io.Importer;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
-import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.io.PushbackReader;
 import java.util.Optional;
 
 import static gdv.xport.feld.Bezeichner.*;
@@ -45,8 +43,6 @@ import static gdv.xport.feld.Bezeichner.*;
 public class Datensatz extends Satz {
 
 	private static final Logger LOG = LogManager.getLogger(Datensatz.class);
-	/** 3 Zeichen, Byte 11 - 13. */
-  	private final NumFeld sparte = new NumFeld(Kopffelder1bis7.SPARTE);
 
 	/**
 	 * Default-Konstruktor (wird zur Registrierung bei der {@link gdv.xport.util.SatzFactory}
@@ -141,8 +137,10 @@ public class Datensatz extends Satz {
 
 	protected Datensatz(final SatzTyp satzTyp, final int n, final Config cfg) {
 		super(satzTyp, n, cfg);
-		this.init(satzTyp);
-		this.setUpTeildatensaetze();
+		if (n > 0) {
+			this.init(satzTyp);
+			this.setUpTeildatensaetze();
+		}
 	}
 
 	/**
@@ -153,14 +151,10 @@ public class Datensatz extends Satz {
 	 */
 	public Datensatz(final Datensatz other) {
 		super(other, other.cloneTeildatensaetze());
-		this.sparte.setInhalt(other.sparte.getInhalt());
+		//this.sparte.setInhalt(other.sparte.getInhalt());
 	}
 
-    /**
-	 * Kann von Unterklassen verwendet werden, um die Teildatensaetze
-	 * aufzusetzen.
-	 */
-	protected void setUpTeildatensaetze() {
+	private void setUpTeildatensaetze() {
 		for (Teildatensatz tds : this.getTeildatensaetze()) {
 			setUpTeildatensatz(tds);
 		}
@@ -177,7 +171,9 @@ public class Datensatz extends Satz {
 	 * @since 0.4
 	 */
 	protected void setUpTeildatensatz(final Teildatensatz tds) {
-		setUpTeildatensatz(tds, this.sparte);
+		NumFeld sparte = new NumFeld(SPARTE, 3, ByteAdresse.of(11));
+		sparte.setInhalt(getSatzTyp().getSatzart());
+		setUpTeildatensatz(tds, sparte);
 	}
 
 	protected static void setUpTeildatensatz(final Teildatensatz tds, final NumFeld sparte) {
@@ -214,7 +210,7 @@ public class Datensatz extends Satz {
 	@Override
 	public void addFiller() {
 		for (Teildatensatz tds : this.getTeildatensaetze()) {
-			tds.add(new AlphaNumFeld((LEERSTELLEN), 213, 43));
+			tds.add(new AlphaNumFeld((LEERSTELLEN), 213, ByteAdresse.of(43)));
 		}
 	}
 
@@ -225,7 +221,7 @@ public class Datensatz extends Satz {
 	 * @param satztyp SatzTyp, z.B. "0220.010.13.1"
 	 * @since 5.1
 	 */
-	public void init(SatzTyp satztyp)  {
+	public void init(SatzTyp satztyp) {
 		if (satztyp.hasSparte()) {
 			setSparte(satztyp.getSparte());
 		}
@@ -239,14 +235,14 @@ public class Datensatz extends Satz {
 
 	private void initWagnisart(int art) {
 		if (!hasWagnisart()) {
-			addAll(new AlphaNumFeld(WAGNISART, 1, 60));
+			addAll(new AlphaNumFeld(WAGNISART, 1, ByteAdresse.of(60)));
 		}
         setFeld(WAGNISART, Integer.toString(art).substring(0, 1));
 	}
 
 	private void initBausparenart(int art) {
 		if (!hasBausparenArt()) {
-			addAll(new AlphaNumFeld(ART_580, 1, 44));
+			addAll(new AlphaNumFeld(ART_580, 1, ByteAdresse.of(44)));
 		}
         setFeld(ART_580, art);
 	}
@@ -257,17 +253,25 @@ public class Datensatz extends Satz {
 	 * @param x z.B. 70 (Rechtsschutz)
 	 */
 	public void setSparte(final int x) {
-		this.sparte.setInhalt(x);
+		//this.sparte.setInhalt(x);
 		for (Teildatensatz tds : getTeildatensaetze()) {
-			if (tds.getFelder().size() > 3) {
-				tds.getFeld(4).setInhalt(x);
-			}
+			tds.setSparte(x);
 		}
 	}
 
 	/**
+	 * Liefert den Inhalt des Sparten-Felds an Byte-Adresse 11.
+	 *
+	 * @return die Sparte
+	 */
+	@Override
+	public int getSparte() {
+		return getTeildatensatz(1).getSparte();
+	}
+
+	/**
 	 * Setzt die Sparte. Der uebergebene String kann dabei auch die Art der
-	 * Sparte enthalten.
+	 * Sparte enthalten. Es wird die Sparte extrahiert.
 	 *
 	 * @param x z.B. "580.01" fuer Sparte 580, Art 01
 	 */
@@ -277,6 +281,43 @@ public class Datensatz extends Satz {
 	    if ((parts.length > 1) && getGdvSatzartName().isEmpty()) {
 			this.setGdvSatzartName(String.format("%04d.%s", getSatzart(), x));
 	    }
+	}
+
+	/**
+	 * Schaut nach einem Feld "WAGNISART" und liefert true zurueck, falls es
+	 * existiert.
+	 *
+	 * @return true, falls Wagnisart-Feld vorhanden ist
+	 * @since 1.0
+	 */
+	public boolean hasWagnisart() {
+		return this.hasFeld((Bezeichner.WAGNISART));
+	}
+
+	/**
+	 * Schaut nach dem 10. Feld in Satzart 220, Sparte 20 (Kranken) und liefert
+	 * true zurueck, falls es existiert.
+	 *
+	 * @return true, falls das Feld existiert
+	 * @since 18.04.2018
+	 */
+	public boolean hasKrankenFolgeNr() {
+		return this.getSatzart() == 220 && this.getFeldSparte().get().toInt() == 20
+				&& (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
+				|| this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF));
+	}
+
+	/**
+	 * Schaut nach dem 9. Feld in Satzart 220, Sparte 580 (Bausparen) und liefert true zurueck, falls
+	 * es existiert.
+	 *
+	 * @return true, falls das Feld existiert
+	 * @since 30.06.2021
+	 */
+	public boolean hasBausparenArt() {
+		Optional<NumFeld> feldSparte = this.getFeldSparte();
+		return this.getSatzart() == 220 && feldSparte.isPresent() && feldSparte.get().toInt() == 580
+				&& (this.hasFeld(Bezeichner.ART_580));
 	}
 
 	/**
@@ -309,8 +350,20 @@ public class Datensatz extends Satz {
 	 * 			   // TODO: mit v9 entsorgen
 	 */
 	@Deprecated
+	@JsonIgnore
 	public NumFeld getSparteFeld() {
 		return getFeldSparte().get();
+	}
+
+	/**
+	 * Schaut nach einem Feld "SPARTE" und liefert true zurueck, falls es
+	 * existiert.
+	 *
+	 * @return true, falls Sparten-Feld vorhanden ist
+	 * @since 0.9
+	 */
+	public boolean hasSparte() {
+		return getFeldSparte().isPresent();
 	}
 
 	/**
@@ -318,23 +371,31 @@ public class Datensatz extends Satz {
 	 * Implementierung, die durch den Mehrdeutigkeit von "Sparte" in die Irre
 	 * fuehren koennen.
 	 *
-	 * @return liefert immer ein Sparte-Feld an Byte-Adresse 11
+	 * @return Optional.empty() fuer Vor- und Nachsatz, ansonsten Sparte-Feld
+	 * 	       an Byte-Adresse 11
 	 * @since  7.1
 	 */
-	@Override
+	@JsonIgnore
 	public Optional<NumFeld> getFeldSparte() {
-		return Optional.of(sparte);
+		ByteAdresse adresseSparte = ByteAdresse.of(11);
+		if (hasFeld(adresseSparte)) {
+			Feld feld = getFeld(adresseSparte);
+			if (feld.getBezeichner().isVariantOf(Bezeichner.SPARTE)) {
+				return Optional.of((NumFeld) feld);
+			}
+		}
+		return Optional.empty();
 	}
 
-	/**
-   * Wenn der Datensatz ein Element fuer eine Untersparte hat, wird 'true'
-   * zurueckgegeben. Dies ist z.B. fuer Satz 220.580.1 (Bausparen) der Fall.
-   *
-   * @return true, falls der Datensatz eine Untersparte hat.
-   */
-    public boolean hasSatzartNummer() {
-        return !this.getGdvSatzartNummer().isEmpty();
-  }
+//	/**
+//   * Wenn der Datensatz ein Element fuer eine Untersparte hat, wird 'true'
+//   * zurueckgegeben. Dies ist z.B. fuer Satz 220.580.1 (Bausparen) der Fall.
+//   *
+//   * @return true, falls der Datensatz eine Untersparte hat.
+//   */
+//    public boolean hasSatzartNummer() {
+//        return !this.getGdvSatzartNummer().isEmpty();
+//  }
 
 	/**
 	 * Sets the vu nummer.
@@ -404,53 +465,10 @@ public class Datensatz extends Satz {
 	 * @return die Folgenummer
 	 * @since 0.3
 	 */
+	@JsonIgnore
 	public int getFolgenummer() {
     NumFeld folgenummer = (NumFeld) this.getFeld(Kopffelder1bis7.FOLGENUMMER.getBezeichner());
 		return folgenummer.toInt();
-	}
-
-	/**
-     * Liest 49 Bytes, um die Folge-Nr. in Satzart 220, Sparte 20 (Kranken) zu bestimmen und stellt die Bytes
-     * anschliessend wieder zurueck in den Reader.
-     *
-     * @param reader muss mind. einen Pushback-Puffer von 14 Zeichen
-     * bereitstellen
-     * @return Folge-Nr
-     * @throws IOException falls was schief gegangen ist
-	 * @deprecated wurde nach {@link Importer#readKrankenFolgeNr()} verschoben (TODO: wird mit v8 entfennt)
-     */
-	@Deprecated
-    public static int readKrankenFolgeNr(final PushbackLineNumberReader reader) throws IOException {
-		return Importer.of(reader).readKrankenFolgeNr();
-    }
-
-    /**
-     * Liest 45 Bytes, um die Bauspar-Art in Satzart 220, Sparte 580 (Bausparen)
-     * zu bestimmen und stellt die Bytes anschliessend wieder zurueck in den
-     * Reader.
-     *
-     * @param reader muss mind. einen Pushback-Puffer von 14 Zeichen bereitstellen
-     * @return Folge-Nr
-     * @throws IOException falls was schief gegangen ist
-	 * @deprecated wurde nach {@link Importer#readBausparenArt()} verschoben
-     */
-	@Deprecated
-    public static int readBausparenArt(final PushbackLineNumberReader reader) throws IOException {
-		return Importer.of(reader).readBausparenArt();
-	}
-
-	/**
-	 * Liest 1 Byte, um die Wagnisart zu bestimmen und stellt das Byte
-	 * anschliessend wieder zurueck in den Reader.
-	 *
-     * @param reader muss mind. einen Pushback-Puffer von 60 Zeichen bereitstellen
-	 * @return Wagnisart
-	 * @throws IOException falls was schief gegangen ist
-	 * @deprecated wurde nach {@link Importer#readWagnisart()} verschoben
-	 */
-	@Deprecated
-	public static WagnisartLeben readWagnisart(final PushbackReader reader) throws IOException {
-		return Importer.of(reader).readWagnisart();
 	}
 
 	/**

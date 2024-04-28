@@ -130,7 +130,7 @@ public final class SatzRegistryTest {
 
     @Test(expected = ValidationException.class)
     public void testRegister() {
-        f2018.register(Datensatz.class, 47);
+        f2018.register(Datensatz.class, 100);
     }
 
     @Test
@@ -142,17 +142,6 @@ public final class SatzRegistryTest {
     public void testSatz221Wagnis13() {
         checkWagnis(221, 10, 13, 1);
     }
-
-//    private void checkWagnis31(int satzart) {
-//        Satz wagnis13 = f2018.getSatz(SatzTyp.of(satzart, 10, 13, 1));
-//        assertEquals(satzart, wagnis13.getSatzart());
-//        assertEquals(10, wagnis13.getSparte());
-//        MatcherAssert.assertThat(wagnis13.getWagnisart(), either(is("1")).or(is("3")));
-//        for (int nr = 1; nr <= wagnis13.getNumberOfTeildatensaetze(); nr++) {
-//            Teildatensatz tds = wagnis13.getTeildatensatz(nr);
-//            assertEquals(nr, tds.getSatznummer().toInt());
-//        }
-//    }
 
     @Test
     public void testSatz220Tds6() {

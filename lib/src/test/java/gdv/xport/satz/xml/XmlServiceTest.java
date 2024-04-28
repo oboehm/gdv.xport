@@ -79,7 +79,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testGetSatzartNonExisting() {
-        assertThrows(NotRegisteredException.class, () -> xmlService.getSatzart(SatzTyp.of(451)));
+        assertThrows(NotRegisteredException.class, () -> xmlService.getSatzart(SatzTyp.of(800)));
     }
 
     /**

@@ -287,11 +287,11 @@ public class SatzTypTest {
     }
 
     @Test
-    public void testSparte29() {
-        SatzTyp a = SatzTyp.of(210, 20);
-        SatzTyp b = SatzTyp.of(210, 29);
+    public void testSparte59() {
+        SatzTyp a = SatzTyp.of(210, 50);
+        SatzTyp b = SatzTyp.of(210, 59);
         assertEquals(a.getSatzart(), b.getSatzart());
-        assertEquals(29, b.getSparte());
+        assertEquals(59, b.getSparte());
     }
 
 }

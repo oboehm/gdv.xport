@@ -75,7 +75,7 @@ public class SatzXml extends Datensatz {
      * @throws XMLStreamException the XML stream exception
      */
     public SatzXml(final XMLEventReader parser, final StartElement element, final Config config) throws XMLStreamException {
-        super(SatzTyp.of(0), config);
+        super(SatzTyp.of(0), 0, config);
         parse(element, parser);
     }
 
@@ -87,14 +87,6 @@ public class SatzXml extends Datensatz {
      */
     public SatzXml(final Datensatz orig) {
         super(orig);
-    }
-
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Datensatz#setUpTeildatensaetze()
-     */
-    @Override
-    protected void setUpTeildatensaetze() {
-        this.removeAllTeildatensaetze();
     }
 
     private void parse(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
@@ -218,7 +210,14 @@ public class SatzXml extends Datensatz {
         for (int n = 1; n <= this.getNumberOfTeildatensaetze(); n++) {
             TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(n);
             tdsXml.updateWith(felder);
+            updateSparte(tdsXml);
             //updateSatznummer(n, tdsXml);
+        }
+    }
+
+    private void updateSparte(TeildatensatzXml tdsXml) {
+        if (tdsXml.hasSparte()) {
+            tdsXml.setSparte(getSatzTyp().getSparte());
         }
     }
 

@@ -95,7 +95,7 @@ public final class SatzFactoryTest {
      */
     @Test
     public void testGetUnsupportedSatz() {
-        Datensatz unsupported = new Datensatz(SatzTyp.of("0123"));
+        Datensatz unsupported = new Datensatz(SatzTyp.of("0890"));
         unsupported.setVuNummer("56789");
         unsupported.setSparte(88);
         unsupported.add(new NumFeld(Bezeichner.of("zweiundvierzig"), 4, ByteAdresse.of(200), 42));
@@ -110,7 +110,7 @@ public final class SatzFactoryTest {
      */
     @Test
     public void testRegisterSatz() {
-        int satzart = 47;
+        int satzart = 847;
         SatzFactory.register(Datensatz.class, satzart);
         Satz satz = SatzFactory.getSatz(SatzTyp.of(satzart));
         assertEquals(Datensatz.class, satz.getClass());
