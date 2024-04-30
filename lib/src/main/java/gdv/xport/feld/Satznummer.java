@@ -258,14 +258,4 @@ public class Satznummer extends Zeichen {
         return new Satznummer(this);
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Satznummer)) {
-            return false;
-        }
-        Satznummer other = (Satznummer) obj;
-        return (this.getByteAdresse() == other.getByteAdresse())
-                && (this.getInhalt().equals(other.getInhalt()));
-    }
-
 }

@@ -676,7 +676,8 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
             return false;
         }
         Feld other = (Feld) obj;
-        return this.bezeichner.equals(other.bezeichner) && this.getInhalt().equals(other.getInhalt())
+        return (this.bezeichner.isVariantOf(other.bezeichner) || other.bezeichner.isVariantOf(this.bezeichner))
+                && this.getInhalt().equals(other.getInhalt())
                 && (this.byteAdresse == other.byteAdresse);
     }
 
