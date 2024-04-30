@@ -562,8 +562,8 @@ public final class SatzTest extends AbstractSatzTest {
         assertEquals(580, bausparen.getSparte());
         assertEquals(satzTyp, bausparen.getSatzTyp());
         for (Teildatensatz tds : bausparen.getTeildatensaetze()) {
-            assertTrue(tds.getFeldSparte().isPresent());
-            assertEquals(580, tds.getFeldSparte().get().toInt());
+            assertTrue(tds.hasSparte());
+            assertEquals(580, tds.getSparte());
             assertEquals(satzTyp, tds.getSatzTyp());
         }
     }

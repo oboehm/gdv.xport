@@ -724,19 +724,18 @@ public abstract class Satz implements Cloneable {
 		if (StringUtils.isNotEmpty(this.gdvSatzartName)) {
 			return SatzTyp.of(this.gdvSatzartName);
 	    } else {
-			Optional<NumFeld> sparte = getFeldSparte();
-			if (sparte.isPresent()) {
+			if (hasSparte()) {
 				if (this.hasWagnisart() && this.getWagnisart().matches("\\d")) {
-					return SatzTyp.of(this.getSatzart(), sparte.get().toInt(),
+					return SatzTyp.of(this.getSatzart(), getSparte(),
 							Integer.parseInt(this.getWagnisart()));
 				} else if (this.hasKrankenFolgeNr() && this.getKrankenFolgeNr().matches("\\d")) {
-					return SatzTyp.of(this.getSatzart(), sparte.get().toInt(),
+					return SatzTyp.of(this.getSatzart(), getSparte(),
 							Integer.parseInt(this.getKrankenFolgeNr()));
 				} else if (this.hasBausparenArt() && this.getBausparenArt().matches("\\d")) {
-					return SatzTyp.of(this.getSatzart(), sparte.get().toInt(),
+					return SatzTyp.of(this.getSatzart(), getSparte(),
 							Integer.parseInt(this.getBausparenArt()));
 				} else {
-					return SatzTyp.of(this.getSatzart(), sparte.get().toInt());
+					return SatzTyp.of(this.getSatzart(), getSparte());
 				}
 			} else {
 				return SatzTyp.of(this.getSatzart());
@@ -830,20 +829,6 @@ public abstract class Satz implements Cloneable {
 		LOG.warn("getSparte() steht ab v9 nur noch im Datensatz zur Verfuegung.");
 		throw new IllegalArgumentException(
 				this.toShortString() + " hat kein Feld \"Sparte\" an Pos 11 in den Kopfdaten!");
-	}
-
-	/**
-	 * Diese Methode dient als Ersatz fuer die getSparte()- und hasSparte()-
-	 * Implementierung, die durch den Mehrdeutigkeit von "Sparte" in die Irre
-	 * fuehren koennen.
-	 *
-	 * @return Optional.empty() fuer Vor- und Nachsatz, ansonsten Sparte-Feld
-	 * 	       an Byte-Adresse 11
-	 * @since  7.1
-	 */
-	@JsonIgnore
-	public Optional<NumFeld> getFeldSparte() {
-		return Optional.empty();
 	}
 
 	/**
