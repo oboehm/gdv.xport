@@ -723,13 +723,7 @@ public class SatzTyp {
    * Satzdefinition vom Allgemeinen Satz geliefert werden.
    */
   private static boolean isIdentischZu000(int sparte) {
-    boolean ret = false;
-
-    for (int sparte000 : spartenIdentischZu_000) {
-      if (sparte000 == sparte)
-        return true;
-    }
-    return ret;
+	  return contains(spartenIdentischZu_000, sparte);
   }
 
   /**
@@ -737,13 +731,7 @@ public class SatzTyp {
    * Satzdefinition vom Feuer-Industrie/Gewerbl. Sachvers. geliefert werden.
    */
   private static boolean isIdentischZu080(int sparte) {
-    boolean ret = false;
-
-    for (int sparte000 : spartenIdentischZu_080) {
-      if (sparte000 == sparte)
-        return true;
-    }
-    return ret;
+	  return contains(spartenIdentischZu_080, sparte);
   }
 
   /**
@@ -751,13 +739,7 @@ public class SatzTyp {
    * Satzdefinition von Technische Versicherung geliefert werden.
    */
   private static boolean isIdentischZu170(int sparte) {
-    boolean ret = false;
-
-    for (int sparte170 : spartenIdentischZu_170) {
-      if (sparte170 == sparte)
-        return true;
-    }
-    return ret;
+	  return contains(spartenIdentischZu_170, sparte);
   }
 
   /**
@@ -765,13 +747,7 @@ public class SatzTyp {
    * Satzdefinition von Transport geliefert werden.
    */
   private static boolean isIdentischZu190(int sparte) {
-    boolean ret = false;
-
-    for (int sparte190 : spartenIdentischZu_190) {
-      if (sparte190 == sparte)
-        return true;
-    }
-    return ret;
+	  return contains(spartenIdentischZu_190, sparte);
   }
 
   /**
@@ -779,14 +755,17 @@ public class SatzTyp {
    * Satzdefinition von Verkehrsservice geliefert werden.
    */
   private static boolean isIdentischZu510(int sparte) {
-    boolean ret = false;
-
-    for (int sparte510 : spartenIdentischZu_510) {
-      if (sparte510 == sparte)
-        return true;
-    }
-    return ret;
+	  return contains(spartenIdentischZu_510, sparte);
   }
+
+  	private static boolean contains(int[] variants, int sparte) {
+	  	for (int x : variants) {
+			if (x == sparte) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	private static Set<int[]> loadSatzarten() {
 		Set<int[]> satzarten = new HashSet<>();
