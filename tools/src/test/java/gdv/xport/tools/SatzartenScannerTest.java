@@ -19,6 +19,8 @@
 package gdv.xport.tools;
 
 import gdv.xport.util.SatzTyp;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -36,6 +38,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class SatzartenScannerTest {
 
+    private static final Logger log = LogManager.getLogger(SatzartenScannerTest.class);
     private final SatzartenScanner scanner = new SatzartenScanner();
 
     @Test
@@ -52,7 +55,7 @@ class SatzartenScannerTest {
 
     @Test
     void exportAsProperties() throws IOException {
-        File file = new File("target", "satzarten.properties");
+        File file = createFile("satzarten.properties");
         scanner.exportAsProperties(file);
         assertTrue(file.exists());
         Properties props = new Properties();
@@ -65,9 +68,17 @@ class SatzartenScannerTest {
 
     @Test
     void exportAsCSV() throws IOException {
-        File file = new File("target", "satzarten.csv");
+        File file = createFile("satzarten.csv");
         scanner.exportAsCSV(file);
         assertTrue(file.exists());
+    }
+
+    private static File createFile(String filename) {
+        File file = new File("target", filename);
+        if (file.delete()) {
+            log.info("{} wurde vor dem Test geloescht.", file);
+        }
+        return file;
     }
 
 }

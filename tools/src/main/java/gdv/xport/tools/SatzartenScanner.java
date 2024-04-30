@@ -71,17 +71,17 @@ public final class SatzartenScanner {
 
     public void exportAsProperties(File file) throws IOException {
         try (PrintWriter writer = new PrintWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
-            List<String[]> values = getTableValues();
-            for (String[] value : values) {
+            List<String[]> lines = getTableValues();
+            for (String[] value : lines) {
                 writer.printf("%s=%s\n", value[0], value[1]);
             }
         }
-        log.info("{} Zeilen wurde nach {} geschrieben.", getTableValues().size(), file);
+        log.info("{} Zeilen wurde nach {} geschrieben.", getTableValuesWithHeader().size(), file);
     }
 
     public void exportAsCSV(File file) throws IOException {
         try (CSVWriter writer = new CSVWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
-            List<String[]> lines = getTableValues();
+            List<String[]> lines = getTableValuesWithHeader();
             for (String[] cells : lines) {
                 writer.writeNext(cells);
             }
@@ -89,11 +89,16 @@ public final class SatzartenScanner {
     }
 
     private List<String[]> getTableValues() throws IOException {
+        List<String[]> lines = getTableValuesWithHeader();
+        return lines.subList(1, lines.size() - 1);
+    }
+
+    private List<String[]> getTableValuesWithHeader() throws IOException {
         List<String[]> satzarten = new ArrayList<>();
         Document doc = Jsoup.connect(uri.toString()).get();
         Element table = doc.selectXpath("/html/body/table/tbody/tr/td[3]/table[3]").get(0);
         Elements rows = table.select("tr");
-        for (int i = 2; i < rows.size(); i++) {
+        for (int i = 1; i < rows.size(); i++) {
             String[] values = new String[3];
             for (int j = 0; j < values.length; j++) {
                 values[j] = rows.get(i).select("td").get(j).text();
