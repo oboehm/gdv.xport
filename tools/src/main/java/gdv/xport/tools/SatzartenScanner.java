@@ -24,6 +24,7 @@ import org.apache.logging.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
 
 import java.io.File;
@@ -98,14 +99,31 @@ public final class SatzartenScanner {
         Document doc = Jsoup.connect(uri.toString()).get();
         Element table = doc.selectXpath("/html/body/table/tbody/tr/td[3]/table[3]").get(0);
         Elements rows = table.select("tr");
-        for (int i = 1; i < rows.size(); i++) {
-            String[] values = new String[3];
-            for (int j = 0; j < values.length; j++) {
-                values[j] = rows.get(i).select("td").get(j).text();
-            }
+        satzarten.add(parseHead(rows.get(1)));
+        for (int i = 2; i < rows.size(); i++) {
+            String[] values = parseRow(rows.get(i));
             satzarten.add(values);
         }
         return satzarten;
+    }
+
+    private static String[] parseHead(Element tr) {
+        String[] values = parseRow(tr);
+        values[3] = "href";
+        return values;
+    }
+
+    private static String[] parseRow(Element tr) {
+        String[] values = new String[4];
+        Elements td = tr.select("td");
+        for (int j = 0; j < 3; j++) {
+            values[j] = td.get(j).text();
+        }
+        Node node = td.get(0).childNodes().get(0);
+        if (node instanceof Element) {
+            values[3] = node.attr("href");
+        }
+        return values;
     }
 
 }
