@@ -302,7 +302,7 @@ public class Datensatz extends Satz {
 	 * @since 18.04.2018
 	 */
 	public boolean hasKrankenFolgeNr() {
-		return this.getSatzart() == 220 && this.getFeldSparte().get().toInt() == 20
+		return this.getSatzart() == 220 && this.getSparte() == 20
 				&& (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
 				|| this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF));
 	}
@@ -315,8 +315,7 @@ public class Datensatz extends Satz {
 	 * @since 30.06.2021
 	 */
 	public boolean hasBausparenArt() {
-		Optional<NumFeld> feldSparte = this.getFeldSparte();
-		return this.getSatzart() == 220 && feldSparte.isPresent() && feldSparte.get().toInt() == 580
+		return this.getSatzart() == 220 && hasSparte() && getSparte() == 580
 				&& (this.hasFeld(Bezeichner.ART_580));
 	}
 
@@ -346,10 +345,7 @@ public class Datensatz extends Satz {
 	 * Gets the sparte feld.
 	 *
 	 * @return die Sparte als Feld
-	 * @deprecated seit 7.1 durch getFeldSparte() ersetzt
-	 * 			   // TODO: mit v9 entsorgen
 	 */
-	@Deprecated
 	@JsonIgnore
 	public NumFeld getSparteFeld() {
 		return getFeldSparte().get();
@@ -366,17 +362,7 @@ public class Datensatz extends Satz {
 		return getFeldSparte().isPresent();
 	}
 
-	/**
-	 * Diese Methode dient als Ersatz fuer die getSparte()- und hasSparte()-
-	 * Implementierung, die durch den Mehrdeutigkeit von "Sparte" in die Irre
-	 * fuehren koennen.
-	 *
-	 * @return Optional.empty() fuer Vor- und Nachsatz, ansonsten Sparte-Feld
-	 * 	       an Byte-Adresse 11
-	 * @since  7.1
-	 */
-	@JsonIgnore
-	public Optional<NumFeld> getFeldSparte() {
+	private Optional<NumFeld> getFeldSparte() {
 		ByteAdresse adresseSparte = ByteAdresse.of(11);
 		if (hasFeld(adresseSparte)) {
 			Feld feld = getFeld(adresseSparte);

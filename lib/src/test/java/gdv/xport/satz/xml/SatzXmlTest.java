@@ -130,7 +130,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
      */
     @Test
     public void testGetSparte() {
-        NumFeld sparte = satz100.getFeldSparte().get();
+        NumFeld sparte = satz100.getSparteFeld();
         assertEquals(3, sparte.getAnzahlBytes());
         assertEquals(11, sparte.getByteAdresse());
         assertEquals("Sparte", sparte.getBezeichnung());
