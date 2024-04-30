@@ -63,4 +63,11 @@ class SatzartenScannerTest {
         }
     }
 
+    @Test
+    void exportAsCSV() throws IOException {
+        File file = new File("target", "satzarten.csv");
+        scanner.exportAsCSV(file);
+        assertTrue(file.exists());
+    }
+
 }

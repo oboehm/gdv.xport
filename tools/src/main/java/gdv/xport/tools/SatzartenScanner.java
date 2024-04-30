@@ -17,6 +17,7 @@
  */
 package gdv.xport.tools;
 
+import com.opencsv.CSVWriter;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -76,6 +77,15 @@ public final class SatzartenScanner {
             }
         }
         log.info("{} Zeilen wurde nach {} geschrieben.", getTableValues().size(), file);
+    }
+
+    public void exportAsCSV(File file) throws IOException {
+        try (CSVWriter writer = new CSVWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
+            List<String[]> lines = getTableValues();
+            for (String[] cells : lines) {
+                writer.writeNext(cells);
+            }
+        }
     }
 
     private List<String[]> getTableValues() throws IOException {
