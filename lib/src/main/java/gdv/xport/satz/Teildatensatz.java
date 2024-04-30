@@ -171,10 +171,10 @@ public class Teildatensatz extends Datensatz {
 
     private void setUpFeld(Feld feld) {
         if (feld.getBezeichnung().startsWith("Satznummernwiederholung")) {
-            feld.setInhalt(this.satznummer.getInhalt());
+            feld.setInhalt(getSatznummer().getInhalt());
         } else if (feld.getBezeichnung().startsWith("Satznummer")) {
             LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(), this);
-            feld.setInhalt(this.satznummer.getInhalt());
+            feld.setInhalt(getSatznummer().getInhalt());
             if (this.getSatznummer().getByteAdresse() >= feld.getByteAdresse()) {
                 this.satznummer = new Satznummer(feld);
             }
