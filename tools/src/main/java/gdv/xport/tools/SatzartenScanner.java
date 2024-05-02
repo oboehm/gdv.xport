@@ -34,7 +34,9 @@ import java.io.PrintWriter;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Der SatzartenScanner liest die Online-Beschreibung der Satzarten, die fuer
@@ -81,12 +83,32 @@ public final class SatzartenScanner {
     }
 
     public void exportAsCSV(File file) throws IOException {
+        List<String[]> lines = getTableValuesWithHeader();
+        List<Map<String, String>> table = toMapList(lines);
         try (CSVWriter writer = new CSVWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
-            List<String[]> lines = getTableValuesWithHeader();
-            for (String[] cells : lines) {
-                writer.writeNext(cells);
+            String[] header = lines.get(0);
+            writer.writeNext(header);
+            for (Map<String, String> cells : table) {
+                String[] values = new String[header.length];
+                for (int i = 0; i < values.length; i++) {
+                    values[i] = cells.get(header[i]);
+                }
+                writer.writeNext(values);
             }
         }
+    }
+
+    private List<Map<String, String>> toMapList(List<String[]> lines) {
+        List<Map<String, String>> mapList = new ArrayList<>();
+        String[] header = lines.get(0);
+        for (String[] cells : lines.subList(1, lines.size())) {
+            Map<String, String> map = new HashMap<>();
+            for (int i = 0; i < header.length; i++) {
+                map.put(header[i], cells[i]);
+            }
+            mapList.add(map);
+        }
+        return mapList;
     }
 
     private List<String[]> getTableValues() throws IOException {
