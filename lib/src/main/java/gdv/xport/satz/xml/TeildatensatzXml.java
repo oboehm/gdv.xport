@@ -99,8 +99,10 @@ public final class TeildatensatzXml extends Teildatensatz {
             this.addFeld(feldXml, ByteAdresse.of(byteAddress), referenz);
             byteAddress += feldXml.getAnzahlBytes();
         }
-        updateSatzendeWith(byteAddress, felder);
-        LOG.trace("{} felder set.", this.feldReferenzen.size());
+        if (byteAddress < 257) {
+            updateSatzendeWith(ByteAdresse.of(byteAddress), felder);
+            LOG.trace("{} felder set.", this.feldReferenzen.size());
+        }
     }
 
     private FeldXml getFeld(Map<String, FeldXml> felder, String id) {
@@ -111,7 +113,7 @@ public final class TeildatensatzXml extends Teildatensatz {
         return feldXml;
     }
 
-    private void updateSatzendeWith(final int startAddress, final Map<String, FeldXml> felder) {
+    private void updateSatzendeWith(final ByteAdresse startAddress, final Map<String, FeldXml> felder) {
         List<Feld> endeDatenfelder = new ArrayList<>();
         List<FeldReferenz> referenzen = this.satzende.getFeldReferenzen();
         int endAddress = 256;
@@ -122,12 +124,12 @@ public final class TeildatensatzXml extends Teildatensatz {
             Feld feld = feldXml.toFeld(ByteAdresse.of(endAddress + 1), referenz, this).mitConfig(getConfig());
             endeDatenfelder.add(feld);
         }
-        int length = endAddress + 1 - startAddress;
+        int length = endAddress + 1 - startAddress.intValue();
         if (length > 0) {
-            Feld leerstelle = new AlphaNumFeld((Bezeichner.LEERSTELLEN), endAddress + 1 - startAddress, startAddress);
+            Feld leerstelle = new AlphaNumFeld((Bezeichner.LEERSTELLEN), length, startAddress);
             for (int i = 2; this.hasFeld(leerstelle.getBezeichner()); i++) {
                 Bezeichner bezeichnerLeerstelleNeu = new Bezeichner(Bezeichner.LEERSTELLEN.getName(), Bezeichner.LEERSTELLEN.getTechnischerName() + i);
-                leerstelle = new AlphaNumFeld(bezeichnerLeerstelleNeu, endAddress + 1 - startAddress, startAddress);
+                leerstelle = new AlphaNumFeld(bezeichnerLeerstelleNeu, length, startAddress);
             }
             endeDatenfelder.add(leerstelle);
         }

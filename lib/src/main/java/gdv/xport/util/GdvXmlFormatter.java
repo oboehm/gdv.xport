@@ -234,7 +234,8 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         int adresse = 1;
         for (Feld feld : tds.getFelder()) {
             if (adresse < feld.getByteAdresse()) {
-                felder.add(new AlphaNumFeld(Bezeichner.of("Leerstellen"), feld.getByteAdresse()-adresse, adresse));
+                felder.add(new AlphaNumFeld(Bezeichner.of("Leerstellen"), feld.getByteAdresse() - adresse,
+                        ByteAdresse.of(adresse)));
                 LOG.info("An Adresse {} wurde {} mit Leerstellen aufgefuellt.", adresse, tds.toShortString());
             }
             felder.add(feld);
@@ -273,13 +274,14 @@ public final class GdvXmlFormatter extends AbstractFormatter {
 
     private void writeSparte(Satz satz) throws XMLStreamException {
         if (satz.getSatzTyp().hasSparteInGdvSatzartName()) {
-            Feld sparteFeld = new Feld(Bezeichner.SPARTE, 11, satz.getSatzTyp().getSparteMitArt(), Align.LEFT);
+            Feld sparteFeld = new Feld(Bezeichner.SPARTE, ByteAdresse.of(11), satz.getSatzTyp().getSparteMitArt(),
+                    Align.LEFT);
             writeReferenz(sparteFeld);
         }
     }
 
     private void writeSatznummer(Satz satz) throws XMLStreamException {
-        Feld satznummer = new Feld(Bezeichner.SATZNUMMER, 256, satz.getGdvSatzartNummer(), Align.LEFT);
+        Feld satznummer = new Feld(Bezeichner.SATZNUMMER, ByteAdresse.of(256), satz.getGdvSatzartNummer(), Align.LEFT);
         writeReferenz(satznummer);
     }
 
