@@ -73,6 +73,13 @@ class SatzartenScannerTest {
         assertTrue(file.exists());
     }
 
+    @Test
+    void exportSatznummernAsCSV() throws IOException {
+        File file = createFile("satznummern.csv");
+        scanner.exportSatznummernAsCSV(file);
+        assertTrue(file.exists());
+    }
+
     private static File createFile(String filename) {
         File file = new File("target", filename);
         if (file.delete()) {

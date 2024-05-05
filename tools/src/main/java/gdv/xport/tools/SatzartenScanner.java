@@ -18,6 +18,9 @@
 package gdv.xport.tools;
 
 import com.opencsv.CSVWriter;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -65,7 +68,7 @@ public final class SatzartenScanner {
     public List<SatzTyp> getSatzarten() throws IOException {
         List<SatzTyp> satzarten = new ArrayList<>();
         for (Satzart art : getSatzartTable()) {
-            satzarten.add(art.getArt());
+            satzarten.add(art.getTyp());
         }
         return satzarten;
     }
@@ -74,7 +77,7 @@ public final class SatzartenScanner {
         try (PrintWriter writer = new PrintWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
             List<Satzart> lines = getSatzartTable();
             for (Satzart satzart : lines) {
-                writer.printf("%s=%s\n", satzart.art, satzart.bezeichnung);
+                writer.printf("%s=%s\n", satzart.typ, satzart.bezeichnung);
             }
             log.info("{} Zeilen wurde nach {} geschrieben.", lines.size(), file);
         }
@@ -87,11 +90,30 @@ public final class SatzartenScanner {
             writer.writeNext(header);
             for (Satzart satzart : table) {
                 String[] values = new String[4];
-                values[0] = satzart.getArt().toString();
+                values[0] = satzart.getTyp().toString();
                 values[1] = satzart.getBezeichnung();
                 values[2] = satzart.getVersionsnummer();
                 values[3] = satzart.getHref().toString();
                 writer.writeNext(values);
+            }
+        }
+    }
+
+    public void exportSatznummernAsCSV(File file) throws IOException {
+        List<Satzart> table = getSatzartTable();
+        try (CSVWriter writer = new CSVWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
+            String[] header = { "Satztyp","Satzart","Satznummer","ByteAdr" };
+            writer.writeNext(header);
+            for (Satzart satzart : table) {
+                Satz satz = XmlService.getInstance().getSatzart(satzart.getTyp());
+                String[] values = new String[header.length];
+                values[0] = satzart.getTyp().toString();
+                values[1] = Integer.toString(satzart.getTyp().getSatzart());
+                for (Teildatensatz tds : satz.getTeildatensaetze()) {
+                    values[2] = tds.getSatznummer().getInhalt();
+                    values[3] = Integer.toString(tds.getSatznummer().getByteAdresse());
+                    writer.writeNext(values);
+                }
             }
         }
     }
@@ -122,13 +144,13 @@ public final class SatzartenScanner {
 
     private static class Satzart {
 
-        private final SatzTyp art;
+        private final SatzTyp typ;
         private final String bezeichnung;
         private final String versionsnummer;
         private final URI href;
 
-        public Satzart(SatzTyp art, String bezeichnung, String versionsnummer, URI href) {
-            this.art = art;
+        public Satzart(SatzTyp typ, String bezeichnung, String versionsnummer, URI href) {
+            this.typ = typ;
             this.bezeichnung = bezeichnung;
             this.versionsnummer = versionsnummer;
             this.href = href;
@@ -150,8 +172,8 @@ public final class SatzartenScanner {
             return bezeichnung;
         }
 
-        public SatzTyp getArt() {
-            return art;
+        public SatzTyp getTyp() {
+            return typ;
         }
 
     }
