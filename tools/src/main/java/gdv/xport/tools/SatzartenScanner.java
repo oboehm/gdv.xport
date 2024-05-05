@@ -64,20 +64,20 @@ public final class SatzartenScanner {
 
     public List<SatzTyp> getSatzarten() throws IOException {
         List<SatzTyp> satzarten = new ArrayList<>();
-        for (String[] values : getTableValues()) {
-            satzarten.add(SatzTyp.of(values[0]));
+        for (Satzart art : getSatzartTable()) {
+            satzarten.add(art.getArt());
         }
         return satzarten;
     }
 
     public void exportAsProperties(File file) throws IOException {
         try (PrintWriter writer = new PrintWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
-            List<String[]> lines = getTableValues();
-            for (String[] value : lines) {
-                writer.printf("%s=%s\n", value[0], value[1]);
+            List<Satzart> lines = getSatzartTable();
+            for (Satzart satzart : lines) {
+                writer.printf("%s=%s\n", satzart.art, satzart.bezeichnung);
             }
+            log.info("{} Zeilen wurde nach {} geschrieben.", lines.size(), file);
         }
-        log.info("{} Zeilen wurde nach {} geschrieben.", getTableValuesWithHeader().size(), file);
     }
 
     public void exportAsCSV(File file) throws IOException {
@@ -94,43 +94,6 @@ public final class SatzartenScanner {
                 writer.writeNext(values);
             }
         }
-    }
-
-    private List<String[]> getTableValues() throws IOException {
-        List<String[]> lines = getTableValuesWithHeader();
-        return lines.subList(1, lines.size() - 1);
-    }
-
-    private List<String[]> getTableValuesWithHeader() throws IOException {
-        List<String[]> satzarten = new ArrayList<>();
-        Document doc = Jsoup.connect(uri.toString()).get();
-        Element table = doc.selectXpath("/html/body/table/tbody/tr/td[3]/table[3]").get(0);
-        Elements rows = table.select("tr");
-        satzarten.add(parseHead(rows.get(1)));
-        for (int i = 2; i < rows.size(); i++) {
-            String[] values = parseRow(rows.get(i));
-            satzarten.add(values);
-        }
-        return satzarten;
-    }
-
-    private static String[] parseHead(Element tr) {
-        String[] values = parseRow(tr);
-        values[3] = "href";
-        return values;
-    }
-
-    private static String[] parseRow(Element tr) {
-        String[] values = new String[4];
-        Elements td = tr.select("td");
-        for (int j = 0; j < 3; j++) {
-            values[j] = td.get(j).text();
-        }
-        Node node = td.get(0).childNodes().get(0);
-        if (node instanceof Element) {
-            values[3] = node.attr("href");
-        }
-        return values;
     }
 
     private List<Satzart> getSatzartTable() throws IOException {
