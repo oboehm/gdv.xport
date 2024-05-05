@@ -34,9 +34,7 @@ import java.io.PrintWriter;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Der SatzartenScanner liest die Online-Beschreibung der Satzarten, die fuer
@@ -83,32 +81,19 @@ public final class SatzartenScanner {
     }
 
     public void exportAsCSV(File file) throws IOException {
-        List<String[]> lines = getTableValuesWithHeader();
-        List<Map<String, String>> table = toMapList(lines);
+        List<Satzart> table = getSatzartTable();
         try (CSVWriter writer = new CSVWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
-            String[] header = lines.get(0);
+            String[] header = { "Satzart","Satzbezeichnung","Versionsnummer","href" };
             writer.writeNext(header);
-            for (Map<String, String> cells : table) {
-                String[] values = new String[header.length];
-                for (int i = 0; i < values.length; i++) {
-                    values[i] = cells.get(header[i]);
-                }
+            for (Satzart satzart : table) {
+                String[] values = new String[4];
+                values[0] = satzart.getArt().toString();
+                values[1] = satzart.getBezeichnung();
+                values[2] = satzart.getVersionsnummer();
+                values[3] = satzart.getHref().toString();
                 writer.writeNext(values);
             }
         }
-    }
-
-    private List<Map<String, String>> toMapList(List<String[]> lines) {
-        List<Map<String, String>> mapList = new ArrayList<>();
-        String[] header = lines.get(0);
-        for (String[] cells : lines.subList(1, lines.size())) {
-            Map<String, String> map = new HashMap<>();
-            for (int i = 0; i < header.length; i++) {
-                map.put(header[i], cells[i]);
-            }
-            mapList.add(map);
-        }
-        return mapList;
     }
 
     private List<String[]> getTableValues() throws IOException {
@@ -146,6 +131,66 @@ public final class SatzartenScanner {
             values[3] = node.attr("href");
         }
         return values;
+    }
+
+    private List<Satzart> getSatzartTable() throws IOException {
+        List<Satzart> satzarten = new ArrayList<>();
+        Document doc = Jsoup.connect(uri.toString()).get();
+        Element table = doc.selectXpath("/html/body/table/tbody/tr/td[3]/table[3]").get(0);
+        Elements rows = table.select("tr");
+        for (int i = 2; i < rows.size(); i++) {
+            Satzart satzart = parseSatzart(rows.get(i));
+            satzarten.add(satzart);
+        }
+        return satzarten;
+    }
+
+    private Satzart parseSatzart(Element tr) {
+        Elements td = tr.select("td");
+        Node node = td.get(0).childNodes().get(0);
+        URI hrefURI = URI.create(uri + "/..").normalize();
+        if (node instanceof Element) {
+            hrefURI = URI.create(hrefURI + node.attr("href"));
+        }
+        return Satzart.of(td.get(0).text(), td.get(1).text(), td.get(2).text(), hrefURI);
+    }
+
+
+
+    private static class Satzart {
+
+        private final SatzTyp art;
+        private final String bezeichnung;
+        private final String versionsnummer;
+        private final URI href;
+
+        public Satzart(SatzTyp art, String bezeichnung, String versionsnummer, URI href) {
+            this.art = art;
+            this.bezeichnung = bezeichnung;
+            this.versionsnummer = versionsnummer;
+            this.href = href;
+        }
+
+        public static Satzart of(String art, String bezeichnung, String versionsnummer, URI href) {
+            return new Satzart(SatzTyp.of(art), bezeichnung, versionsnummer, href);
+        }
+
+        public URI getHref() {
+            return href;
+        }
+
+        public String getVersionsnummer() {
+            return versionsnummer;
+        }
+
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+
+        public SatzTyp getArt() {
+            return art;
+        }
+
     }
 
 }
