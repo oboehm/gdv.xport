@@ -171,17 +171,10 @@ public class Datensatz extends Satz {
 	 * @since 0.4
 	 */
 	protected void setUpTeildatensatz(final Teildatensatz tds) {
-		NumFeld sparte = new NumFeld(SPARTE, 3, ByteAdresse.of(11));
-		sparte.setInhalt(getSatzTyp().getSatzart());
-		setUpTeildatensatz(tds, sparte);
-	}
-
-	protected static void setUpTeildatensatz(final Teildatensatz tds, final NumFeld sparte) {
 		if (!tds.hasFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()) && !tds.getFeldInhalt(Kopffelder1bis7.SATZART.getBezeichner())
 				.equals("9999")) {
 			setUp(tds, Kopffelder1bis7.VU_NUMMER.getBezeichner(), Config.getInstance().getVUNr());
 			setUp(tds, Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN));
-			setUp(tds, Kopffelder1bis7.SPARTE.getBezeichner(), sparte);
 			setUp(tds, Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER));
 			setUp(tds, Kopffelder1bis7.FOLGENUMMER.getBezeichner(), new NumFeld(Kopffelder1bis7.FOLGENUMMER));
 			setUp(tds, Kopffelder1bis7.VERMITTLER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERMITTLER));
@@ -189,8 +182,6 @@ public class Datensatz extends Satz {
 				setUp(tds, Bezeichner.SATZNUMMER, new Satznummer(tds.getSatznummer()));
 			}
 			LOG.trace("{} is set up.", tds);
-		} else if (tds.hasFeld(Kopffelder1bis7.SPARTE)) {
-			tds.getFeld(Kopffelder1bis7.SPARTE.getBezeichner()).setInhalt(sparte.getInhalt());
 		}
 	}
 

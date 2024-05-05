@@ -69,7 +69,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
     @Test
     public void testDatensatzSatzTypInt() throws IOException {
         Satz adressteil = new Datensatz(SatzTyp.of("0100"), 5);
-        AlphaNumFeld schluessel = new AlphaNumFeld((Bezeichner.ANREDESCHLUESSEL), 1, 43);
+        AlphaNumFeld schluessel = new AlphaNumFeld((Bezeichner.ANREDESCHLUESSEL), 1, ByteAdresse.of(43));
         schluessel.setInhalt('6');
         adressteil.add(schluessel);
         LOG.info("adressteil=" + adressteil.toShortString());
@@ -82,7 +82,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
     @Test
     public void testSetFeld() {
         Satz ds = new Datensatz(SatzTyp.of("0200"), 2);
-        ds.add(new AlphaNumFeld((Bezeichner.INKASSOART), 1, 43));
+        ds.add(new AlphaNumFeld((Bezeichner.INKASSOART), 1, ByteAdresse.of(43)));
         ds.setFeld(Bezeichner.INKASSOART, "2");
         assertEquals("2", ds.getFeld(Bezeichner.INKASSOART).getInhalt());
     }
@@ -127,7 +127,8 @@ public class DatensatzTest extends AbstractDatensatzTest {
     }
 
     /**
-     * Testfall fuer Issue 13 (https://github.com/oboehm/gdv.xport/issues/13).
+     * Testfall fuer Issue <a href=
+     * "https://github.com/oboehm/gdv.xport/issues/13">#13</a>).
      *
      * @throws IOException the io exception
      */
@@ -203,13 +204,13 @@ public class DatensatzTest extends AbstractDatensatzTest {
 
     @Test
     public void testInitBausparenArt() {
-        checkInitArt(SatzTyp.of("0220.580.01"), Bezeichner.ART1);
+        checkInitArt(SatzTyp.of("0220.580.01"), Bezeichner.ART_580);
     }
 
     @Test
     public void testInitBausparenArt2() {
-        Datensatz satz = checkInitArt(SatzTyp.of("0220.580.2"), Bezeichner.ART1);
-        assertEquals("2", satz.getFeldInhalt(Bezeichner.ART1));
+        Datensatz satz = checkInitArt(SatzTyp.of("0220.580.2"), Bezeichner.ART_580);
+        assertEquals("2", satz.getFeldInhalt(Bezeichner.ART_580));
     }
 
     @Test
@@ -244,6 +245,14 @@ public class DatensatzTest extends AbstractDatensatzTest {
     {
     	Datensatz vor= (Datensatz) SatzRegistry.getInstance().getSatz(SatzTyp.of(1));
     	assertThrows(IllegalArgumentException.class, () -> vor.setSparte(20));
+    }
+
+    @Test
+    public void testSparte() {
+        SatzTyp glas = SatzTyp.of("0210.110");
+        Datensatz ds = new Datensatz(glas, 1);
+        assertEquals(110, ds.getSparte());
+        assertEquals(110, ds.getTeildatensatz(1).getSparte());
     }
 
 }
