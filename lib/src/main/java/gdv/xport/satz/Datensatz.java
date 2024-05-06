@@ -244,11 +244,21 @@ public class Datensatz extends Satz {
 	 * @param x z.B. 70 (Rechtsschutz)
 	 */
 	public void setSparte(final int x) {
-		//this.sparte.setInhalt(x);
+		//validateSparte(x);
 		for (Teildatensatz tds : getTeildatensaetze()) {
 			tds.setSparte(x);
 		}
 	}
+
+//	private void validateSparte(int x) {
+//		if (hasSparte()) {
+//			SatzTyp aktuell = SatzTyp.of(getSatzart(), getSparte());
+//			SatzTyp neu = SatzTyp.of(getSatzart(), x);
+//			if (!aktuell.equals(neu)) {
+//				throw new IllegalArgumentException("Sparte " + x + " passt nicht zu SatzTyp " + aktuell);
+//			}
+//		}
+//	}
 
 	/**
 	 * Liefert den Inhalt des Sparten-Felds an Byte-Adresse 11.
