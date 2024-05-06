@@ -69,7 +69,7 @@ public final class Config implements Serializable {
     public static final String DUMMY_VU_NUMMER = "DUMMY";
     /** Property-Name fuer die VU-Nummer. */
     public static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
-    /** Default-Konfiguration fuer VUVM2018er-Version. */
+    /** Default-Konfiguration fuer akuelle Version. */
     public static final Config DEFAULT = new Config("/gdv/xport/config/default.properties");
     /** Experimentale Konfiguration zum Testen neuer Features. */
     public static final Config EXPERIMENTAL = new Config("/gdv/xport/config/experimental.properties");
