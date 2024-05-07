@@ -38,6 +38,7 @@ import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Der SatzartenScanner liest die Online-Beschreibung der Satzarten, die fuer
@@ -81,6 +82,44 @@ public final class SatzartenScanner {
             }
             log.info("{} Zeilen wurde nach {} geschrieben.", lines.size(), file);
         }
+    }
+
+    public void exportWithSpartenAsProperties(File file) throws IOException {
+        SpartenScanner spartenScanner = new SpartenScanner();
+        List<Integer> sparten = spartenScanner.getSparten();
+        List<Satzart> satzarten = getSatzartTable();
+        for (Satzart satzart : satzarten) {
+            SatzTyp satzTyp = satzart.getTyp();
+            int n = satzTyp.getSatzart();
+            if (n > 1 && n < 9999) {
+                if (satzTyp.getSparte() == 0) {
+                    List<Integer> satzTypSparten = getSatzTypSparten(satzTyp.getSatzart(), satzarten);
+                    List<Integer> remainingSparten = new ArrayList<>(sparten);
+                    remainingSparten.removeAll(satzTypSparten);
+                    satzart.addSparten(remainingSparten);
+                } else {
+                    satzart.addSparte(satzTyp.getSparte());
+                }
+            }
+        }
+        try (PrintWriter writer = new PrintWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
+            for (Satzart satzart : satzarten) {
+                writer.printf("%s=%s\n", satzart.typ,
+                        satzart.getSparten().stream().map(String::valueOf).collect(Collectors.joining(",")));
+            }
+            log.info("{} Zeilen wurde nach {} geschrieben.", satzarten.size(), file);
+        }
+    }
+
+    private List<Integer> getSatzTypSparten(int satzart, List<Satzart> satzarten) {
+        List<Integer> sparten = new ArrayList<>();
+        for (Satzart sa : satzarten) {
+            SatzTyp satzTyp = sa.getTyp();
+            if (satzart == satzTyp.getSatzart()) {
+                sparten.add(satzTyp.getSparte());
+            }
+        }
+        return sparten;
     }
 
     public void exportAsCSV(File file) throws IOException {
@@ -148,6 +187,7 @@ public final class SatzartenScanner {
         private final String bezeichnung;
         private final String versionsnummer;
         private final URI href;
+        private final List<Integer> sparten = new ArrayList<>();
 
         public Satzart(SatzTyp typ, String bezeichnung, String versionsnummer, URI href) {
             this.typ = typ;
@@ -174,6 +214,18 @@ public final class SatzartenScanner {
 
         public SatzTyp getTyp() {
             return typ;
+        }
+
+        public List<Integer> getSparten() {
+            return sparten;
+        }
+
+        public void addSparte(int n) {
+            sparten.add(n);
+        }
+
+        public void addSparten(List<Integer> list) {
+            sparten.addAll(list);
         }
 
     }

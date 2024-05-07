@@ -67,6 +67,13 @@ class SatzartenScannerTest {
     }
 
     @Test
+    void exportWithSpartenAsProperties() throws IOException {
+        File file = createFile("satzarten-sparten.properties");
+        scanner.exportWithSpartenAsProperties(file);
+        assertTrue(file.exists());
+    }
+
+    @Test
     void exportAsCSV() throws IOException {
         File file = createFile("satzarten.csv");
         scanner.exportAsCSV(file);
