@@ -61,35 +61,64 @@ public class SpartenScanner {
 
     public List<Integer> getSparten() throws IOException {
         List<Integer> sparten = new ArrayList<>();
-        for (String[] values : getTableValues()) {
-            sparten.add(Integer.parseInt(values[0]));
+        for (Sparte values : getTableSparte()) {
+            sparten.add(values.getAuspraegung());
         }
         return sparten;
     }
 
     public void exportAsProperties(File file) throws IOException {
+        List<Sparte> values = getTableSparte();
         try (PrintWriter writer = new PrintWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
-            List<String[]> values = getTableValues();
-            for (String[] value : values) {
-                writer.printf("%s=%s\n", value[0], value[1]);
+            for (Sparte s : values) {
+                writer.printf("%s=%s\n", s.auspraegung, s.bedeutung);
             }
         }
-        log.info("{} Zeilen wurde nach {} geschrieben.", getTableValues().size(), file);
+        log.info("{} Zeilen wurde nach {} geschrieben.", values.size(), file);
     }
 
-    private List<String[]> getTableValues() throws IOException {
-        List<String[]> satzarten = new ArrayList<>();
+    private List<Sparte> getTableSparte() throws IOException {
+        List<Sparte> satzarten = new ArrayList<>();
         Document doc = Jsoup.connect(uri.toString()).get();
         Element table = doc.selectXpath("/html/body/table/tbody/tr/td[3]/table[3]").get(0);
         Elements rows = table.select("tr");
         for (int i = 2; i < rows.size(); i++) {
-            String[] values = new String[3];
-            for (int j = 0; j < values.length; j++) {
-                values[j] = rows.get(i).select("td").get(j).text();
-            }
-            satzarten.add(values);
+            Elements td = rows.get(i).select("td");
+            satzarten.add(Sparte.of(td.get(0).text(), td.get(1).text(), td.get(2).text()));
         }
         return satzarten;
+    }
+
+
+
+    private static class Sparte {
+
+        private final int auspraegung;
+        private final String bedeutung;
+        private final String gruppe;
+
+        public Sparte(int auspraegung, String bedeutung, String gruppe) {
+            this.auspraegung = auspraegung;
+            this.bedeutung = bedeutung;
+            this.gruppe = gruppe;
+        }
+
+        public static Sparte of(String auspraegung, String bedeutung, String gruppe) {
+            return new Sparte(Integer.parseInt(auspraegung), bedeutung, gruppe);
+        }
+
+        public int getAuspraegung() {
+            return auspraegung;
+        }
+
+        public String getBedeutung() {
+            return bedeutung;
+        }
+
+        public String getGruppe() {
+            return gruppe;
+        }
+
     }
 
 }
