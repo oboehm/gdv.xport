@@ -238,25 +238,32 @@ public class Datensatz extends Satz {
 
 	/**
 	 * Setzt die Sparte.
+	 * <p>
+	 * Diese Methode ist nur sinnvoll bei Satzarten, die ueberhaupt eine Sparte
+	 * (Produkt) haben (an ByteAdresse 11 mit Laenge 3) wie z.B. "0200", "0100",
+	 * "0210.000", "0400" und nicht nur fuer eine einzige Sparte gedacht sind.
+	 * Passt die Sparte nicht zur Satzart, wird eine {@link IllegalArgumentException}
+	 * geworfen, wenn die Validierung an ist.
+	 * </p>
 	 *
 	 * @param x z.B. 70 (Rechtsschutz)
 	 */
 	public void setSparte(final int x) {
-		//validateSparte(x);
+		validateSparte(x);
 		for (Teildatensatz tds : getTeildatensaetze()) {
 			tds.setSparte(x);
 		}
 	}
 
-//	private void validateSparte(int x) {
-//		if (hasSparte()) {
-//			SatzTyp aktuell = SatzTyp.of(getSatzart(), getSparte());
-//			SatzTyp neu = SatzTyp.of(getSatzart(), x);
-//			if (!aktuell.equals(neu)) {
-//				throw new IllegalArgumentException("Sparte " + x + " passt nicht zu SatzTyp " + aktuell);
-//			}
-//		}
-//	}
+	private void validateSparte(int x) {
+		if (getConfig().getValidateMode() != Config.ValidateMode.OFF && hasSparte()) {
+			SatzTyp aktuell = SatzTyp.of(getSatzart(), getSparte());
+			SatzTyp neu = SatzTyp.of(getSatzart(), x);
+			if (!aktuell.equals(neu)) {
+				throw new IllegalArgumentException("Sparte " + x + " passt nicht zu SatzTyp " + aktuell);
+			}
+		}
+	}
 
 	/**
 	 * Liefert den Inhalt des Sparten-Felds an Byte-Adresse 11.
