@@ -170,11 +170,11 @@ public class Datensatz extends Satz {
 	 * @param tds der (leere) Teildatensatz
 	 * @since 0.4
 	 */
-	protected void setUpTeildatensatz(final Teildatensatz tds) {
-		if (!tds.hasFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()) && !tds.getFeldInhalt(Kopffelder1bis7.SATZART.getBezeichner())
-				.equals("9999")) {
+	private void setUpTeildatensatz(final Teildatensatz tds) {
+		if (!tds.hasFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner())) {
 			setUp(tds, Kopffelder1bis7.VU_NUMMER.getBezeichner(), Config.getInstance().getVUNr());
 			setUp(tds, Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN));
+			setUp(tds, Kopffelder1bis7.SPARTE.getBezeichner(), new NumFeld(SPARTE, 3, ByteAdresse.of(11)));
 			setUp(tds, Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER));
 			setUp(tds, Kopffelder1bis7.FOLGENUMMER.getBezeichner(), new NumFeld(Kopffelder1bis7.FOLGENUMMER));
 			setUp(tds, Kopffelder1bis7.VERMITTLER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERMITTLER));
