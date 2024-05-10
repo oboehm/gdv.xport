@@ -823,12 +823,13 @@ public abstract class Satz implements Cloneable {
      * @return die Sparte
      * @since 0.9
 	 */
-	// TODO: mit v9 entsorgen
+	// TODO: mit v8 IllegalArgumentException werfen
 	@JsonIgnore
 	public int getSparte() {
 		LOG.warn("getSparte() steht ab v9 nur noch im Datensatz zur Verfuegung.");
-		throw new IllegalArgumentException(
-				this.toShortString() + " hat kein Feld \"Sparte\" an Pos 11 in den Kopfdaten!");
+//		throw new IllegalArgumentException(
+//				this.toShortString() + " hat kein Feld \"Sparte\" an Pos 11 in den Kopfdaten!");
+		return 0;
 	}
 
 	/**
