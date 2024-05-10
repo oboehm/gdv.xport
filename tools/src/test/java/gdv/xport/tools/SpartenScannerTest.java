@@ -63,4 +63,11 @@ class SpartenScannerTest {
         }
     }
 
+    @Test
+    void exportAsGruppenProperties() throws IOException {
+        File file = new File("target", "sparten-gruppen.properties");
+        scanner.exportAsGruppenProperties(file);
+        assertTrue(file.exists());
+    }
+
 }

@@ -31,7 +31,10 @@ import java.io.PrintWriter;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Der SpartenScanner liest die Online-Beschreibung der Sparten, die fuer
@@ -75,6 +78,28 @@ public class SpartenScanner {
             }
         }
         log.info("{} Zeilen wurde nach {} geschrieben.", values.size(), file);
+    }
+
+    public void exportAsGruppenProperties(File file) throws IOException {
+        Map<String, List<Integer>> spartenGruppen = getSpartenGruppen();
+        try (PrintWriter writer = new PrintWriter(new FileWriter(file, StandardCharsets.UTF_8))) {
+            for (Map.Entry<String, List<Integer>> entry : spartenGruppen.entrySet()) {
+                writer.printf("%s=%s\n", entry.getKey(),
+                        entry.getValue().stream().map(String::valueOf).collect(Collectors.joining(",")));
+            }
+        }
+        log.info("{} Zeilen wurde nach {} geschrieben.", spartenGruppen.size(), file);
+    }
+
+    public Map<String,List<Integer>> getSpartenGruppen() throws IOException {
+        Map<String, List<Integer>> spartenGruppen = new HashMap<>();
+        List<Sparte> values = getTableSparte();
+        for (Sparte s : values) {
+            List<Integer> sparten = spartenGruppen.getOrDefault(s.gruppe, new ArrayList<>());
+            sparten.add(s.getAuspraegung());
+            spartenGruppen.put(s.gruppe, sparten);
+        }
+        return spartenGruppen;
     }
 
     private List<Sparte> getTableSparte() throws IOException {

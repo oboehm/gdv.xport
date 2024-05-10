@@ -38,6 +38,7 @@ import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -87,18 +88,19 @@ public final class SatzartenScanner {
     public void exportWithSpartenAsProperties(File file) throws IOException {
         SpartenScanner spartenScanner = new SpartenScanner();
         List<Integer> sparten = spartenScanner.getSparten();
+        Map<String, List<Integer>> spartenGruppen = spartenScanner.getSpartenGruppen();
         List<Satzart> satzarten = getSatzartTable();
         for (Satzart satzart : satzarten) {
             SatzTyp satzTyp = satzart.getTyp();
             int n = satzTyp.getSatzart();
             if (n > 1 && n < 9999) {
                 if (satzTyp.getSparte() == 0) {
-                    List<Integer> satzTypSparten = getSatzTypSparten(satzTyp.getSatzart(), satzarten);
+                    List<Integer> satzTypSparten = getSatzTypSparten(satzTyp.getSatzart(), satzarten, spartenGruppen);
                     List<Integer> remainingSparten = new ArrayList<>(sparten);
                     remainingSparten.removeAll(satzTypSparten);
                     satzart.addSparten(remainingSparten);
                 } else {
-                    satzart.addSparte(satzTyp.getSparte());
+                    satzart.addSparten(getSpartenGruppe(satzTyp.getSparte(), spartenGruppen));
                 }
             }
         }
@@ -111,15 +113,24 @@ public final class SatzartenScanner {
         }
     }
 
-    private List<Integer> getSatzTypSparten(int satzart, List<Satzart> satzarten) {
+    private List<Integer> getSatzTypSparten(int satzart, List<Satzart> satzarten, Map<String, List<Integer>> spartenGruppen) {
         List<Integer> sparten = new ArrayList<>();
         for (Satzart sa : satzarten) {
             SatzTyp satzTyp = sa.getTyp();
             if (satzart == satzTyp.getSatzart()) {
-                sparten.add(satzTyp.getSparte());
+                sparten.addAll(getSpartenGruppe(satzTyp.getSparte(), spartenGruppen));
             }
         }
         return sparten;
+    }
+
+    private List<Integer> getSpartenGruppe(int sparte, Map<String, List<Integer>> spartenGruppen) {
+        for (List<Integer> spartenListe : spartenGruppen.values()) {
+            if (spartenListe.contains(sparte)) {
+                return spartenListe;
+            }
+        }
+        return List.of(sparte);
     }
 
     public void exportAsCSV(File file) throws IOException {
@@ -218,10 +229,6 @@ public final class SatzartenScanner {
 
         public List<Integer> getSparten() {
             return sparten;
-        }
-
-        public void addSparte(int n) {
-            sparten.add(n);
         }
 
         public void addSparten(List<Integer> list) {
