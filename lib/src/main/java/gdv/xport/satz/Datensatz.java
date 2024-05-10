@@ -72,14 +72,12 @@ public class Datensatz extends Satz {
 	 * <li>VERMITTLER</li>
 	 * <li>SATZNUMMER</li>
 	 * </ul>
-	 * <p>
-	 * Anm.: Dieser Constructor wird noch von
-	 * 		{@link gdv.xport.util.SatzFactory#register(Class, int)}
-	 * 		verwendet.
-	 * </p>
 	 *
 	 * @param satzart z.B. 100
+	 * @deprecated durch {@link Datensatz(SatzTyp)} ersetzt
+	 * 			   TODO: wird mit v9 entfernt
 	 */
+	@Deprecated
 	public Datensatz(final int satzart) {
 		this(SatzTyp.of(satzart));
 	}

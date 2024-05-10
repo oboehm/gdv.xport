@@ -307,9 +307,9 @@ public class SatzRegistry implements VersionHandler {
     private static Satz newInstance(SatzTyp satztyp, Class<? extends Satz> clazz) {
         try {
             Satz satz = clazz.getDeclaredConstructor().newInstance();
-            if (satz.getSatzart() != satztyp.getSatzart()) {
-                Constructor<? extends Satz> ctor = clazz.getConstructor(int.class);
-                satz = ctor.newInstance(satztyp.getSatzart());
+            if (!satztyp.equals(satz.getSatzTyp())) {
+                Constructor<? extends Satz> ctor = clazz.getConstructor(SatzTyp.class);
+                satz = ctor.newInstance(satztyp);
             }
             return satz;
         } catch (Exception e) {
