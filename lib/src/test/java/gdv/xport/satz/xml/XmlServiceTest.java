@@ -276,6 +276,8 @@ public class XmlServiceTest extends AbstractXmlTest {
         }
     }
 
+    // In manchen TDs gibt es mehrdeutige Feldbezeichnungen. Deswegen wird
+    // ueber die ByteAdressen iteriert.
     private static void checkFeldCloning(Satz orig, Satz copy) {
         for (Teildatensatz origTds : orig.getTeildatensaetze()) {
             for (Feld feld : origTds.getFelder()) {
