@@ -773,7 +773,19 @@ public class SatzTyp {
 		Set<int[]> satzarten = new HashSet<>();
 		Properties properties = loadProperties("satzarten.properties");
 		for (String key : properties.stringPropertyNames()) {
-			satzarten.add(toIntArray(key, "."));
+			int[] parts = toIntArray(key, ".");
+			satzarten.add(parts);
+			if (parts.length > 2) {
+				int art = parts[2];
+				if (art > 10) {
+					int[] copy = Arrays.copyOf(parts, parts.length);
+					copy[2] = art % 10;
+					satzarten.add(copy);
+					copy = Arrays.copyOf(parts, parts.length);
+					copy[2] = art / 10;
+					satzarten.add(copy);
+				}
+			}
 		}
 		return satzarten;
 	}
