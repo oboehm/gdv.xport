@@ -626,6 +626,9 @@ public class SatzTyp {
 				if (Arrays.equals(satzart, args)) {
 					return true;
 				}
+				if ((args.length == 3) && (satzart.length == 4) && Arrays.equals(satzart, 0, 2, args, 0, 2)) {
+					return true;
+				}
 			}
 			return args[0] == 0;
 		}
