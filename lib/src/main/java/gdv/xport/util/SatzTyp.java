@@ -555,7 +555,9 @@ public class SatzTyp {
 				return args;
 			}
 			if (!isInSatzarten(args)) {
-				if ((args.length == 2) || (args[args.length-1] < 0)) {
+				if ((args.length == 1) && (isInSatzarten(args[0], 0))) {
+					LOG.debug("Satzart {} wird als 0{}.000 angesehen.", args[0], args[0]);
+				} else if ((args.length == 2) || (args[args.length-1] < 0)) {
 					LOG.debug("Satzart {} gibt es nicht, wird aber akzeptiert.", Arrays.toString(args));
 				} else {
 					throw new ValidationException("unbekannte Satzart: " + Arrays.toString(args));
@@ -619,7 +621,7 @@ public class SatzTyp {
 			return args;
 		}
 
-		private static boolean isInSatzarten(int[] args) {
+		private static boolean isInSatzarten(int... args) {
 			for (int[] satzart : satzarten) {
 				if (Arrays.equals(satzart, args)) {
 					return true;

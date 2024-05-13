@@ -29,6 +29,7 @@
     <logger name="gdv.xport.DatenpaketTest" level="DEBUG" />
     <logger name="gdv.xport.util" level="INFO" />
     <logger name="gdv.xport.util.AbstractFormatterTest" level="WARN" />
+    <logger name="gdv.xport.util.SatzTyp" level="DEBUG" />
     <logger name="gdv.xport.util.XmlFormatterTest" level="WARN" />
 <!--    <logger name="gdv.xport.event.SatzValidator" level="INFO">-->
 <!--      <AppenderRef ref="ValidatorFile" />-->
