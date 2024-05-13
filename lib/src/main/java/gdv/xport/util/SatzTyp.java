@@ -627,7 +627,7 @@ public class SatzTyp {
 					return true;
 				}
 			}
-			return false;
+			return args[0] == 0;
 		}
 
 		private static void validateLength(int[] args, int max) {
