@@ -19,10 +19,7 @@
 package gdv.xport.satz.xml;
 
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.satz.AbstractSatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
@@ -280,16 +277,19 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     private static void checkFeldCloning(Satz orig, Satz copy) {
-        for (Feld feld : orig.getFelder()) {
-            Feld copyFeld = copy.getFeld(feld.getBezeichner());
-            assertEquals(feld, copyFeld);
-            assertNotSame(feld, copyFeld);
-            String inhalt = feld.getInhalt();
-            feld.setInhalt("9");
-            copyFeld.setInhalt("8");
-            assertNotEquals(feld, copyFeld);
-            feld.setInhalt(inhalt);
-            copyFeld.setInhalt(inhalt);
+        for (Teildatensatz origTds : orig.getTeildatensaetze()) {
+            for (Feld feld : origTds.getFelder()) {
+                Feld copyFeld = copy.getTeildatensatzBySatzNr(origTds.getSatznummer().toInt())
+                        .getFeld(ByteAdresse.of(feld.getByteAdresse()));
+                assertEquals(feld, copyFeld);
+                assertNotSame(feld, copyFeld);
+                String inhalt = feld.getInhalt();
+                feld.setInhalt("9");
+                copyFeld.setInhalt("8");
+                assertNotEquals(feld, copyFeld);
+                feld.setInhalt(inhalt);
+                copyFeld.setInhalt(inhalt);
+            }
         }
     }
 
