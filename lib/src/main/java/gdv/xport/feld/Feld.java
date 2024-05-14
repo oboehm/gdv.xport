@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2021 by Oli B.
+ * Copyright (c) 2009 - 2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,7 +64,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @since 1.0
      */
     public Feld() {
-        this(Bezeichner.UNBEKANNT, 213, 43, Align.LEFT);
+        this(Bezeichner.UNBEKANNT, 213, ByteAdresse.of(43), Align.LEFT);
     }
 
     /**
@@ -78,7 +78,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *            the alignment
      */
     public Feld(final String name, final String s, final Align alignment) {
-        this(Bezeichner.of(name), 1, s, alignment);
+        this(Bezeichner.of(name), ByteAdresse.of(1), s, alignment);
     }
 
     /**
