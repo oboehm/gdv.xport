@@ -26,10 +26,8 @@ import org.apache.logging.log4j.Logger;
 import javax.validation.ValidationException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Der SatzTyp ist eine Repraesentation des Namens einer GDV-Satzdefinition bzw. seiner Bestandteile.
@@ -95,7 +93,7 @@ import java.util.Set;
 public class SatzTyp {
 
 	private static final Logger LOG = LogManager.getLogger(SatzTyp.class);
-	private static final Set<int[]> satzarten = loadSatzarten();
+	private static final Map<String, List<Integer>> satzarten = loadSatzarten();
 	private static final Validator VALIDATOR = new Validator();
 	private final short[] teil;
 
@@ -142,15 +140,33 @@ public class SatzTyp {
 	 * @since 5.0
 	 */
 	public static SatzTyp of(int... args) {
+		return of(toString(args));
+	}
+
+	private static String toString(int... args) {
+		int art = 0;
+		if (args.length > 2) {
+			art = args[2];
+			if (((args[0] == 220) || (args[0] == 221)) && (args[1] == 10)) {
+				if ((art == 1) || (art == 3)) {
+					art = 13;
+				} else if ((art == 4) || (art == 8)) {
+					art = 48;
+				}
+			} else if ((args[0] == 220) && (args[1] == 580) && (art == 0)) {
+				art = 1;
+			}
+		}
 		switch(args.length) {
 			case 1:
-				return of(String.format("%04d", args[0]));
+				return String.format("%04d", args[0]);
 			case 2:
-				return of(String.format("%04d.%03d", args[0], args[1]));
+				return String.format("%04d.%03d", args[0], args[1]);
 			case 3:
-				return of(String.format("%04d.%03d.%d", args[0], args[1], args[2]));
+				String s = String.format("%04d.%03d.%d", args[0], args[1], art);
+				return (s.equals("0220.580.1")) ? "0220.580.01" : s;
 			case 4:
-				return of(String.format("%04d.%03d.%d.%d", args[0], args[1], args[2], args[3]));
+				return String.format("%04d.%03d.%d.%d", args[0], args[1], art, args[3]);
 			default:
 				throw new IllegalArgumentException("1 - 4 arguments expected, not " + args.length);
 		}
@@ -563,71 +579,21 @@ public class SatzTyp {
 					throw new ValidationException("unbekannte Satzart: " + Arrays.toString(args));
 				}
 			}
-//			switch(args[0]) {
-//				case 1:
-//				case 9999:
-//					validateLength(args, 1);
-//					break;
-//				case 52:
-//				case 100:
-//				case 102:
-//				case 200:
-//				case 202:
-//				case 210:
-//        case 211:
-//        case 212:
-//        case 222:
-//        case 225:
-//				case 230:
-//        case 250:
-//        case 251:
-//				case 260:
-//				case 270:
-//				case 280:
-//				case 291:
-//				case 292:
-//				case 293:
-//				case 294:
-//				case 295:
-//				case 300:
-//				case 342:
-//				case 350:
-//				case 352:
-//				case 362:
-//				case 372:
-//				case 382:
-//				case 390:
-//				case 392:
-//				case 400:
-//				case 410:
-//				case 420:
-//				case 430:
-//				case 450:
-//				case 500:
-//				case 550:
-//				case 600:
-//				case 9950:
-//				case 9951:
-//				case 9952:
-//					validateLength(args, 2);
-//					break;
-//				case 220:
-//					validateSatzart0220(args);
-//					break;
-//        case 221:
-//          validateSatzart0221(args);
-//          break;
-//			}
 			return args;
 		}
 
 		private static boolean isInSatzarten(int... args) {
-			for (int[] satzart : satzarten) {
-				if (Arrays.equals(satzart, args)) {
+			String sa = SatzTyp.toString(args);
+			for (Map.Entry<String, List<Integer>> entry : satzarten.entrySet()) {
+				String key = entry.getKey();
+				if (key.equals(sa)) {
 					return true;
 				}
-				if ((args.length == 3) && (satzart.length == 4) && Arrays.equals(satzart, 0, 2, args, 0, 2)) {
-					return true;
+				if ((args.length == 3) && (key.length() > 11)) {
+					String shortened = StringUtils.substringBeforeLast(key, ".");
+					if (shortened.equals(sa)) {
+						return true;
+					}
 				}
 			}
 			return args[0] == 0;
@@ -638,74 +604,6 @@ public class SatzTyp {
 				throw new ValidationException("array " + Arrays.toString(args) + ": expected size is 1.." + max);
 			}
 		}
-
-//		private void validateSatzart0220(int[] args) {
-//			if (args.length > 1) {
-//				switch (args[1]) {
-//					case 0:
-//					case 30:
-//					case 40:
-//					case 51:
-//					case 52:
-//					case 53:
-//					case 54:
-//					case 55:
-//					case 59:
-//					case 70:
-//					case 80:
-//					case 110:
-//					case 130:
-//					case 140:
-//					case 170:
-//					case 190:
-//					case 510:
-//					case 550:
-//					case 560:
-//					case 570:
-//					case 684:
-//						validateLength(args, 2);
-//						break;
-//					case 20:
-//					case 580:
-//						validateLength(args, 3);
-//						break;
-//					case 10:
-//						validateLength(args, 4);
-//				}
-//			}
-//		}
-//
-//		private void validateSatzart0221(int[] args) {
-//			if (args.length > 1) {
-//				switch (args[1]) {
-//					case 0:
-//					case 30:
-//					case 40:
-//					case 51:
-//					case 52:
-//					case 53:
-//					case 54:
-//					case 55:
-//					case 59:
-//					case 70:
-//					case 80:
-//					case 110:
-//					case 130:
-//					case 140:
-//					case 170:
-//					case 190:
-//					case 510:
-//					case 550:
-//					case 560:
-//					case 570:
-//					case 684:
-//						validateLength(args, 2);
-//						break;
-//					case 10:
-//						validateLength(args, 4);
-//				}
-//			}
-//		}
 
 		/**
 		 * Der Unterschied zu validate liegt nur in der ausgeloesten Exception.
@@ -772,23 +670,13 @@ public class SatzTyp {
 		return false;
 	}
 
-	private static Set<int[]> loadSatzarten() {
-		Set<int[]> satzarten = new HashSet<>();
+	private static Map<String, List<Integer>> loadSatzarten() {
+		Map<String, List<Integer>> satzarten = new HashMap<>();
 		Properties properties = loadProperties("satzarten.properties");
 		for (String key : properties.stringPropertyNames()) {
-			int[] parts = toIntArray(key, ".");
-			satzarten.add(parts);
-			if (parts.length > 2) {
-				int art = parts[2];
-				if (art > 10) {
-					int[] copy = Arrays.copyOf(parts, parts.length);
-					copy[2] = art % 10;
-					satzarten.add(copy);
-					copy = Arrays.copyOf(parts, parts.length);
-					copy[2] = art / 10;
-					satzarten.add(copy);
-				}
-			}
+			List<Integer> sparten = Arrays.stream(StringUtils.split(properties.getProperty(key), ","))
+					.map(Integer::parseInt).collect(Collectors.toList());
+			satzarten.put(key, sparten);
 		}
 		return satzarten;
 	}
