@@ -140,7 +140,7 @@ public class SatzTyp {
 	 * @since 5.0
 	 */
 	public static SatzTyp of(int... args) {
-		return of(toString(args));
+		return new SatzTyp(args);
 	}
 
 	private static String toString(int... args) {
@@ -161,6 +161,10 @@ public class SatzTyp {
 			case 1:
 				return String.format("%04d", args[0]);
 			case 2:
+				String satzart = String.format("%04d", args[0]);
+				if (satzarten.get(satzart) != null) {
+					return satzart;
+				}
 				return String.format("%04d.%03d", args[0], args[1]);
 			case 3:
 				String s = String.format("%04d.%03d.%d", args[0], args[1], art);
@@ -187,6 +191,14 @@ public class SatzTyp {
 		} catch (NumberFormatException ex)  {
 			throw new IllegalArgumentException("kein Satz-Typ: '" + nr + "'", ex);
 		}
+	}
+
+	private static int[] toIntArray(short[] sa) {
+		int[] ia = new int[sa.length];
+		for (int i = 0; i < sa.length; i++) {
+			ia[i] = sa[i];
+		}
+		return ia;
 	}
 
 	private SatzTyp(int... args) {
@@ -547,6 +559,7 @@ public class SatzTyp {
 	@Override
 	public String toString() {
 		return getGdvSatzartName();
+		//return toString(toIntArray(teil));
 	}
 
 	private void assertTrue(String attribute, boolean condition) {
