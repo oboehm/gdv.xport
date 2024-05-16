@@ -538,8 +538,9 @@ public class SatzTyp {
 		return this.toString().equals(obj.toString());
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Liefert den GDV-Sartzartname gemaess Online-Version bei gdv-online.de zurueck
+	 * (z.B. "0220.040" oder "0220.010.13.1")
 	 *
 	 * @see java.lang.Object#toString()
 	 */
@@ -668,6 +669,22 @@ public class SatzTyp {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Liefert eine Liste aller bekannten Satzarten zurueck, die in der
+	 * GDV-Spezifikation definiert sind.
+	 *
+	 * @return Array mit allen bekannten Satzarten
+	 * @since 7.1
+	 */
+	public static SatzTyp[] values() {
+	  	List<SatzTyp> typen = new ArrayList<>();
+		Set<String> keys = new TreeSet<>(satzarten.keySet());
+		for (String k : keys) {
+			typen.add(SatzTyp.of(k));
+		}
+		return typen.toArray(new SatzTyp[0]);
 	}
 
 	private static Map<String, List<Integer>> loadSatzarten() {

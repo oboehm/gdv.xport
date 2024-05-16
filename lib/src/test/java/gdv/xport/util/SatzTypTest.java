@@ -294,4 +294,10 @@ public class SatzTypTest {
         assertEquals(59, b.getSparte());
     }
 
+    @Test
+    public void testValues() {
+        SatzTyp[] values = SatzTyp.values();
+        assertEquals(161, values.length);
+    }
+
 }
