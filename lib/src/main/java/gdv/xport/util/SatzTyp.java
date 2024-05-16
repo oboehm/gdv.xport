@@ -233,6 +233,21 @@ public class SatzTyp {
 	}
 
 	/**
+	 * Satzartzen 0800 bis 0900 sind freie Satzarten.
+	 *
+	 * @return true, falls freie Satzart
+	 * @since 7.1
+	 */
+	public boolean isFreieSatzart() {
+		return isFreiSatzart(getSatzart());
+	}
+
+	private static boolean isFreiSatzart(int satzart) {
+		return satzart >= 800 && satzart <= 900;
+	}
+
+
+	/**
 	 * Gets the satzart.
 	 *
 	 * @return the satzart
@@ -532,7 +547,7 @@ public class SatzTyp {
 	 */
 	@Override
 	public int hashCode() {
-		return toString().hashCode();
+		return getSatzart();
 	}
 
 	/*
@@ -546,6 +561,9 @@ public class SatzTyp {
 		}
 		if (!(obj instanceof SatzTyp)) {
 			return false;
+		}
+		if (isFreieSatzart()) {
+			return getSatzart() == ((SatzTyp) obj).getSatzart();
 		}
 		return this.toString().equals(obj.toString());
 	}
@@ -580,7 +598,7 @@ public class SatzTyp {
 		 */
 		public int[] validate(int[] args) {
 			validateLength(args, 4);
-			if ((800 <= args[0]) && (args[0] <= 900)) {
+			if (isFreiSatzart(args[0])) {
 				LOG.debug("Freie Satzart {} wird nicht weiter untersucht.", args[0]);
 				return args;
 			}

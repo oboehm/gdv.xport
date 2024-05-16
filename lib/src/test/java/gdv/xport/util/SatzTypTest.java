@@ -62,6 +62,13 @@ public class SatzTypTest {
         ObjectTester.assertEquals(satz220, sparte10);
     }
 
+    @Test
+    public void testEqualsFreieSatzart() {
+        SatzTyp satz820 = SatzTyp.of(820);
+        SatzTyp sparte30 = SatzTyp.of(820, 30);
+        ObjectTester.assertEquals(satz820, sparte30);
+    }
+
     /**
      * Test to string.
      */
