@@ -18,9 +18,13 @@
 
 package gdv.xport.util;
 
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import patterntesting.runtime.junit.ObjectTester;
 
+import java.util.List;
+
+import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.*;
 
 /**
@@ -78,6 +82,7 @@ public class SatzTypTest {
         assertEquals("0210.050", SatzTyp.of(210, 50).toString());
         assertEquals("0220.010.0", SatzTyp.of(220, 10, 0).toString());
         assertEquals("0220.010.6.1", SatzTyp.of(220, 10, 6, 1).toString());
+        assertEquals("0220.080", SatzTyp.of(220, 81).toString());
         for (SatzTyp satzTyp : SatzTyp.values()) {
             assertEquals(satzTyp.getGdvSatzartName(), satzTyp.toString());
         }
@@ -308,6 +313,13 @@ public class SatzTypTest {
     public void testValues() {
         SatzTyp[] values = SatzTyp.values();
         assertEquals(161, values.length);
+    }
+
+    @Test
+    public void testGetErlaubteSparten() {
+        SatzTyp kfz = SatzTyp.of("0210.050");
+        List<Integer> erlaubteSparten = kfz.getErlaubteSparten();
+        MatcherAssert.assertThat(erlaubteSparten, contains(50,51,52,53,54,55,59));
     }
 
 }

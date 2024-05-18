@@ -124,18 +124,14 @@ public class SatzTyp {
 	 * @since 5.0
 	 */
 	public static SatzTyp of(String nr)  {
-		return of(nr, ".");
-	}
-
-	private static SatzTyp of(String nr, String separatorChars) {
-		return new SatzTyp(nr, separatorChars);
+		return new SatzTyp(nr);
 	}
 
 	/**
-   * Anhand der übergebenen Zahlen wird der entsprechende SatzTyp aufgebaut.<br>
-   * Es gilt: &lt;satzart&gt;[.&lt;sparte&gt;[.&lt;art&gt;[.&lt;gdvsatzartnummer&gt;]]]
+	 * Anhand der übergebenen Zahlen wird der entsprechende SatzTyp aufgebaut.<br>
+	 * Es gilt: &lt;satzart&gt;[.&lt;sparte&gt;[.&lt;art&gt;[.&lt;gdvsatzartnummer&gt;]]]
 	 *
-   * @param args the args (max. Anzahl 4)
+	 * @param args the args (max. Anzahl 4)
 	 * @return the satz typ
 	 * @since 5.0
 	 */
@@ -176,12 +172,12 @@ public class SatzTyp {
 		}
 	}
 
-	private SatzTyp(String nr, String separatorChars) {
-		this(toIntArray(nr, separatorChars));
+	private SatzTyp(String nr) {
+		this(toIntArray(nr));
 	}
 
-	private static int[] toIntArray(String nr, String separatorChars) {
-		String[] parts = StringUtils.split(nr, separatorChars);
+	private static int[] toIntArray(String nr) {
+		String[] parts = StringUtils.split(nr, ".");
 		int[] array = new int[parts.length];
 		try {
 			for (int i = 0; i < parts.length; i++) {
@@ -191,14 +187,6 @@ public class SatzTyp {
 		} catch (NumberFormatException ex)  {
 			throw new IllegalArgumentException("kein Satz-Typ: '" + nr + "'", ex);
 		}
-	}
-
-	private static int[] toIntArray(short[] sa) {
-		int[] ia = new int[sa.length];
-		for (int i = 0; i < sa.length; i++) {
-			ia[i] = sa[i];
-		}
-		return ia;
 	}
 
 	private SatzTyp(int... args) {
@@ -271,6 +259,16 @@ public class SatzTyp {
 			return teil[1];
 		else
 			return 0;
+	}
+
+	/**
+	 * Manche Satzarten wie "0210.080" koennen auch eine andere Sparte wie
+	 * 81 haben.
+	 *
+	 * @return Liste der erlaubten Sparten
+	 */
+	public List<Integer> getErlaubteSparten() {
+		return satzarten.get(toString());
 	}
 
 	/**
