@@ -161,7 +161,7 @@ public class SatzTyp {
 				if (satzarten.get(satzart) != null) {
 					return satzart;
 				}
-				return String.format("%04d.%03d", args[0], args[1]);
+				return mapSparte(args[0], args[1]);
 			case 3:
 				String s = String.format("%04d.%03d.%d", args[0], args[1], art);
 				return (s.equals("0220.580.1")) ? "0220.580.01" : s;
@@ -170,6 +170,20 @@ public class SatzTyp {
 			default:
 				throw new IllegalArgumentException("1 - 4 arguments expected, not " + args.length);
 		}
+	}
+
+	private static String mapSparte(int satzart, int sparte) {
+		String mapped = String.format("%04d.%03d", satzart, sparte);
+		if (satzarten.get(mapped) != null) {
+			return mapped;
+		}
+		String prefix = String.format("%04d.", satzart);
+		for (Map.Entry<String, List<Integer>> entry : satzarten.entrySet()) {
+			if (entry.getKey().startsWith(prefix) && entry.getValue().contains(sparte)) {
+				return String.format("%04d.%03d", satzart, entry.getValue().get(0));
+			}
+		}
+		return mapped;
 	}
 
 	private SatzTyp(String nr) {
@@ -187,6 +201,14 @@ public class SatzTyp {
 		} catch (NumberFormatException ex)  {
 			throw new IllegalArgumentException("kein Satz-Typ: '" + nr + "'", ex);
 		}
+	}
+
+	private static int[] toIntArray(short[] sa) {
+		int[] array = new int[sa.length];
+		for (int i = 0; i < sa.length; i++) {
+			array[i] = sa[i];
+		}
+		return array;
 	}
 
 	private SatzTyp(int... args) {
@@ -227,10 +249,10 @@ public class SatzTyp {
 	 * @since 7.1
 	 */
 	public boolean isFreieSatzart() {
-		return isFreiSatzart(getSatzart());
+		return isFreieSatzart(getSatzart());
 	}
 
-	private static boolean isFreiSatzart(int satzart) {
+	private static boolean isFreieSatzart(int satzart) {
 		return satzart >= 800 && satzart <= 900;
 	}
 
@@ -574,8 +596,11 @@ public class SatzTyp {
 	 */
 	@Override
 	public String toString() {
-		return getGdvSatzartName();
-		//return toString(toIntArray(teil));
+		//return getGdvSatzartName();
+		if ((getSatzart() == 0) || isFreieSatzart()) {
+			return String.format("%04d", getSatzart());
+		}
+		return toString(toIntArray(teil));
 	}
 
 	private void assertTrue(String attribute, boolean condition) {
@@ -596,7 +621,7 @@ public class SatzTyp {
 		 */
 		public int[] validate(int[] args) {
 			validateLength(args, 4);
-			if (isFreiSatzart(args[0])) {
+			if (isFreieSatzart(args[0])) {
 				LOG.debug("Freie Satzart {} wird nicht weiter untersucht.", args[0]);
 				return args;
 			}

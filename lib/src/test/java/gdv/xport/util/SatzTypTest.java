@@ -83,6 +83,8 @@ public class SatzTypTest {
         assertEquals("0220.010.0", SatzTyp.of(220, 10, 0).toString());
         assertEquals("0220.010.6.1", SatzTyp.of(220, 10, 6, 1).toString());
         assertEquals("0220.080", SatzTyp.of(220, 81).toString());
+        assertEquals("0210.000", SatzTyp.of(210, 299).toString());
+        assertEquals("0800", SatzTyp.of(800).toString());
         for (SatzTyp satzTyp : SatzTyp.values()) {
             assertEquals(satzTyp.getGdvSatzartName(), satzTyp.toString());
         }

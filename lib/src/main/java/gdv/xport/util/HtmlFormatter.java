@@ -179,11 +179,7 @@ public final class HtmlFormatter extends AbstractFormatter {
     private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Satz satz, final int zeile)
             throws XMLStreamException {
         xmlStreamWriter.writeStartElement("h3");
-        /*
-         * @Oli: die Verwendung von "satz.getSatzTyp().getGdvSatzartName()" zeigt die Satzart gemaess
-         *       GDV-online an.
-         */
-        xmlStreamWriter.writeCharacters("Satzart " + satz.getSatzTyp().getGdvSatzartName() + " (" + satz.getClass().getSimpleName() + ")");
+        xmlStreamWriter.writeCharacters("Satzart " + satz.getSatzTyp() + " (" + satz.getClass().getSimpleName() + ")");
         int n = zeile;
         for (Teildatensatz teildatensatz : satz.getTeildatensaetze()) {
             writeDetailsTo(xmlStreamWriter, teildatensatz, n);
