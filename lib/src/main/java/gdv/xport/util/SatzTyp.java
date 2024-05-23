@@ -556,9 +556,11 @@ public class SatzTyp {
    * "0220.000"
    *
    * @return true, if successful
+   * @deprecated wird nicht benoetigt, da am Namen erkennbar (TODO: wird mit v8 entfernt)
    */
+  @Deprecated
   public boolean hasSparteInGdvSatzartName() {
-    return StringUtils.split(this.getGdvSatzartName(), '.').length > 1;
+    return StringUtils.split(this.toString(), '.').length > 1;
   }
 
 	/*

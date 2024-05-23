@@ -104,6 +104,13 @@ public class SatzTypTest {
     }
 
     @Test
+    public void testHasSparte() {
+        assertTrue(SatzTyp.of("0220.000").hasSparte());
+        assertTrue(SatzTyp.of(220).hasSparte());
+        assertFalse(SatzTyp.of(1).hasSparte());
+    }
+
+    @Test
     public void testGetSparte() {
         assertEquals(50, SatzTyp.of("0210.050").getSparte());
         assertEquals(0, SatzTyp.of("0300").getSparte());
@@ -122,7 +129,7 @@ public class SatzTypTest {
      * eigentlich SatzTyp "0220.010.13.1" gemeint.
      */
     @Test
-    public void tesetOfWagnisartLeben() {
+    public void testOfWagnisartLeben() {
         assertEquals(SatzTyp.of("0220.010.13.1"), SatzTyp.of("0220.010.13"));
     }
 

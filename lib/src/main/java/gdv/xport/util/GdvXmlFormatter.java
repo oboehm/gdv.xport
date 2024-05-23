@@ -273,7 +273,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     }
 
     private void writeSparte(Satz satz) throws XMLStreamException {
-        if (satz.getSatzTyp().hasSparteInGdvSatzartName()) {
+        if (satz.getSatzTyp().hasSparte()) {
             Feld sparteFeld = new Feld(Bezeichner.SPARTE, ByteAdresse.of(11), satz.getSatzTyp().getSparteMitArt(),
                     Align.LEFT);
             writeReferenz(sparteFeld);

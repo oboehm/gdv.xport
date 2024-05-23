@@ -120,6 +120,16 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
         assertEquals(bausparen, generated.getSatzTyp());
     }
 
+    @Test
+    public void testVertragsspefischerTeil() throws IOException, XMLStreamException {
+        SatzTyp satzTyp = SatzTyp.of("300");
+        Satz satz = XmlService.getInstance().getSatzart(satzTyp);
+        satz.setFeld(Bezeichner.SPARTE, 10);
+        File target = new File(XML_DIR, "satz0300.xml");
+        SatzXml generated = formatSatz(satz, target);
+        assertEquals(satzTyp, generated.getSatzTyp());
+    }
+
     private static SatzXml formatSatz(Satz adressteil, File output) throws IOException, XMLStreamException {
         formatTo(output, adressteil);
         SatzXml generated = SatzXml.of(output);
