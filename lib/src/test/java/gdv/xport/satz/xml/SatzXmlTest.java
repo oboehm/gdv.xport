@@ -386,6 +386,14 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     }
 
     @Test
+    public void testSatz300() throws XMLStreamException, IOException {
+        SatzXml satz300 = SatzXml.of("Satz0300.xml");
+        assertEquals(SatzTyp.of("0300"), satz300.getSatzTyp());
+        assertEquals(300, satz300.getSatzart());
+        assertEquals(10, satz300.getSparte());
+    }
+
+    @Test
     public void testCopyCtor() throws XMLStreamException {
         SatzXml orig = getSatz("Satz0220.010.0.xml");
         SatzXml copy = new SatzXml(orig);

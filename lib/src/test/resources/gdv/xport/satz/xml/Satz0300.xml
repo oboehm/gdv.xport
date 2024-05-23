@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<service>
+    <info>
+        <stand>(c)reated by gdv-xport at 2024-05-23</stand>
+    </info>
+    <satzarten>
+        <!-- Satzart 0300 -->
+        <satzart>
+            <kennzeichnung>
+                <feldreferenz referenz="001-004-Satzart-Numerisch">
+                    <name>Satzart</name>
+                    <technischerName>Satzart</technischerName>
+                    <auspraegung>0300</auspraegung>
+                </feldreferenz>
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
+                    <name>Satznummer</name>
+                    <technischerName>SatzNr</technischerName>
+                </feldreferenz>
+            </kennzeichnung>
+            <version>1.5</version>
+            <!-- Teildatensatz 1 Satzart 0300 -->
+            <satzanfang teilsatz="1"/>
+            <!-- NumFeld Satzart (1-4) -->
+            <feldreferenz referenz="001-004-Satzart-Numerisch">
+                <name>Satzart</name>
+                <technischerName>Satzart</technischerName>
+                <auspraegung>0300</auspraegung>
+            </feldreferenz>
+            <!-- AlphaNumFeld VuNr (5-9) -->
+            <feldreferenz referenz="005-009-VuNr-Alphanumerisch">
+                <name>VU-Nummer</name>
+                <technischerName>VuNr</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld Buendelungskennzeichen (10-10) -->
+            <feldreferenz referenz="010-010-Buendelungskennzeichen-Alphanumerisch">
+                <name>Bündelungskennzeichen</name>
+                <technischerName>Buendelungskennzeichen</technischerName>
+            </feldreferenz>
+            <!-- NumFeld Sparte (11-13) -->
+            <feldreferenz referenz="011-013-Sparte-Numerisch">
+                <name>Sparte</name>
+                <technischerName>Sparte</technischerName>
+                <auspraegung>010</auspraegung>
+            </feldreferenz>
+            <!-- AlphaNumFeld VsNr (14-30) -->
+            <feldreferenz referenz="014-030-VsNr-Alphanumerisch">
+                <name>Versicherungsschein-Nummer</name>
+                <technischerName>VsNr</technischerName>
+                <bemerkung>rechtsbuendig</bemerkung>
+            </feldreferenz>
+            <!-- NumFeld FolgeNr (31-32) -->
+            <feldreferenz referenz="031-032-FolgeNr-Numerisch">
+                <name>Folgenummer</name>
+                <technischerName>FolgeNr</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld GeschaeftsstelleVermittler (33-42) -->
+            <feldreferenz referenz="033-042-GeschaeftsstelleVermittler-Alphanumerisch">
+                <name>Geschäftsstelle / Vermittler</name>
+                <technischerName>GeschaeftsstelleVermittler</technischerName>
+            </feldreferenz>
+            <!-- Datum Aenderungsdatum (43-50) -->
+            <feldreferenz referenz="043-050-Aenderungsdatum-Datum">
+                <name>Änderungsdatum</name>
+                <technischerName>Aenderungsdatum</technischerName>
+                <bemerkung>TTMMJJJJ</bemerkung>
+            </feldreferenz>
+            <!-- NumFeld AnteilVersicherersAmVertrag (51-55) -->
+            <feldreferenz referenz="051-055-AnteilVersicherersAmVertrag-Fliesskomma">
+                <name>Anteil des Versicherers am Vertrag</name>
+                <technischerName>AnteilVersicherersAmVertrag</technischerName>
+            </feldreferenz>
+            <!-- NumFeld AnteilVermittlersAmVertrag (56-61) -->
+            <feldreferenz referenz="056-061-AnteilVermittlersAmVertrag-Fliesskomma">
+                <name>Anteil des Vermittlers am Vertrag</name>
+                <technischerName>AnteilVermittlersAmVertrag</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld MitBeteiligtenSelbstabrechnenderVermittler (62-62) -->
+            <feldreferenz referenz="062-062-MitBeteiligtenSelbstabrechnenderVermittler-Alphanumerisch">
+                <name>Mit den Beteiligten selbstabrechnender Vermittler</name>
+                <technischerName>MitBeteiligtenSelbstabrechnenderVermittler</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld Leerstellen (63-74) -->
+            <feldreferenz referenz="063-074-Leerstellen-Alphanumerisch">
+                <name>Leerstellen</name>
+                <technischerName>Leerstellen</technischerName>
+            </feldreferenz>
+            <!-- NumFeld LfdSatzNr (75-76) -->
+            <feldreferenz referenz="075-076-LfdSatzNr-Numerisch">
+                <name>Lfd. Satznummer</name>
+                <technischerName>LfdSatzNr</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld VuNrBeteiligtenGesellschaft (77-81) -->
+            <feldreferenz referenz="077-081-VuNrBeteiligtenGesellschaft-Alphanumerisch">
+                <name>VU-Nr. der beteiligten Gesellschaft</name>
+                <technischerName>VuNrBeteiligtenGesellschaft</technischerName>
+            </feldreferenz>
+            <!-- NumFeld AnteilBeteiligtenGesellschaft (82-86) -->
+            <feldreferenz referenz="082-086-AnteilBeteiligtenGesellschaft-Fliesskomma">
+                <name>Anteil der beteiligten Gesellschaft</name>
+                <technischerName>AnteilBeteiligtenGesellschaft</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld AbrechnungVermittler (87-87) -->
+            <feldreferenz referenz="087-087-AbrechnungVermittler-Alphanumerisch">
+                <name>Abrechnung Vermittler</name>
+                <technischerName>AbrechnungVermittler</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld VermittlerNrAssekuradeur (88-107) -->
+            <feldreferenz referenz="088-107-VermittlerNrAssekuradeur-Alphanumerisch">
+                <name>Vermittler-Nummer Assekuradeur</name>
+                <technischerName>VermittlerNrAssekuradeur</technischerName>
+                <bemerkung>rechtsbuendig</bemerkung>
+            </feldreferenz>
+            <!-- AlphaNumFeld VsNrBeteiligtenGesellschaft (108-124) -->
+            <feldreferenz referenz="108-124-VsNrBeteiligtenGesellschaft-Alphanumerisch">
+                <name>Versicherungsschein-Nummer der beteiligten Gesellschaft</name>
+                <technischerName>VsNrBeteiligtenGesellschaft</technischerName>
+                <bemerkung>rechtsbuendig</bemerkung>
+            </feldreferenz>
+            <!-- AlphaNumFeld Leerstellen2 (125-136) -->
+            <feldreferenz referenz="125-136-Leerstellen2-Alphanumerisch">
+                <name>Leerstellen</name>
+                <technischerName>Leerstellen2</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld VuNrBeteiligtenGesellschaft2 (137-141) -->
+            <feldreferenz referenz="137-141-VuNrBeteiligtenGesellschaft2-Alphanumerisch">
+                <name>VU-Nr. der beteiligten Gesellschaft</name>
+                <technischerName>VuNrBeteiligtenGesellschaft2</technischerName>
+            </feldreferenz>
+            <!-- NumFeld AnteilBeteiligtenGesellschaft2 (142-146) -->
+            <feldreferenz referenz="142-146-AnteilBeteiligtenGesellschaft2-Fliesskomma">
+                <name>Anteil der beteiligten Gesellschaft</name>
+                <technischerName>AnteilBeteiligtenGesellschaft2</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld AbrechnungVermittler2 (147-147) -->
+            <feldreferenz referenz="147-147-AbrechnungVermittler2-Alphanumerisch">
+                <name>Abrechnung Vermittler</name>
+                <technischerName>AbrechnungVermittler2</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld VermittlerNrAssekuradeur2 (148-167) -->
+            <feldreferenz referenz="148-167-VermittlerNrAssekuradeur2-Alphanumerisch">
+                <name>Vermittler-NummerAssekuradeur</name>
+                <technischerName>VermittlerNrAssekuradeur2</technischerName>
+                <bemerkung>rechtsbuendig</bemerkung>
+            </feldreferenz>
+            <!-- AlphaNumFeld VsNrBeteiligtenGesellschaft2 (168-184) -->
+            <feldreferenz referenz="168-184-VsNrBeteiligtenGesellschaft2-Alphanumerisch">
+                <name>Versicherungsschein-Nummer der beteiligten Gesellschaft</name>
+                <technischerName>VsNrBeteiligtenGesellschaft2</technischerName>
+                <bemerkung>rechtsbuendig</bemerkung>
+            </feldreferenz>
+            <!-- AlphaNumFeld Leerstellen3 (185-196) -->
+            <feldreferenz referenz="185-196-Leerstellen3-Alphanumerisch">
+                <name>Leerstellen</name>
+                <technischerName>Leerstellen3</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld VuNrBeteiligtenGesellschaft3 (197-201) -->
+            <feldreferenz referenz="197-201-VuNrBeteiligtenGesellschaft3-Alphanumerisch">
+                <name>VU-Nr. der beteiligten Gesellschaft</name>
+                <technischerName>VuNrBeteiligtenGesellschaft3</technischerName>
+            </feldreferenz>
+            <!-- NumFeld AnteilBeteiligtenGesellschaft3 (202-206) -->
+            <feldreferenz referenz="202-206-AnteilBeteiligtenGesellschaft3-Fliesskomma">
+                <name>Anteil der beteiligten Gesellschaft</name>
+                <technischerName>AnteilBeteiligtenGesellschaft3</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld AbrechnungVermittler3 (207-207) -->
+            <feldreferenz referenz="207-207-AbrechnungVermittler3-Alphanumerisch">
+                <name>Abrechnung Vermittler</name>
+                <technischerName>AbrechnungVermittler3</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld VermittlerNrAssekuradeur3 (208-227) -->
+            <feldreferenz referenz="208-227-VermittlerNrAssekuradeur3-Alphanumerisch">
+                <name>Vermittler-NummerAssekuradeur</name>
+                <technischerName>VermittlerNrAssekuradeur3</technischerName>
+                <bemerkung>rechtsbuendig</bemerkung>
+            </feldreferenz>
+            <!-- AlphaNumFeld VsNrBeteiligtenGesellschaft3 (228-244) -->
+            <feldreferenz referenz="228-244-VsNrBeteiligtenGesellschaft3-Alphanumerisch">
+                <name>Versicherungsschein-Nummer der beteiligten Gesellschaft</name>
+                <technischerName>VsNrBeteiligtenGesellschaft3</technischerName>
+                <bemerkung>rechtsbuendig</bemerkung>
+            </feldreferenz>
+            <!-- AlphaNumFeld Leerstellen4 (245-255) -->
+            <feldreferenz referenz="245-255-Leerstellen4-Alphanumerisch">
+                <name>Leerstellen</name>
+                <technischerName>Leerstellen4</technischerName>
+            </feldreferenz>
+            <!-- NumFeld SatzNr (256-256) -->
+            <feldreferenz referenz="256-256-SatzNr-Numerisch">
+                <name>Satznummer</name>
+                <technischerName>SatzNr</technischerName>
+                <auspraegung>1</auspraegung>
+            </feldreferenz>
+            <satzende/>
+            <!-- Teildatensatz 2 Satzart 0300 -->
+            <satzanfang teilsatz="2"/>
+            <!-- NumFeld Satzart (1-4) -->
+            <feldreferenz referenz="001-004-Satzart-Numerisch">
+                <name>Satzart</name>
+                <technischerName>Satzart</technischerName>
+                <auspraegung>0300</auspraegung>
+            </feldreferenz>
+            <!-- AlphaNumFeld VuNr (5-9) -->
+            <feldreferenz referenz="005-009-VuNr-Alphanumerisch">
+                <name>VU-Nummer</name>
+                <technischerName>VuNr</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld Buendelungskennzeichen (10-10) -->
+            <feldreferenz referenz="010-010-Buendelungskennzeichen-Alphanumerisch">
+                <name>Bündelungskennzeichen</name>
+                <technischerName>Buendelungskennzeichen</technischerName>
+            </feldreferenz>
+            <!-- NumFeld Sparte (11-13) -->
+            <feldreferenz referenz="011-013-Sparte-Numerisch">
+                <name>Sparte</name>
+                <technischerName>Sparte</technischerName>
+                <auspraegung>010</auspraegung>
+            </feldreferenz>
+            <!-- AlphaNumFeld VsNr (14-30) -->
+            <feldreferenz referenz="014-030-VsNr-Alphanumerisch">
+                <name>Versicherungsschein-Nummer</name>
+                <technischerName>VsNr</technischerName>
+                <bemerkung>rechtsbuendig</bemerkung>
+            </feldreferenz>
+            <!-- NumFeld FolgeNr (31-32) -->
+            <feldreferenz referenz="031-032-FolgeNr-Numerisch">
+                <name>Folgenummer</name>
+                <technischerName>FolgeNr</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld GeschaeftsstelleVermittler (33-42) -->
+            <feldreferenz referenz="033-042-GeschaeftsstelleVermittler-Alphanumerisch">
+                <name>Geschäftsstelle / Vermittler</name>
+                <technischerName>GeschaeftsstelleVermittler</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld Ordnungsbegriff (43-59) -->
+            <feldreferenz referenz="043-059-Ordnungsbegriff-Alphanumerisch">
+                <name>Ordnungsbegriff</name>
+                <technischerName>Ordnungsbegriff</technischerName>
+            </feldreferenz>
+            <!-- AlphaNumFeld Leerstellen (60-255) -->
+            <feldreferenz referenz="060-255-Leerstellen-Alphanumerisch">
+                <name>Leerstellen</name>
+                <technischerName>Leerstellen</technischerName>
+            </feldreferenz>
+            <!-- NumFeld SatzNr (256-256) -->
+            <feldreferenz referenz="256-256-SatzNr-Numerisch">
+                <name>Satznummer</name>
+                <technischerName>SatzNr</technischerName>
+                <auspraegung>2</auspraegung>
+            </feldreferenz>
+            <satzende/>
+        </satzart>
+    </satzarten>
+    <felder>
+        <feld referenz="001-004-Satzart-Numerisch">
+            <name>Satzart</name>
+            <bytes>4</bytes>
+            <datentyp>Numerisch</datentyp>
+        </feld>
+        <feld referenz="005-009-VuNr-Alphanumerisch">
+            <name>VU-Nummer</name>
+            <bytes>5</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="010-010-Buendelungskennzeichen-Alphanumerisch">
+            <name>Bündelungskennzeichen</name>
+            <bytes>1</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="011-013-Sparte-Numerisch">
+            <name>Sparte</name>
+            <bytes>3</bytes>
+            <datentyp>Numerisch</datentyp>
+        </feld>
+        <feld referenz="014-030-VsNr-Alphanumerisch">
+            <name>Versicherungsschein-Nummer</name>
+            <bytes>17</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="031-032-FolgeNr-Numerisch">
+            <name>Folgenummer</name>
+            <bytes>2</bytes>
+            <datentyp>Numerisch</datentyp>
+        </feld>
+        <feld referenz="033-042-GeschaeftsstelleVermittler-Alphanumerisch">
+            <name>Geschäftsstelle / Vermittler</name>
+            <bytes>10</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="043-050-Aenderungsdatum-Datum">
+            <name>Änderungsdatum</name>
+            <bytes>8</bytes>
+            <datentyp>Datum</datentyp>
+        </feld>
+        <feld referenz="043-059-Ordnungsbegriff-Alphanumerisch">
+            <name>Ordnungsbegriff</name>
+            <bytes>17</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="051-055-AnteilVersicherersAmVertrag-Fliesskomma">
+            <name>Anteil des Versicherers am Vertrag</name>
+            <bytes>5</bytes>
+            <datentyp>Fliesskomma</datentyp>
+            <nachkommastellen>3</nachkommastellen>
+        </feld>
+        <feld referenz="056-061-AnteilVermittlersAmVertrag-Fliesskomma">
+            <name>Anteil des Vermittlers am Vertrag</name>
+            <bytes>6</bytes>
+            <datentyp>Fliesskomma</datentyp>
+            <nachkommastellen>3</nachkommastellen>
+        </feld>
+        <feld referenz="060-255-Leerstellen-Alphanumerisch">
+            <name>Leerstellen</name>
+            <bytes>196</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="062-062-MitBeteiligtenSelbstabrechnenderVermittler-Alphanumerisch">
+            <name>Mit den Beteiligten selbstabrechnender Vermittler</name>
+            <bytes>1</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="063-074-Leerstellen-Alphanumerisch">
+            <name>Leerstellen</name>
+            <bytes>12</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="075-076-LfdSatzNr-Numerisch">
+            <name>Lfd. Satznummer</name>
+            <bytes>2</bytes>
+            <datentyp>Numerisch</datentyp>
+        </feld>
+        <feld referenz="077-081-VuNrBeteiligtenGesellschaft-Alphanumerisch">
+            <name>VU-Nr. der beteiligten Gesellschaft</name>
+            <bytes>5</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="082-086-AnteilBeteiligtenGesellschaft-Fliesskomma">
+            <name>Anteil der beteiligten Gesellschaft</name>
+            <bytes>5</bytes>
+            <datentyp>Fliesskomma</datentyp>
+            <nachkommastellen>3</nachkommastellen>
+        </feld>
+        <feld referenz="087-087-AbrechnungVermittler-Alphanumerisch">
+            <name>Abrechnung Vermittler</name>
+            <bytes>1</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="088-107-VermittlerNrAssekuradeur-Alphanumerisch">
+            <name>Vermittler-Nummer Assekuradeur</name>
+            <bytes>20</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="108-124-VsNrBeteiligtenGesellschaft-Alphanumerisch">
+            <name>Versicherungsschein-Nummer der beteiligten Gesellschaft</name>
+            <bytes>17</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="125-136-Leerstellen2-Alphanumerisch">
+            <name>Leerstellen</name>
+            <bytes>12</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="137-141-VuNrBeteiligtenGesellschaft2-Alphanumerisch">
+            <name>VU-Nr. der beteiligten Gesellschaft</name>
+            <bytes>5</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="142-146-AnteilBeteiligtenGesellschaft2-Fliesskomma">
+            <name>Anteil der beteiligten Gesellschaft</name>
+            <bytes>5</bytes>
+            <datentyp>Fliesskomma</datentyp>
+            <nachkommastellen>3</nachkommastellen>
+        </feld>
+        <feld referenz="147-147-AbrechnungVermittler2-Alphanumerisch">
+            <name>Abrechnung Vermittler</name>
+            <bytes>1</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="148-167-VermittlerNrAssekuradeur2-Alphanumerisch">
+            <name>Vermittler-NummerAssekuradeur</name>
+            <bytes>20</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="168-184-VsNrBeteiligtenGesellschaft2-Alphanumerisch">
+            <name>Versicherungsschein-Nummer der beteiligten Gesellschaft</name>
+            <bytes>17</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="185-196-Leerstellen3-Alphanumerisch">
+            <name>Leerstellen</name>
+            <bytes>12</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="197-201-VuNrBeteiligtenGesellschaft3-Alphanumerisch">
+            <name>VU-Nr. der beteiligten Gesellschaft</name>
+            <bytes>5</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="202-206-AnteilBeteiligtenGesellschaft3-Fliesskomma">
+            <name>Anteil der beteiligten Gesellschaft</name>
+            <bytes>5</bytes>
+            <datentyp>Fliesskomma</datentyp>
+            <nachkommastellen>3</nachkommastellen>
+        </feld>
+        <feld referenz="207-207-AbrechnungVermittler3-Alphanumerisch">
+            <name>Abrechnung Vermittler</name>
+            <bytes>1</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="208-227-VermittlerNrAssekuradeur3-Alphanumerisch">
+            <name>Vermittler-NummerAssekuradeur</name>
+            <bytes>20</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="228-244-VsNrBeteiligtenGesellschaft3-Alphanumerisch">
+            <name>Versicherungsschein-Nummer der beteiligten Gesellschaft</name>
+            <bytes>17</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="245-255-Leerstellen4-Alphanumerisch">
+            <name>Leerstellen</name>
+            <bytes>11</bytes>
+            <datentyp>Alphanumerisch</datentyp>
+        </feld>
+        <feld referenz="256-256-SatzNr-Numerisch">
+            <name>Satznummer</name>
+            <bytes>1</bytes>
+            <datentyp>Numerisch</datentyp>
+        </feld>
+    </felder>
+</service>

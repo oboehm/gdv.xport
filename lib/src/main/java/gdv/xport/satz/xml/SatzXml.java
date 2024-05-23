@@ -113,7 +113,7 @@ public class SatzXml extends Datensatz {
       parseFeldreferenz(element, reader);
     }
     else if ("version".equals(name.getLocalPart()))  {
-      parseSatzversion(element, reader);
+      parseSatzversion(reader);
     }
   }
 
@@ -173,31 +173,14 @@ public class SatzXml extends Datensatz {
     }
   }
 
-
-
-  /**
-   * Parses the version
-   * 
-   * @param element the element
-   * @param reader the reader
-   * @throws XMLStreamException the XML stream exception
-   */
-
-  private void parseSatzversion(final StartElement element,
-      final XMLEventReader reader) throws XMLStreamException
-  {
-    if (reader.hasNext())
-    {
-      XMLEvent event = reader.nextEvent();
-      if (event.isCharacters())
-      {
-        this.getSatzversion()
-            .setInhalt(event.asCharacters()
-                .getData());
-      }
+    private void parseSatzversion(XMLEventReader reader) throws XMLStreamException {
+        if (reader.hasNext()) {
+            XMLEvent event = reader.nextEvent();
+            if (event.isCharacters()) {
+                this.getSatzversion().setInhalt(event.asCharacters().getData());
+            }
+        }
     }
-
-  }
 
     /**
      * Verwendet die uebergebene Map, um die Teildatensaetze um fehlende
@@ -211,25 +194,14 @@ public class SatzXml extends Datensatz {
             TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(n);
             tdsXml.updateWith(felder);
             updateSparte(tdsXml);
-            //updateSatznummer(n, tdsXml);
         }
     }
 
     private void updateSparte(TeildatensatzXml tdsXml) {
-        if (tdsXml.hasSparte()) {
+        if (tdsXml.hasSparte() && tdsXml.getSparte() == 0) {
             tdsXml.setSparte(getSatzTyp().getSparte());
         }
     }
-
-//    private void updateSatznummer(int n, TeildatensatzXml tdsXml) {
-//        if (tdsXml.hasFeld(Bezeichner.SATZNUMMER) || tdsXml.hasFeld(Bezeichner.SATZ_NR_2)) {
-//            Feld feld = tdsXml.getFeld(Bezeichner.SATZNUMMER);
-//            Zeichen satznr = new Zeichen(feld.getBezeichner(), feld.getByteAdresse(), Character.forDigit(n, 10));
-//            tdsXml.setSatznummer(satznr);
-//            tdsXml.remove(feld);
-//            tdsXml.add(satznr);
-//        }
-//    }
 
     /**
      * Liefert eine Liste der unterstuetzten Satz-Typen. Dies ist vor allem fuer
