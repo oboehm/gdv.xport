@@ -96,24 +96,6 @@ public class SatzTyp {
 	private static final Validator VALIDATOR = new Validator();
 	private final short[] teil;
 
-//  // Stand: seit Release 01.07.2013
-//  private static final int[] spartenIdentischZu_000 = { 60, 63, 65, 69, 160, 161, 162, 169, 233,
-//      240, 241, 242, 243, 249, 250, 251, 252, 290, 291, 293, 294, 296, 299, 630, 650 };
-//
-//  // Stand: seit Release 01.07.2013
-//  private static final int[] spartenIdentischZu_080 =
-//      { 80, 81, 82, 83, 89, 90, 99, 100, 109, 120, 123, 124, 150, 210, 230, 231 };
-//
-//  // Stand: seit Release 01.07.2013
-//  private static final int[] spartenIdentischZu_170 = { 170, 171, 172, 174, 175, 176, 179, 232 };
-//
-//  // Stand: seit Release 01.07.2013
-//  private static final int[] spartenIdentischZu_190 =
-//      { 180, 181, 182, 183, 184, 185, 189, 190, 191, 192, 193, 194, 197, 199 };
-//
-//  // Stand: seit Release 01.07.2013
-//  private static final int[] spartenIdentischZu_510 = { 241, 244, 510 };
-
 	/**
 	 * Damit laesst sich ein SatzTyp anhand der entsprechenden String-
 	 * Repraesentation erzeugen.
@@ -236,10 +218,6 @@ public class SatzTyp {
 	private static boolean isAllgemeineSatzart(int satzart) {
 		return (satzart == 210) || (satzart == 211) || (satzart == 220) || (satzart == 221);
 	}
-
-//	private boolean isAllgemeineSatzart() {
-//		return isAllgemeineSatzart(getSatzart());
-//	}
 
 	/**
 	 * Satzartzen 0800 bis 0900 sind freie Satzarten.
@@ -516,41 +494,6 @@ public class SatzTyp {
   @Deprecated
   public String getGdvSatzartName() {
 	  return toString();
-//	  StringBuilder buf = new StringBuilder();
-//	  buf.append(String.format("%04d", this.getSatzart()));
-//	  if (this.getSatzart() >= 210 && this.getSatzart() < 300) {
-//		  if (this.hasSparte()) {
-//			  buf.append(".");
-//			  if (isIdentischZu000(this.getSparte()))
-//				  buf.append("000");
-//			  else if (isIdentischZu080(this.getSparte()))
-//				  buf.append("080");
-//			  else if (isIdentischZu170(this.getSparte()))
-//				  buf.append("170");
-//			  else if (isIdentischZu190(this.getSparte()))
-//				  buf.append("190");
-//			  else if (isIdentischZu510(this.getSparte()))
-//				  buf.append("510");
-//			  else if (600 == this.getSparte())
-//				  // lt. GDV-Spartenverseichnis wird Moped wie Sparte 050 behandelt
-//				  buf.append("050");
-//			  else {
-//				  buf.append(this.getSparteAsString());
-//
-//				  if (this.hasArt()) {
-//					  buf.append(".");
-//					  buf.append(this.getArtAsString());
-//				  }
-//				  if (this.hasGdvSatzartNummer()) {
-//					  buf.append(".");
-//					  buf.append(this.getGdvSatzartNummer());
-//				  }
-//			  }
-//		  } else if (isAllgemeineSatzart()) {
-//			  buf.append(".000");
-//		  }
-//	  }
-//	  return buf.toString();
   }
 
   /**
@@ -679,55 +622,6 @@ public class SatzTyp {
 
 	}
 
-//  /**
-//   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-//   * Satzdefinition vom Allgemeinen Satz geliefert werden.
-//   */
-//  private static boolean isIdentischZu000(int sparte) {
-//	  return contains(spartenIdentischZu_000, sparte);
-//  }
-//
-//  /**
-//   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-//   * Satzdefinition vom Feuer-Industrie/Gewerbl. Sachvers. geliefert werden.
-//   */
-//  private static boolean isIdentischZu080(int sparte) {
-//	  return contains(spartenIdentischZu_080, sparte);
-//  }
-//
-//  /**
-//   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-//   * Satzdefinition von Technische Versicherung geliefert werden.
-//   */
-//  private static boolean isIdentischZu170(int sparte) {
-//	  return contains(spartenIdentischZu_170, sparte);
-//  }
-//
-//  /**
-//   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-//   * Satzdefinition von Transport geliefert werden.
-//   */
-//  private static boolean isIdentischZu190(int sparte) {
-//	  return contains(spartenIdentischZu_190, sparte);
-//  }
-//
-//  /**
-//   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-//   * Satzdefinition von Verkehrsservice geliefert werden.
-//   */
-//  private static boolean isIdentischZu510(int sparte) {
-//	  return contains(spartenIdentischZu_510, sparte);
-//  }
-//
-//  	private static boolean contains(int[] variants, int sparte) {
-//	  	for (int x : variants) {
-//			if (x == sparte) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
-
 	/**
 	 * Liefert eine Liste aller bekannten Satzarten zurueck, die in der
 	 * GDV-Spezifikation definiert sind.
@@ -746,7 +640,7 @@ public class SatzTyp {
 
 	private static Map<String, List<Integer>> loadSatzarten() {
 		Map<String, List<Integer>> satzarten = new HashMap<>();
-		Properties properties = loadProperties("satzarten.properties");
+		Properties properties = loadProperties();
 		for (String key : properties.stringPropertyNames()) {
 			List<Integer> sparten = Arrays.stream(StringUtils.split(properties.getProperty(key), ","))
 					.map(Integer::parseInt).collect(Collectors.toList());
@@ -755,13 +649,13 @@ public class SatzTyp {
 		return satzarten;
 	}
 
-	private static Properties loadProperties(String resourceName) {
-		try (InputStream istream = SatzTyp.class.getResourceAsStream(resourceName)) {
+	private static Properties loadProperties() {
+		try (InputStream istream = SatzTyp.class.getResourceAsStream("satzarten.properties")) {
 			Properties properties = new Properties();
 			properties.load(istream);
 			return properties;
 		} catch (IOException ex) {
-			throw new IllegalArgumentException("Resource '" + resourceName + "' nicht gefunden", ex);
+			throw new IllegalArgumentException("Resource 'satzarten.properties' nicht gefunden", ex);
 		}
 	}
 
