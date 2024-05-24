@@ -34,7 +34,6 @@ import java.util.stream.Collectors;
  * <p>
  * Der Aufbau des <b>GDV-Satzartnames</b> folgt dem Schema
  * &lt;satzart&gt;[.&lt;sparte&gt;[.&lt;art&gt;[.&lt;gdvsatzartnummer&gt;]]].<br>
- * (siehe auch {{@link #getGdvSatzartName()})
  * </p>
  * <p>
  * Näheres findet sich unter "online-version" z.B. hier (rel 01.12.2023):<br>
@@ -97,23 +96,23 @@ public class SatzTyp {
 	private static final Validator VALIDATOR = new Validator();
 	private final short[] teil;
 
-  // Stand: seit Release 01.07.2013
-  private static final int[] spartenIdentischZu_000 = { 60, 63, 65, 69, 160, 161, 162, 169, 233,
-      240, 241, 242, 243, 249, 250, 251, 252, 290, 291, 293, 294, 296, 299, 630, 650 };
-
-  // Stand: seit Release 01.07.2013
-  private static final int[] spartenIdentischZu_080 =
-      { 80, 81, 82, 83, 89, 90, 99, 100, 109, 120, 123, 124, 150, 210, 230, 231 };
-
-  // Stand: seit Release 01.07.2013
-  private static final int[] spartenIdentischZu_170 = { 170, 171, 172, 174, 175, 176, 179, 232 };
-
-  // Stand: seit Release 01.07.2013
-  private static final int[] spartenIdentischZu_190 =
-      { 180, 181, 182, 183, 184, 185, 189, 190, 191, 192, 193, 194, 197, 199 };
-
-  // Stand: seit Release 01.07.2013
-  private static final int[] spartenIdentischZu_510 = { 241, 244, 510 };
+//  // Stand: seit Release 01.07.2013
+//  private static final int[] spartenIdentischZu_000 = { 60, 63, 65, 69, 160, 161, 162, 169, 233,
+//      240, 241, 242, 243, 249, 250, 251, 252, 290, 291, 293, 294, 296, 299, 630, 650 };
+//
+//  // Stand: seit Release 01.07.2013
+//  private static final int[] spartenIdentischZu_080 =
+//      { 80, 81, 82, 83, 89, 90, 99, 100, 109, 120, 123, 124, 150, 210, 230, 231 };
+//
+//  // Stand: seit Release 01.07.2013
+//  private static final int[] spartenIdentischZu_170 = { 170, 171, 172, 174, 175, 176, 179, 232 };
+//
+//  // Stand: seit Release 01.07.2013
+//  private static final int[] spartenIdentischZu_190 =
+//      { 180, 181, 182, 183, 184, 185, 189, 190, 191, 192, 193, 194, 197, 199 };
+//
+//  // Stand: seit Release 01.07.2013
+//  private static final int[] spartenIdentischZu_510 = { 241, 244, 510 };
 
 	/**
 	 * Damit laesst sich ein SatzTyp anhand der entsprechenden String-
@@ -238,9 +237,9 @@ public class SatzTyp {
 		return (satzart == 210) || (satzart == 211) || (satzart == 220) || (satzart == 221);
 	}
 
-	private boolean isAllgemeineSatzart() {
-		return isAllgemeineSatzart(getSatzart());
-	}
+//	private boolean isAllgemeineSatzart() {
+//		return isAllgemeineSatzart(getSatzart());
+//	}
 
 	/**
 	 * Satzartzen 0800 bis 0900 sind freie Satzarten.
@@ -310,7 +309,7 @@ public class SatzTyp {
 	 */
 	public String getSparteMitArt() {
 		StringBuilder buf = new StringBuilder();
-		String[] parts = StringUtils.split(this.getGdvSatzartName(), '.');
+		String[] parts = StringUtils.split(this.toString(), '.');
 		if (parts.length > 1) {
 			buf.append(parts[1]);
 			if (this.hasArt()) {
@@ -512,43 +511,46 @@ public class SatzTyp {
    * "0220.010.13.1"
    *
    * @return the GdvSatzartName
+   * @deprecated die Funktion uebernimmt inzwischen toString()
    */
+  @Deprecated
   public String getGdvSatzartName() {
-	  StringBuilder buf = new StringBuilder();
-	  buf.append(String.format("%04d", this.getSatzart()));
-	  if (this.getSatzart() >= 210 && this.getSatzart() < 300) {
-		  if (this.hasSparte()) {
-			  buf.append(".");
-			  if (isIdentischZu000(this.getSparte()))
-				  buf.append("000");
-			  else if (isIdentischZu080(this.getSparte()))
-				  buf.append("080");
-			  else if (isIdentischZu170(this.getSparte()))
-				  buf.append("170");
-			  else if (isIdentischZu190(this.getSparte()))
-				  buf.append("190");
-			  else if (isIdentischZu510(this.getSparte()))
-				  buf.append("510");
-			  else if (600 == this.getSparte())
-				  // lt. GDV-Spartenverseichnis wird Moped wie Sparte 050 behandelt
-				  buf.append("050");
-			  else {
-				  buf.append(this.getSparteAsString());
-
-				  if (this.hasArt()) {
-					  buf.append(".");
-					  buf.append(this.getArtAsString());
-				  }
-				  if (this.hasGdvSatzartNummer()) {
-					  buf.append(".");
-					  buf.append(this.getGdvSatzartNummer());
-				  }
-			  }
-		  } else if (isAllgemeineSatzart()) {
-			  buf.append(".000");
-		  }
-	  }
-	  return buf.toString();
+	  return toString();
+//	  StringBuilder buf = new StringBuilder();
+//	  buf.append(String.format("%04d", this.getSatzart()));
+//	  if (this.getSatzart() >= 210 && this.getSatzart() < 300) {
+//		  if (this.hasSparte()) {
+//			  buf.append(".");
+//			  if (isIdentischZu000(this.getSparte()))
+//				  buf.append("000");
+//			  else if (isIdentischZu080(this.getSparte()))
+//				  buf.append("080");
+//			  else if (isIdentischZu170(this.getSparte()))
+//				  buf.append("170");
+//			  else if (isIdentischZu190(this.getSparte()))
+//				  buf.append("190");
+//			  else if (isIdentischZu510(this.getSparte()))
+//				  buf.append("510");
+//			  else if (600 == this.getSparte())
+//				  // lt. GDV-Spartenverseichnis wird Moped wie Sparte 050 behandelt
+//				  buf.append("050");
+//			  else {
+//				  buf.append(this.getSparteAsString());
+//
+//				  if (this.hasArt()) {
+//					  buf.append(".");
+//					  buf.append(this.getArtAsString());
+//				  }
+//				  if (this.hasGdvSatzartNummer()) {
+//					  buf.append(".");
+//					  buf.append(this.getGdvSatzartNummer());
+//				  }
+//			  }
+//		  } else if (isAllgemeineSatzart()) {
+//			  buf.append(".000");
+//		  }
+//	  }
+//	  return buf.toString();
   }
 
   /**
@@ -598,7 +600,6 @@ public class SatzTyp {
 	 */
 	@Override
 	public String toString() {
-		//return getGdvSatzartName();
 		if ((getSatzart() == 0) || isFreieSatzart()) {
 			return String.format("%04d", getSatzart());
 		}
@@ -622,7 +623,7 @@ public class SatzTyp {
 		 * @return das Array selber (zur Weiterverarbeitung)
 		 */
 		public int[] validate(int[] args) {
-			validateLength(args, 4);
+			validateLength(args);
 			if (isFreieSatzart(args[0])) {
 				LOG.debug("Freie Satzart {} wird nicht weiter untersucht.", args[0]);
 				return args;
@@ -656,9 +657,9 @@ public class SatzTyp {
 			return args[0] == 0;
 		}
 
-		private static void validateLength(int[] args, int max) {
-			if ((args.length < 1) || (args.length > max)) {
-				throw new ValidationException("array " + Arrays.toString(args) + ": expected size is 1.." + max);
+		private static void validateLength(int[] args) {
+			if ((args.length < 1) || (args.length > 4)) {
+				throw new ValidationException("array " + Arrays.toString(args) + ": expected size is 1..4");
 			}
 		}
 
@@ -678,54 +679,54 @@ public class SatzTyp {
 
 	}
 
-  /**
-   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-   * Satzdefinition vom Allgemeinen Satz geliefert werden.
-   */
-  private static boolean isIdentischZu000(int sparte) {
-	  return contains(spartenIdentischZu_000, sparte);
-  }
-
-  /**
-   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-   * Satzdefinition vom Feuer-Industrie/Gewerbl. Sachvers. geliefert werden.
-   */
-  private static boolean isIdentischZu080(int sparte) {
-	  return contains(spartenIdentischZu_080, sparte);
-  }
-
-  /**
-   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-   * Satzdefinition von Technische Versicherung geliefert werden.
-   */
-  private static boolean isIdentischZu170(int sparte) {
-	  return contains(spartenIdentischZu_170, sparte);
-  }
-
-  /**
-   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-   * Satzdefinition von Transport geliefert werden.
-   */
-  private static boolean isIdentischZu190(int sparte) {
-	  return contains(spartenIdentischZu_190, sparte);
-  }
-
-  /**
-   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-   * Satzdefinition von Verkehrsservice geliefert werden.
-   */
-  private static boolean isIdentischZu510(int sparte) {
-	  return contains(spartenIdentischZu_510, sparte);
-  }
-
-  	private static boolean contains(int[] variants, int sparte) {
-	  	for (int x : variants) {
-			if (x == sparte) {
-				return true;
-			}
-		}
-		return false;
-	}
+//  /**
+//   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
+//   * Satzdefinition vom Allgemeinen Satz geliefert werden.
+//   */
+//  private static boolean isIdentischZu000(int sparte) {
+//	  return contains(spartenIdentischZu_000, sparte);
+//  }
+//
+//  /**
+//   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
+//   * Satzdefinition vom Feuer-Industrie/Gewerbl. Sachvers. geliefert werden.
+//   */
+//  private static boolean isIdentischZu080(int sparte) {
+//	  return contains(spartenIdentischZu_080, sparte);
+//  }
+//
+//  /**
+//   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
+//   * Satzdefinition von Technische Versicherung geliefert werden.
+//   */
+//  private static boolean isIdentischZu170(int sparte) {
+//	  return contains(spartenIdentischZu_170, sparte);
+//  }
+//
+//  /**
+//   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
+//   * Satzdefinition von Transport geliefert werden.
+//   */
+//  private static boolean isIdentischZu190(int sparte) {
+//	  return contains(spartenIdentischZu_190, sparte);
+//  }
+//
+//  /**
+//   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
+//   * Satzdefinition von Verkehrsservice geliefert werden.
+//   */
+//  private static boolean isIdentischZu510(int sparte) {
+//	  return contains(spartenIdentischZu_510, sparte);
+//  }
+//
+//  	private static boolean contains(int[] variants, int sparte) {
+//	  	for (int x : variants) {
+//			if (x == sparte) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
 
 	/**
 	 * Liefert eine Liste aller bekannten Satzarten zurueck, die in der

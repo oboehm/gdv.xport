@@ -85,9 +85,6 @@ public class SatzTypTest {
         assertEquals("0220.080", SatzTyp.of(220, 81).toString());
         assertEquals("0210.000", SatzTyp.of(210, 299).toString());
         assertEquals("0800", SatzTyp.of(800).toString());
-        for (SatzTyp satzTyp : SatzTyp.values()) {
-            assertEquals(satzTyp.getGdvSatzartName(), satzTyp.toString());
-        }
     }
 
     @Test
@@ -291,7 +288,7 @@ public class SatzTypTest {
     public void testSatzTyp210() {
         SatzTyp x = SatzTyp.of("0210.000");
         assertTrue(x.hasSparte());
-        assertEquals("0210.000", x.getGdvSatzartName());
+        assertEquals("0210.000", x.toString());
         assertEquals("000", x.getSparteAsString());
         assertEquals("000", x.getSparteMitArt());
     }
@@ -300,14 +297,14 @@ public class SatzTypTest {
     public void testSatzTyp220Sparte81() {
         SatzTyp x = SatzTyp.of(220, 81);
         assertEquals(81, x.getSparte());
-        assertEquals("0220.080", x.getGdvSatzartName());
+        assertEquals("0220.080", x.toString());
     }
 
     @Test
     public void testSatzTyp220Sparte296() {
         SatzTyp x = SatzTyp.of(220, 296);
         assertEquals(296, x.getSparte());
-        assertEquals("0220.000", x.getGdvSatzartName());
+        assertEquals("0220.000", x.toString());
     }
 
     @Test
