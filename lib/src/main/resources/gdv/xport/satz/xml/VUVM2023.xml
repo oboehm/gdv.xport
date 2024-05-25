@@ -9960,10 +9960,6 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>030</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-256-SatzNr-Unbekannt">
-					<name>Satznummer</name>
-					<technischerName>SatzNr</technischerName>
-				</feldreferenz>
 			</kennzeichnung>
 			<version>1.9</version>
 			<!-- Teildatensatz 1 Satzart 0210.030 -->
