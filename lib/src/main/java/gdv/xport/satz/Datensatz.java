@@ -257,10 +257,10 @@ public class Datensatz extends Satz {
 
 	private void validateSparte(int x) {
 		if (getConfig().getValidateMode() != Config.ValidateMode.OFF && hasSparte()) {
-			SatzTyp aktuell = SatzTyp.of(getSatzart(), getSparte());
-			SatzTyp neu = SatzTyp.of(getSatzart(), x);
-			if (!aktuell.equals(neu)) {
-				throw new IllegalArgumentException("Sparte " + x + " passt nicht zu SatzTyp " + aktuell);
+			SatzTyp aktuell = getSatzTyp();
+			if (!aktuell.getErlaubteSparten().contains(x)) {
+				throw new IllegalArgumentException(
+						String.format("Sparte %d passt nicht zu SatzTyp %s, nur %s", x, aktuell, aktuell.getErlaubteSparten()));
 			}
 		}
 	}
