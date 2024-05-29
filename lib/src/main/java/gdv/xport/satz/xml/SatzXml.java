@@ -161,14 +161,14 @@ public class SatzXml extends Datensatz {
         this.setSparte(referenz.getAuspraegung());
 
         this.setGdvSatzartName(referenz.getAuspraegung());
-        LOG.debug("Sparte: " + referenz.getAuspraegung());
+        LOG.debug("Sparte: {}", referenz.getAuspraegung());
       }
       else if ("Satznummer".equals(referenz.getName()))
       {
-        this.setGdvSatzartNummer(referenz.getAuspraegung());
+        //this.setGdvSatzartNummer(referenz.getAuspraegung());
 
         this.setGdvSatzartName(referenz.getAuspraegung());
-        LOG.debug("Satznummer: " + referenz.getAuspraegung());
+        LOG.debug("Satznummer: {}", referenz.getAuspraegung());
       }
     }
   }

@@ -60,7 +60,7 @@ public abstract class Satz implements Cloneable {
    * Auszahlungen, zukünftige Summenänderungen und Wertungssummen. Nicht
    * verwechseln mit Satznummer eines Teildatensatzes!
    */
-  private String gdvSatzartNummer = "";
+  //private String gdvSatzartNummer = "";
   /**
    * Zum Abspeichern des Namens einer Gdv-Satzart gemaess Online-Version bei
    * gdv-online.de
@@ -99,7 +99,7 @@ public abstract class Satz implements Cloneable {
 		this.config = satz.config;
 		this.createTeildatensaetze(satz.getSatzTyp(), n);
         this.gdvSatzartName = satz.getGdvSatzartName();
-        this.gdvSatzartNummer = satz.getGdvSatzartNummer();
+        //this.gdvSatzartNummer = satz.getGdvSatzartNummer();
         this.setSatzversion(satz.getSatzversion().getInhalt());
     }
 
@@ -127,7 +127,7 @@ public abstract class Satz implements Cloneable {
         this.getSatzartFeld().setInhalt(satz.getSatzart());
         this.satzVersion.setInhalt(satz.getSatzversion().getInhalt());
         this.gdvSatzartName = satz.getGdvSatzartName();
-        this.gdvSatzartNummer = satz.getGdvSatzartNummer();
+        //this.gdvSatzartNummer = satz.getGdvSatzartNummer();
     }
 
 	private void createTeildatensaetze(final SatzTyp art, final int n) {
@@ -437,14 +437,14 @@ public abstract class Satz implements Cloneable {
 		return getFeld(Bezeichner.VERMITTLER).getInhalt().trim();
 	}
 
-    /**
-     * Setzt die Satzartnummer einer Satzart. Nicht verwechseln mit Satznummer!
-     *
-     * @param x z.B. "6" fuer Satzart 0220, Sparte 010, Wagnisart 2, Bezugsrechte
-     */
-    protected void setGdvSatzartNummer(final String x) {
-        this.gdvSatzartNummer = x;
-    }
+//    /**
+//     * Setzt die Satzartnummer einer Satzart. Nicht verwechseln mit Satznummer!
+//     *
+//     * @param x z.B. "6" fuer Satzart 0220, Sparte 010, Wagnisart 2, Bezugsrechte
+//     */
+//    protected void setGdvSatzartNummer(final String x) {
+//        this.gdvSatzartNummer = x;
+//    }
 
     /**
      * Gets die Satzartnummer. Nicht verwechseln mit Satznummer!
@@ -454,9 +454,17 @@ public abstract class Satz implements Cloneable {
      * (Bezugsrechte) der Fall.
      *
      * @return die Satzartnummer als String
+	 * @deprecated bitte Satzartnummer ueber {@link #getSatzTyp()} ermitteln
      */
+	@Deprecated
     public String getGdvSatzartNummer() {
-        return this.gdvSatzartNummer;
+		SatzTyp st = getSatzTyp();
+		if (st.hasGdvSatzartNummer()) {
+			return Integer.toString(st.getGdvSatzartNummer());
+		} else {
+			return "";
+		}
+        //return this.gdvSatzartNummer;
     }
 
     /**

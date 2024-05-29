@@ -24,7 +24,6 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import javanet.staxutils.IndentingXMLStreamWriter;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -282,9 +281,9 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     }
 
     private void writeSatznummer(Satz satz) throws XMLStreamException {
-        String gdvSatzartNummer = satz.getGdvSatzartNummer();
-        if (StringUtils.isNotEmpty(gdvSatzartNummer)) {
-            Feld satznummer = new Feld(Bezeichner.SATZNUMMER, ByteAdresse.of(256), gdvSatzartNummer, Align.LEFT);
+        SatzTyp satzTyp = satz.getSatzTyp();
+        if (satzTyp.hasGdvSatzartNummer()) {
+            Feld satznummer = new Feld(Bezeichner.SATZNUMMER, ByteAdresse.of(256), Integer.toString(satzTyp.getGdvSatzartNummer()), Align.LEFT);
             writeReferenz(satznummer);
         }
     }
