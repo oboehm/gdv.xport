@@ -807,7 +807,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
          */
         protected String validateLax(String value) {
             LOG.debug("Inhalt von '{}' wird validiert.", value);
-            if (!Text.of(value).isPrintable()) {
+            if (!Text.isPrintable(value)) {
                 throw new ValidationException(String.format("Text '%s' enthaelt ungueltige Zeichen", value));
             }
             return value;
