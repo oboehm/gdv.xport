@@ -476,23 +476,11 @@ public abstract class Satz implements Cloneable {
 
     /**
      * Setzen des Namens einer Gdv-Satzart.
-     * <p>
-     * Der <code>string</code> wird mit dem Trennzeichen '.' an den bisherigen
-     * Inhalt angehaengt.
-     * </p>
      *
      * @param string Satzart-Name
      */
     protected void setGdvSatzartName(String string) {
-        StringBuilder buf = new StringBuilder();
-
-        if (this.gdvSatzartName.isEmpty()) {
-            buf.append(string);
-        } else {
-            buf.append(this.gdvSatzartName).append(".").append(string);
-        }
-
-        this.gdvSatzartName = buf.toString();
+        this.gdvSatzartName = string;
     }
 
     public void resetGdvSatzartName() {

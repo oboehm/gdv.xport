@@ -183,6 +183,25 @@ public class SatzXml extends Datensatz {
     }
 
     /**
+     * Setzen des Namens einer Gdv-Satzart.
+     * <p>
+     * Der <code>string</code> wird mit dem Trennzeichen '.' an den bisherigen
+     * Inhalt angehaengt.
+     * </p>
+     *
+     * @param string Satzart-Name
+     */
+    protected void setGdvSatzartName(String string) {
+        StringBuilder buf = new StringBuilder();
+        if (this.getGdvSatzartName().isEmpty()) {
+            buf.append(string);
+        } else {
+            buf.append(this.getGdvSatzartName()).append(".").append(string);
+        }
+        super.setGdvSatzartName(buf.toString());
+    }
+
+    /**
      * Verwendet die uebergebene Map, um die Teildatensaetze um fehlende
      * Informationen zu ergaenzen.
      *
