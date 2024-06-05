@@ -40,7 +40,7 @@ import static org.junit.Assert.*;
 public class NumFeldTest extends AbstractNumFeldTest {
 
     private static final Logger LOG = LogManager.getLogger(NumFeldTest.class);
-    private final NumFeld nummer = new NumFeld(Bezeichner.LFD_NUMMER, 5, 1);
+    private final NumFeld nummer = new NumFeld(Bezeichner.LFD_NUMMER, 5, ByteAdresse.of(1));
 
     @Override
     protected NumFeld getTestBetrag() {
@@ -78,7 +78,7 @@ public class NumFeldTest extends AbstractNumFeldTest {
      */
     @Test
     public void testIsValidMitVorzeichen() {
-        NumFeld einsplus = new NumFeld("einsplus", "+001");
+        NumFeld einsplus = new NumFeld(Bezeichner.of("einsplus"), ByteAdresse.of(1), "+001", 0);
         assertTrue("auch Vorzeichen koennen vorkommen", einsplus.isValid());
         assertEquals(1, einsplus.toInt());
     }
@@ -125,7 +125,7 @@ public class NumFeldTest extends AbstractNumFeldTest {
      */
     @Test
     public void testToDouble() {
-        NumFeld pi = new NumFeld("pi", "314", 2);
+        NumFeld pi = new NumFeld(Bezeichner.of("pi"), ByteAdresse.of(1), "314", 2);
         assertEquals(3.14, pi.toDouble(), 0.001);
     }
 
@@ -138,7 +138,7 @@ public class NumFeldTest extends AbstractNumFeldTest {
      */
     @Test
     public void testBigNumber() {
-        NumFeld big = new NumFeld(Bezeichner.of("big"), 14, 1).mitNachkommastellen(2);
+        NumFeld big = new NumFeld(Bezeichner.of("big"), 14, ByteAdresse.of(1)).mitNachkommastellen(2);
         big.setInhalt("00005000000000");
         assertTrue("should be valid", big.isValid());
         List<ConstraintViolation> violations = big.validate();
@@ -147,7 +147,7 @@ public class NumFeldTest extends AbstractNumFeldTest {
 
     @Test
     public void testBigDecimal() {
-        NumFeld big = new NumFeld(Bezeichner.of("big"), 14, 1);
+        NumFeld big = new NumFeld(Bezeichner.of("big"), 14, ByteAdresse.of(1));
         String zahl = "12345000000000";
         big.setInhalt(new BigInteger(zahl));
         assertEquals(zahl, big.getInhalt());
@@ -156,7 +156,7 @@ public class NumFeldTest extends AbstractNumFeldTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testBigDecimalMinus() {
-        NumFeld big = new NumFeld(Bezeichner.of("big"), 14, 1).mitConfig(Config.LAX);
+        NumFeld big = new NumFeld(Bezeichner.of("big"), 14, ByteAdresse.of(1)).mitConfig(Config.LAX);
         big.setInhalt(new BigInteger("-1"));
     }
 
@@ -172,7 +172,7 @@ public class NumFeldTest extends AbstractNumFeldTest {
 
     @Test
     public void testAdd() {
-        NumFeld feld = new NumFeld("fuffzig", "5000").mitNachkommastellen(2);
+        NumFeld feld = new NumFeld(Bezeichner.of("fuffzig"), ByteAdresse.of(1), "5000", 2);
         BigDecimal summe = feld.add(BigDecimal.TEN);
         BigDecimal expected = new BigDecimal("60.00");
         assertEquals(expected, summe);
@@ -187,7 +187,7 @@ public class NumFeldTest extends AbstractNumFeldTest {
     @Test
     public void testMitNachkommastellen() {
         Bezeichner bezeichner = new Bezeichner("Satznummer", "SatzNr1");
-        NumFeld satznr = new NumFeld(bezeichner, 1, 43, 0);
+        NumFeld satznr = new NumFeld(bezeichner, 1, ByteAdresse.of(43), 0);
         NumFeld satznrOhneNachkommastalle = satznr.mitNachkommastellen(0);
         assertEquals(satznr, satznrOhneNachkommastalle);
         assertEquals(bezeichner, satznrOhneNachkommastalle.getBezeichner());
@@ -200,42 +200,36 @@ public class NumFeldTest extends AbstractNumFeldTest {
      */
     @Test
     public void testKhDeckungssummenInWE() {
-        NumFeld summen = new NumFeld(Bezeichner.of("KhDeckungssummenInWE"), 42, 43);
+        NumFeld summen = new NumFeld(Bezeichner.of("KhDeckungssummenInWE"), 42, ByteAdresse.of(43));
         summen.setInhalt("000050000000000000000000000000000000000000");
         assertTrue(summen.isValid());
     }
 
     @Test
     public void testHasValue() {
-        NumFeld n = new NumFeld(Bezeichner.of("Test"), 1, 1);
+        NumFeld n = new NumFeld(Bezeichner.of("Test"), 1, ByteAdresse.of(1));
         n.setInhalt(1);
         assertTrue(n.hasValue());
     }
 
     @Test
     public void testHasValueEmpty() {
-        NumFeld n = new NumFeld(Bezeichner.of("Test"), 1, 1);
-        n.setInhalt(" ");
+        NumFeld n = new NumFeld(Bezeichner.of("Test"), 8, ByteAdresse.of(1));
+        n.resetInhalt();
         assertFalse(n.hasValue());
-    }
-
-    @Test
-    public void testHasValue000() {
-        NumFeld n = new NumFeld(Bezeichner.of("Test"), 12, 1).mitNachkommastellen(2);
-        n.setInhalt("000000000000");
-        assertFalse(n.hasValue());
+        assertEquals("00000000", n.getInhalt());
     }
 
     @Test
     public void testHasValueXXXXXXXX() {
-        NumFeld n = new NumFeld(Bezeichner.of("Test-Datum"), 8, 1);
+        NumFeld n = new NumFeld(Bezeichner.of("Test-Datum"), 8, ByteAdresse.of(1));
         n.setInhalt("xxxxxxxx");
         assertFalse(n.hasValue());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testSetInhaltR2D2() {
-        NumFeld one = new NumFeld(Bezeichner.ANTEILE, 5, 1).mitConfig(Config.LAX);
+        NumFeld one = new NumFeld(Bezeichner.ANTEILE, 5, ByteAdresse.of(1)).mitConfig(Config.LAX);
         one.setInhalt("R2 D2");
     }
 
@@ -266,7 +260,7 @@ public class NumFeldTest extends AbstractNumFeldTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testNumberWithBlanksConfigStrict() {
-        NumFeld numFeld = new NumFeld(Bezeichner.of("numTestFeld"), 5, 1).mitConfig(Config.STRICT);
+        NumFeld numFeld = new NumFeld(Bezeichner.of("numTestFeld"), 5, ByteAdresse.of(1)).mitConfig(Config.STRICT);
         numFeld.setInhalt(" 1 ");
     }
 

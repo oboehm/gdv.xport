@@ -170,7 +170,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     @Deprecated // TODO: wird mit v8 entsorgt
     protected Feld(Bezeichner bezeichner, int length, int start, Align alignment, Config config) {
         this.bezeichner = bezeichner;
-        this.inhalt = StringUtils.repeat(" ", length);
+        this.inhalt = getInitInhalt(length);
         this.length = toByteLength(length);
         this.byteAdresse = ByteAdresse.of(start).byteValue();
         this.ausrichtung = alignment.getCode();
@@ -179,11 +179,12 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
 
     protected Feld(Bezeichner bezeichner, int length, ByteAdresse start, Align alignment, Config config) {
         this.bezeichner = bezeichner;
-        this.inhalt = StringUtils.repeat(" ", length);
+        this.inhalt = getInitInhalt(length);
         this.length = toByteLength(length);
         this.byteAdresse = start.byteValue();
         this.ausrichtung = alignment.getCode();
         this.config = config;
+        resetInhalt();
     }
 
     /**
@@ -476,7 +477,11 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      */
     public void resetInhalt() {
         int anzahlBytes = this.getAnzahlBytes();
-        this.inhalt = StringUtils.repeat(" ", anzahlBytes);
+        this.inhalt = getInitInhalt(anzahlBytes);
+    }
+
+    private static String getInitInhalt(int anzahlBytes) {
+        return StringUtils.repeat(" ", anzahlBytes);
     }
 
     /**
