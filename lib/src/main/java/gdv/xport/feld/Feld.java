@@ -184,7 +184,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         this.byteAdresse = start.byteValue();
         this.ausrichtung = alignment.getCode();
         this.config = config;
-        resetInhalt();
     }
 
     /**
@@ -559,8 +558,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @since 3.1
      */
     public boolean hasValue() {
-        String value = getInhalt();
-        return StringUtils.isNotBlank((this.getAusrichtung().compareTo(Align.RIGHT) == 0) ? StringUtils.replaceChars(value, '0', ' ') : value);
+        return StringUtils.isNotBlank(inhalt);
     }
 
     /**

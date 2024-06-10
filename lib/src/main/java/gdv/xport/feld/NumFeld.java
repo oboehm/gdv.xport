@@ -458,7 +458,7 @@ public class NumFeld extends Feld {
     @Override
     public boolean hasValue() {
         try {
-            return super.hasValue() && !ZERO.equals(toBigDecimal());
+            return !ZERO.equals(toBigDecimal());
         } catch (NumberFormatException ex) {
             LOG.debug("{} hat ungueltigen Wert:", this, ex);
             return false;
