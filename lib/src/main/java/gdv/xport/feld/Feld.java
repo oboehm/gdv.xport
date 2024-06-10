@@ -49,6 +49,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     private static final Logger LOG = LogManager.getLogger(Feld.class);
     /** statt "null". */
     public static final Feld NULL_FELD = new Feld();
+    private static final char INIT_VALUE = ' ';
     private final Bezeichner bezeichner;
     protected String inhalt;
     private final byte byteAdresse;
@@ -480,7 +481,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     }
 
     private static String getInitInhalt(int anzahlBytes) {
-        return StringUtils.repeat(" ", anzahlBytes);
+        return StringUtils.repeat(INIT_VALUE, anzahlBytes);
     }
 
     /**
@@ -550,15 +551,18 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     }
 
     /**
-     * Dient zum Ermittel, ob ein Werte schon gesetzt wurde. Dabei werden
-     * typische Initialisierungswerte wie "0" als "nicht gesetzt"
-     * interpretiert.
+     * Dient zum Ermittel, ob ein Werte schon gesetzt wurde.
      *
      * @return true, falls Feld mit einem Wert belegt ist
      * @since 3.1
      */
     public boolean hasValue() {
-        return StringUtils.isNotBlank(inhalt);
+        for (char c : inhalt.toCharArray()) {
+            if (c != INIT_VALUE) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
