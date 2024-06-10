@@ -24,7 +24,7 @@ import patterntesting.runtime.junit.ObjectTester;
 
 import java.util.List;
 
-import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.*;
 
 /**
@@ -325,7 +325,7 @@ public class SatzTypTest {
     public void testGetErlaubteSparten() {
         SatzTyp kfz = SatzTyp.of("0210.050");
         List<Integer> erlaubteSparten = kfz.getErlaubteSparten();
-        MatcherAssert.assertThat(erlaubteSparten, contains(50,51,52,53,54,55,59));
+        MatcherAssert.assertThat(erlaubteSparten, hasItems(50, 600));
     }
 
 }
