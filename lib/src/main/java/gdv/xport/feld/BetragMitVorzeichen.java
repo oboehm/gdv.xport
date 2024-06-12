@@ -153,7 +153,7 @@ public final class BetragMitVorzeichen extends Betrag {
         } else {
             name += " ohne Vorzeichen";
         }
-        Betrag betrag = new Betrag(Bezeichner.of(name), getAnzahlBytes()-1, getByteAdresse());
+        Betrag betrag = new Betrag(Bezeichner.of(name), getAnzahlBytes()-1, ByteAdresse.of(getByteAdresse()));
         betrag.setInhalt(getInhalt().substring(0, betrag.getAnzahlBytes()));
         return betrag;
     }
@@ -250,14 +250,14 @@ public final class BetragMitVorzeichen extends Betrag {
         return (this.getVorzeichen() == '-') ? -x : x;
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.feld.Feld#resetInhalt()
-     */
-    @Override
-    public void resetInhalt() {
-        super.resetInhalt();
-        this.setVorzeichen('+');
-    }
+//    /* (non-Javadoc)
+//     * @see gdv.xport.feld.Feld#resetInhalt()
+//     */
+//    @Override
+//    public void resetInhalt() {
+//        super.resetInhalt();
+//        this.setVorzeichen('+');
+//    }
 
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#clone()

@@ -261,7 +261,7 @@ public final class FeldXml extends Feld {
                 }
                 break;
         }
-        if (hasValue()) {
+        if (StringUtils.isNotBlank(inhalt)) {
             f.setInhalt(getInhalt());
         }
         return f;

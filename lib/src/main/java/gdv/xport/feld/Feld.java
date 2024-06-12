@@ -472,7 +472,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     /**
      * Reset inhalt.
      */
-    public void resetInhalt() {
+    public final void resetInhalt() {
         this.inhalt = "";
     }
 
@@ -543,14 +543,13 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     }
 
     /**
-     * Dient zum Ermittel, ob ein Werte schon gesetzt wurde.
+     * Dient zum Ermittel, ob ein Wert schon gesetzt wurde.
      *
      * @return true, falls Feld mit einem Wert belegt ist
      * @since 3.1
      */
     public final boolean hasValue() {
-        //return !inhalt.isEmpty();
-        return StringUtils.isNotBlank(inhalt);
+        return !inhalt.isEmpty();
     }
 
     /**
