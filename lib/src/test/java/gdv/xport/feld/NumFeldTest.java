@@ -220,13 +220,6 @@ public class NumFeldTest extends AbstractNumFeldTest {
         assertEquals("00000000", n.getInhalt());
     }
 
-    @Test
-    public void testHasValueXXXXXXXX() {
-        NumFeld n = new NumFeld(Bezeichner.of("Test-Datum"), 8, ByteAdresse.of(1));
-        n.setInhalt("xxxxxxxx");
-        assertFalse(n.hasValue());
-    }
-
     @Test(expected = IllegalArgumentException.class)
     public void testSetInhaltR2D2() {
         NumFeld one = new NumFeld(Bezeichner.ANTEILE, 5, ByteAdresse.of(1)).mitConfig(Config.LAX);

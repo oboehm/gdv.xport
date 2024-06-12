@@ -49,9 +49,8 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     private static final Logger LOG = LogManager.getLogger(Feld.class);
     /** statt "null". */
     public static final Feld NULL_FELD = new Feld();
-    private static final char INIT_VALUE = ' ';
     private final Bezeichner bezeichner;
-    protected String inhalt;
+    protected String inhalt = "";
     private final byte byteAdresse;
     private final byte length;
     private byte ausrichtung;
@@ -171,7 +170,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     @Deprecated // TODO: wird mit v8 entsorgt
     protected Feld(Bezeichner bezeichner, int length, int start, Align alignment, Config config) {
         this.bezeichner = bezeichner;
-        this.inhalt = getInitInhalt(length);
         this.length = toByteLength(length);
         this.byteAdresse = ByteAdresse.of(start).byteValue();
         this.ausrichtung = alignment.getCode();
@@ -180,7 +178,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
 
     protected Feld(Bezeichner bezeichner, int length, ByteAdresse start, Align alignment, Config config) {
         this.bezeichner = bezeichner;
-        this.inhalt = getInitInhalt(length);
         this.length = toByteLength(length);
         this.byteAdresse = start.byteValue();
         this.ausrichtung = alignment.getCode();
@@ -476,12 +473,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * Reset inhalt.
      */
     public void resetInhalt() {
-        int anzahlBytes = this.getAnzahlBytes();
-        this.inhalt = getInitInhalt(anzahlBytes);
-    }
-
-    private static String getInitInhalt(int anzahlBytes) {
-        return StringUtils.repeat(INIT_VALUE, anzahlBytes);
+        this.inhalt = "";
     }
 
     /**
@@ -556,13 +548,9 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @return true, falls Feld mit einem Wert belegt ist
      * @since 3.1
      */
-    public boolean hasValue() {
-        for (char c : inhalt.toCharArray()) {
-            if (c != INIT_VALUE) {
-                return true;
-            }
-        }
-        return false;
+    public final boolean hasValue() {
+        //return !inhalt.isEmpty();
+        return StringUtils.isNotBlank(inhalt);
     }
 
     /**

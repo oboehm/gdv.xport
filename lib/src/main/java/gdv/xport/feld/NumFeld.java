@@ -29,8 +29,6 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 
-import static java.math.BigDecimal.ZERO;
-
 /**
  * Klasse fuer numerische Zeichen. Die Default-Einstellung fuer die
  * Darstellung ist rechtsbuendig.
@@ -358,16 +356,16 @@ public class NumFeld extends Feld {
         return zeroes + this.inhalt;
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.feld.Feld#resetInhalt()
-     */
-    @Override
-    public void resetInhalt() {
-        int anzahlBytes = this.getAnzahlBytes();
-        for (int i = 0; i < anzahlBytes; i++) {
-            this.setInhalt('0', i);
-        }
-    }
+//    /* (non-Javadoc)
+//     * @see gdv.xport.feld.Feld#resetInhalt()
+//     */
+//    @Override
+//    public void resetInhalt() {
+//        int anzahlBytes = this.getAnzahlBytes();
+//        for (int i = 0; i < anzahlBytes; i++) {
+//            this.setInhalt('0', i);
+//        }
+//    }
 
     @Override
     protected String truncate(String s) {
@@ -447,23 +445,23 @@ public class NumFeld extends Feld {
         return summe.setScale(nachkommastellen, RoundingMode.UP);
     }
 
-    /**
-     * Dient zum Ermittel, ob ein Werte schon gesetzt wurde. Dabei werden
-     * typische Initialisierungswerte wie "0" als "nicht gesetzt"
-     * interpretiert.
-     *
-     * @return true, falls Feld mit einem Wert belegt ist
-     * @since 3.1
-     */
-    @Override
-    public boolean hasValue() {
-        try {
-            return !ZERO.equals(toBigDecimal());
-        } catch (NumberFormatException ex) {
-            LOG.debug("{} hat ungueltigen Wert:", this, ex);
-            return false;
-        }
-    }
+//    /**
+//     * Dient zum Ermittel, ob ein Werte schon gesetzt wurde. Dabei werden
+//     * typische Initialisierungswerte wie "0" als "nicht gesetzt"
+//     * interpretiert.
+//     *
+//     * @return true, falls Feld mit einem Wert belegt ist
+//     * @since 3.1
+//     */
+//    @Override
+//    public boolean hasValue() {
+//        try {
+//            return !ZERO.equals(toBigDecimal());
+//        } catch (NumberFormatException ex) {
+//            LOG.debug("{} hat ungueltigen Wert:", this, ex);
+//            return false;
+//        }
+//    }
 
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#format()
