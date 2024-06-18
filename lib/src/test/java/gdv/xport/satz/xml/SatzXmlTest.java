@@ -196,38 +196,28 @@ public class SatzXmlTest extends AbstractDatensatzTest {
      * Hier versuchen wir die Satzart 0220.580.01 (Kapitel: Produktspezifischer
      * Teil, Abschnitt:Bausparen - Sparen / Antrag) einzulesen.
      *
-     * @throws XMLStreamException the XML stream exception
+     * @throws XMLStreamException bei fehlerhaftem XML
+     * @throws IOException        bei I/O-Fehlern
      */
     @Test
-    public void testSatz0220BausparenAntrag() throws XMLStreamException {
-        XMLEventReader parser = createXMLEventReader("Satz0220.580.01.xml");
-        try {
-            SatzXml satz220 = new SatzXml(parser);
-            assertEquals(220, satz220.getSatzart());
-            Map<String, FeldXml> xmlFelder = XmlService.parseFelder(parser);
-            satz220.setFelder(xmlFelder);
-            assertEquals(580, satz220.getSparte());
-            assertEquals(1, satz220.getArt());
-        } finally {
-            parser.close();
-        }
+    public void testSatz0220BausparenAntrag() throws XMLStreamException, IOException {
+        SatzXml satz220 = SatzXml.of("Satz0220.580.01.xml");
+        assertEquals(220, satz220.getSatzart());
+        assertEquals(580, satz220.getSparte());
+        assertEquals(1, satz220.getArt());
+        Feld art = satz220.getFeld(Bezeichner.of("Art"));
+        assertEquals("1", art.getInhalt());
     }
 
     @Test
-    public void testSatz0221070() throws XMLStreamException {
-        XMLEventReader parser = createXMLEventReader("Satz0221.070.xml");
-        try {
-            SatzXml satz221 = new SatzXml(parser);
-            satz221.setFelder(getFelder());
-            setUp(satz221);
-            assertEquals(221, satz221.getSatzart());
-            assertEquals(70, satz221.getSparte());
-            assertEquals(2, satz221.getNumberOfTeildatensaetze());
-            checkSatznummer(satz221, 1, ByteAdresse.of(53));
-            checkSatznummer(satz221, 2, ByteAdresse.of(53));
-        } finally {
-            parser.close();
-        }
+    public void testSatz0221070() throws XMLStreamException, IOException {
+        SatzXml satz221 = SatzXml.of("Satz0221.070.xml");
+        setUp(satz221);
+        assertEquals(221, satz221.getSatzart());
+        assertEquals(70, satz221.getSparte());
+        assertEquals(2, satz221.getNumberOfTeildatensaetze());
+        checkSatznummer(satz221, 1, ByteAdresse.of(53));
+        checkSatznummer(satz221, 2, ByteAdresse.of(53));
     }
 
     @Test
@@ -252,20 +242,16 @@ public class SatzXmlTest extends AbstractDatensatzTest {
      * nur Informationen ergaenzen. Tatsaechlich scheint sie auch den Wert
      * zu ueberschreiben.
      *
-     * @throws XMLStreamException the XML stream exception
+     * @throws XMLStreamException bei XML-Fehlern
+     * @throws IOException bei I/O-Fehlern
      */
     @Test
-    public void testSetFelder() throws XMLStreamException {
-        XMLEventReader parser = createXMLEventReader("Satz100.xml");
-        try {
-            SatzXml satz = new SatzXml(parser);
-            String expected = satz.getFeld(Kopffelder1bis7.SATZART.getBezeichner()).getInhalt();
-            Map<String, FeldXml> felder = getFelder();
-            satz.setFelder(felder);
-            assertEquals(expected, satz.getFeld(Kopffelder1bis7.SATZART.getBezeichner()).getInhalt());
-        } finally {
-            parser.close();
-        }
+    public void testSetFelder() throws XMLStreamException, IOException {
+        SatzXml satz = SatzXml.of("Satz100.xml");
+        String expected = satz.getFeld(Kopffelder1bis7.SATZART.getBezeichner()).getInhalt();
+        Map<String, FeldXml> felder = getFelder();
+        satz.setFelder(felder);
+        assertEquals(expected, satz.getFeld(Kopffelder1bis7.SATZART.getBezeichner()).getInhalt());
     }
 
     /**

@@ -42,6 +42,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static gdv.xport.feld.Bezeichner.ART_580;
+import static gdv.xport.feld.Bezeichner.WAGNISART;
+
 /**
  * Im Gegensatz zum SOP-Ansatz und zur SatzX-Klasse wird hier eine XML-
  * Beschreibung verwendet, um die einzelnen Teildatensaetze mit ihren Feldern
@@ -213,6 +216,12 @@ public class SatzXml extends Datensatz {
             TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(n);
             tdsXml.updateWith(felder);
             updateSparte(tdsXml);
+        }
+        SatzTyp satzTyp = getSatzTyp();
+        if (satzTyp.hasWagnisart() && !getFeld(WAGNISART).hasValue()) {
+            setFeld(WAGNISART, Integer.toString(satzTyp.getWagnisart()).substring(0, 1));
+        } else if (satzTyp.hasBausparenArt() && !getFeld(ART_580).hasValue()) {
+            setFeld(ART_580, satzTyp.getBausparenArt());
         }
     }
 
