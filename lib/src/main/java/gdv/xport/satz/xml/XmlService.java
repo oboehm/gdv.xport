@@ -346,7 +346,6 @@ public class XmlService {
     }
 
     private void registerSatzart(SatzTyp type, SatzXml satz) {
-        satz.init(type);
         this.satzarten.put(type, satz);
     }
 
