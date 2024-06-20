@@ -710,33 +710,14 @@ public abstract class Satz implements Cloneable {
 
 	/**
 	 * Liefert den Satz-Typ zurueck. Der Satz-Typ ist eine Zusammenfassung aus
-	 * Satzart und Sparte.
+	 * Satzart und Sparte (in {@link Datensatz#}).
 	 *
 	 * @return den Satz-Typ
 	 * @since 1.0
 	 */
 	@JsonIgnore
 	public SatzTyp getSatzTyp() {
-		if (StringUtils.isNotEmpty(this.gdvSatzartName)) {
-			return SatzTyp.of(this.gdvSatzartName);
-	    } else {
-			if (hasSparte()) {
-				if (this.hasWagnisart() && this.getWagnisart().matches("\\d")) {
-					return SatzTyp.of(this.getSatzart(), getSparte(),
-							Integer.parseInt(this.getWagnisart()));
-				} else if (this.hasKrankenFolgeNr() && this.getKrankenFolgeNr().matches("\\d")) {
-					return SatzTyp.of(this.getSatzart(), getSparte(),
-							Integer.parseInt(this.getKrankenFolgeNr()));
-				} else if (this.hasBausparenArt() && this.getBausparenArt().matches("\\d")) {
-					return SatzTyp.of(this.getSatzart(), getSparte(),
-							Integer.parseInt(this.getBausparenArt()));
-				} else {
-					return SatzTyp.of(this.getSatzart(), getSparte());
-				}
-			} else {
-				return SatzTyp.of(this.getSatzart());
-			}
-		}
+		return SatzTyp.of(this.getSatzart());
 	}
 
 	/**

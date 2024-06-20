@@ -25,6 +25,7 @@ import gdv.xport.io.Importer;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.util.SatzTyp;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -261,6 +262,32 @@ public class Datensatz extends Satz {
 			if (!aktuell.getErlaubteSparten().contains(x)) {
 				throw new IllegalArgumentException(
 						String.format("Sparte %d passt nicht zu SatzTyp %s, nur %s", x, aktuell, aktuell.getErlaubteSparten()));
+			}
+		}
+	}
+
+	/**
+	 * Liefert den Satz-Typ zurueck. Der Satz-Typ ist eine Zusammenfassung aus
+	 * Satzart und Sparte.
+	 *
+	 * @return den Satz-Typ
+	 */
+	@Override
+	public SatzTyp getSatzTyp() {
+		if (StringUtils.isNotEmpty(getGdvSatzartName())) {
+			return SatzTyp.of(this.getGdvSatzartName());
+		} else {
+			if (this.hasWagnisart() && this.getWagnisart().matches("\\d")) {
+				return SatzTyp.of(this.getSatzart(), getSparte(),
+						Integer.parseInt(this.getWagnisart()));
+			} else if (this.hasKrankenFolgeNr() && this.getKrankenFolgeNr().matches("\\d")) {
+				return SatzTyp.of(this.getSatzart(), getSparte(),
+						Integer.parseInt(this.getKrankenFolgeNr()));
+			} else if (this.hasBausparenArt() && this.getBausparenArt().matches("\\d")) {
+				return SatzTyp.of(this.getSatzart(), getSparte(),
+						Integer.parseInt(this.getBausparenArt()));
+			} else {
+				return SatzTyp.of(this.getSatzart(), getSparte());
 			}
 		}
 	}
