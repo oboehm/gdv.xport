@@ -18,9 +18,13 @@
 
 package gdv.xport.util;
 
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import patterntesting.runtime.junit.ObjectTester;
 
+import java.util.List;
+
+import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.*;
 
 /**
@@ -62,6 +66,13 @@ public class SatzTypTest {
         ObjectTester.assertEquals(satz220, sparte10);
     }
 
+    @Test
+    public void testEqualsFreieSatzart() {
+        SatzTyp satz820 = SatzTyp.of(820);
+        SatzTyp sparte30 = SatzTyp.of(820, 30);
+        ObjectTester.assertEquals(satz820, sparte30);
+    }
+
     /**
      * Test to string.
      */
@@ -71,6 +82,9 @@ public class SatzTypTest {
         assertEquals("0210.050", SatzTyp.of(210, 50).toString());
         assertEquals("0220.010.0", SatzTyp.of(220, 10, 0).toString());
         assertEquals("0220.010.6.1", SatzTyp.of(220, 10, 6, 1).toString());
+        assertEquals("0220.080", SatzTyp.of(220, 81).toString());
+        assertEquals("0210.000", SatzTyp.of(210, 299).toString());
+        assertEquals("0800", SatzTyp.of(800).toString());
     }
 
     @Test
@@ -84,6 +98,13 @@ public class SatzTypTest {
     @Test
     public void testGetSatzart() {
         assertEquals(210, SatzTyp.of("0210.050").getSatzart());
+    }
+
+    @Test
+    public void testHasSparte() {
+        assertTrue(SatzTyp.of("0220.000").hasSparte());
+        assertTrue(SatzTyp.of(220).hasSparte());
+        assertFalse(SatzTyp.of(1).hasSparte());
     }
 
     @Test
@@ -105,7 +126,7 @@ public class SatzTypTest {
      * eigentlich SatzTyp "0220.010.13.1" gemeint.
      */
     @Test
-    public void tesetOfWagnisartLeben() {
+    public void testOfWagnisartLeben() {
         assertEquals(SatzTyp.of("0220.010.13.1"), SatzTyp.of("0220.010.13"));
     }
 
@@ -267,7 +288,7 @@ public class SatzTypTest {
     public void testSatzTyp210() {
         SatzTyp x = SatzTyp.of("0210.000");
         assertTrue(x.hasSparte());
-        assertEquals("0210.000", x.getGdvSatzartName());
+        assertEquals("0210.000", x.toString());
         assertEquals("000", x.getSparteAsString());
         assertEquals("000", x.getSparteMitArt());
     }
@@ -276,14 +297,14 @@ public class SatzTypTest {
     public void testSatzTyp220Sparte81() {
         SatzTyp x = SatzTyp.of(220, 81);
         assertEquals(81, x.getSparte());
-        assertEquals("0220.080", x.getGdvSatzartName());
+        assertEquals("0220.080", x.toString());
     }
 
     @Test
     public void testSatzTyp220Sparte296() {
         SatzTyp x = SatzTyp.of(220, 296);
         assertEquals(296, x.getSparte());
-        assertEquals("0220.000", x.getGdvSatzartName());
+        assertEquals("0220.000", x.toString());
     }
 
     @Test
@@ -292,6 +313,19 @@ public class SatzTypTest {
         SatzTyp b = SatzTyp.of(210, 59);
         assertEquals(a.getSatzart(), b.getSatzart());
         assertEquals(59, b.getSparte());
+    }
+
+    @Test
+    public void testValues() {
+        SatzTyp[] values = SatzTyp.values();
+        assertEquals(161, values.length);
+    }
+
+    @Test
+    public void testGetErlaubteSparten() {
+        SatzTyp kfz = SatzTyp.of("0210.050");
+        List<Integer> erlaubteSparten = kfz.getErlaubteSparten();
+        MatcherAssert.assertThat(erlaubteSparten, hasItems(50, 600));
     }
 
 }

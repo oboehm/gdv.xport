@@ -452,6 +452,7 @@
 				<ntabhaengig>0</ntabhaengig>
 			</leerstellenreferenz>
 		</satzende>
+	</satzart>
 	<felder>
 		<feld referenz="BN-2003.02.11.22.49.47.214">
 			<name>Satzart</name>
@@ -770,6 +771,5 @@
 			</wertetabelle>
 		</feld>
 	</felder>
-	</satzart>
 
 </satzarten>

@@ -19,6 +19,7 @@
 package gdv.xport.satz;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.config.Config;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.ByteAdresse;
@@ -95,6 +96,12 @@ public class DatensatzTest extends AbstractDatensatzTest {
         Datensatz ds = new Datensatz(SatzTyp.of("0220"));
         ds.setSparte("580");
         assertEquals(580, ds.getSparte());
+    }
+
+    @Test
+    public void testSetSparteStringValidated() {
+        Datensatz ds = new Datensatz(SatzTyp.of("0220"), Config.LAX);
+        assertThrows(IllegalArgumentException.class, () -> ds.setSparte("580"));
     }
 
     /**

@@ -58,7 +58,7 @@ class ImporterTest {
     }
 
     static Stream<Arguments> satztypParameters() {
-        return SATZARTEN.keySet().stream().map(satzTyp -> Arguments.of(satzTyp.getGdvSatzartName()));
+        return SATZARTEN.keySet().stream().map(satzTyp -> Arguments.of(satzTyp.toString()));
     }
 
 }

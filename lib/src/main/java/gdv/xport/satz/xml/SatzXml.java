@@ -42,6 +42,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static gdv.xport.feld.Bezeichner.ART_580;
+import static gdv.xport.feld.Bezeichner.WAGNISART;
+
 /**
  * Im Gegensatz zum SOP-Ansatz und zur SatzX-Klasse wird hier eine XML-
  * Beschreibung verwendet, um die einzelnen Teildatensaetze mit ihren Feldern
@@ -113,7 +116,7 @@ public class SatzXml extends Datensatz {
       parseFeldreferenz(element, reader);
     }
     else if ("version".equals(name.getLocalPart()))  {
-      parseSatzversion(element, reader);
+      parseSatzversion(reader);
     }
   }
 
@@ -161,43 +164,45 @@ public class SatzXml extends Datensatz {
         this.setSparte(referenz.getAuspraegung());
 
         this.setGdvSatzartName(referenz.getAuspraegung());
-        LOG.debug("Sparte: " + referenz.getAuspraegung());
+        LOG.debug("Sparte: {}", referenz.getAuspraegung());
       }
       else if ("Satznummer".equals(referenz.getName()))
       {
-        this.setGdvSatzartNummer(referenz.getAuspraegung());
+        //this.setGdvSatzartNummer(referenz.getAuspraegung());
 
         this.setGdvSatzartName(referenz.getAuspraegung());
-        LOG.debug("Satznummer: " + referenz.getAuspraegung());
+        LOG.debug("Satznummer: {}", referenz.getAuspraegung());
       }
     }
   }
 
-
-
-  /**
-   * Parses the version
-   * 
-   * @param element the element
-   * @param reader the reader
-   * @throws XMLStreamException the XML stream exception
-   */
-
-  private void parseSatzversion(final StartElement element,
-      final XMLEventReader reader) throws XMLStreamException
-  {
-    if (reader.hasNext())
-    {
-      XMLEvent event = reader.nextEvent();
-      if (event.isCharacters())
-      {
-        this.getSatzversion()
-            .setInhalt(event.asCharacters()
-                .getData());
-      }
+    private void parseSatzversion(XMLEventReader reader) throws XMLStreamException {
+        if (reader.hasNext()) {
+            XMLEvent event = reader.nextEvent();
+            if (event.isCharacters()) {
+                this.getSatzversion().setInhalt(event.asCharacters().getData());
+            }
+        }
     }
 
-  }
+    /**
+     * Setzen des Namens einer Gdv-Satzart.
+     * <p>
+     * Der <code>string</code> wird mit dem Trennzeichen '.' an den bisherigen
+     * Inhalt angehaengt.
+     * </p>
+     *
+     * @param string Satzart-Name
+     */
+    protected void setGdvSatzartName(String string) {
+        StringBuilder buf = new StringBuilder();
+        if (this.getGdvSatzartName().isEmpty()) {
+            buf.append(string);
+        } else {
+            buf.append(this.getGdvSatzartName()).append(".").append(string);
+        }
+        super.setGdvSatzartName(buf.toString());
+    }
 
     /**
      * Verwendet die uebergebene Map, um die Teildatensaetze um fehlende
@@ -211,25 +216,20 @@ public class SatzXml extends Datensatz {
             TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(n);
             tdsXml.updateWith(felder);
             updateSparte(tdsXml);
-            //updateSatznummer(n, tdsXml);
+        }
+        SatzTyp satzTyp = getSatzTyp();
+        if (satzTyp.hasWagnisart() && !getFeld(WAGNISART).hasValue()) {
+            setFeld(WAGNISART, Integer.toString(satzTyp.getWagnisart()).substring(0, 1));
+        } else if (satzTyp.hasBausparenArt() && !getFeld(ART_580).hasValue()) {
+            setFeld(ART_580, satzTyp.getBausparenArt());
         }
     }
 
     private void updateSparte(TeildatensatzXml tdsXml) {
-        if (tdsXml.hasSparte()) {
+        if (tdsXml.hasSparte() && tdsXml.getSparte() == 0) {
             tdsXml.setSparte(getSatzTyp().getSparte());
         }
     }
-
-//    private void updateSatznummer(int n, TeildatensatzXml tdsXml) {
-//        if (tdsXml.hasFeld(Bezeichner.SATZNUMMER) || tdsXml.hasFeld(Bezeichner.SATZ_NR_2)) {
-//            Feld feld = tdsXml.getFeld(Bezeichner.SATZNUMMER);
-//            Zeichen satznr = new Zeichen(feld.getBezeichner(), feld.getByteAdresse(), Character.forDigit(n, 10));
-//            tdsXml.setSatznummer(satznr);
-//            tdsXml.remove(feld);
-//            tdsXml.add(satznr);
-//        }
-//    }
 
     /**
      * Liefert eine Liste der unterstuetzten Satz-Typen. Dies ist vor allem fuer

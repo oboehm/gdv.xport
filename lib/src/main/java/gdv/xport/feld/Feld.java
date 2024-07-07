@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2021 by Oli B.
+ * Copyright (c) 2009 - 2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,7 +50,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     /** statt "null". */
     public static final Feld NULL_FELD = new Feld();
     private final Bezeichner bezeichner;
-    protected String inhalt;
+    protected String inhalt = "";
     private final byte byteAdresse;
     private final byte length;
     private byte ausrichtung;
@@ -64,7 +64,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @since 1.0
      */
     public Feld() {
-        this(Bezeichner.UNBEKANNT, 213, 43, Align.LEFT);
+        this(Bezeichner.UNBEKANNT, 213, ByteAdresse.of(43), Align.LEFT);
     }
 
     /**
@@ -78,7 +78,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *            the alignment
      */
     public Feld(final String name, final String s, final Align alignment) {
-        this(Bezeichner.of(name), 1, s, alignment);
+        this(Bezeichner.of(name), ByteAdresse.of(1), s, alignment);
     }
 
     /**
@@ -170,7 +170,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     @Deprecated // TODO: wird mit v8 entsorgt
     protected Feld(Bezeichner bezeichner, int length, int start, Align alignment, Config config) {
         this.bezeichner = bezeichner;
-        this.inhalt = StringUtils.repeat(" ", length);
         this.length = toByteLength(length);
         this.byteAdresse = ByteAdresse.of(start).byteValue();
         this.ausrichtung = alignment.getCode();
@@ -179,7 +178,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
 
     protected Feld(Bezeichner bezeichner, int length, ByteAdresse start, Align alignment, Config config) {
         this.bezeichner = bezeichner;
-        this.inhalt = StringUtils.repeat(" ", length);
         this.length = toByteLength(length);
         this.byteAdresse = start.byteValue();
         this.ausrichtung = alignment.getCode();
@@ -474,9 +472,8 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     /**
      * Reset inhalt.
      */
-    public void resetInhalt() {
-        int anzahlBytes = this.getAnzahlBytes();
-        this.inhalt = StringUtils.repeat(" ", anzahlBytes);
+    public final void resetInhalt() {
+        this.inhalt = "";
     }
 
     /**
@@ -546,16 +543,13 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     }
 
     /**
-     * Dient zum Ermittel, ob ein Werte schon gesetzt wurde. Dabei werden
-     * typische Initialisierungswerte wie "0" als "nicht gesetzt"
-     * interpretiert.
+     * Dient zum Ermittel, ob ein Wert schon gesetzt wurde.
      *
      * @return true, falls Feld mit einem Wert belegt ist
      * @since 3.1
      */
-    public boolean hasValue() {
-        String value = getInhalt();
-        return StringUtils.isNotBlank((this.getAusrichtung().compareTo(Align.RIGHT) == 0) ? StringUtils.replaceChars(value, '0', ' ') : value);
+    public final boolean hasValue() {
+        return !inhalt.isEmpty();
     }
 
     /**
@@ -678,7 +672,8 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         Feld other = (Feld) obj;
         return (this.bezeichner.isVariantOf(other.bezeichner) || other.bezeichner.isVariantOf(this.bezeichner))
                 && this.getInhalt().equals(other.getInhalt())
-                && (this.byteAdresse == other.byteAdresse);
+                && (this.byteAdresse == other.byteAdresse)
+                && (this.length == other.length);
     }
 
     /*
@@ -806,7 +801,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
          */
         protected String validateLax(String value) {
             LOG.debug("Inhalt von '{}' wird validiert.", value);
-            if (!Text.of(value).isPrintable()) {
+            if (!Text.isPrintable(value)) {
                 throw new ValidationException(String.format("Text '%s' enthaelt ungueltige Zeichen", value));
             }
             return value;

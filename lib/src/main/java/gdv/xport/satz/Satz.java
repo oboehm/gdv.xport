@@ -60,7 +60,7 @@ public abstract class Satz implements Cloneable {
    * Auszahlungen, zukünftige Summenänderungen und Wertungssummen. Nicht
    * verwechseln mit Satznummer eines Teildatensatzes!
    */
-  private String gdvSatzartNummer = "";
+  //private String gdvSatzartNummer = "";
   /**
    * Zum Abspeichern des Namens einer Gdv-Satzart gemaess Online-Version bei
    * gdv-online.de
@@ -99,7 +99,7 @@ public abstract class Satz implements Cloneable {
 		this.config = satz.config;
 		this.createTeildatensaetze(satz.getSatzTyp(), n);
         this.gdvSatzartName = satz.getGdvSatzartName();
-        this.gdvSatzartNummer = satz.getGdvSatzartNummer();
+        //this.gdvSatzartNummer = satz.getGdvSatzartNummer();
         this.setSatzversion(satz.getSatzversion().getInhalt());
     }
 
@@ -127,7 +127,7 @@ public abstract class Satz implements Cloneable {
         this.getSatzartFeld().setInhalt(satz.getSatzart());
         this.satzVersion.setInhalt(satz.getSatzversion().getInhalt());
         this.gdvSatzartName = satz.getGdvSatzartName();
-        this.gdvSatzartNummer = satz.getGdvSatzartNummer();
+        //this.gdvSatzartNummer = satz.getGdvSatzartNummer();
     }
 
 	private void createTeildatensaetze(final SatzTyp art, final int n) {
@@ -437,14 +437,14 @@ public abstract class Satz implements Cloneable {
 		return getFeld(Bezeichner.VERMITTLER).getInhalt().trim();
 	}
 
-    /**
-     * Setzt die Satzartnummer einer Satzart. Nicht verwechseln mit Satznummer!
-     *
-     * @param x z.B. "6" fuer Satzart 0220, Sparte 010, Wagnisart 2, Bezugsrechte
-     */
-    protected void setGdvSatzartNummer(final String x) {
-        this.gdvSatzartNummer = x;
-    }
+//    /**
+//     * Setzt die Satzartnummer einer Satzart. Nicht verwechseln mit Satznummer!
+//     *
+//     * @param x z.B. "6" fuer Satzart 0220, Sparte 010, Wagnisart 2, Bezugsrechte
+//     */
+//    protected void setGdvSatzartNummer(final String x) {
+//        this.gdvSatzartNummer = x;
+//    }
 
     /**
      * Gets die Satzartnummer. Nicht verwechseln mit Satznummer!
@@ -454,9 +454,17 @@ public abstract class Satz implements Cloneable {
      * (Bezugsrechte) der Fall.
      *
      * @return die Satzartnummer als String
+	 * @deprecated bitte Satzartnummer ueber {@link #getSatzTyp()} ermitteln
      */
+	@Deprecated
     public String getGdvSatzartNummer() {
-        return this.gdvSatzartNummer;
+		SatzTyp st = getSatzTyp();
+		if (st.hasGdvSatzartNummer()) {
+			return Integer.toString(st.getGdvSatzartNummer());
+		} else {
+			return "";
+		}
+        //return this.gdvSatzartNummer;
     }
 
     /**
@@ -468,23 +476,11 @@ public abstract class Satz implements Cloneable {
 
     /**
      * Setzen des Namens einer Gdv-Satzart.
-     * <p>
-     * Der <code>string</code> wird mit dem Trennzeichen '.' an den bisherigen
-     * Inhalt angehaengt.
-     * </p>
      *
      * @param string Satzart-Name
      */
     protected void setGdvSatzartName(String string) {
-        StringBuilder buf = new StringBuilder();
-
-        if (this.gdvSatzartName.isEmpty()) {
-            buf.append(string);
-        } else {
-            buf.append(this.gdvSatzartName).append(".").append(string);
-        }
-
-        this.gdvSatzartName = buf.toString();
+        this.gdvSatzartName = string;
     }
 
     public void resetGdvSatzartName() {
@@ -714,33 +710,14 @@ public abstract class Satz implements Cloneable {
 
 	/**
 	 * Liefert den Satz-Typ zurueck. Der Satz-Typ ist eine Zusammenfassung aus
-	 * Satzart und Sparte.
+	 * Satzart und Sparte (in {@link Datensatz#}).
 	 *
 	 * @return den Satz-Typ
 	 * @since 1.0
 	 */
 	@JsonIgnore
 	public SatzTyp getSatzTyp() {
-		if (StringUtils.isNotEmpty(this.gdvSatzartName)) {
-			return SatzTyp.of(this.gdvSatzartName);
-	    } else {
-			if (hasSparte()) {
-				if (this.hasWagnisart() && this.getWagnisart().matches("\\d")) {
-					return SatzTyp.of(this.getSatzart(), getSparte(),
-							Integer.parseInt(this.getWagnisart()));
-				} else if (this.hasKrankenFolgeNr() && this.getKrankenFolgeNr().matches("\\d")) {
-					return SatzTyp.of(this.getSatzart(), getSparte(),
-							Integer.parseInt(this.getKrankenFolgeNr()));
-				} else if (this.hasBausparenArt() && this.getBausparenArt().matches("\\d")) {
-					return SatzTyp.of(this.getSatzart(), getSparte(),
-							Integer.parseInt(this.getBausparenArt()));
-				} else {
-					return SatzTyp.of(this.getSatzart(), getSparte());
-				}
-			} else {
-				return SatzTyp.of(this.getSatzart());
-			}
-		}
+		return SatzTyp.of(this.getSatzart());
 	}
 
 	/**
@@ -823,12 +800,13 @@ public abstract class Satz implements Cloneable {
      * @return die Sparte
      * @since 0.9
 	 */
-	// TODO: mit v9 entsorgen
+	// TODO: mit v8 IllegalArgumentException werfen
 	@JsonIgnore
 	public int getSparte() {
 		LOG.warn("getSparte() steht ab v9 nur noch im Datensatz zur Verfuegung.");
-		throw new IllegalArgumentException(
-				this.toShortString() + " hat kein Feld \"Sparte\" an Pos 11 in den Kopfdaten!");
+//		throw new IllegalArgumentException(
+//				this.toShortString() + " hat kein Feld \"Sparte\" an Pos 11 in den Kopfdaten!");
+		return 0;
 	}
 
 	/**

@@ -26,17 +26,14 @@ import org.apache.logging.log4j.Logger;
 import javax.validation.ValidationException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Der SatzTyp ist eine Repraesentation des Namens einer GDV-Satzdefinition bzw. seiner Bestandteile.
  * <p>
  * Der Aufbau des <b>GDV-Satzartnames</b> folgt dem Schema
  * &lt;satzart&gt;[.&lt;sparte&gt;[.&lt;art&gt;[.&lt;gdvsatzartnummer&gt;]]].<br>
- * (siehe auch {{@link #getGdvSatzartName()})
  * </p>
  * <p>
  * Näheres findet sich unter "online-version" z.B. hier (rel 01.12.2023):<br>
@@ -95,27 +92,9 @@ import java.util.Set;
 public class SatzTyp {
 
 	private static final Logger LOG = LogManager.getLogger(SatzTyp.class);
-	private static final Set<int[]> satzarten = loadSatzarten();
+	private static final Map<String, List<Integer>> satzarten = loadSatzarten();
 	private static final Validator VALIDATOR = new Validator();
 	private final short[] teil;
-
-  // Stand: seit Release 01.07.2013
-  private static final int[] spartenIdentischZu_000 = { 60, 63, 65, 69, 160, 161, 162, 169, 233,
-      240, 241, 242, 243, 249, 250, 251, 252, 290, 291, 293, 294, 296, 299, 630, 650 };
-
-  // Stand: seit Release 01.07.2013
-  private static final int[] spartenIdentischZu_080 =
-      { 80, 81, 82, 83, 89, 90, 99, 100, 109, 120, 123, 124, 150, 210, 230, 231 };
-
-  // Stand: seit Release 01.07.2013
-  private static final int[] spartenIdentischZu_170 = { 170, 171, 172, 174, 175, 176, 179, 232 };
-
-  // Stand: seit Release 01.07.2013
-  private static final int[] spartenIdentischZu_190 =
-      { 180, 181, 182, 183, 184, 185, 189, 190, 191, 192, 193, 194, 197, 199 };
-
-  // Stand: seit Release 01.07.2013
-  private static final int[] spartenIdentischZu_510 = { 241, 244, 510 };
 
 	/**
 	 * Damit laesst sich ein SatzTyp anhand der entsprechenden String-
@@ -126,42 +105,74 @@ public class SatzTyp {
 	 * @since 5.0
 	 */
 	public static SatzTyp of(String nr)  {
-		return of(nr, ".");
-	}
-
-	private static SatzTyp of(String nr, String separatorChars) {
-		return new SatzTyp(nr, separatorChars);
+		return new SatzTyp(nr);
 	}
 
 	/**
-   * Anhand der übergebenen Zahlen wird der entsprechende SatzTyp aufgebaut.<br>
-   * Es gilt: &lt;satzart&gt;[.&lt;sparte&gt;[.&lt;art&gt;[.&lt;gdvsatzartnummer&gt;]]]
+	 * Anhand der übergebenen Zahlen wird der entsprechende SatzTyp aufgebaut.<br>
+	 * Es gilt: &lt;satzart&gt;[.&lt;sparte&gt;[.&lt;art&gt;[.&lt;gdvsatzartnummer&gt;]]]
 	 *
-   * @param args the args (max. Anzahl 4)
+	 * @param args the args (max. Anzahl 4)
 	 * @return the satz typ
 	 * @since 5.0
 	 */
 	public static SatzTyp of(int... args) {
+		return new SatzTyp(args);
+	}
+
+	private static String toString(int... args) {
+		int art = 0;
+		if (args.length > 2) {
+			art = args[2];
+			if (((args[0] == 220) || (args[0] == 221)) && (args[1] == 10)) {
+				if ((art == 1) || (art == 3)) {
+					art = 13;
+				} else if ((art == 4) || (art == 8)) {
+					art = 48;
+				}
+			} else if ((args[0] == 220) && (args[1] == 580) && (art == 0)) {
+				art = 1;
+			}
+		}
 		switch(args.length) {
 			case 1:
-				return of(String.format("%04d", args[0]));
+				return String.format("%04d", args[0]);
 			case 2:
-				return of(String.format("%04d.%03d", args[0], args[1]));
+				String satzart = String.format("%04d", args[0]);
+				if (satzarten.get(satzart) != null) {
+					return satzart;
+				}
+				return mapSparte(args[0], args[1]);
 			case 3:
-				return of(String.format("%04d.%03d.%d", args[0], args[1], args[2]));
+				String s = String.format("%04d.%03d.%d", args[0], args[1], art);
+				return (s.equals("0220.580.1")) ? "0220.580.01" : s;
 			case 4:
-				return of(String.format("%04d.%03d.%d.%d", args[0], args[1], args[2], args[3]));
+				return String.format("%04d.%03d.%d.%d", args[0], args[1], art, args[3]);
 			default:
 				throw new IllegalArgumentException("1 - 4 arguments expected, not " + args.length);
 		}
 	}
 
-	private SatzTyp(String nr, String separatorChars) {
-		this(toIntArray(nr, separatorChars));
+	private static String mapSparte(int satzart, int sparte) {
+		String mapped = String.format("%04d.%03d", satzart, sparte);
+		if (satzarten.get(mapped) != null) {
+			return mapped;
+		}
+		String prefix = String.format("%04d.", satzart);
+		for (Map.Entry<String, List<Integer>> entry : satzarten.entrySet()) {
+			if (entry.getKey().startsWith(prefix) && entry.getValue().contains(sparte)) {
+				return String.format("%04d.%03d", satzart, entry.getValue().get(0));
+			}
+		}
+		return mapped;
 	}
 
-	private static int[] toIntArray(String nr, String separatorChars) {
-		String[] parts = StringUtils.split(nr, separatorChars);
+	private SatzTyp(String nr) {
+		this(toIntArray(nr));
+	}
+
+	private static int[] toIntArray(String nr) {
+		String[] parts = StringUtils.split(nr, ".");
 		int[] array = new int[parts.length];
 		try {
 			for (int i = 0; i < parts.length; i++) {
@@ -171,6 +182,14 @@ public class SatzTyp {
 		} catch (NumberFormatException ex)  {
 			throw new IllegalArgumentException("kein Satz-Typ: '" + nr + "'", ex);
 		}
+	}
+
+	private static int[] toIntArray(short[] sa) {
+		int[] array = new int[sa.length];
+		for (int i = 0; i < sa.length; i++) {
+			array[i] = sa[i];
+		}
+		return array;
 	}
 
 	private SatzTyp(int... args) {
@@ -200,9 +219,20 @@ public class SatzTyp {
 		return (satzart == 210) || (satzart == 211) || (satzart == 220) || (satzart == 221);
 	}
 
-	private boolean isAllgemeineSatzart() {
-		return isAllgemeineSatzart(getSatzart());
+	/**
+	 * Satzartzen 0800 bis 0900 sind freie Satzarten.
+	 *
+	 * @return true, falls freie Satzart
+	 * @since 7.1
+	 */
+	public boolean isFreieSatzart() {
+		return isFreieSatzart(getSatzart());
 	}
+
+	private static boolean isFreieSatzart(int satzart) {
+		return satzart >= 800 && satzart <= 900;
+	}
+
 
 	/**
 	 * Gets the satzart.
@@ -231,6 +261,16 @@ public class SatzTyp {
 	}
 
 	/**
+	 * Manche Satzarten wie "0210.080" koennen auch eine andere Sparte wie
+	 * 81 haben.
+	 *
+	 * @return Liste der erlaubten Sparten
+	 */
+	public List<Integer> getErlaubteSparten() {
+		return satzarten.get(toString());
+	}
+
+	/**
 	 * Liefert die Sparte als String.
 	 *
 	 * @return z.B. "030"
@@ -247,7 +287,7 @@ public class SatzTyp {
 	 */
 	public String getSparteMitArt() {
 		StringBuilder buf = new StringBuilder();
-		String[] parts = StringUtils.split(this.getGdvSatzartName(), '.');
+		String[] parts = StringUtils.split(this.toString(), '.');
 		if (parts.length > 1) {
 			buf.append(parts[1]);
 			if (this.hasArt()) {
@@ -449,43 +489,11 @@ public class SatzTyp {
    * "0220.010.13.1"
    *
    * @return the GdvSatzartName
+   * @deprecated die Funktion uebernimmt inzwischen toString()
    */
+  @Deprecated
   public String getGdvSatzartName() {
-	  StringBuilder buf = new StringBuilder();
-	  buf.append(String.format("%04d", this.getSatzart()));
-	  if (this.getSatzart() >= 210 && this.getSatzart() < 300) {
-		  if (this.hasSparte()) {
-			  buf.append(".");
-			  if (isIdentischZu000(this.getSparte()))
-				  buf.append("000");
-			  else if (isIdentischZu080(this.getSparte()))
-				  buf.append("080");
-			  else if (isIdentischZu170(this.getSparte()))
-				  buf.append("170");
-			  else if (isIdentischZu190(this.getSparte()))
-				  buf.append("190");
-			  else if (isIdentischZu510(this.getSparte()))
-				  buf.append("510");
-			  else if (600 == this.getSparte())
-				  // lt. GDV-Spartenverseichnis wird Moped wie Sparte 050 behandelt
-				  buf.append("050");
-			  else {
-				  buf.append(this.getSparteAsString());
-
-				  if (this.hasArt()) {
-					  buf.append(".");
-					  buf.append(this.getArtAsString());
-				  }
-				  if (this.hasGdvSatzartNummer()) {
-					  buf.append(".");
-					  buf.append(this.getGdvSatzartNummer());
-				  }
-			  }
-		  } else if (isAllgemeineSatzart()) {
-			  buf.append(".000");
-		  }
-	  }
-	  return buf.toString();
+	  return toString();
   }
 
   /**
@@ -493,9 +501,11 @@ public class SatzTyp {
    * "0220.000"
    *
    * @return true, if successful
+   * @deprecated wird nicht benoetigt, da am Namen erkennbar (TODO: wird mit v8 entfernt)
    */
+  @Deprecated
   public boolean hasSparteInGdvSatzartName() {
-    return StringUtils.split(this.getGdvSatzartName(), '.').length > 1;
+    return StringUtils.split(this.toString(), '.').length > 1;
   }
 
 	/*
@@ -504,7 +514,7 @@ public class SatzTyp {
 	 */
 	@Override
 	public int hashCode() {
-		return toString().hashCode();
+		return getSatzart();
 	}
 
 	/*
@@ -519,17 +529,24 @@ public class SatzTyp {
 		if (!(obj instanceof SatzTyp)) {
 			return false;
 		}
+		if (isFreieSatzart()) {
+			return getSatzart() == ((SatzTyp) obj).getSatzart();
+		}
 		return this.toString().equals(obj.toString());
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Liefert den GDV-Sartzartname gemaess Online-Version bei gdv-online.de zurueck
+	 * (z.B. "0220.040" oder "0220.010.13.1")
 	 *
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return getGdvSatzartName();
+		if ((getSatzart() == 0) || isFreieSatzart()) {
+			return String.format("%04d", getSatzart());
+		}
+		return toString(toIntArray(teil));
 	}
 
 	private void assertTrue(String attribute, boolean condition) {
@@ -549,158 +566,45 @@ public class SatzTyp {
 		 * @return das Array selber (zur Weiterverarbeitung)
 		 */
 		public int[] validate(int[] args) {
-			validateLength(args, 4);
-			if ((800 <= args[0]) && (args[0] <= 900)) {
+			validateLength(args);
+			if (isFreieSatzart(args[0])) {
 				LOG.debug("Freie Satzart {} wird nicht weiter untersucht.", args[0]);
 				return args;
 			}
 			if (!isInSatzarten(args)) {
-				if ((args.length == 2) || (args[args.length-1] < 0)) {
+				if ((args.length == 1) && (isInSatzarten(args[0], 0))) {
+					LOG.debug("Satzart {} wird als 0{}.000 angesehen.", args[0], args[0]);
+				} else if ((args.length == 2) || (args[args.length-1] < 0)) {
 					LOG.debug("Satzart {} gibt es nicht, wird aber akzeptiert.", Arrays.toString(args));
 				} else {
 					throw new ValidationException("unbekannte Satzart: " + Arrays.toString(args));
 				}
 			}
-//			switch(args[0]) {
-//				case 1:
-//				case 9999:
-//					validateLength(args, 1);
-//					break;
-//				case 52:
-//				case 100:
-//				case 102:
-//				case 200:
-//				case 202:
-//				case 210:
-//        case 211:
-//        case 212:
-//        case 222:
-//        case 225:
-//				case 230:
-//        case 250:
-//        case 251:
-//				case 260:
-//				case 270:
-//				case 280:
-//				case 291:
-//				case 292:
-//				case 293:
-//				case 294:
-//				case 295:
-//				case 300:
-//				case 342:
-//				case 350:
-//				case 352:
-//				case 362:
-//				case 372:
-//				case 382:
-//				case 390:
-//				case 392:
-//				case 400:
-//				case 410:
-//				case 420:
-//				case 430:
-//				case 450:
-//				case 500:
-//				case 550:
-//				case 600:
-//				case 9950:
-//				case 9951:
-//				case 9952:
-//					validateLength(args, 2);
-//					break;
-//				case 220:
-//					validateSatzart0220(args);
-//					break;
-//        case 221:
-//          validateSatzart0221(args);
-//          break;
-//			}
 			return args;
 		}
 
-		private static boolean isInSatzarten(int[] args) {
-			for (int[] satzart : satzarten) {
-				if (Arrays.equals(satzart, args)) {
+		private static boolean isInSatzarten(int... args) {
+			String sa = SatzTyp.toString(args);
+			for (Map.Entry<String, List<Integer>> entry : satzarten.entrySet()) {
+				String key = entry.getKey();
+				if (key.equals(sa)) {
 					return true;
 				}
+				if ((args.length == 3) && (key.length() > 11)) {
+					String shortened = StringUtils.substringBeforeLast(key, ".");
+					if (shortened.equals(sa)) {
+						return true;
+					}
+				}
 			}
-			return false;
+			return args[0] == 0;
 		}
 
-		private static void validateLength(int[] args, int max) {
-			if ((args.length < 1) || (args.length > max)) {
-				throw new ValidationException("array " + Arrays.toString(args) + ": expected size is 1.." + max);
+		private static void validateLength(int[] args) {
+			if ((args.length < 1) || (args.length > 4)) {
+				throw new ValidationException("array " + Arrays.toString(args) + ": expected size is 1..4");
 			}
 		}
-
-//		private void validateSatzart0220(int[] args) {
-//			if (args.length > 1) {
-//				switch (args[1]) {
-//					case 0:
-//					case 30:
-//					case 40:
-//					case 51:
-//					case 52:
-//					case 53:
-//					case 54:
-//					case 55:
-//					case 59:
-//					case 70:
-//					case 80:
-//					case 110:
-//					case 130:
-//					case 140:
-//					case 170:
-//					case 190:
-//					case 510:
-//					case 550:
-//					case 560:
-//					case 570:
-//					case 684:
-//						validateLength(args, 2);
-//						break;
-//					case 20:
-//					case 580:
-//						validateLength(args, 3);
-//						break;
-//					case 10:
-//						validateLength(args, 4);
-//				}
-//			}
-//		}
-//
-//		private void validateSatzart0221(int[] args) {
-//			if (args.length > 1) {
-//				switch (args[1]) {
-//					case 0:
-//					case 30:
-//					case 40:
-//					case 51:
-//					case 52:
-//					case 53:
-//					case 54:
-//					case 55:
-//					case 59:
-//					case 70:
-//					case 80:
-//					case 110:
-//					case 130:
-//					case 140:
-//					case 170:
-//					case 190:
-//					case 510:
-//					case 550:
-//					case 560:
-//					case 570:
-//					case 684:
-//						validateLength(args, 2);
-//						break;
-//					case 10:
-//						validateLength(args, 4);
-//				}
-//			}
-//		}
 
 		/**
 		 * Der Unterschied zu validate liegt nur in der ausgeloesten Exception.
@@ -718,71 +622,40 @@ public class SatzTyp {
 
 	}
 
-  /**
-   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-   * Satzdefinition vom Allgemeinen Satz geliefert werden.
-   */
-  private static boolean isIdentischZu000(int sparte) {
-	  return contains(spartenIdentischZu_000, sparte);
-  }
-
-  /**
-   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-   * Satzdefinition vom Feuer-Industrie/Gewerbl. Sachvers. geliefert werden.
-   */
-  private static boolean isIdentischZu080(int sparte) {
-	  return contains(spartenIdentischZu_080, sparte);
-  }
-
-  /**
-   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-   * Satzdefinition von Technische Versicherung geliefert werden.
-   */
-  private static boolean isIdentischZu170(int sparte) {
-	  return contains(spartenIdentischZu_170, sparte);
-  }
-
-  /**
-   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-   * Satzdefinition von Transport geliefert werden.
-   */
-  private static boolean isIdentischZu190(int sparte) {
-	  return contains(spartenIdentischZu_190, sparte);
-  }
-
-  /**
-   * Sparten, die gemaess Spartenverzeichnis (Anlagen_GDV-Datendatz_VU-Vermittler) nach
-   * Satzdefinition von Verkehrsservice geliefert werden.
-   */
-  private static boolean isIdentischZu510(int sparte) {
-	  return contains(spartenIdentischZu_510, sparte);
-  }
-
-  	private static boolean contains(int[] variants, int sparte) {
-	  	for (int x : variants) {
-			if (x == sparte) {
-				return true;
-			}
+	/**
+	 * Liefert eine Liste aller bekannten Satzarten zurueck, die in der
+	 * GDV-Spezifikation definiert sind.
+	 *
+	 * @return Array mit allen bekannten Satzarten
+	 * @since 7.1
+	 */
+	public static SatzTyp[] values() {
+	  	List<SatzTyp> typen = new ArrayList<>();
+		Set<String> keys = new TreeSet<>(satzarten.keySet());
+		for (String k : keys) {
+			typen.add(SatzTyp.of(k));
 		}
-		return false;
+		return typen.toArray(new SatzTyp[0]);
 	}
 
-	private static Set<int[]> loadSatzarten() {
-		Set<int[]> satzarten = new HashSet<>();
-		Properties properties = loadProperties("satzarten.properties");
+	private static Map<String, List<Integer>> loadSatzarten() {
+		Map<String, List<Integer>> satzarten = new HashMap<>();
+		Properties properties = loadProperties();
 		for (String key : properties.stringPropertyNames()) {
-			satzarten.add(toIntArray(key, "."));
+			List<Integer> sparten = Arrays.stream(StringUtils.split(properties.getProperty(key), ","))
+					.map(Integer::parseInt).collect(Collectors.toList());
+			satzarten.put(key, sparten);
 		}
 		return satzarten;
 	}
 
-	private static Properties loadProperties(String resourceName) {
-		try (InputStream istream = SatzTyp.class.getResourceAsStream(resourceName)) {
+	private static Properties loadProperties() {
+		try (InputStream istream = SatzTyp.class.getResourceAsStream("satzarten.properties")) {
 			Properties properties = new Properties();
 			properties.load(istream);
 			return properties;
 		} catch (IOException ex) {
-			throw new IllegalArgumentException("Resource '" + resourceName + "' nicht gefunden", ex);
+			throw new IllegalArgumentException("Resource 'satzarten.properties' nicht gefunden", ex);
 		}
 	}
 

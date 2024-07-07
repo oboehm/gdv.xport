@@ -70,8 +70,8 @@ public class Teildatensatz extends Datensatz {
         this(satzTyp);
         setSatznummer(nr);
         this.setGdvSatzartName(satzTyp.toString());
- 		if (satzTyp.hasGdvSatzartNummer())
-			this.setGdvSatzartNummer(String.valueOf(satzTyp.getGdvSatzartNummer()));
+// 		if (satzTyp.hasGdvSatzartNummer())
+//			this.setGdvSatzartNummer(String.valueOf(satzTyp.getGdvSatzartNummer()));
     }
 
     /**
@@ -527,9 +527,7 @@ public class Teildatensatz extends Datensatz {
     @Override
     public void export(final Writer writer, final String eod) throws IOException {
         StringBuilder data = new StringBuilder(256);
-        for (int i = 0; i < 256; i++) {
-            data.append(' ');
-        }
+        data.append(" ".repeat(256));
         for (Feld feld : datenfelder) {
             int start = feld.getByteAdresse() - 1;
             int end = start + feld.getAnzahlBytes();

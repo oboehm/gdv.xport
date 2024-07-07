@@ -334,8 +334,10 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner BRE_STAFFEL = new Bezeichner("BRE-Staffel");
     public static final Bezeichner BUENDELUNGSKENNZEICHEN = new Bezeichner("Buendelungskennzeichen");
     public static final Bezeichner BUCHUNGSKENNZEICHEN = new Bezeichner("Buchungskennzeichen");
+    /** @deprecated bitte VERWENDUNGSART verwenden (TODO: wird mit v8 entfernt). */
+    @Deprecated
     public static final Bezeichner BUCHUNGSKENNZEICHEN1 = new Bezeichner("Buchungskennzeichen1", "Buchungskennzeichen");
-    public static final Bezeichner BUCHUNGSKENNZEICHEN2 = new Bezeichner("Buchungskennzeichen2", "Buchungskennzeichen1");
+    public static final Bezeichner BUCHUNGSKENNZEICHEN2 = new Bezeichner("Buchungskennzeichen2");
     public static final Bezeichner BUZ_LEISTUNG_VON = new Bezeichner("Leistung von");
     public static final Bezeichner BUZ_LEISTUNG_BIS = new Bezeichner("Leistung bis");
     public static final Bezeichner BUZ_PROZENT_SATZ = new Bezeichner("Prozent-Satz");

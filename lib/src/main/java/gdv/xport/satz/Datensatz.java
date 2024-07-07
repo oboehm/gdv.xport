@@ -25,6 +25,7 @@ import gdv.xport.io.Importer;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.util.SatzTyp;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -72,14 +73,12 @@ public class Datensatz extends Satz {
 	 * <li>VERMITTLER</li>
 	 * <li>SATZNUMMER</li>
 	 * </ul>
-	 * <p>
-	 * Anm.: Dieser Constructor wird noch von
-	 * 		{@link gdv.xport.util.SatzFactory#register(Class, int)}
-	 * 		verwendet.
-	 * </p>
 	 *
 	 * @param satzart z.B. 100
+	 * @deprecated durch {@link Datensatz(SatzTyp)} ersetzt
+	 * 			   TODO: wird mit v9 entfernt
 	 */
+	@Deprecated
 	public Datensatz(final int satzart) {
 		this(SatzTyp.of(satzart));
 	}
@@ -170,11 +169,11 @@ public class Datensatz extends Satz {
 	 * @param tds der (leere) Teildatensatz
 	 * @since 0.4
 	 */
-	protected void setUpTeildatensatz(final Teildatensatz tds) {
-		if (!tds.hasFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()) && !tds.getFeldInhalt(Kopffelder1bis7.SATZART.getBezeichner())
-				.equals("9999")) {
+	private void setUpTeildatensatz(final Teildatensatz tds) {
+		if (!tds.hasFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner())) {
 			setUp(tds, Kopffelder1bis7.VU_NUMMER.getBezeichner(), Config.getInstance().getVUNr());
 			setUp(tds, Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN));
+			setUp(tds, Kopffelder1bis7.SPARTE.getBezeichner(), new NumFeld(SPARTE, 3, ByteAdresse.of(11)));
 			setUp(tds, Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER));
 			setUp(tds, Kopffelder1bis7.FOLGENUMMER.getBezeichner(), new NumFeld(Kopffelder1bis7.FOLGENUMMER));
 			setUp(tds, Kopffelder1bis7.VERMITTLER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERMITTLER));
@@ -240,13 +239,56 @@ public class Datensatz extends Satz {
 
 	/**
 	 * Setzt die Sparte.
+	 * <p>
+	 * Diese Methode ist nur sinnvoll bei Satzarten, die ueberhaupt eine Sparte
+	 * (Produkt) haben (an ByteAdresse 11 mit Laenge 3) wie z.B. "0200", "0100",
+	 * "0210.000", "0400" und nicht nur fuer eine einzige Sparte gedacht sind.
+	 * Passt die Sparte nicht zur Satzart, wird eine {@link IllegalArgumentException}
+	 * geworfen, wenn die Validierung an ist.
+	 * </p>
 	 *
 	 * @param x z.B. 70 (Rechtsschutz)
 	 */
 	public void setSparte(final int x) {
-		//this.sparte.setInhalt(x);
+		validateSparte(x);
 		for (Teildatensatz tds : getTeildatensaetze()) {
 			tds.setSparte(x);
+		}
+	}
+
+	private void validateSparte(int x) {
+		if (getConfig().getValidateMode() != Config.ValidateMode.OFF && hasSparte()) {
+			SatzTyp aktuell = getSatzTyp();
+			if (!aktuell.getErlaubteSparten().contains(x)) {
+				throw new IllegalArgumentException(
+						String.format("Sparte %d passt nicht zu SatzTyp %s, nur %s", x, aktuell, aktuell.getErlaubteSparten()));
+			}
+		}
+	}
+
+	/**
+	 * Liefert den Satz-Typ zurueck. Der Satz-Typ ist eine Zusammenfassung aus
+	 * Satzart und Sparte.
+	 *
+	 * @return den Satz-Typ
+	 */
+	@Override
+	public SatzTyp getSatzTyp() {
+		if (StringUtils.isNotEmpty(getGdvSatzartName())) {
+			return SatzTyp.of(this.getGdvSatzartName());
+		} else {
+			if (this.hasWagnisart() && this.getWagnisart().matches("\\d")) {
+				return SatzTyp.of(this.getSatzart(), getSparte(),
+						Integer.parseInt(this.getWagnisart()));
+			} else if (this.hasKrankenFolgeNr() && this.getKrankenFolgeNr().matches("\\d")) {
+				return SatzTyp.of(this.getSatzart(), getSparte(),
+						Integer.parseInt(this.getKrankenFolgeNr()));
+			} else if (this.hasBausparenArt() && this.getBausparenArt().matches("\\d")) {
+				return SatzTyp.of(this.getSatzart(), getSparte(),
+						Integer.parseInt(this.getBausparenArt()));
+			} else {
+				return SatzTyp.of(this.getSatzart(), getSparte());
+			}
 		}
 	}
 
