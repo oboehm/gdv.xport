@@ -244,7 +244,7 @@ public class SatzTyp {
 	}
 
 	/**
-	 * Liefert den Inhalt des Spartenteils (kann auch 0 sein!).</br>
+	 * Liefert den Inhalt des Spartenteils (kann auch 0 sein!).
 	 * Die Rueckgabe von 0 bedeutet, dass entweder der Inhalt des Spartenteils
 	 * dieses Objektes 0 ist oder kein Spartenteil vorhanden ist. Dann ggfs.
 	 * abhaengig von Satzart direkt im Satz das Feld an ByteAdresse 011 pruefen! Das

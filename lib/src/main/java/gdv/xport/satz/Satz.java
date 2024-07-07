@@ -710,7 +710,7 @@ public abstract class Satz implements Cloneable {
 
 	/**
 	 * Liefert den Satz-Typ zurueck. Der Satz-Typ ist eine Zusammenfassung aus
-	 * Satzart und Sparte (in {@link Datensatz#}).
+	 * Satzart und Sparte (in {@link Datensatz}).
 	 *
 	 * @return den Satz-Typ
 	 * @since 1.0
