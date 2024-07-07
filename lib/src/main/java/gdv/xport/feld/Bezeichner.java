@@ -1861,7 +1861,7 @@ public final class Bezeichner implements Serializable {
      * Mit dieser Methode lasesst sich feststellen, ob der uebergebene
      * Bezeichner einer Variante ist.
      *
-     * @param other
+     * @param other anderer Bezeichner
      * @return true fuer SATZ_NR_2.isVariantOf(SATZNUMMER)
      * @since 6.6
      */

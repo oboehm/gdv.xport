@@ -11,9 +11,31 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Unreleased]
 
+### Fixed
+
+- Fehler in Methode "Bezeichner#of(String name)"
+  ([Issue #93](https://github.com/oboehm/gdv.xport/issues/93))
+- SatzTest#hasSparteAsProdukt() fehlerhaft
+  ([Issue #94](https://github.com/oboehm/gdv.xport/issues/94))
+
 ### Changed
 
+- Update auf Java 11
 - Teildatensatz.getFeld(int) auf maximale Feld-Anzahl beschränkt
+- Teildatensatz.getFeld(String, ..) ist jetzt deprecated
+- Teildatensatz ist jetzt von Datensatz abgeleitet (statt Satz)
+- Basis-Validierung optimiert
+
+### Added
+
+- [satzarten.properties](lib/src/main/resources/gdv/xport/util/satzarten.properties) zur Unterstützung der Valdierungslogik in SatzTyp eingeführt
+- Validierung in Datensatz.setSparte(int)
+- SatzTyp.isFreieSatzart() und SatzTyp.getErlaubteSparten()
+
+### Removed
+
+- Unterstützung von Java 8
+- XmlService.getSatzart(int)
 
 
 ## [7.0.1] - 2024-01-26

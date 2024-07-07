@@ -11,13 +11,6 @@
   <groupId>com.github.oboehm</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>pom</packaging>
-  <dependencies>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
   <version>7.0.2-SNAPSHOT</version>
   <name>GDV.XPort</name>
 
@@ -269,15 +262,12 @@
             s. https://github.com/spring-projects/spring-boot/issues/6254
           -->
           <classesDirectory>${project.build.outputDirectory}</classesDirectory>
-          <systemProperties>
-            <property>
-              <name>patterntesting.integrationTest</name>
-              <value>true</value>
-            </property>
+          <systemPropertyVariables>
+            <patterntesting.integrationTest>true</patterntesting.integrationTest>
             <includes>
               <include>**/*IT.java</include>
             </includes>
-          </systemProperties>
+          </systemPropertyVariables>
         </configuration>
         <executions>
           <execution>
