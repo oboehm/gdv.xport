@@ -122,16 +122,6 @@
     </dependency>
     <dependency>
       <groupId>org.apache.httpcomponents.client5</groupId>
-      <artifactId>httpclient5</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents.client5</groupId>
       <artifactId>httpclient5-fluent</artifactId>
     </dependency>
     <dependency>
@@ -255,16 +245,6 @@
       <artifactId>junit-platform-engine</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>io.github.netmikey.logunit</groupId>
-      <artifactId>logunit-core</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.github.netmikey.logunit</groupId>
-      <artifactId>logunit-log4j2</artifactId>
-      <scope>test</scope>
-    </dependency>
 
     <!-- Validation -->
     <dependency>
@@ -278,10 +258,6 @@
     <dependency>
       <groupId>javax.validation</groupId>
       <artifactId>validation-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>javax.money</groupId>
-      <artifactId>money-api</artifactId>
     </dependency>
 
     <!-- JSON -->

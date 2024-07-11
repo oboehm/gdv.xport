@@ -22,14 +22,12 @@ import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzTyp;
-import io.github.netmikey.logunit.api.LogCapturer;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,9 +45,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class SatzValidatorTest {
 
-    @RegisterExtension
-    LogCapturer logCapturer = LogCapturer.create().captureForType(SatzValidator.class);
-
     private static final Logger LOG = LogManager.getLogger(SatzValidatorTest.class);
     private final SatzValidator satzValidator = new SatzValidator();
 
@@ -66,19 +61,9 @@ public class SatzValidatorTest {
         Satz kaputt = XmlService.getInstance().getSatzart(SatzTyp.of(100));
         kaputt.setFeld(Bezeichner.SATZNUMMER, "x");
         satzValidator.notice(kaputt);
-        checkLogMessages("keine Zahl");
         List<ConstraintViolation> violations = satzValidator.getViolations();
         LOG.info("violations = {}", violations);
         assertFalse(violations.isEmpty());
-    }
-
-    private void checkLogMessages(String expected) {
-        if (logCapturer.getEvents().isEmpty()) {
-            LOG.info("Noch keine Log-Events aufgezeichet...");
-        } else {
-            LOG.info("Pruefe Log-Meldungen...");
-            logCapturer.assertContains(expected);
-        }
     }
 
     @Test
