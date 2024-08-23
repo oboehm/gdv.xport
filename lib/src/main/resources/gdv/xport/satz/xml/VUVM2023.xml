@@ -16894,9 +16894,9 @@
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld JahresrenteInWE (235-248) -->
-			<feldreferenz referenz="235-248-JahresrenteInWE-Fliesskomma">
+			<feldreferenz referenz="235-248-JahresrenteInWaehrungseinheiten-Fliesskomma">
 				<name>Jahresrente in Währungseinheiten</name>
-				<technischerName>JahresrenteInWE</technischerName>
+                <technischerName>JahresrenteInWaehrungseinheiten</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (249-255) -->
 			<feldreferenz referenz="249-255-Leerstellen-Alphanumerisch">
@@ -47945,7 +47945,7 @@
 			<bytes>10</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="235-248-JahresrenteInWE-Fliesskomma">
+		<feld referenz="235-248-JahresrenteInWaehrungseinheiten-Fliesskomma">
 			<name>Jahresrente in Währungseinheiten</name>
 			<bytes>14</bytes>
 			<datentyp>Fliesskomma</datentyp>
