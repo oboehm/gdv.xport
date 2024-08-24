@@ -11,7 +11,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Unreleased]
 
-### Fixed
+## [7.1.1] - 2024-08-24
 
 - Fix für Feld JahresrenteInWaehrungseinheiten in SatzTyp 0220.010.9.1 in XMLs
   ([Issue #95](https://github.com/oboehm/gdv.xport/issues/95))
@@ -46,14 +46,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - XmlService.getSatzart(int)
 
 
-## [7.0.1] - 2024-01-26
-
-### Fixed
-
-- kleinere Fehler in der mitgelieferten VUVM2023.xml
-
-
-## [7.0.0] - 2024-01-07
+## [7.0] - 2024-01-07
 
 ### Added
 
@@ -73,6 +66,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Fixed
 
+- **7.0.1**: kleinere Fehler in der mitgelieferten VUVM2023.xml
 - XML-Dateien (z.B. VUVM2023.xml) des GDV müssen nicht mehr manuell angepasst werden
 - Downgrade HSQLDB-Treiber auf 2.6.1 wegen Java-8-Kompatibilität
 
