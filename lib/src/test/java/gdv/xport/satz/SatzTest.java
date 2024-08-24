@@ -426,6 +426,19 @@ public final class SatzTest extends AbstractSatzTest {
     }
 
     /**
+     * Test fuer <a href="https://github.com/oboehm/gdv.xport/pull/95">Issue
+     * #95</a>.
+     */
+    @Test
+    public void testSatzart022001091() {
+        Satz rentenversicherung = SatzFactory.getSatz(SatzTyp.of("0220.010.9.1"));
+        Bezeichner jahresrenteInWE = new Bezeichner("Jahresrente in W\u00e4hrungseinheiten", "JahresrenteInWaehrungseinheiten");
+        Feld jahresrente = rentenversicherung.getFeld(jahresrenteInWE);
+        Feld feld31 = rentenversicherung.getTeildatensatz(2).getFeld(ByteAdresse.of(235));
+        assertEquals(feld31, jahresrente);
+    }
+
+    /**
      * Test-Methode fuer {@link Satz#getFelder()}.
      */
     @Test

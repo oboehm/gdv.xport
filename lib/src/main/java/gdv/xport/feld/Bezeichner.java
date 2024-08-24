@@ -550,10 +550,8 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ISIN_NUMMER = new Bezeichner("ISIN-Nummer");
 
     public static final Bezeichner JAEHRLICHE_FAHRLEISTUNG = new Bezeichner("Jaehrliche Fahrleistung");
-    public static final Bezeichner JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Jahresrente in W\u00e4hrungseinheiten");
-    /** @deprecated bitte JAHRESRENTE_IN_WAEHRUNGSEINHEITEN verwenden (TODO: wird mit v8 entfernt). */
-    @Deprecated
-    public static final Bezeichner JAHRESRENTE_IN_WAEHRUNGSEINHEITEN2 = JAHRESRENTE_IN_WAEHRUNGSEINHEITEN;
+    public static final Bezeichner JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Jahresrente in W\u00e4hrungseinheiten", "JahresrenteInWE");
+    public static final Bezeichner JAHRESRENTE_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Jahresrente in W\u00e4hrungseinheiten", "JahresrenteInWaehrungseinheiten");
 
     public static final Bezeichner JAHRESRENTE_INKL_GEWINNBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Jahresrente inkl. Gewinnbeteiligung in WE");
     public static final Bezeichner JAHRESRENTENAENDERUNGS_PROZENTSATZ = new Bezeichner("Jahresrenten\u00e4nderungs-Prozentsatz");
