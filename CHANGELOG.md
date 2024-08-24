@@ -9,6 +9,14 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
+## [Unreleased]
+
+### Fixed
+
+- Fix für Feld JahresrenteInWaehrungseinheiten in SatzTyp 0220.010.9.1 in XMLs
+  ([Issue #95](https://github.com/oboehm/gdv.xport/issues/95))
+
+
 ## [7.1.0] - 2024-07-07
 
 ### Fixed
