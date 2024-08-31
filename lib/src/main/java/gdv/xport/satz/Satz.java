@@ -493,7 +493,7 @@ public abstract class Satz implements Cloneable {
 
     /**
      * Liefert die Satzversion
-     * 
+     *
      * @return die Satzversion
      */
     public final AlphaNumFeld getSatzversion() {
@@ -613,12 +613,25 @@ public abstract class Satz implements Cloneable {
 	}
 
 	private BetragMitVorzeichen getBetragMitVorzeichen(final Bezeichner bezeichner) {
-    	Betrag betrag = getFeld(bezeichner, Betrag.class);
-    	Feld vorzeichen = getVorzeichenOf(bezeichner);
-    	BetragMitVorzeichen bmv = new BetragMitVorzeichen(Bezeichner.of(bezeichner.getName() + " mit Vorzeichen"),
-				betrag.getAnzahlBytes()+1, ByteAdresse.of(betrag.getByteAdresse()));
-    	bmv.setInhalt(betrag.getInhalt() + vorzeichen.getInhalt());
-    	return bmv;
+		Betrag betrag = getFeld(bezeichner, Betrag.class);
+
+		// Das Vorzeichenfeld darf leer sein (aber nur, wenn der Betrag dazu 0 ist!), in diesem Fall ersetzen wir es vor
+		// der Instanziierung von BetragMitVorzeichen durch ein "+", damit die weitere numerische Verarbeitung funktioniert.
+		Feld vorzeichen = getVorzeichenOf(bezeichner);
+		String vorzeichenInhalt = vorzeichen.getInhalt();
+		if (StringUtils.isBlank(vorzeichenInhalt)) {
+			if (StringUtils.isNotBlank(betrag.getInhalt()) && !StringUtils.repeat('0', betrag.getAnzahlBytes()).equals(betrag.getInhalt())) {
+				throw new IllegalStateException("Vorzeichenfeld ist leer fuer " + bezeichner + ", aber Betrag ist nicht 0.");
+			}
+			vorzeichenInhalt = "+";
+		}
+
+		BetragMitVorzeichen bmv = new BetragMitVorzeichen(
+			Bezeichner.of(bezeichner.getName() + " mit Vorzeichen"),
+			betrag.getAnzahlBytes() + 1, ByteAdresse.of(betrag.getByteAdresse())
+		);
+		bmv.setInhalt(betrag.getInhalt() + vorzeichenInhalt);
+		return bmv;
 	}
 
 	private Feld getVorzeichenOf(final Bezeichner bezeichner) {
@@ -928,7 +941,7 @@ public abstract class Satz implements Cloneable {
     public Satz importFrom(final String s) throws IOException {
     	return importFrom(new PushbackLineNumberReader(new StringReader(s), 256));
     }
-    
+
     protected void removeUnusedTeildatensaetze(SortedSet<Integer> usedIndexes) {
         Teildatensatz[] usedTeildatensaetze = new Teildatensatz[usedIndexes.size()];
         int i = 0;
@@ -1314,7 +1327,7 @@ public abstract class Satz implements Cloneable {
 
 	/**
 	 * Legt eine Kopie des Satzes an.
-	 * 
+	 *
 	 * @return Kopie
 	 * @throws CloneNotSupportedException sollte nicht auftreten
 	 * @see Cloneable
