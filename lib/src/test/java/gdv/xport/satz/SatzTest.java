@@ -34,6 +34,7 @@ import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
 
+import javax.validation.ValidationException;
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -222,7 +223,7 @@ public final class SatzTest extends AbstractSatzTest {
         satz.getTeildatensatz(1).setFeld(ByteAdresse.of(167), "");
 
         // Leeres Vorzeichen, aber nicht leerer Betrag -> IllegalStateException
-        assertThrows(IllegalStateException.class, () -> satz.getFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, BetragMitVorzeichen.class));
+        assertThrows(ValidationException.class, () -> satz.getFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, BetragMitVorzeichen.class));
 
         // Leeres Vorzeichen und Betrag 0 -> Vorzeichen-Feld weiter leer, aber der Betrag mit Vorzeichen ist "+0"
         satz.setFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, "00000000000");

@@ -32,6 +32,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.validation.ValidationException;
 import java.io.*;
 import java.lang.reflect.Constructor;
 import java.util.*;
@@ -621,7 +622,7 @@ public abstract class Satz implements Cloneable {
 		String vorzeichenInhalt = vorzeichen.getInhalt();
 		if (StringUtils.isBlank(vorzeichenInhalt)) {
 			if (StringUtils.isNotBlank(betrag.getInhalt()) && !StringUtils.repeat('0', betrag.getAnzahlBytes()).equals(betrag.getInhalt())) {
-				throw new IllegalStateException("Vorzeichenfeld ist leer fuer " + bezeichner + ", aber Betrag ist nicht 0.");
+				throw new ValidationException("Vorzeichenfeld ist leer fuer " + bezeichner + ", aber Betrag ist nicht 0.");
 			}
 			vorzeichenInhalt = "+";
 		}
