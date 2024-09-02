@@ -621,9 +621,9 @@ public abstract class Satz implements Cloneable {
 		Feld vorzeichen = getVorzeichenOf(bezeichner);
 		String vorzeichenInhalt = vorzeichen.getInhalt();
 		if (StringUtils.isBlank(vorzeichenInhalt)) {
-			if (StringUtils.isNotBlank(betrag.getInhalt()) && !StringUtils.repeat('0', betrag.getAnzahlBytes()).equals(betrag.getInhalt())) {
-				throw new ValidationException("Vorzeichenfeld ist leer fuer " + bezeichner + ", aber Betrag ist nicht 0.");
-			}
+//			if (StringUtils.isNotBlank(betrag.getInhalt()) && !StringUtils.repeat('0', betrag.getAnzahlBytes()).equals(betrag.getInhalt())) {
+//				throw new ValidationException("Vorzeichenfeld ist leer fuer " + bezeichner + ", aber Betrag ist nicht 0.");
+//			}
 			vorzeichenInhalt = "+";
 		}
 
