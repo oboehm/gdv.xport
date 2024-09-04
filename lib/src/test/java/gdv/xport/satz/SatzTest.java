@@ -220,17 +220,9 @@ public final class SatzTest extends AbstractSatzTest {
         Satz satz = SatzFactory.getSatz(SatzTyp.of(500));
         satz.setFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, "00000001234");
         satz.getTeildatensatz(1).setFeld(ByteAdresse.of(167), "");
-
-        // Leeres Vorzeichen, aber nicht leerer Betrag -> IllegalStateException
-        //assertThrows(ValidationException.class, () -> satz.getFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, BetragMitVorzeichen.class));
-
-        // Leeres Vorzeichen und Betrag 0 -> Vorzeichen-Feld weiter leer, aber der Betrag mit Vorzeichen ist "+0"
-        satz.setFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, "00000000000");
-        BetragMitVorzeichen betrag = satz.getFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, BetragMitVorzeichen.class);
-        assertEquals(14, betrag.getAnzahlBytes());
-        //assertEquals('+', betrag.getVorzeichen());
-        //assertEquals(" ", satz.getFeld(ByteAdresse.of(167)).getInhalt());
-        assertEquals(0, betrag.toBigDecimal().compareTo(BigDecimal.ZERO));
+        // Leeres Vorzeichen, aber nicht leerer Betrag -> erlaubt
+        BetragMitVorzeichen kosten = satz.getFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, BetragMitVorzeichen.class);
+        assertEquals(BigDecimal.valueOf(12.34), kosten.toBigDecimal());
     }
 
     /**
