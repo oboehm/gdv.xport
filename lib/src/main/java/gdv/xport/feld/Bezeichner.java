@@ -112,9 +112,9 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO2 = new Bezeichner("Anzahl der Plaetze (Risiko 2)");
     /** @deprecated wird mit v8 entfernt (TDOD) */
     @Deprecated
-    public static final Bezeichner ART1 = new Bezeichner("Art1", "Art");
+    public static final Bezeichner ART1 = new Bezeichner("Art1", "Art", "Art1");
     /** Fuer 0220.580 */
-    public static final Bezeichner ART_580 = new Bezeichner("Art");
+    public static final Bezeichner ART_580 = new Bezeichner("Art", "Art", "Art1");
     public static final Bezeichner ART_DER_HALTUNG = new Bezeichner("Art der Haltung");
     public static final Bezeichner ART_DER_TIERKENNZEICHNUNG = new Bezeichner("Art der Tierkennzeichnung");
     public static final Bezeichner ART_DER_SCHAETZUNG = new Bezeichner("Art der Schaetzung");
@@ -1541,7 +1541,7 @@ public final class Bezeichner implements Serializable {
     /** @deprecated bitte {@link #WAGNIS} benutzen (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WAGNIS2 = WAGNIS;
-    public static final Bezeichner WAGNISART = new Bezeichner("Wagnisart");
+    public static final Bezeichner WAGNISART = new Bezeichner("Wagnisart", "Wagnisart", "Wagnisart1", "Wagnisart2");
     /** @deprecated bitte {@link #WAGNISART} benutzen (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WAGNISART2 = WAGNISART;
@@ -1949,10 +1949,6 @@ public final class Bezeichner implements Serializable {
                 return bez;
             }
         }
-//        if (name.endsWith("000")) {
-//            LOG.debug("Will look for '{}' without trailing '000'.", name);
-//            return of(name.substring(0, name.length() - 3));
-//        }
         LOG.debug("Will generate new Bezeichner '{}'.", name);
         return new Bezeichner(name);
     }

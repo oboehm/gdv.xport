@@ -231,7 +231,7 @@ public final class FeldXml extends Feld {
                 (!(tdXml.getGdvSatzartName().equals("0220.030")
                         && tdXml.getSatznummer().toChar() == '9'
                         && byteAddress.intValue() == 43))) {
-            // TODO: die Login hier muss vereinfacht werden (24-08-2024, Oli B.)
+            // TODO: die Logik hier muss vereinfacht werden (24-08-2024, Oli B.)
             if (!bezeichner.getTechnischerName().equals("JahresrenteInWaehrungseinheiten")) {
                 bezeichner = new Bezeichner(referenz.getBezeichner().getName());
             }
