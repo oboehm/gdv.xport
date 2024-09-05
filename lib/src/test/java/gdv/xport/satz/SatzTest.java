@@ -34,6 +34,7 @@ import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
 
+import javax.validation.ValidationException;
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -223,6 +224,9 @@ public final class SatzTest extends AbstractSatzTest {
         // Leeres Vorzeichen, aber nicht leerer Betrag -> erlaubt
         BetragMitVorzeichen kosten = satz.getFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, BetragMitVorzeichen.class);
         assertEquals(BigDecimal.valueOf(12.34), kosten.toBigDecimal());
+        // falsches Vorzeichen -> ValidationException
+        satz.getTeildatensatz(1).setFeld(ByteAdresse.of(167), "x");
+        assertThrows(ValidationException.class, () -> satz.getFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, BetragMitVorzeichen.class));
     }
 
     /**

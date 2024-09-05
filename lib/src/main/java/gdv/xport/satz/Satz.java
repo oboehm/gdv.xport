@@ -618,16 +618,23 @@ public abstract class Satz implements Cloneable {
 		// Das Vorzeichenfeld darf leer sein (s. Issue #95), in diesem Fall ersetzen wir es vor
 		// der Instanziierung von BetragMitVorzeichen durch ein "+", damit die weitere numerische Verarbeitung funktioniert.
 		Feld vorzeichen = getVorzeichenOf(bezeichner);
-		String vorzeichenInhalt = vorzeichen.getInhalt();
-		if (StringUtils.isBlank(vorzeichenInhalt)) {
-			vorzeichenInhalt = "+";
-		}
+		String vorzeichenInhalt = getValidatedVorzeichenInhalt(vorzeichen);
 		BetragMitVorzeichen bmv = new BetragMitVorzeichen(
 			Bezeichner.of(bezeichner.getName() + " mit Vorzeichen"),
 			betrag.getAnzahlBytes() + 1, ByteAdresse.of(betrag.getByteAdresse())
 		);
 		bmv.setInhalt(betrag.getInhalt() + vorzeichenInhalt);
 		return bmv;
+	}
+
+	private static String getValidatedVorzeichenInhalt(Feld vorzeichen) {
+		String vorzeichenInhalt = vorzeichen.getInhalt();
+		if (StringUtils.isBlank(vorzeichenInhalt)) {
+			return "+";
+		} else if (!vorzeichenInhalt.equals("+") && !vorzeichenInhalt.equals("-")) {
+			throw new ValidationException("falsches Vorzeichen in " + vorzeichen);
+		}
+		return vorzeichenInhalt;
 	}
 
 	private Feld getVorzeichenOf(final Bezeichner bezeichner) {
