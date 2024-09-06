@@ -9,11 +9,17 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
-## [7.2.0] - 2024-09-06
+## [7.2.1] - 2024-09-06
 
 ### Changed
 
 - leere Vorzeichenfelder sind jetzt zugelassen
+  ([Issue #96](https://github.com/oboehm/gdv.xport/issues/96))
+
+
+## [7.2.0] - 2024-09-06
+
+- leere Vorzeichenfelder sind zugelassen, aber [PR#97](https://github.com/oboehm/gdv.xport/pull/97) wurde vergessen
   ([Issue #96](https://github.com/oboehm/gdv.xport/issues/96))
 
 

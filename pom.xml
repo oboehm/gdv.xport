@@ -11,7 +11,7 @@
   <groupId>com.github.oboehm</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>pom</packaging>
-  <version>7.2.1-SNAPSHOT</version>
+  <version>7.2.1</version>
   <name>GDV.XPort</name>
 
   <modules>
