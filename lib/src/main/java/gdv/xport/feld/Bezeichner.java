@@ -114,7 +114,7 @@ public final class Bezeichner implements Serializable {
     @Deprecated
     public static final Bezeichner ART1 = new Bezeichner("Art1", "Art", "Art1");
     /** Fuer 0220.580 */
-    public static final Bezeichner ART_580 = new Bezeichner("Art", "Art", "Art1");
+    public static final Bezeichner ART_580 = new Bezeichner("Art", "Art", "Art1", "Art2", "Art3", "Art4");
     public static final Bezeichner ART_DER_HALTUNG = new Bezeichner("Art der Haltung");
     public static final Bezeichner ART_DER_TIERKENNZEICHNUNG = new Bezeichner("Art der Tierkennzeichnung");
     public static final Bezeichner ART_DER_SCHAETZUNG = new Bezeichner("Art der Schaetzung");
@@ -1541,7 +1541,7 @@ public final class Bezeichner implements Serializable {
     /** @deprecated bitte {@link #WAGNIS} benutzen (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WAGNIS2 = WAGNIS;
-    public static final Bezeichner WAGNISART = new Bezeichner("Wagnisart", "Wagnisart", "Wagnisart1", "Wagnisart2");
+    public static final Bezeichner WAGNISART = new Bezeichner("Wagnisart", "Wagnisart", "Wagnisart1", "Wagnisart2", "Wagnisart3", "Wagnisart4");
     /** @deprecated bitte {@link #WAGNISART} benutzen (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WAGNISART2 = WAGNISART;

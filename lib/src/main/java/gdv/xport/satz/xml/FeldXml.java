@@ -227,15 +227,6 @@ public final class FeldXml extends Feld {
      */
     public Feld toFeld(final ByteAdresse byteAddress, final FeldReferenz referenz, final TeildatensatzXml tdXml) {
         Bezeichner bezeichner = referenz.getBezeichner();
-        if ((!(tdXml.getGdvSatzartName().equals("0001") && byteAddress.intValue() >= 96)) &&
-                (!(tdXml.getGdvSatzartName().equals("0220.030")
-                        && tdXml.getSatznummer().toChar() == '9'
-                        && byteAddress.intValue() == 43))) {
-            // TODO: die Logik hier muss vereinfacht werden (24-08-2024, Oli B.)
-            if (!bezeichner.getTechnischerName().equals("JahresrenteInWaehrungseinheiten")) {
-                bezeichner = new Bezeichner(referenz.getBezeichner().getName());
-            }
-        }
         Feld feld = toFeld(byteAddress, bezeichner, referenz.getBemerkung());
         if (!feld.getBezeichner().getTechnischerName().equalsIgnoreCase("Satzart")) {
             for (int i = 2; tdXml.hasFeld(feld.getBezeichner()); i++) {
