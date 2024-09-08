@@ -9,7 +9,7 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
-## [Unreleased]
+## [7.2.2] - 2024-09-08
 
 ### Changed
 
@@ -30,16 +30,12 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
   ([Issue #96](https://github.com/oboehm/gdv.xport/issues/96))
 
 
-## [7.1.1] - 2024-08-24
-
-- Fix für Feld JahresrenteInWaehrungseinheiten in SatzTyp 0220.010.9.1 in XMLs
-  ([Issue #95](https://github.com/oboehm/gdv.xport/issues/95))
-
-
-## [7.1.0] - 2024-07-07
+## [7.1] - 2024-07-07
 
 ### Fixed
 
+- **v7.1.1**:Fix für Feld JahresrenteInWaehrungseinheiten in SatzTyp 0220.010.9.1 in XMLs
+  ([Issue #95](https://github.com/oboehm/gdv.xport/issues/95))
 - Fehler in Methode "Bezeichner#of(String name)"
   ([Issue #93](https://github.com/oboehm/gdv.xport/issues/93))
 - SatzTest#hasSparteAsProdukt() fehlerhaft
