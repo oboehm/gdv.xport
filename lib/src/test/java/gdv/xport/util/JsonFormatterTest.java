@@ -18,14 +18,18 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 
 import static org.hamcrest.Matchers.startsWith;
 
@@ -37,10 +41,18 @@ import static org.hamcrest.Matchers.startsWith;
 public final class JsonFormatterTest extends AbstractFormatterTest {
 
     private static final Logger LOG = LogManager.getLogger(JsonFormatterTest.class);
+    private static final File TARGET_DIR = new File("target", "json");
 
     @Override
     protected AbstractFormatter createFormatter() {
         return new JsonFormatter();
+    }
+
+    @BeforeClass
+    public static void setUpTargetDir() {
+        if (!TARGET_DIR.exists() && TARGET_DIR.mkdirs()) {
+            LOG.info("Verzeichnis '{}' wurde angelegt.", TARGET_DIR);
+        }
     }
 
     /**
@@ -70,11 +82,14 @@ public final class JsonFormatterTest extends AbstractFormatterTest {
     }
 
     private void checkWrite(Datenpaket datenpaket) throws IOException {
+        File exportFile = new File(TARGET_DIR, String.format("datenpaket%03d.json", datenpaket.getDatensaetze().size()));
         try (StringWriter swriter = new StringWriter()) {
             JsonFormatter formatter = new JsonFormatter(swriter);
             formatter.write(datenpaket);
             swriter.flush();
             String jsonString = swriter.toString().trim();
+            FileUtils.writeStringToFile(exportFile, jsonString, StandardCharsets.UTF_8);
+            LOG.info("{} wurde zur manuellen Pruefung in '{}' abgelegt", datenpaket, exportFile);
             MatcherAssert.assertThat(jsonString, startsWith("{"));
             LOG.info("{} wurde nach JSON formatiert.", datenpaket);
         }
