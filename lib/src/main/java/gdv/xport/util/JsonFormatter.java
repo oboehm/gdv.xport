@@ -70,7 +70,7 @@ public class JsonFormatter extends AbstractFormatter {
      */
     @Override
     public void write(final Datenpaket datenpaket) throws IOException {
-        String value = OBJECT_MAPPER.writeValueAsString(datenpaket);
+        String value = OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(datenpaket);
         this.write(value);
     }
 
