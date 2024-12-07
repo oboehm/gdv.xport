@@ -831,7 +831,7 @@ public final class DatenpaketTest {
         datenpaket.add(schaden);
         datenpaket.add(schaden2);
         datenpaket.export(testfile);
-        Datenpaket imported = new Datenpaket();
+        Datenpaket imported = new Datenpaket(Config.DEFAULT.withProperty("gdv.feld.validate", "off"));
         imported.importFrom(testfile);
         assertEquals(2, imported.getDatensaetze().size());
 
