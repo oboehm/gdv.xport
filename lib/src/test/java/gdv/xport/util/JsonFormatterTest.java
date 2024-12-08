@@ -18,6 +18,8 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.satz.Datensatz;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,6 +33,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.startsWith;
 
 /**
@@ -78,10 +81,17 @@ public final class JsonFormatterTest extends AbstractFormatterTest {
                 SatzTyp.of("0100"),
                 SatzTyp.of("0500")
         );
-        checkWrite(datenpaket);
+        datenpaket.setVermittler("MI6");
+        Datensatz adressteil = datenpaket.getDatensaetze().get(0);
+        adressteil.setFeld(Bezeichner.NAME1, "James");
+        adressteil.setFeld(Bezeichner.NAME3, "Bond");
+        String json = checkWrite(datenpaket);
+        MatcherAssert.assertThat(json, containsString("MI6"));
+        MatcherAssert.assertThat(json, containsString("James"));
+        MatcherAssert.assertThat(json, containsString("Bond"));
     }
 
-    private void checkWrite(Datenpaket datenpaket) throws IOException {
+    private String checkWrite(Datenpaket datenpaket) throws IOException {
         File exportFile = new File(TARGET_DIR, String.format("datenpaket%03d.json", datenpaket.getDatensaetze().size()));
         try (StringWriter swriter = new StringWriter()) {
             JsonFormatter formatter = new JsonFormatter(swriter);
@@ -92,6 +102,7 @@ public final class JsonFormatterTest extends AbstractFormatterTest {
             LOG.info("{} wurde zur manuellen Pruefung in '{}' abgelegt", datenpaket, exportFile);
             MatcherAssert.assertThat(jsonString, startsWith("{"));
             LOG.info("{} wurde nach JSON formatiert.", datenpaket);
+            return jsonString;
         }
     }
 
