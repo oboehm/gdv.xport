@@ -323,6 +323,7 @@ public class Datensatz extends Satz {
 	 * @return true, falls Wagnisart-Feld vorhanden ist
 	 * @since 1.0
 	 */
+	@JsonIgnore
 	public boolean hasWagnisart() {
 		return this.hasFeld((Bezeichner.WAGNISART));
 	}
@@ -334,6 +335,7 @@ public class Datensatz extends Satz {
 	 * @return true, falls das Feld existiert
 	 * @since 18.04.2018
 	 */
+	@JsonIgnore
 	public boolean hasKrankenFolgeNr() {
 		return this.getSatzart() == 220 && this.getSparte() == 20
 				&& (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
@@ -347,6 +349,7 @@ public class Datensatz extends Satz {
 	 * @return true, falls das Feld existiert
 	 * @since 30.06.2021
 	 */
+	@JsonIgnore
 	public boolean hasBausparenArt() {
 		return this.getSatzart() == 220 && hasSparte() && getSparte() == 580
 				&& (this.hasFeld(Bezeichner.ART_580));
@@ -370,6 +373,7 @@ public class Datensatz extends Satz {
 	 *
 	 * @return true, falls der Datensatz eine Untersparte hat.
 	 */
+	@JsonIgnore
 	public boolean hasArt() {
 		return this.getSatzTyp().hasArt();
 	}
@@ -391,6 +395,7 @@ public class Datensatz extends Satz {
 	 * @return true, falls Sparten-Feld vorhanden ist
 	 * @since 0.9
 	 */
+	@JsonIgnore
 	public boolean hasSparte() {
 		return getFeldSparte().isPresent();
 	}
