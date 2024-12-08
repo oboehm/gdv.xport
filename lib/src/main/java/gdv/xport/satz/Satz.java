@@ -50,6 +50,7 @@ public abstract class Satz implements Cloneable {
 	private static final Logger LOG = LogManager.getLogger(Satz.class);
 
 	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
+	@JsonIgnore
 	private final Config config;
 
   /**

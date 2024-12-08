@@ -18,6 +18,7 @@
 
 package gdv.xport.satz;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
@@ -70,8 +71,6 @@ public class Teildatensatz extends Datensatz {
         this(satzTyp);
         setSatznummer(nr);
         this.setGdvSatzartName(satzTyp.toString());
-// 		if (satzTyp.hasGdvSatzartNummer())
-//			this.setGdvSatzartNummer(String.valueOf(satzTyp.getGdvSatzartNummer()));
     }
 
     /**
@@ -496,6 +495,7 @@ public class Teildatensatz extends Datensatz {
      *
      * @return Liste der speziellen Kennzeichen
      */
+    @JsonIgnore
     public List<Zeichen> getSatzIdent() {
         String[] identBezeichner = {"FolgeNrZurLaufendenPersonenNrUnterNrBzwLaufendenNrTarif",
                 "FolgeNrZurLaufendenPersonenNrUnterNrLaufendeNrTarif", "SatzNr", "SatzNr1",

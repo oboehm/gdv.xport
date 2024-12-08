@@ -46,6 +46,7 @@ public class Datenpaket implements ImportListener {
     private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
     private Vorsatz vorsatz;
     private final List<Datensatz> datensaetze = new ArrayList<>();
+    @JsonIgnore
     private final Config config;
     private Nachsatz nachsatz;
 

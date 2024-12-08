@@ -29,6 +29,7 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.jupiter.api.function.Executable;
 
@@ -403,6 +404,16 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Zeichen satznummer = tds.getSatznummer();
         assertEquals(satznummer, tds.getFeld(feldNr));
         assertEquals(satznummer, tds.getFeld(feldNr+1));
+    }
+
+    @Override
+    public void testToJSON() throws IOException {
+        Teildatensatz tds = SATZ_REGISTRY.getSatz(SatzTyp.of(100)).getTeildatensatz(1);
+        tds.setFeld(Bezeichner.NAME1, "James");
+        tds.setFeld(Bezeichner.NAME3, "Bond");
+        String json = checkJSON(tds);
+        MatcherAssert.assertThat(json, Matchers.containsString("James"));
+        MatcherAssert.assertThat(json, Matchers.containsString("Bond"));
     }
 
 }

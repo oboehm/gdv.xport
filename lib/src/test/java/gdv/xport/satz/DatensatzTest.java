@@ -262,4 +262,10 @@ public class DatensatzTest extends AbstractDatensatzTest {
         assertEquals(110, ds.getTeildatensatz(1).getSparte());
     }
 
+    @Override
+    public void testToJSON() throws IOException {
+        Datensatz vorsatz = new Datensatz(SatzTyp.of("0052"), 1);
+        checkJSON(vorsatz);
+    }
+
 }

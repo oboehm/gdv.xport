@@ -18,6 +18,7 @@
 
 package gdv.xport.feld;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.jfachwert.SimpleValidator;
 import de.jfachwert.Text;
@@ -301,6 +302,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *
      * @return linksbuendig oder rechtsbuendig
      */
+    @JsonIgnore
     public Align getAusrichtung() {
         return Align.of(ausrichtung);
     }
@@ -324,6 +326,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *
      * @return the bezeichnung
      */
+    @JsonIgnore
     public String getBezeichnung() {
         return this.bezeichner.getName();
     }
@@ -448,6 +451,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *
      * @return den Inhalt
      */
+    @JsonGetter
     public String getInhalt() {
         String blanks = StringUtils.repeat(' ', this.getAnzahlBytes() - this.inhalt.length());
         if (getAusrichtung() == Align.LEFT) {
@@ -538,6 +542,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *
      * @return true, if is empty
      */
+    @JsonIgnore
     public boolean isEmpty() {
         return StringUtils.isBlank(this.getInhalt());
     }
@@ -548,6 +553,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @return true, falls Feld mit einem Wert belegt ist
      * @since 3.1
      */
+    @JsonIgnore
     public final boolean hasValue() {
         return !inhalt.isEmpty();
     }
@@ -564,6 +570,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @return false, falls Verletzung erkannt wird
      * @since 0.1.0
      */
+    @JsonIgnore
     public boolean isValid() {
         if (this.getByteAdresse() < 1) {
             return false;
@@ -582,6 +589,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *
      * @return true, if is invalid
      */
+    @JsonIgnore
     public boolean isInvalid() {
         return !isValid();
     }

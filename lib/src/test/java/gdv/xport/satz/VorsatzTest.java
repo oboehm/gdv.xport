@@ -22,8 +22,8 @@ import gdv.xport.Datenpaket;
 import gdv.xport.feld.*;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
-import org.junit.Test;
 import org.hamcrest.MatcherAssert;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,6 +31,7 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.Map;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.*;
 
@@ -296,6 +297,15 @@ public final class VorsatzTest extends AbstractSatzTest {
         vorsatz.setVermittler("12345");
         assertEquals("12345", vorsatz.getVermittler());
         assertEquals("12345", vorsatz.getFeld(Bezeichner.VERMITTLER).getInhalt().trim());
+    }
+
+    @Override
+    public void testToJSON() throws IOException {
+        vorsatz.setAbsender("J. Bond");
+        vorsatz.setErstellungsZeitraum("08122024", "11012025");
+        String json = checkJSON(vorsatz);
+        MatcherAssert.assertThat(json, containsString("J. Bond"));
+        MatcherAssert.assertThat(json, containsString(vorsatz.getErstellungsZeitraum()));
     }
 
 }

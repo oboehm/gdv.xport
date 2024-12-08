@@ -18,11 +18,15 @@
 
 package gdv.xport.satz;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.VUNummer;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
+import gdv.xport.util.SatzTyp;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.MatcherAssert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import patterntesting.runtime.junit.ObjectTester;
@@ -30,7 +34,9 @@ import patterntesting.runtime.junit.ObjectTester;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.*;
 
 /**
@@ -43,6 +49,8 @@ import static org.junit.Assert.*;
 abstract public class AbstractSatzTest {
 
     private static final Logger LOG = LogManager.getLogger(AbstractSatzTest.class);
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    private static final File JSON_DIR = new File("target", "json");
     /** zum Testen nehmen wir hier die VU-Nr. der Oerag */
     protected static final VUNummer VU_NUMMER = new VUNummer("5183");
 
@@ -57,10 +65,13 @@ abstract public class AbstractSatzTest {
      * Test aufsetzen.
      */
     @BeforeClass
-    public static void setUpBeforeClass() {
+    public static void setUpTargetDirs() {
         File exportDir = new File("target", "export");
         if (!exportDir.exists() && exportDir.mkdir()) {
             LOG.info("Verzeichnis '{}' wurde angelegt.", exportDir);
+        }
+        if (!JSON_DIR.exists() && JSON_DIR.mkdirs()) {
+            LOG.info("Verzeichnis '{}' wurde angelegt.", JSON_DIR);
         }
     }
 
@@ -70,7 +81,7 @@ abstract public class AbstractSatzTest {
     @Test
     public void testSatzart() {
         Satz satz = this.getSatz();
-    Feld satzart = satz.getFeld(Kopffelder1bis7.SATZART.getBezeichner());
+        Feld satzart = satz.getFeld(Kopffelder1bis7.SATZART.getBezeichner());
         assertTrue("expected: is valid", satzart.isValid());
         assertFalse("expected: not empty", satzart.isEmpty());
         assertEquals(satz.getSatzart(), Integer.parseInt(satzart.getInhalt()));
@@ -84,6 +95,22 @@ abstract public class AbstractSatzTest {
         Satz satz = this.getSatz();
         Satz sameSatz = this.getSatz();
         ObjectTester.assertEquals(satz, sameSatz);
+    }
+
+    @Test
+    public void testToJSON() throws IOException {
+        Satz satz = this.getSatz();
+        checkJSON(satz);
+    }
+
+    protected static String checkJSON(Satz satz) throws IOException {
+        String json = OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(satz);
+        SatzTyp satzTyp = satz.getSatzTyp();
+        File exportFile = new File(JSON_DIR, String.format("satz%s.json", satzTyp));
+        FileUtils.writeStringToFile(exportFile, json, StandardCharsets.UTF_8);
+        LOG.info("{} wurde zur manuellen Pruefung in '{}' abgelegt", satz, exportFile);
+        MatcherAssert.assertThat(json, containsString(satzTyp.toString()));
+        return json;
     }
 
     /**
