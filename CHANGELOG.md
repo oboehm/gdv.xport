@@ -9,6 +9,14 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
+## [Unreleased]
+
+### [Fixed]
+
+- JSON-Ausgabe überarbeitet
+  ([Issue #99](https://github.com/oboehm/gdv.xport/issues/99))
+
+
 ## [7.2.2] - 2024-09-08
 
 ### Changed
