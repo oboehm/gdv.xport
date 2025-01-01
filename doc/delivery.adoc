@@ -57,8 +57,8 @@ Kopiere `/tmp/gdv-xport` anschließend auf die Web-Seite.
 
 |D-Day
 |Label setzen
-|`git tag gdv-xport-7.2.2` (lokal)
-`git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-7.2.2` (remote)
+|`git tag gdv-xport-7.2.3` (lokal)
+`git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-7.2.3` (remote)
 
 |nachher
 |Tickets schließen
@@ -71,7 +71,7 @@ in pom.xml Version hochzählen, "-SNAPSHOT" anhängen
 
 |nachher
 |Auslieferung bekanntmachen
-|Nachricht auf https://twitter.com/search?q=gdv.xport&src=typed_query&f=live[Twitter]
+|https://github.com/oboehm/gdv.xport/releases[Releases] aktualisieren
  
 |nachher
 |Maven Central prüfen
@@ -87,8 +87,9 @@ Um ein Docker-Image auf https://hub.docker.com/r/oboehm/gdv.xport zu bringen, si
 
 * Docker-Image bauen: `docker build -t gdv.xport -f Dockerfile .`
 * Image-ID ermitteln: `docker images`
-* Docker-Image taggen: `docker tag <Image-ID> oboehm/gdv.xport:7.2.2`
-* Docker-Image pushen: `docker push oboehm/gdv.xport:7.2.2`
+* Docker-Image taggen: `docker tag <Image-ID> oboehm/gdv.xport:7.2.3`
+* Docker-Hub anmelden: `docker login`
+* Docker-Image pushen: `docker push oboehm/gdv.xport:7.2.3`
 
 
 
