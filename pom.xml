@@ -208,12 +208,16 @@
         </executions>
       </plugin>
 
+      <!-- call 'mvn versions:display-dependency-updates' to see upates -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>versions-maven-plugin</artifactId>
-        <version>2.17.0</version>
+        <version>2.18.0</version>
         <configuration>
-          <ignoredVersions>.*-M.*,.*-alpha.*,.*-beta.*</ignoredVersions>
+          <ignoredVersions>
+            <ignoredVersion>.*-alpha.*</ignoredVersion>
+            <ignoredVersion>.*-beta.*</ignoredVersion>
+          </ignoredVersions>
         </configuration>
       </plugin>
 
@@ -572,27 +576,27 @@
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-core</artifactId>
-        <version>2.17.2</version>
+        <version>2.18.2</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-annotations</artifactId>
-        <version>2.17.2</version>
+        <version>2.18.2</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
-        <version>2.17.2</version>
+        <version>2.18.2</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-dataformat-xml</artifactId>
-        <version>2.17.2</version>
+        <version>2.18.2</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.jaxrs</groupId>
         <artifactId>jackson-jaxrs-base</artifactId>
-        <version>2.17.2</version>
+        <version>2.18.2</version>
       </dependency>
 
     </dependencies>
