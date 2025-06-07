@@ -141,7 +141,7 @@ public final class FeldTest extends AbstractFeldTest {
         Feld postfach = new AlphaNumFeld(Bezeichner.POSTFACH, 8, ByteAdresse.of(218));
         postfach.setInhalt("123456");
         List<ConstraintViolation> violations = postfach.validate();
-        assertTrue("violation: " + violations.get(0), violations.isEmpty());
+        assertTrue("violations: " + violations, violations.isEmpty());
     }
 
     /**
