@@ -9,6 +9,14 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
+## [Unreleased]
+
+### [Fixed]
+
+- Postfach-Validierung entschärft
+  ([Issue #100](https://github.com/oboehm/gdv.xport/issues/100))
+
+
 ## [7.2.3] - 2024-12-09
 
 ### [Fixed]
