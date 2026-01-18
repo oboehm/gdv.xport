@@ -40,7 +40,7 @@
   <properties>
 
     <patterntesting.version>2.5.1</patterntesting.version>
-    <spring-boot.version>3.4.7</spring-boot.version>
+    <spring-boot.version>3.5.3</spring-boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>11</java.version>
     <maven.compiler.source>11</maven.compiler.source>
