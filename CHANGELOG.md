@@ -11,14 +11,18 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Unreleased]
 
-### [Removed]
+### Changed
+
+- Update auf JUnit 6
+
+### Removed
 
 - Abhängigkeiten zu JUnit 4 entfernt
 
 
 ## [7.2.4] - 2025-06-08
 
-### [Fixed]
+### Fixed
 
 - Postfach-Validierung entschärft
   ([Issue #100](https://github.com/oboehm/gdv.xport/issues/100))
@@ -26,7 +30,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [7.2.3] - 2024-12-09
 
-### [Fixed]
+### Fixed
 
 - JSON-Ausgabe überarbeitet
   ([Issue #99](https://github.com/oboehm/gdv.xport/issues/99))
