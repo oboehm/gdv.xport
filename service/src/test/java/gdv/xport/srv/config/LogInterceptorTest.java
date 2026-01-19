@@ -18,7 +18,7 @@
 package gdv.xport.srv.config;
 
 import org.apache.logging.log4j.*;
-import org.junit.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.mock.web.*;
 
 /**
@@ -36,7 +36,7 @@ public final class LogInterceptorTest {
     /**
      * Hier setzen wir den Request auf.
      */
-    @Before
+    @BeforeEach
     public void setUpRequest() {
         request.setRequestURI("/gdv/xport");
         request.setMethod("GET");
@@ -48,7 +48,7 @@ public final class LogInterceptorTest {
      * Hier testen wir nur, ob der Aufruf ohne Exception durchlaeuft und
      * beobachten das Log.
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void testPreHandle() {
         interceptor.preHandle(request, response, "testPreHandle");
     }
@@ -56,7 +56,7 @@ public final class LogInterceptorTest {
     /**
      * Auch hier beobachten wir nur die Log-Ausgabe.
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void testAfterCompletion() {
         interceptor.afterCompletion(request, response, "testAfterCompletion", null);
     }
@@ -64,7 +64,7 @@ public final class LogInterceptorTest {
     /**
      * Hier testen wir (manuell) die Log-Ausgabe einer Exception.
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void testAfterCompletionWithException() {
         LOG.info("Simulating an exception for testing...");
         interceptor.afterCompletion(request, response, "testAfterCompletion", new IllegalStateException("bumm"));
@@ -76,7 +76,7 @@ public final class LogInterceptorTest {
      * "/error"-Path zu sehen sein, sondern der Aufruf des falschen Pfades
      * (in diesem Beispiel "GET /not/existing/path 404").
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void testError() {
         response.setStatus(404);
         request.setRequestURI("/error");

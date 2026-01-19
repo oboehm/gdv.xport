@@ -18,12 +18,12 @@
 
 package gdv.xport.io;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.StringReader;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Unit-Tests fuer {@link RecordReader}.
@@ -46,7 +46,7 @@ public class RecordReaderTest {
             assertEquals('b', reader.read());
             assertEquals('c', reader.read());
             for (int i = 3; i < 256; i++) {
-                assertEquals(i + ". character", ' ', reader.read());
+                assertEquals(' ', reader.read(), i + ". character");
             }
             assertEquals('\n', reader.read());
         } finally {
@@ -82,7 +82,7 @@ public class RecordReaderTest {
         RecordReader reader = new RecordReader(new StringReader(new String(line1) + '\n' + new String(line2)));
         try {
             assertRecord(line1, reader);
-            assertEquals("newline expected", '\n', reader.read());
+            assertEquals('\n', reader.read(), "newline expected");
             assertRecord(line2, reader);
         } finally {
             reader.close();
@@ -99,7 +99,7 @@ public class RecordReaderTest {
 
     private void assertRecord(final char[] expected, final RecordReader reader) throws IOException {
         for (int i = 0; i < 256; i++) {
-            assertEquals("character " + i, expected[i], (char) reader.read());
+            assertEquals(expected[i], (char) reader.read(), "character " + i);
         }
     }
 

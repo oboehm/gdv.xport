@@ -100,7 +100,6 @@ public class AppConfig implements WebMvcConfigurer {
                   .mediaType("txt", MediaType.TEXT_PLAIN)
                   .defaultContentType(MediaType.TEXT_PLAIN)
                   .favorParameter(false)
-                  .favorPathExtension(true)
                   ;
     }
 

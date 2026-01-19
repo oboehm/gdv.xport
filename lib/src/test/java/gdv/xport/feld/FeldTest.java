@@ -23,17 +23,17 @@ import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.junit.CloneableTester;
 import patterntesting.runtime.junit.SerializableTester;
 
-import javax.validation.ValidationException;
+import jakarta.validation.ValidationException;
 import java.io.NotSerializableException;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * JUnit-Test fuer die Feld-Klasse.
@@ -89,7 +89,7 @@ public final class FeldTest extends AbstractFeldTest {
     @Test
     public void testKopffelder() {
         Feld satzart = new Feld(Kopffelder1bis7.SATZART);
-        assertTrue("expected: " + satzart + " is valid", satzart.isValid());
+        assertTrue(satzart.isValid(), "expected: " + satzart + " is valid");
         assertEquals(1, satzart.getByteAdresse());
         assertEquals(4, satzart.getAnzahlBytes());
     }
@@ -102,11 +102,11 @@ public final class FeldTest extends AbstractFeldTest {
         Feld a = new Feld(Bezeichner.of("a"), 2, 1, Align.LEFT);    // Byte 1-2
         Feld b = new Feld(Bezeichner.of("b"), 2, 3, Align.LEFT);    // Byte 3-4
         Feld c = new Feld(Bezeichner.of("c"), 2, 2, Align.LEFT);    // Byte 2-3
-        assertFalse(a + " overlaps with " + b, a.overlapsWith(b));
-        assertFalse(b + " overlaps with " + a, b.overlapsWith(a));
-        assertTrue(b + " doesn't overlap with " + c, b.overlapsWith(c));
-        assertTrue(c + " doesn't overlap with " + a, c.overlapsWith(a));
-        assertTrue(c + " doesn't overlap with " + b, c.overlapsWith(b));
+        assertFalse(a.overlapsWith(b), a + " overlaps with " + b);
+        assertFalse(b.overlapsWith(a), b + " overlaps with " + a);
+        assertTrue(b.overlapsWith(c), b + " doesn't overlap with " + c);
+        assertTrue(c.overlapsWith(a), c + " doesn't overlap with " + a);
+        assertTrue(c.overlapsWith(b), c + " doesn't overlap with " + b);
     }
 
     /**
@@ -115,9 +115,9 @@ public final class FeldTest extends AbstractFeldTest {
     @Test
     public void testIsValid() {
         Feld b = new Feld(Bezeichner.of("b"), 2, 256, Align.LEFT);
-        assertFalse(b + " geht ueber Satz-Grenze hinweg", b.isValid());
+        assertFalse(b.isValid(), b + " geht ueber Satz-Grenze hinweg");
         Feld c = new Feld("c", 1, 'c');
-        assertTrue(c + " should be valid", c.isValid());
+        assertTrue(c.isValid(), c + " should be valid");
     }
 
     /**
@@ -141,7 +141,7 @@ public final class FeldTest extends AbstractFeldTest {
         Feld postfach = new AlphaNumFeld(Bezeichner.POSTFACH, 8, ByteAdresse.of(218));
         postfach.setInhalt("123456");
         List<ConstraintViolation> violations = postfach.validate();
-        assertTrue("violations: " + violations, violations.isEmpty());
+        assertTrue(violations.isEmpty(), "violations: " + violations);
     }
 
     /**
@@ -154,7 +154,7 @@ public final class FeldTest extends AbstractFeldTest {
         assertEquals(a, b);
         assertEquals(a.hashCode(), b.hashCode());
         b.setInhalt('b');
-        assertNotEquals(a + " differs from " + b, a, b);
+        assertNotEquals(a, b, a + " differs from " + b);
     }
 
     /**
@@ -199,10 +199,12 @@ public final class FeldTest extends AbstractFeldTest {
         CloneableTester.assertCloning(Feld.class);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testOverflow() {
-        Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.LEFT);
-        feld.setInhalt("hello world");
+        assertThrows(IllegalArgumentException.class, () -> {
+            Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.LEFT);
+            feld.setInhalt("hello world");
+        });
     }
 
     @Test
@@ -240,12 +242,14 @@ public final class FeldTest extends AbstractFeldTest {
         assertEquals(text, validator.validate(text));
     }
 
-    @Test(expected = ValidationException.class)
+    @Test
     public void testValidatorInvalidChars() {
-        Feld.Validator validator = new Feld.Validator();
-        byte[] bytes = { 'a', 'b', 1, -127 };
-        String invalid = new String(bytes, StandardCharsets.US_ASCII);
-        validator.validate(invalid);
+        assertThrows(ValidationException.class, () -> {
+            Feld.Validator validator = new Feld.Validator();
+            byte[] bytes = {'a', 'b', 1, -127};
+            String invalid = new String(bytes, StandardCharsets.US_ASCII);
+            validator.validate(invalid);
+        });
     }
 
     @Test
@@ -258,11 +262,13 @@ public final class FeldTest extends AbstractFeldTest {
         assertEquals("3.14", pi.getInhalt());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testSetFeldNull() {
-        Feld feld1 = new Feld(Bezeichner.of("test"), 5, 4, Align.LEFT).mitConfig(Config.EMPTY);
-        String leer = null;
-        feld1.setInhalt(leer);
+        assertThrows(IllegalArgumentException.class, () -> {
+            Feld feld1 = new Feld(Bezeichner.of("test"), 5, 4, Align.LEFT).mitConfig(Config.EMPTY);
+            String leer = null;
+            feld1.setInhalt(leer);
+        });
     }
 
     @Test

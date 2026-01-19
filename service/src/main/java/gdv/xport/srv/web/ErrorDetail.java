@@ -17,10 +17,6 @@
  */
 package gdv.xport.srv.web;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import gdv.xport.srv.web.util.LocalDateTimeDeserializer;
-import gdv.xport.srv.web.util.LocalDateTimeSerializer;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 
@@ -71,8 +67,6 @@ public class ErrorDetail implements Serializable {
      *
      * @return Zeitpunkt der Anlage
      */
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime getWhen() {
         return when;
     }

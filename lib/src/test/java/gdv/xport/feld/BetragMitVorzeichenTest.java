@@ -19,13 +19,12 @@
 package gdv.xport.feld;
 
 import gdv.xport.config.Config;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.Locale;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * The Class BetragMitVorzeichenTest.
@@ -93,7 +92,7 @@ public final class BetragMitVorzeichenTest extends AbstractFeldTest {
     @Test
     public void testIsValid() {
         betrag.setInhalt(99.99);
-        assertTrue(betrag + " should be a valid number", betrag.isValid());
+        assertTrue(betrag.isValid(), betrag + " should be a valid number");
     }
 
     /**
@@ -117,11 +116,13 @@ public final class BetragMitVorzeichenTest extends AbstractFeldTest {
         assertEquals(betrag, bmz.getBetrag());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testOfWithException() {
-        NumFeld betrag = new NumFeld(Bezeichner.GESAMTBEITRAG_BRUTTO, 40, "00000000004711", 2);
-        AlphaNumFeld vorzeichen = new Zeichen(Bezeichner.VORZEICHEN, 55, '+');
-        BetragMitVorzeichen.of(betrag, vorzeichen);
+        assertThrows(IllegalArgumentException.class, () -> {
+            NumFeld betrag = new NumFeld(Bezeichner.GESAMTBEITRAG_BRUTTO, 40, "00000000004711", 2);
+            AlphaNumFeld vorzeichen = new Zeichen(Bezeichner.VORZEICHEN, 55, '+');
+            BetragMitVorzeichen.of(betrag, vorzeichen);
+        });
     }
 
     @Test
@@ -142,11 +143,13 @@ public final class BetragMitVorzeichenTest extends AbstractFeldTest {
         assertEquals('+', betragMitVZ.getVorzeichen());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testSetInhaltNull() {
-        BetragMitVorzeichen betragMitVz = new BetragMitVorzeichen(Bezeichner.of("betragTestVZ"), 10, 2).mitConfig(Config.STRICT);
-        String wert = null;
-        betragMitVz.setInhalt(wert);
+        assertThrows(IllegalArgumentException.class, () -> {
+            BetragMitVorzeichen betragMitVz = new BetragMitVorzeichen(Bezeichner.of("betragTestVZ"), 10, 2).mitConfig(Config.STRICT);
+            String wert = null;
+            betragMitVz.setInhalt(wert);
+        });
     }
 
 }

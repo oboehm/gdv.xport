@@ -20,15 +20,15 @@ package gdv.xport.satz.xml;
 
 import gdv.xport.feld.*;
 import org.apache.commons.lang3.StringUtils;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author oliver (oliver.boehm@gmail.com)
@@ -45,7 +45,7 @@ public class FeldXmlTest extends AbstractXmlTest {
      * @throws XMLStreamException the XML stream exception
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    @BeforeClass
+    @BeforeAll
     public static void setUpFeldReferenz() throws XMLStreamException, IOException {
         feldXml = createFeldXmlFrom("feld.xml");
     }
@@ -148,7 +148,7 @@ public class FeldXmlTest extends AbstractXmlTest {
     private static void checkToFeld(final FeldXml input, final Class<? extends Feld> expected) {
         Feld converted = input.toFeld(ByteAdresse.of(42));
         assertEquals(42, converted.getByteAdresse());
-        assertTrue(converted + ": bezeichnung expected", StringUtils.isNotEmpty(converted.getBezeichnung()));
+        assertTrue(StringUtils.isNotEmpty(converted.getBezeichnung()), converted + ": bezeichnung expected");
         assertEquals(input.getBezeichnung(), converted.getBezeichnung());
         assertEquals(input.getAnzahlBytes(), converted.getAnzahlBytes());
         assertEquals(expected, converted.getClass());

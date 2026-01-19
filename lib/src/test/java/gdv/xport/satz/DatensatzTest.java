@@ -263,6 +263,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
     }
 
     @Override
+    @Test
     public void testToJSON() throws IOException {
         Datensatz vorsatz = new Datensatz(SatzTyp.of("0052"), 1);
         checkJSON(vorsatz);

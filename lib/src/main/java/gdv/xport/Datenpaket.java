@@ -131,10 +131,10 @@ public class Datenpaket implements ImportListener {
         Datenpaket datenpaket = new Datenpaket(cfg);
         List<Datensatz> dsList = new ArrayList<>();
         for (Satz satz : datensaetze) {
-            if (satz instanceof Vorsatz) {
-                datenpaket.vorsatz = (Vorsatz) satz;
-            } else if (satz instanceof Nachsatz) {
-                datenpaket.nachsatz = (Nachsatz) satz;
+            if (satz instanceof Vorsatz vorsatz1) {
+                datenpaket.vorsatz = vorsatz1;
+            } else if (satz instanceof Nachsatz nachsatz1) {
+                datenpaket.nachsatz = nachsatz1;
                 datenpaket.vorsatz.setVersion(datenpaket.nachsatz);
             } else {
                 dsList.add((Datensatz) satz);
@@ -609,7 +609,7 @@ public class Datenpaket implements ImportListener {
             for (int j = i+1; j < datensaetze.size() && !ds.isComplete() && !nextVsnrReached; j++) {
                 Optional<Datensatz> next = findNextDatensatzWithinVsnr(ds.getVersicherungsscheinNummer(), ds.getSatzTyp(), j);
                 next.ifPresent(ds::mergeWith);
-                if (!next.isPresent()) {
+                if (next.isEmpty()) {
                     nextVsnrReached = true;
                 }
             }

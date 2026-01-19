@@ -22,14 +22,14 @@ import gdv.xport.config.Config;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import javax.validation.ValidationException;
+import jakarta.validation.ValidationException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test-Klasse fuer NumFeld.
@@ -47,10 +47,12 @@ public class NumFeldTest extends AbstractNumFeldTest {
         return nummer.mitNachkommastellen(2);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testSetInhaltNegative() {
-        NumFeld positiv = nummer.mitConfig(Config.STRICT);
-        positiv.setInhalt(-1);
+        assertThrows(IllegalArgumentException.class, () -> {
+            NumFeld positiv = nummer.mitConfig(Config.STRICT);
+            positiv.setInhalt(-1);
+        });
     }
 
     /**
@@ -59,7 +61,7 @@ public class NumFeldTest extends AbstractNumFeldTest {
     @Test
     public void testIsInvalid() {
         nummer.setInhalt("xxxx");
-        assertFalse(nummer + " is invalid", nummer.isValid());
+        assertFalse(nummer.isValid(), nummer + " is invalid");
     }
 
     /**
@@ -68,7 +70,7 @@ public class NumFeldTest extends AbstractNumFeldTest {
     @Test
     public void testIsValid() {
         nummer.setInhalt("3    ");
-        assertTrue("should be valid", nummer.isValid());
+        assertTrue(nummer.isValid(), "should be valid");
     }
 
     /**
@@ -79,7 +81,7 @@ public class NumFeldTest extends AbstractNumFeldTest {
     @Test
     public void testIsValidMitVorzeichen() {
         NumFeld einsplus = new NumFeld(Bezeichner.of("einsplus"), ByteAdresse.of(1), "+001", 0);
-        assertTrue("auch Vorzeichen koennen vorkommen", einsplus.isValid());
+        assertTrue(einsplus.isValid(), "auch Vorzeichen koennen vorkommen");
         assertEquals(1, einsplus.toInt());
     }
 
@@ -140,9 +142,9 @@ public class NumFeldTest extends AbstractNumFeldTest {
     public void testBigNumber() {
         NumFeld big = new NumFeld(Bezeichner.of("big"), 14, ByteAdresse.of(1)).mitNachkommastellen(2);
         big.setInhalt("00005000000000");
-        assertTrue("should be valid", big.isValid());
+        assertTrue(big.isValid(), "should be valid");
         List<ConstraintViolation> violations = big.validate();
-        assertTrue(violations + " should be empty", violations.isEmpty());
+        assertTrue(violations.isEmpty(), violations + " should be empty");
     }
 
     @Test
@@ -154,10 +156,12 @@ public class NumFeldTest extends AbstractNumFeldTest {
         assertEquals(new BigInteger(zahl), big.toBigInteger());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testBigDecimalMinus() {
-        NumFeld big = new NumFeld(Bezeichner.of("big"), 14, ByteAdresse.of(1)).mitConfig(Config.LAX);
-        big.setInhalt(new BigInteger("-1"));
+        assertThrows(IllegalArgumentException.class, () -> {
+            NumFeld big = new NumFeld(Bezeichner.of("big"), 14, ByteAdresse.of(1)).mitConfig(Config.LAX);
+            big.setInhalt(new BigInteger("-1"));
+        });
     }
 
     /**
@@ -220,10 +224,12 @@ public class NumFeldTest extends AbstractNumFeldTest {
         assertEquals("00000000", n.getInhalt());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testSetInhaltR2D2() {
-        NumFeld one = new NumFeld(Bezeichner.ANTEILE, 5, ByteAdresse.of(1)).mitConfig(Config.LAX);
-        one.setInhalt("R2 D2");
+        assertThrows(IllegalArgumentException.class, () -> {
+            NumFeld one = new NumFeld(Bezeichner.ANTEILE, 5, ByteAdresse.of(1)).mitConfig(Config.LAX);
+            one.setInhalt("R2 D2");
+        });
     }
 
     @Test
@@ -233,28 +239,36 @@ public class NumFeldTest extends AbstractNumFeldTest {
         assertEquals(theAnswer, validator.validate(theAnswer));
     }
 
-    @Test(expected = ValidationException.class)
+    @Test
     public void testValidatorFails() {
-        NumFeld.Validator validator = new NumFeld.Validator();
-        validator.validate("no");
+        assertThrows(ValidationException.class, () -> {
+            NumFeld.Validator validator = new NumFeld.Validator();
+            validator.validate("no");
+        });
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testValidatorVerifyFails() {
-        NumFeld.Validator validator = new NumFeld.Validator();
-        validator.verify("not valid");
+        assertThrows(IllegalArgumentException.class, () -> {
+            NumFeld.Validator validator = new NumFeld.Validator();
+            validator.verify("not valid");
+        });
     }
 
-    @Test(expected = ValidationException.class)
+    @Test
     public void testValidatorNegativeNumber() {
-        NumFeld.Validator validator = new NumFeld.Validator();
-        validator.validate("-1");
+        assertThrows(ValidationException.class, () -> {
+            NumFeld.Validator validator = new NumFeld.Validator();
+            validator.validate("-1");
+        });
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testNumberWithBlanksConfigStrict() {
-        NumFeld numFeld = new NumFeld(Bezeichner.of("numTestFeld"), 5, ByteAdresse.of(1)).mitConfig(Config.STRICT);
-        numFeld.setInhalt(" 1 ");
+        assertThrows(IllegalArgumentException.class, () -> {
+            NumFeld numFeld = new NumFeld(Bezeichner.of("numTestFeld"), 5, ByteAdresse.of(1)).mitConfig(Config.STRICT);
+            numFeld.setInhalt(" 1 ");
+        });
     }
 
 }

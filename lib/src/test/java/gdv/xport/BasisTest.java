@@ -18,7 +18,7 @@
 
 package gdv.xport;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.junit.CloneableTester;
 import patterntesting.runtime.junit.ObjectTester;
 import patterntesting.runtime.junit.SerializableTester;

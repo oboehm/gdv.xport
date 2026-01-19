@@ -1,12 +1,12 @@
 package gdv.xport.srv.web;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.ui.Model;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /*
  * Copyright (c) 2022 by Oli B.

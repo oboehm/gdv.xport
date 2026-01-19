@@ -237,7 +237,7 @@ public class Teildatensatz extends Datensatz {
         }
         if (felder.size() > 1) {
             LOG.info("Mit Bezeichner {} werden mehrere Felder in '{}' mit '{}' belegt: {}", name,this, value, felder);
-            throw new NotUniqueException(String.format("Bezeichner '%s' in %s nicht eindeutig: %s, %s...", name, toShortString(), felder.get(0), felder.get(1)));
+            throw new NotUniqueException("Bezeichner '%s' in %s nicht eindeutig: %s, %s...".formatted(name, toShortString(), felder.get(0), felder.get(1)));
         }
         for (Feld x : felder) {
             setFeld(x, value);
@@ -276,8 +276,7 @@ public class Teildatensatz extends Datensatz {
             LOG.debug("{} in '{}' wird mit '{}' belegt.", x, this, value);
             x.setInhalt(value);
         } catch (IllegalArgumentException iae) {
-            throw new IllegalArgumentException(String.format(
-                    "%s: illegal value '%s' for %s", this.toShortString(), value, x), iae);
+            throw new IllegalArgumentException("%s: illegal value '%s' for %s".formatted(this.toShortString(), value, x), iae);
         }
     }
 
@@ -328,7 +327,7 @@ public class Teildatensatz extends Datensatz {
         for (int i = 1; i < felder.size(); i++) {
             Feld fn = felder.get(i);
             if (!f1.getInhalt().equals(fn.getInhalt())) {
-                throw new NotUniqueException(String.format("same Bezeichner, different values: '%s', '%s'", f1, fn));
+                throw new NotUniqueException("same Bezeichner, different values: '%s', '%s'".formatted(f1, fn));
             }
         }
         LOG.debug("{} hat gleichen Wert wie gleichlautende Felder.", f1);
@@ -417,7 +416,7 @@ public class Teildatensatz extends Datensatz {
             }
         }
         throw new IllegalArgumentException(
-                String.format("Adresse %s existiert nicht in %s", adresse, this.toShortString()));
+            "Adresse %s existiert nicht in %s".formatted(adresse, this.toShortString()));
     }
 
     /**
@@ -602,10 +601,10 @@ public class Teildatensatz extends Datensatz {
     @Override
     public String toShortString() {
         if (datenfelder.size() < 4)
-            return String.format("Teildatensatz Satzart %04d", getSatzart());
+            return "Teildatensatz Satzart %04d".formatted(getSatzart());
         else
-            return String.format("Teildatensatz %c Satzart %s", this.getSatznummer().toChar(),
-                   this.getSatzTyp());
+            return "Teildatensatz %c Satzart %s".formatted(this.getSatznummer().toChar(),
+                this.getSatzTyp());
     }
 
     /**

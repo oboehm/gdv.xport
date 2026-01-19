@@ -27,8 +27,7 @@ import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.xml.SatzXml;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.MatcherAssert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
@@ -37,9 +36,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * JUnit-Test fuer SatzFactory.
@@ -102,7 +102,7 @@ public final class SatzFactoryTest {
         String content = unsupported.toLongString();
         Satz imported = SatzFactory.getSatz(content);
         assertEquals(content, imported.toLongString());
-        assertTrue(imported + " should be valid", imported.isValid());
+        assertTrue(imported.isValid(), imported + " should be valid");
     }
 
     /**
@@ -211,8 +211,8 @@ public final class SatzFactoryTest {
         }
         int n = datensaetze.size();
         LOG.info(n + " Satzarten supported: " + supportedSatzarten);
-        assertTrue("only " + n + " Datensaetze supported", n > 5);
-        assertTrue("Satzart 342 expected to be supported", supportedSatzarten.contains(342));
+        assertTrue(n > 5, "only " + n + " Datensaetze supported");
+        assertTrue(supportedSatzarten.contains(342), "Satzart 342 expected to be supported");
     }
 
     /**
@@ -271,7 +271,7 @@ public final class SatzFactoryTest {
     private static void checkTeildatensatz(Teildatensatz tds) {
         int startByte = 1;
         for (Feld feld : tds.getFelder()) {
-            assertEquals(tds + ": Feld missing before " + feld.getBezeichner(), startByte, feld.getByteAdresse());
+            assertEquals(startByte, feld.getByteAdresse(), tds + ": Feld missing before " + feld.getBezeichner());
             startByte = feld.getEndAdresse() + 1;
         }
     }
@@ -365,7 +365,7 @@ public final class SatzFactoryTest {
     @Test
     public void testGetGdvRelease() {
         String release = SatzFactory.getGdvRelease();
-        MatcherAssert.assertThat(release, not(emptyString()));
+        assertThat(release, not(emptyString()));
         LOG.info("release = {}", release);
     }
 

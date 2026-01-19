@@ -29,7 +29,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.validation.ValidationException;
+import jakarta.validation.ValidationException;
 import java.io.IOException;
 import java.io.Serializable;
 import java.io.Writer;
@@ -770,7 +770,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
                 return validate(value);
             } catch (RuntimeException ex) {
                 throw new IllegalArgumentException(
-                        String.format("%s: Wert '%s' ist nicht erlaubt (%s)", validatedFeld.toShortString(), value, ex.getMessage()), ex);
+                    "%s: Wert '%s' ist nicht erlaubt (%s)".formatted(validatedFeld.toShortString(), value, ex.getMessage()), ex);
             }
         }
 
@@ -810,7 +810,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         protected String validateLax(String value) {
             LOG.debug("Inhalt von '{}' wird validiert.", value);
             if (!Text.isPrintable(value)) {
-                throw new ValidationException(String.format("Text '%s' enthaelt ungueltige Zeichen", value));
+                throw new ValidationException("Text '%s' enthaelt ungueltige Zeichen".formatted(value));
             }
             return value;
         }

@@ -22,7 +22,7 @@ import gdv.xport.Datenpaket;
 import gdv.xport.event.ImportListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.junit.FileTester;
 
 import java.io.*;

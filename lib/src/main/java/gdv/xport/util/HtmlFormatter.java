@@ -150,8 +150,7 @@ public final class HtmlFormatter extends AbstractFormatter {
             throws XMLStreamException {
         xmlStreamWriter.writeStartElement("div");
         xmlStreamWriter.writeAttribute("class", "Satz");
-        if (satz instanceof Datensatz) {
-            Datensatz datensatz = (Datensatz) satz;
+        if (satz instanceof Datensatz datensatz) {
             xmlStreamWriter.writeAttribute("title", "Satzart " + datensatz.getSatzartFeld().getInhalt() + "."
                     + datensatz.getSparteFeld().getInhalt());
         } else {

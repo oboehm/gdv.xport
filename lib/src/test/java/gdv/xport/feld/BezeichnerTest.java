@@ -25,7 +25,7 @@ import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.junit.ObjectTester;
 import patterntesting.runtime.junit.SerializableTester;
 
@@ -35,7 +35,7 @@ import java.util.Set;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasItem;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * JUnit-Tests fuer die {@link Bezeichner}-Klasse.
@@ -54,7 +54,7 @@ public class BezeichnerTest {
     public void testToString() {
         String name = "Anrede";
         String s = Bezeichner.of(name).toString();
-        assertTrue(s, s.contains(name));
+        assertTrue(s.contains(name), s);
     }
 
     /**

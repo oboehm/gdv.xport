@@ -17,7 +17,7 @@
  */
 package gdv.xport.util;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 

@@ -236,8 +236,8 @@ public class NumFeld extends Feld {
 
     protected NumFeld(Feld other, Config config) {
         super(other, config);
-        if (other instanceof NumFeld) {
-            this.nachkommastellen = ((NumFeld) other).nachkommastellen;
+        if (other instanceof NumFeld feld) {
+            this.nachkommastellen = feld.nachkommastellen;
         } else {
             this.nachkommastellen = 0;
         }
@@ -513,10 +513,10 @@ public class NumFeld extends Feld {
                 try {
                     BigInteger n = new BigInteger(nummer);
                     if (n.compareTo(BigInteger.ZERO) < 0) {
-                        throw new javax.validation.ValidationException(String.format("'%s' darf nicht negativ sein", nummer));
+                        throw new jakarta.validation.ValidationException("'%s' darf nicht negativ sein".formatted(nummer));
                     }
                 } catch (NumberFormatException nfe) {
-                    throw new javax.validation.ValidationException(String.format("'%s' ist keine Zahl", nummer), nfe);
+                    throw new jakarta.validation.ValidationException("'%s' ist keine Zahl".formatted(nummer), nfe);
                 }
             }
             return nummer;
@@ -535,7 +535,7 @@ public class NumFeld extends Feld {
         public String verify(String value) {
             try {
                 return super.verify(value);
-            } catch (javax.validation.ValidationException ex) {
+            } catch (jakarta.validation.ValidationException ex) {
                 throw new LocalizedIllegalArgumentException(ex);
             }
         }

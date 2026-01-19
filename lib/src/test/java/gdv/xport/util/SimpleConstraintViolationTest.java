@@ -6,12 +6,12 @@ package gdv.xport.util;
 import gdv.xport.feld.VUNummer;
 import gdv.xport.satz.Vorsatz;
 import net.sf.oval.ConstraintViolation;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Unit-Test fuer gdv.xport.util.SimpleConstraintViolation ...

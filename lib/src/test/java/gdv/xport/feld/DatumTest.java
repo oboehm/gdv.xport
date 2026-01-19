@@ -22,7 +22,7 @@ import gdv.xport.config.Config;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -31,10 +31,7 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Testklasse fuer Datum-Klasse.
@@ -69,12 +66,14 @@ public final class DatumTest extends AbstractFeldTest {
     /**
      * Test to date.
      */
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void testToDate() {
-        Datum silvester = new Datum("Silvester", "31122009");
-        LOG.info("Silvester is at " + silvester.toDate());
-        Datum invalid = new Datum("invalid", "xxxxxxxx");
-        LOG.info("invalid date: " + invalid.toDate());
+        assertThrows(IllegalStateException.class, () -> {
+            Datum silvester = new Datum("Silvester", "31122009");
+            LOG.info("Silvester is at " + silvester.toDate());
+            Datum invalid = new Datum("invalid", "xxxxxxxx");
+            LOG.info("invalid date: " + invalid.toDate());
+        });
     }
 
     @Test
@@ -89,7 +88,7 @@ public final class DatumTest extends AbstractFeldTest {
     @Test
     public void testIsValid() {
         Datum xmas = new Datum("Xmas", "24122009");
-        assertTrue(xmas + " should be a valid date", xmas.isValid());
+        assertTrue(xmas.isValid(), xmas + " should be a valid date");
         assertEquals(0, xmas.validate().size());
     }
 
@@ -99,7 +98,7 @@ public final class DatumTest extends AbstractFeldTest {
     @Test
     public void testValidateEmptyDatum() {
         Datum empty = new Datum(Bezeichner.of("empty"), 8, 1);
-        assertTrue(empty + " should be valid", empty.isValid());
+        assertTrue(empty.isValid(), empty + " should be valid");
     }
 
     /**
@@ -125,7 +124,7 @@ public final class DatumTest extends AbstractFeldTest {
      */
     private void checkInvalidDatum(final String mmddjjjj) {
         Datum datum = new Datum("Test-Datum", mmddjjjj);
-        assertTrue(datum + " is not a valid date!", datum.isInvalid());
+        assertTrue(datum.isInvalid(), datum + " is not a valid date!");
         List<ConstraintViolation> violations = datum.validate();
         for (ConstraintViolation violation : violations) {
             LOG.info(violation);
@@ -133,10 +132,12 @@ public final class DatumTest extends AbstractFeldTest {
         assertThat(violations.size(), greaterThan(0));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testSetInhaltStrict() {
-        Datum datumTest = new Datum(Bezeichner.DATUM_SEPA, 3).mitConfig(Config.STRICT.withProperty("gdv.feld.truncate", "true"));
-        datumTest.setInhalt("00011800");
+        assertThrows(IllegalArgumentException.class, () -> {
+            Datum datumTest = new Datum(Bezeichner.DATUM_SEPA, 3).mitConfig(Config.STRICT.withProperty("gdv.feld.truncate", "true"));
+            datumTest.setInhalt("00011800");
+        });
     }
 
     @Test
@@ -195,7 +196,7 @@ public final class DatumTest extends AbstractFeldTest {
     private static void checkDatum(final String inhalt, final boolean valid) {
         Datum datum = new Datum("Test-Datum", inhalt).mitConfig(Config.LAX);
         assertEquals(inhalt, datum.getInhalt());
-        assertEquals(datum + " gueltig?", valid, datum.isValid());
+        assertEquals(valid, datum.isValid(), datum + " gueltig?");
     }
 
     /**
@@ -204,7 +205,7 @@ public final class DatumTest extends AbstractFeldTest {
     @Test
     public void testIsEmpty() {
         Datum empty = new Datum("empty", "00000000");
-        assertTrue(empty + " is empty", empty.isEmpty());
+        assertTrue(empty.isEmpty(), empty + " is empty");
     }
 
     /**

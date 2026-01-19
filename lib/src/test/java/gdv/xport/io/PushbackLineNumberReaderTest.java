@@ -18,13 +18,12 @@
 
 package gdv.xport.io;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.IOException;
 import java.io.StringReader;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit-Tests fuer den {@link PushbackLineNumberReader}.
@@ -39,7 +38,7 @@ public final class PushbackLineNumberReaderTest {
     /**
      * Sets the up line number reader.
      */
-    @Before
+    @BeforeEach
     public void setUpLineNumberReader() {
         StringReader reader = new StringReader("hello\nworld");
         lineNumberReader = new PushbackLineNumberReader(reader);

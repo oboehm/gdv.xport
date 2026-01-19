@@ -1637,8 +1637,7 @@ public final class Bezeichner implements Serializable {
         for (Field field : fields) {
             try {
                 Object value = field.get(null);
-                if (value instanceof Bezeichner) {
-                    Bezeichner bez = (Bezeichner) value;
+                if (value instanceof Bezeichner bez) {
                     CONSTANTS.add(bez);
                 }
             } catch (IllegalAccessException e) {

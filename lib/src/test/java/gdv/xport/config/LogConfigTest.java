@@ -19,15 +19,15 @@ package gdv.xport.config;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.MatcherAssert;
-import org.junit.AfterClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Test;
 
 import java.sql.*;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * Unit-Tests fuer {@link LogConfig}. Standardmaessig wird eine In-Memory-DB
@@ -50,7 +50,7 @@ public final class LogConfigTest {
         try (Connection connection = getConnection();
              Statement stmt = connection.createStatement()) {
             assertNotNull(stmt);
-            MatcherAssert.assertThat(connection.isClosed(), is(Boolean.FALSE));
+            assertThat(connection.isClosed(), is(Boolean.FALSE));
             LOG.info("Got connection {}.", connection);
         }
     }
@@ -80,7 +80,7 @@ public final class LogConfigTest {
                 LOG.debug("{}. entry: {} {} {}", n, ts, level, msg);
             }
         }
-        MatcherAssert.assertThat(n, greaterThan(0));
+        assertThat(n, greaterThan(0));
         LOG.info("{} entries read from logbook.", n);
     }
 
@@ -95,7 +95,7 @@ public final class LogConfigTest {
      *
      * @throws SQLException bei JDBC-Problemen
      */
-    @AfterClass
+    @AfterAll
     public static void cleanLogBook() throws SQLException {
         try (Connection connection = getConnection();
              Statement stmt = connection.createStatement()) {

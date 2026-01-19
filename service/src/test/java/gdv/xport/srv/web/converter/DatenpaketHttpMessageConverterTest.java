@@ -20,15 +20,14 @@ import gdv.xport.*;
 import gdv.xport.srv.config.AppConfig;
 import org.apache.commons.lang3.*;
 import org.apache.logging.log4j.*;
-import org.junit.*;
 import org.springframework.http.*;
 import org.springframework.mock.http.*;
 
 import java.io.*;
 import java.nio.charset.*;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
 
 /**
  * Unit-Tests fuer {@link DatenpaketHttpMessageConverter}-Klasse.
@@ -42,7 +41,7 @@ public final class DatenpaketHttpMessageConverterTest {
     /**
      * Testmethode fuer {@link DatenpaketHttpMessageConverter#supports(Class)}.
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void testSupports() {
         DatenpaketHttpMessageConverter converter = new DatenpaketHttpMessageConverter(MediaType.TEXT_PLAIN);
         assertThat(converter.supports(Datenpaket.class), is(true));
@@ -54,7 +53,7 @@ public final class DatenpaketHttpMessageConverterTest {
      *
      * @throws IOException sollte nicht passieren
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void testWriteInternalText() throws IOException {
         String output = convertEmptyDatenpaketFor(MediaType.TEXT_PLAIN);
         assertThat(output, startsWith("0001"));
@@ -65,7 +64,7 @@ public final class DatenpaketHttpMessageConverterTest {
      *
      * @throws IOException sollte nicht passieren
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void testWriteInternalXML() throws IOException {
         String output = convertEmptyDatenpaketFor(MediaType.TEXT_XML);
         assertThat(output, startsWith("<"));
@@ -76,7 +75,7 @@ public final class DatenpaketHttpMessageConverterTest {
      *
      * @throws IOException sollte nicht passieren
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void testWriteInternalHTML() throws IOException {
         String output = convertEmptyDatenpaketFor(MediaType.TEXT_HTML);
         assertThat(output, containsString("<html"));
@@ -87,7 +86,7 @@ public final class DatenpaketHttpMessageConverterTest {
      *
      * @throws IOException sollte nicht passieren
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void testWriteInternalJSON() throws IOException {
         String output = convertEmptyDatenpaketFor(MediaType.APPLICATION_JSON);
         assertThat(output, startsWith("{"));
@@ -98,7 +97,7 @@ public final class DatenpaketHttpMessageConverterTest {
      *
      * @throws IOException sollte nicht passieren
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void testWriteInternalCSV() throws IOException {
         String output = convertEmptyDatenpaketFor(AppConfig.MEDIA_TYPE_TEXT_CSV);
         assertThat(output, containsString(";"));

@@ -18,7 +18,7 @@
 
 package gdv.xport.satz;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.VUNummer;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
@@ -26,9 +26,8 @@ import gdv.xport.util.SatzTyp;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.MatcherAssert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.junit.ObjectTester;
 
 import java.io.File;
@@ -36,8 +35,9 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Hier setzen wir eine Standard-Konfiguration auf, die wir in den verschiedenen JUnit-Tests verwenden.
@@ -64,7 +64,7 @@ abstract public class AbstractSatzTest {
     /**
      * Test aufsetzen.
      */
-    @BeforeClass
+    @BeforeAll
     public static void setUpTargetDirs() {
         File exportDir = new File("target", "export");
         if (!exportDir.exists() && exportDir.mkdir()) {
@@ -82,8 +82,8 @@ abstract public class AbstractSatzTest {
     public void testSatzart() {
         Satz satz = this.getSatz();
         Feld satzart = satz.getFeld(Kopffelder1bis7.SATZART.getBezeichner());
-        assertTrue("expected: is valid", satzart.isValid());
-        assertFalse("expected: not empty", satzart.isEmpty());
+        assertTrue(satzart.isValid(), "expected: is valid");
+        assertFalse(satzart.isEmpty(), "expected: not empty");
         assertEquals(satz.getSatzart(), Integer.parseInt(satzart.getInhalt()));
     }
 
@@ -106,10 +106,10 @@ abstract public class AbstractSatzTest {
     protected static String checkJSON(Satz satz) throws IOException {
         String json = OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(satz);
         SatzTyp satzTyp = satz.getSatzTyp();
-        File exportFile = new File(JSON_DIR, String.format("satz%s.json", satzTyp));
+        File exportFile = new File(JSON_DIR, "satz%s.json".formatted(satzTyp));
         FileUtils.writeStringToFile(exportFile, json, StandardCharsets.UTF_8);
         LOG.info("{} wurde zur manuellen Pruefung in '{}' abgelegt", satz, exportFile);
-        MatcherAssert.assertThat(json, containsString(satzTyp.toString()));
+        assertThat(json, containsString(satzTyp.toString()));
         return json;
     }
 
@@ -141,7 +141,7 @@ abstract public class AbstractSatzTest {
         datensatz.export(swriter, "\n");
         swriter.close();
         assertEquals(expected, swriter.toString());
-        assertTrue(datensatz.toShortString() + " is not valid", datensatz.isValid());
+        assertTrue(datensatz.isValid(), datensatz.toShortString() + " is not valid");
     }
 
     /**

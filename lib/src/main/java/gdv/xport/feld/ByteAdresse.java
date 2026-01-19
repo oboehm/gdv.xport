@@ -83,13 +83,12 @@ public class ByteAdresse extends Number implements Fachwert {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof ByteAdresse) {
-            ByteAdresse that = (ByteAdresse) o;
+        if (o instanceof ByteAdresse that) {
             return adresse == that.adresse;
-        } else if (o instanceof Integer) {
-            return intValue() == (Integer) o;
-        } else if (o instanceof Long) {
-            return longValue() == (Long) o;
+        } else if (o instanceof Integer integer) {
+            return intValue() == integer;
+        } else if (o instanceof Long long1) {
+            return longValue() == long1;
         } else {
             return false;
         }

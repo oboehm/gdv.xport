@@ -23,13 +23,13 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
 import org.apache.commons.io.FileUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Unit-Test for {@link CsvFormatter}.
@@ -70,7 +70,7 @@ public final class CsvFormatterTest extends AbstractFormatterTest {
         for (int i = 0; i < MUSTER_DATENPAKET.getDatensaetze().size(); i++) {
             Datensatz datensatz = MUSTER_DATENPAKET.getDatensaetze().get(i);
             String[] columns = lines.get(i+2).split(";");
-            assertEquals("line " + (i+2), datensatz.getSatzart(), Integer.parseInt(columns[0]));
+            assertEquals(datensatz.getSatzart(), Integer.parseInt(columns[0]), "line " + (i+2));
         }
     }
 

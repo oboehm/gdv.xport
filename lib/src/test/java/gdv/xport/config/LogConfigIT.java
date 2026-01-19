@@ -19,16 +19,20 @@ package gdv.xport.config;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.*;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 
 import java.net.URI;
 import java.sql.*;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Unit-Tests fuer {@link LogConfig}-Klasse. Zum Starten wird hier ein
@@ -39,17 +43,17 @@ import static org.junit.Assert.assertTrue;
  *
  * @author oboehm
  */
-@Ignore // weil's zu lange dauert (s.o.)
+@Disabled
+@Testcontainers // weil's zu lange dauert (s.o.)
 public class LogConfigIT {
 
     private static final Logger LOG = LogManager.getLogger(LogConfigIT.class);
     private static LogConfig lastLogConfig = LogConfig.getLastInstance();
     private static LogConfig logConfig;
 
-    @ClassRule
-    public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer().withUsername("sa").withPassword("");
+    @Container public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer("postgres:9.6.12").withUsername("sa").withPassword("");
     
-    @BeforeClass
+    @BeforeAll
     public static void setUpLogConfig() {
         LOG.info("Setting up logConfig...");
         URI jdbcURI = URI.create(postgreSQLContainer.getJdbcUrl());
@@ -63,7 +67,7 @@ public class LogConfigIT {
      * 
      * @throws SQLException bei SQL-Fehlern
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void testWriteToLogbook() throws SQLException {
         Timestamp now = new Timestamp(System.currentTimeMillis());
         try (Connection c = LogConfig.getConnection(); PreparedStatement stmt = c
@@ -93,7 +97,7 @@ public class LogConfigIT {
      * Test zurueck. Ansonsten kann es passieren, dass die Log-Konfiguration
      * noch auf die DB des gerade heruntergefahrenen Docker-Containers geht.
      */
-    @AfterClass
+    @AfterAll
     public static void resetLogConfig() {
         logConfig = new LogConfig(lastLogConfig.getDbURI());
     }

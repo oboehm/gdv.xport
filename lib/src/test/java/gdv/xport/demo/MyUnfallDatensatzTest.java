@@ -29,9 +29,9 @@ import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.AfterClass;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.annotation.IntegrationTest;
 
 import javax.xml.stream.XMLStreamException;
@@ -42,7 +42,7 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.net.UnknownHostException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * JUnit-Test fuer die MyUnfallDatensatz-Klasse.
@@ -61,7 +61,7 @@ public final class MyUnfallDatensatzTest {
      * @throws IOException wenn die musterdatei nicht gelesen werden kann
      */
     @Test
-    @Ignore
+    @Disabled
     public void testMyUnfallDatensatz() throws IOException {
         Datenpaket datenpaket = new Datenpaket();
         URL url = this.getClass().getResource("/musterdatei_041222.txt");
@@ -121,7 +121,7 @@ public final class MyUnfallDatensatzTest {
      *
      * @since 0.5.0
      */
-    @AfterClass
+    @AfterAll
     public static void restoreSatzFactory() {
         SatzFactory.unregister(SatzTyp.of("0210.030"));
     }

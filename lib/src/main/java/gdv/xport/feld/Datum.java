@@ -24,7 +24,7 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.validation.ValidationException;
+import jakarta.validation.ValidationException;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -440,11 +440,10 @@ public final class Datum extends NumFeld {
                 Date date = format.parse(value);
                 String converted = format.format(date);
                 if (!value.equals(converted)) {
-                    throw new ValidationException(String.format(
-                            "'%s' ist kein korrektes Datum - ist vielleicht '%s' gemeint?", value, converted));
+                    throw new ValidationException("'%s' ist kein korrektes Datum - ist vielleicht '%s' gemeint?".formatted(value, converted));
                 }
             } catch (ParseException ex) {
-                throw new ValidationException(String.format("'%s' ist kein Datum", value), ex);
+                throw new ValidationException("'%s' ist kein Datum".formatted(value), ex);
             }
             return value;
         }

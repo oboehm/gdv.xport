@@ -1,9 +1,9 @@
 package gdv.xport.feld;
 
 import gdv.xport.config.Config;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
@@ -147,9 +147,7 @@ public class FeldUeberlaufTest {
     assertEquals("00099", numFeldOhneNachkomma.getInhalt());
 
     Exception exception = assertThrows(IllegalArgumentException.class, () ->
-    {
-      numFeldOhneNachkomma.setInhalt("AA");
-    });
+      numFeldOhneNachkomma.setInhalt("AA"));
 
     assertTrue(exception.getMessage()
         .contains("AA"));
@@ -173,9 +171,7 @@ public class FeldUeberlaufTest {
     assertEquals("9999999999", betrag.getInhalt());
 
     Exception exception22 = assertThrows(IllegalArgumentException.class, () ->
-    {
-      betrag.setInhalt("-123");
-    });
+      betrag.setInhalt("-123"));
 
     assertTrue(exception22.getMessage()
         .contains("-123"));
@@ -188,17 +184,13 @@ public class FeldUeberlaufTest {
     assertEquals("0000012300", betragStrict.getInhalt());
 
     Exception exception1 = assertThrows(IllegalArgumentException.class, () ->
-    {
-      betrag.setInhalt("-123");
-    });
+      betrag.setInhalt("-123"));
 
     assertTrue(exception1.getMessage()
         .contains("-123"));
 
     Exception exception2 = assertThrows(IllegalArgumentException.class, () ->
-    {
-      betrag.setInhalt("1A3");
-    });
+      betrag.setInhalt("1A3"));
 
     assertTrue(exception2.getMessage()
         .contains("1A3"));
@@ -227,17 +219,13 @@ public class FeldUeberlaufTest {
     assertEquals("999999999+", betragMVz.getInhalt());
 
     Exception exception1 = assertThrows(IllegalArgumentException.class, () ->
-    {
-      betragMVz.setInhalt("1A3");
-    });
+      betragMVz.setInhalt("1A3"));
 
     assertTrue(exception1.getMessage()
         .contains("1A3"));
 
     Exception exception2 = assertThrows(IllegalArgumentException.class, () ->
-    {
-    betragMVz.setInhalt("");
-    });
+    betragMVz.setInhalt(""));
 
     assertFalse(exception2.getMessage().isEmpty());
   }

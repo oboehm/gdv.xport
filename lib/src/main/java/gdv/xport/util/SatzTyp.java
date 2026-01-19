@@ -23,7 +23,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.validation.ValidationException;
+import jakarta.validation.ValidationException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
@@ -136,32 +136,32 @@ public class SatzTyp {
 		}
 		switch(args.length) {
 			case 1:
-				return String.format("%04d", args[0]);
+				return "%04d".formatted(args[0]);
 			case 2:
-				String satzart = String.format("%04d", args[0]);
+				String satzart = "%04d".formatted(args[0]);
 				if (satzarten.get(satzart) != null) {
 					return satzart;
 				}
 				return mapSparte(args[0], args[1]);
 			case 3:
-				String s = String.format("%04d.%03d.%d", args[0], args[1], art);
+				String s = "%04d.%03d.%d".formatted(args[0], args[1], art);
 				return (s.equals("0220.580.1")) ? "0220.580.01" : s;
 			case 4:
-				return String.format("%04d.%03d.%d.%d", args[0], args[1], art, args[3]);
+				return "%04d.%03d.%d.%d".formatted(args[0], args[1], art, args[3]);
 			default:
 				throw new IllegalArgumentException("1 - 4 arguments expected, not " + args.length);
 		}
 	}
 
 	private static String mapSparte(int satzart, int sparte) {
-		String mapped = String.format("%04d.%03d", satzart, sparte);
+		String mapped = "%04d.%03d".formatted(satzart, sparte);
 		if (satzarten.get(mapped) != null) {
 			return mapped;
 		}
-		String prefix = String.format("%04d.", satzart);
+		String prefix = "%04d.".formatted(satzart);
 		for (Map.Entry<String, List<Integer>> entry : satzarten.entrySet()) {
 			if (entry.getKey().startsWith(prefix) && entry.getValue().contains(sparte)) {
-				return String.format("%04d.%03d", satzart, entry.getValue().get(0));
+				return "%04d.%03d".formatted(satzart, entry.getValue().get(0));
 			}
 		}
 		return mapped;
@@ -277,7 +277,7 @@ public class SatzTyp {
 	 * @since 5.0
 	 */
   public String getSparteAsString() {
-    return String.format("%03d", this.getSparte());
+    return "%03d".formatted(this.getSparte());
 	}
 
 	/**
@@ -544,7 +544,7 @@ public class SatzTyp {
 	@Override
 	public String toString() {
 		if ((getSatzart() == 0) || isFreieSatzart()) {
-			return String.format("%04d", getSatzart());
+			return "%04d".formatted(getSatzart());
 		}
 		return toString(toIntArray(teil));
 	}

@@ -23,7 +23,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.validation.ValidationException;
+import jakarta.validation.ValidationException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -321,7 +321,7 @@ public final class BetragMitVorzeichen extends Betrag {
             if (StringUtils.isNotBlank(nummer)) {
                 char vorzeichen = nummer.charAt(nummer.length() - 1);
                 if ((vorzeichen != '+') && (vorzeichen != '-')) {
-                    throw new ValidationException(String.format("'%s' hat falsches Vorzeichen ('%c')", nummer, vorzeichen));
+                    throw new ValidationException("'%s' hat falsches Vorzeichen ('%c')".formatted(nummer, vorzeichen));
                 }
                 super.validateLax(nummer.substring(0, nummer.length()-1));
             }

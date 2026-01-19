@@ -25,9 +25,8 @@ import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -36,8 +35,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Unit-Tests fuer {@link Satznummer}. Dieser Test ersetzt jetzt den alten
@@ -45,19 +44,17 @@ import static org.junit.Assert.assertTrue;
  *
  * @author <a href="ob@aosd.de">oliver</a>
  */
-@RunWith(Parameterized.class)
 public final class SatznummerTest {
 
     private static final Logger LOG = LogManager.getLogger();
     private static final SatzRegistry SATZ_REGISTRY = SatzRegistry.getInstance();
 
-    private final Satz satz;
+    private Satz satz;
 
-    public SatznummerTest(Satz satz) {
+    public void initSatznummerTest(Satz satz) {
         this.satz = satz;
     }
 
-    @Parameterized.Parameters(name = "Satzart {0}")
     public static Collection<Object[]> data() {
         List<Object[]> data = new ArrayList<>();
         Datenpaket datenpaket = SATZ_REGISTRY.getAllSupportedSaetze();
@@ -70,8 +67,10 @@ public final class SatznummerTest {
         return data;
     }
 
-    @Test
-    public void testReadSatznummer() throws IOException {
+    @MethodSource("data")
+    @ParameterizedTest(name = "Satzart {0}")
+    public void testReadSatznummer(Satz satz) throws IOException {
+        initSatznummerTest(satz);
         checkReadSatznummer(satz);
     }
 
@@ -103,8 +102,10 @@ public final class SatznummerTest {
      *
      * @throws IOException im Fehlerfall
      */
-    @Test
-    public void mixTeildatensaetze() throws IOException {
+    @MethodSource("data")
+    @ParameterizedTest(name = "Satzart {0}")
+    public void mixTeildatensaetze(Satz satz) throws IOException {
+        initSatznummerTest(satz);
         for (int i = 0; i < satz.getNumberOfTeildatensaetze(); i++) {
             for (int j = 0; j < satz.getNumberOfTeildatensaetze(); j++) {
                 Teildatensatz tds = satz.getTeildatensatz(j+1);
@@ -112,8 +113,8 @@ public final class SatznummerTest {
                     continue;
                 }
                 Satznummer satznummer = readSatznummer(satz.getTeildatensatz(i + 1).toLongString(), tds);
-                assertTrue(String.format("%s, Zeile %d / Teidatensatz %d: not empty: %s", tds.toShortString(),
-                                i + 1, j + 1, satznummer), satznummer.isEmpty());
+                assertTrue(satznummer.isEmpty(), "%s, Zeile %d / Teidatensatz %d: not empty: %s".formatted(tds.toShortString(),
+                    i + 1, j + 1, satznummer));
             }
         }
     }
@@ -125,8 +126,10 @@ public final class SatznummerTest {
         }
     }
 
-    @Test
-    public void testIsValid() {
+    @MethodSource("data")
+    @ParameterizedTest(name = "Satzart {0}")
+    public void testIsValid(Satz satz) {
+        initSatznummerTest(satz);
         for (Teildatensatz tds : satz.getTeildatensaetze()) {
             Zeichen nr = tds.getSatznummer();
             assertTrue(nr.isValid());

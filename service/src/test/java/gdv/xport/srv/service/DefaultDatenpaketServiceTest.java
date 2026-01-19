@@ -21,8 +21,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.MatcherAssert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.ui.Model;
 import org.springframework.util.MimeType;
 import org.springframework.util.MimeTypeUtils;
@@ -33,8 +32,9 @@ import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit-Tests DefaultDatenpaketServiceTest.
@@ -83,10 +83,10 @@ public final class DefaultDatenpaketServiceTest {
      */
     @Test
     public void testFormatUri() throws IOException {
-        assertTrue(TEST_FILE + " does not exist", TEST_FILE.exists());
+        assertTrue(TEST_FILE.exists(), TEST_FILE + " does not exist");
         String html = service.format(TEST_FILE.toURI(), MimeTypeUtils.TEXT_HTML);
-        MatcherAssert.assertThat(html, containsString("<html"));
-        MatcherAssert.assertThat(html, containsString("</html>"));
+        assertThat(html, containsString("<html"));
+        assertThat(html, containsString("</html>"));
     }
 
     /**
@@ -98,7 +98,7 @@ public final class DefaultDatenpaketServiceTest {
     public void testFormatText() throws IOException {
         String text = FileUtils.readFileToString(TEST_FILE, StandardCharsets.ISO_8859_1);
         String formatted = service.format(text, MimeTypeUtils.TEXT_PLAIN);
-        MatcherAssert.assertThat(text, equalToCompressingWhiteSpace(formatted));
+        assertThat(text, equalToCompressingWhiteSpace(formatted));
     }
 
 }

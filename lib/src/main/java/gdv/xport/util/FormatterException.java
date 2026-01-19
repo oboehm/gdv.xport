@@ -12,6 +12,8 @@
 
 package gdv.xport.util;
 
+import java.io.Serial;
+
 
 /**
  * Wenn der Formatter ein Problem hat, kann (und wird) er diese Exception
@@ -22,7 +24,7 @@ package gdv.xport.util;
  */
 public class FormatterException extends RuntimeException {
 
-    private static final long serialVersionUID = 20140217L;
+    @Serial private static final long serialVersionUID = 20140217L;
 
     /**
      * Erzeugt eine neue {@link FormatterException}.

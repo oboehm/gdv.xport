@@ -16,15 +16,15 @@ import gdv.xport.config.Config;
 import gdv.xport.event.ImportStatistic;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.MatcherAssert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.annotation.IntegrationTest;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Unit-Tests fuer {@link DatenpaketStreamer}.
@@ -69,7 +69,7 @@ public final class DatenpaketStreamerTest {
         streamer.register(statistic);
         streamer.readDatenpaket();
         LOG.info("Statistik: " + statistic);
-        assertTrue("expected: number of imported saetze > 2", statistic.getImportedSaetze() > 2);
+        assertTrue(statistic.getImportedSaetze() > 2, "expected: number of imported saetze > 2");
     }
 
     @Test
@@ -84,9 +84,9 @@ public final class DatenpaketStreamerTest {
         }
         
         LOG.info("Statistik: " + statistic);
-        MatcherAssert.assertThat("drei_datenpakete.txt hat drei Datenpakete, also drei Vorsaetze", statistic.getImportedVorsaetze(), is(3));
-        MatcherAssert.assertThat("drei_datenpakete.txt hat drei Datenpakete, zu je 5 Saetzen", statistic.getImportedSaetze(), is(15));
-        MatcherAssert.assertThat("drei_datenpakete.txt hat drei Datenpakete, also drei Nachsaetze", statistic.getImportedNachsaetze(), is(3));
+        assertThat("drei_datenpakete.txt hat drei Datenpakete, also drei Vorsaetze", statistic.getImportedVorsaetze(), is(3));
+        assertThat("drei_datenpakete.txt hat drei Datenpakete, zu je 5 Saetzen", statistic.getImportedSaetze(), is(15));
+        assertThat("drei_datenpakete.txt hat drei Datenpakete, also drei Nachsaetze", statistic.getImportedNachsaetze(), is(3));
     }
 
     @Test

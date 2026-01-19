@@ -27,7 +27,7 @@ import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.Vorsatz;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
