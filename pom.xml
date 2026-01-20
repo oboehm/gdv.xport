@@ -220,6 +220,7 @@
           <ignoredVersions>
             <ignoredVersion>.*-alpha.*</ignoredVersion>
             <ignoredVersion>.*[-\.]beta.*</ignoredVersion>
+            <ignoredVersion>.*-M.*</ignoredVersion>
             <ignoredVersion>.*-rc.*</ignoredVersion>
           </ignoredVersions>
         </configuration>
@@ -499,16 +500,6 @@
         <artifactId>patterntesting-rt</artifactId>
         <version>${patterntesting.version}</version>
       </dependency>
-      <dependency>
-        <groupId>io.github.netmikey.logunit</groupId>
-        <artifactId>logunit-core</artifactId>
-        <version>2.0.0</version>
-      </dependency>
-      <dependency>
-        <groupId>io.github.netmikey.logunit</groupId>
-        <artifactId>logunit-log4j2</artifactId>
-        <version>2.0.0</version>
-      </dependency>
 
       <!-- Import dependency management from Spring Boot -->
       <dependency>
@@ -528,7 +519,7 @@
       <dependency>
         <groupId>nz.net.ultraq.thymeleaf</groupId>
         <artifactId>thymeleaf-layout-dialect</artifactId>
-        <version>3.3.0</version>
+        <version>3.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.thymeleaf</groupId>
@@ -543,7 +534,7 @@
       <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>bootstrap</artifactId>
-        <version>5.3.6</version>
+        <version>5.3.8</version>
       </dependency>
       <dependency>
         <groupId>org.webjars</groupId>
@@ -560,7 +551,7 @@
       <dependency>
         <groupId>de.jfachwert</groupId>
         <artifactId>jfachwert</artifactId>
-        <version>6.3.0</version>
+        <version>6.6.0</version>
       </dependency>
 
       <!-- for JsonFormatter -->
@@ -578,16 +569,6 @@
         <groupId>tools.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
         <version>3.0.3</version>
-      </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-dataformat-xml</artifactId>
-        <version>2.20.1</version>
-      </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
-        <artifactId>jackson-jakarta-rs-base</artifactId>
-        <version>2.13.5</version>
       </dependency>
 
     </dependencies>
