@@ -11,6 +11,10 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Unreleased]
 
+### Added
+
+- SBOM wird generiert
+
 ### Changed
 
 - Update auf JUnit 6
