@@ -18,6 +18,8 @@
 
 package gdv.xport.util;
 
+import java.io.Serial;
+
 /**
  * Falls eine Satzart noch nicht registriert wurde, wird dies Exception hier
  * geworfen.
@@ -27,7 +29,7 @@ package gdv.xport.util;
  */
 public class NotRegisteredException extends RuntimeException {
 
-    private static final long serialVersionUID = 20091113L;
+    @Serial private static final long serialVersionUID = 20091113L;
 
     /**
      * Instanziiert eine {@link NotRegisteredException}.

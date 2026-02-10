@@ -19,7 +19,7 @@
 package gdv.xport;
 
 import gdv.xport.util.XmlFormatterTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.stream.XMLStreamException;

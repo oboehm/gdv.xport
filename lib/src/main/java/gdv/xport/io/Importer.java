@@ -58,8 +58,8 @@ public class Importer {
      * @return eine Importer
      */
     public static Importer of(Reader reader) {
-        if (reader instanceof PushbackLineNumberReader) {
-            return of((PushbackLineNumberReader) reader);
+        if (reader instanceof PushbackLineNumberReader numberReader) {
+            return of(numberReader);
         } else {
             return of(new PushbackLineNumberReader(reader));
         }

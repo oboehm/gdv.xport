@@ -33,10 +33,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.MatcherAssert;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.NetworkTester;
 import patterntesting.runtime.junit.ObjectTester;
@@ -51,8 +50,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * JUnit- und Integrations-Tests fuer {@link Datenpaket}-Klasse. Die
@@ -70,7 +70,7 @@ public final class DatenpaketTest {
     private static String muster;
     private final Datenpaket datenpaket = new Datenpaket();
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpExportDir() throws IOException {
         File exportDir = new File("target", "export");
         if (exportDir.mkdir()) {
@@ -129,7 +129,7 @@ public final class DatenpaketTest {
         File file = File.createTempFile("datenpaket", ".txt");
         datenpaket.export(file);
         LOG.info(datenpaket + " was exported to " + file);
-        assertTrue(file + " was not created", file.exists());
+        assertTrue(file.exists(), file + " was not created");
         if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
             FileTester.assertContentEquals(new File("src/test/resources/gdv/xport/test-export.txt"), file);
         }
@@ -343,7 +343,7 @@ public final class DatenpaketTest {
             }
         }
 
-        assertTrue("There are teildatensaetze with wrong satznummern: (datensatz, teildatensatz) -> " + wrongDatensatzTeildatensatzList, wrongDatensatzTeildatensatzList.isEmpty());
+        assertTrue(wrongDatensatzTeildatensatzList.isEmpty(), "There are teildatensaetze with wrong satznummern: (datensatz, teildatensatz) -> " + wrongDatensatzTeildatensatzList);
 
         assertEquals("BRBRIENNEE,J\u00dcRGEN", datenpaket.getAdressat());
     }
@@ -456,7 +456,7 @@ public final class DatenpaketTest {
     public void testImportIgorAsStream() throws IOException {
         try (InputStream istream = DatenpaketTest.class.getResourceAsStream("/igor_110120.txt")) {
             datenpaket.importFrom(istream);
-            assertTrue(datenpaket.validate().toString(), datenpaket.isValid());
+            assertTrue(datenpaket.isValid(), datenpaket.validate().toString());
         }
     }
 
@@ -508,7 +508,7 @@ public final class DatenpaketTest {
 
     private static String getResourceAsString(final String resource) throws IOException {
         try (InputStream istream = DatenpaketTest.class.getResourceAsStream(resource)) {
-            assertNotNull(resource + " not found", istream);
+            assertNotNull(istream, resource + " not found");
             return IOUtils.toString(istream, Config.DEFAULT_ENCODING);
         }
     }
@@ -531,10 +531,10 @@ public final class DatenpaketTest {
                     break;
                 }
                 if (expectedLine.startsWith("0001")) {
-                    assertEquals("difference in Feld 1-6 of line " + line, expectedLine.substring(0, 96),
-                            paketLine.substring(0, 96));
+                    assertEquals(expectedLine.substring(0, 96), paketLine.substring(0, 96),
+                            "difference in Feld 1-6 of line " + line);
                 } else {
-                    assertEquals("difference in line " + line, expectedLine, paketLine);
+                    assertEquals(expectedLine, paketLine, "difference in line " + line);
                 }
             }
         }
@@ -573,12 +573,12 @@ public final class DatenpaketTest {
     private void checkViolations(final Datenpaket defect) {
         if (LOG.isTraceEnabled()) {
             List<ConstraintViolation> violations = defect.validate();
-            assertTrue("at least 1 violation is expected", (!violations.isEmpty()));
+            assertTrue((!violations.isEmpty()), "at least 1 violation is expected");
             for (ConstraintViolation cv : violations) {
                 LOG.trace("Violation: " + cv);
             }
         }
-        assertFalse("at least 1 violation is expected", defect.isValid());
+        assertFalse(defect.isValid(), "at least 1 violation is expected");
     }
 
     /**
@@ -774,7 +774,7 @@ public final class DatenpaketTest {
         3x0220.010.13.6 for 2222244
         Total: 22
          */
-        MatcherAssert.assertThat(unpacked.getDatensaetze().size(), equalTo(22));
+        assertThat(unpacked.getDatensaetze().size(), equalTo(22));
         checkDatensatz(x, SatzTyp.of("0220.010.13.1"));
         checkDatensatz(x, SatzTyp.of("0221.010.13.1"));
     }
@@ -783,7 +783,7 @@ public final class DatenpaketTest {
         List<Datensatz> datensaetze = paket.getDatensaetze(typ);
         assertFalse(datensaetze.isEmpty());
         for (Datensatz ds : datensaetze) {
-            MatcherAssert.assertThat(ds.getNumberOfTeildatensaetze(), greaterThan(1));
+            assertThat(ds.getNumberOfTeildatensaetze(), greaterThan(1));
             assertTrue(ds.isValid());
         }
     }
@@ -794,7 +794,7 @@ public final class DatenpaketTest {
             assertNotNull(istream);
             datenpaket.importFrom(istream).pack();
         }
-        MatcherAssert.assertThat(datenpaket.getDatensaetze().size(), lessThan(129));
+        assertThat(datenpaket.getDatensaetze().size(), lessThan(129));
     }
 
     @Test
@@ -817,7 +817,7 @@ public final class DatenpaketTest {
     }
 
     @Test
-    @Ignore // schlaegt in GitHub Actions fehl, Ursache unbekannt (Dez-2024)
+    @Disabled // schlaegt in GitHub Actions fehl, Ursache unbekannt (Dez-2024)
     public void testExportImportSchaden500V1_5() throws IOException {
         /*
         In Version 1.5 war fuer Datensatz 0500 im ersten Teilsatz die Satznummerwiederholung noch nicht vorgesehen.
@@ -838,7 +838,7 @@ public final class DatenpaketTest {
         assertEquals(2, imported.getDatensaetze().size());
 
         Version version0500 = imported.getVorsatz().getSatzartVersionen().get(SatzTyp.of("0500"));
-        assertEquals("Version vom Datensatz 0500 stimmt nicht", "1.5", version0500 != null ? version0500.getInhalt() : "nicht vorhanden");
+        assertEquals("1.5", version0500 != null ? version0500.getInhalt() : "nicht vorhanden", "Version vom Datensatz 0500 stimmt nicht");
     }
 
     /**
@@ -852,7 +852,7 @@ public final class DatenpaketTest {
         Datenpaket datenpaket2_1 = new Datenpaket();
         File testfile = new File("src/test/resources", "gdv/xport/satz/testcase_0220_010_48_v2_1.txt");
         datenpaket2_1.importFrom(testfile, Charset.forName("IBM850"));
-        assertTrue("Datenpaket muss gueltig sein", datenpaket2_1.isValid());
+        assertTrue(datenpaket2_1.isValid(), "Datenpaket muss gueltig sein");
 
         Datenpaket datenpaket2_2 = new Datenpaket();
         testfile = new File("src/test/resources", "gdv/xport/satz/testcase_0220_010_48_v2_2_error.txt");
@@ -976,11 +976,11 @@ public final class DatenpaketTest {
             }
         }
 
-        assertTrue("There are teildatensaetze with wrong satznummern: (datensatz, teildatensatz) -> " + wrongDatensatzTeildatensatzList, wrongDatensatzTeildatensatzList.isEmpty());
+        assertTrue(wrongDatensatzTeildatensatzList.isEmpty(), "There are teildatensaetze with wrong satznummern: (datensatz, teildatensatz) -> " + wrongDatensatzTeildatensatzList);
 
         datenpaket.pack();
 
-        assertEquals("Size of datensaetze not as expected", 8, datenpaket.getDatensaetze().size());
+        assertEquals(8, datenpaket.getDatensaetze().size(), "Size of datensaetze not as expected");
     }
 
 }

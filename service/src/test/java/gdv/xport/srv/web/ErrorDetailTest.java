@@ -17,13 +17,12 @@ package gdv.xport.srv.web;/*
  */
 
 import org.apache.logging.log4j.*;
-import org.junit.*;
 import org.springframework.http.*;
 
 import java.net.*;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
 
 /**
  * Unit-Tests fuer {@link ErrorDetail}-Klasse.
@@ -40,7 +39,7 @@ public final class ErrorDetailTest {
      * Da die ErrorDetail-Klasse auch zum Loggen verwendet wird, sollt sie eine
      * vernuenftige toString-Methode haben.
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void testToString() {
         String s = errorDetail.toString();
         assertThat("looks like default implementation", s, not(containsString("@")));

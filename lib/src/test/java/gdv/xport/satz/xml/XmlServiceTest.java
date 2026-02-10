@@ -27,7 +27,6 @@ import gdv.xport.util.NotRegisteredException;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.MatcherAssert;
 import org.hamcrest.collection.IsIn;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -40,6 +39,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Map;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.either;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
@@ -196,7 +196,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     public void testSatzart022058001() {
         SatzXml satz = xmlService.getSatzart(SatzTyp.of("0220.580.01"));
         assertFalse(satz.hasVuNummer());
-        MatcherAssert.assertThat(satz.getArt(), IsIn.oneOf(0, 1));
+        assertThat(satz.getArt(), IsIn.oneOf(0, 1));
         assertEquals(4, satz.getNumberOfTeildatensaetze());
         checkSatzart220580(satz);
     }
@@ -243,13 +243,13 @@ public class XmlServiceTest extends AbstractXmlTest {
     public void testGetSatzarten221Wagnisart48() {
         Map<SatzTyp, SatzXml> satzarten = xmlService.getSatzarten();
         SatzXml satz = satzarten.get(SatzTyp.of("0221.010.48.1"));
-        MatcherAssert.assertThat(satz.getWagnisart(), either(is("4")).or(is("8")));
+        assertThat(satz.getWagnisart(), either(is("4")).or(is("8")));
     }
 
     @Test
     public void testGetSatzart221Wagnisart48() {
         SatzXml satz = xmlService.getSatzart(SatzTyp.of("0221.010.48.1"));
-        MatcherAssert.assertThat(satz.getWagnisart(), either(is("4")).or(is("8")));
+        assertThat(satz.getWagnisart(), either(is("4")).or(is("8")));
     }
 
     @Test

@@ -24,18 +24,18 @@ import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.*;
 import gdv.xport.satz.xml.SatzXml;
-import org.hamcrest.MatcherAssert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import javax.validation.ValidationException;
+import jakarta.validation.ValidationException;
 import javax.xml.stream.XMLStreamException;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.either;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit-Tests fuer {@link SatzRegistry}.
@@ -128,9 +128,10 @@ public final class SatzRegistryTest {
         assertEquals("1.1", nachsatz.getSatzversion().getInhalt());
     }
 
-    @Test(expected = ValidationException.class)
+    @Test
     public void testRegister() {
-        f2018.register(Datensatz.class, 100);
+        assertThrows(ValidationException.class, () ->
+            f2018.register(Datensatz.class, 100));
     }
 
     @Test
@@ -177,7 +178,7 @@ public final class SatzRegistryTest {
         if (wagnisart < 10) {
             assertEquals(Integer.toString(wagnisart), wagnis.getWagnisart());
         } else {
-            MatcherAssert.assertThat(Integer.parseInt(wagnis.getWagnisart()), either(is(wagnisart / 10)).or(is(wagnisart % 10)));
+            assertThat(Integer.parseInt(wagnis.getWagnisart()), either(is(wagnisart / 10)).or(is(wagnisart % 10)));
         }
         return wagnis;
     }
@@ -203,7 +204,7 @@ public final class SatzRegistryTest {
         SatzTyp satzTyp = SatzTyp.of("0220.020.3");
         Satz satz = SatzRegistry.getSatz(satzTyp, "1.2");
         Satz expected = f2009.getSatz(satzTyp);
-        assertEquals("different versions", expected, satz);
+        assertEquals(expected, satz, "different versions");
     }
 
     @Test
@@ -216,24 +217,24 @@ public final class SatzRegistryTest {
         Datenpaket datenpaket = new Datenpaket();
         File testfile = new File("src/test/resources", "datenpakete/test0820satzregistry.txt");
         datenpaket.importFrom(testfile, StandardCharsets.UTF_8);
-        assertTrue("Datenpaket muss gueltig sein", datenpaket.isValid());
-        assertEquals("Es wergen genau 6 Datensätze erwartet.", 6, datenpaket.getDatensaetze().size());
+        assertTrue(datenpaket.isValid(), "Datenpaket muss gueltig sein");
+        assertEquals(6, datenpaket.getDatensaetze().size(), "Es wergen genau 6 Datensätze erwartet.");
 
         Datensatz datensatz3 = datenpaket.getDatensaetze().get(2);
         Datensatz datensatz6 = datenpaket.getDatensaetze().get(5);
 
-        assertNotSame("Die 0820er-Datensätze dürfen nicht ein und dasselbe Objekt sein.", datensatz3, datensatz6);
+        assertNotSame(datensatz3, datensatz6, "Die 0820er-Datensätze dürfen nicht ein und dasselbe Objekt sein.");
 
         // prüfe Datensatz 3: 0820, VsNr=59999999999, Bemerkung=Hier die Bemerkung D1
-        assertEquals("SatzTyp stimmt nicht", SatzTyp.of("0820"), datensatz3.getSatzTyp());
-        assertEquals("VsNr stimmt nicht", "59999999999", datensatz3.getVersicherungsscheinNummer());
+        assertEquals(SatzTyp.of("0820"), datensatz3.getSatzTyp(), "SatzTyp stimmt nicht");
+        assertEquals("59999999999", datensatz3.getVersicherungsscheinNummer(), "VsNr stimmt nicht");
         Bezeichner bemerkung = Bezeichner.of("Bemerkung");
-        assertEquals("Bemerkung stimmt nicht", "Hier die Bemerkung D1", datensatz3.getFeld(bemerkung).getInhalt().trim());
+        assertEquals("Hier die Bemerkung D1", datensatz3.getFeld(bemerkung).getInhalt().trim(), "Bemerkung stimmt nicht");
 
         // prüfe Datensatz 6: 0820, VsNr=59999999998, Bemerkung=Hier die Bemerkung D2
-        assertEquals("SatzTyp stimmt nicht", SatzTyp.of("0820"), datensatz6.getSatzTyp());
-        assertEquals("VsNr stimmt nicht", "59999999998", datensatz6.getVersicherungsscheinNummer());
-        assertEquals("Bemerkung stimmt nicht", "Hier die Bemerkung D2", datensatz6.getFeld(bemerkung).getInhalt().trim());
+        assertEquals(SatzTyp.of("0820"), datensatz6.getSatzTyp(), "SatzTyp stimmt nicht");
+        assertEquals("59999999998", datensatz6.getVersicherungsscheinNummer(), "VsNr stimmt nicht");
+        assertEquals("Hier die Bemerkung D2", datensatz6.getFeld(bemerkung).getInhalt().trim(), "Bemerkung stimmt nicht");
 
         // pack Methode muss funktionieren
         try {

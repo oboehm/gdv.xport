@@ -18,14 +18,13 @@
 
 package gdv.xport.feld;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import gdv.xport.config.Config;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.MatcherAssert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.junit.CloneableTester;
 import patterntesting.runtime.junit.ObjectTester;
 
@@ -33,8 +32,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Die gemeinsame Oberklasse fuer alle Tests mit einem {@link Feld}-Objekt.
@@ -55,7 +55,7 @@ public abstract class AbstractFeldTest {
      */
     protected abstract Feld getTestFeld();
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpJsonDir() {
         if (!JSON_DIR.exists() && JSON_DIR.mkdirs()) {
             log.info("Verzeichnis '{}' wurde angelegt.", JSON_DIR);
@@ -98,10 +98,10 @@ public abstract class AbstractFeldTest {
 
     protected static String checkJSON(Feld feld) throws IOException {
         String json = OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(feld);
-        File exportFile = new File(JSON_DIR, String.format("%s.json", feld.getClass().getSimpleName()));
+        File exportFile = new File(JSON_DIR, "%s.json".formatted(feld.getClass().getSimpleName()));
         FileUtils.writeStringToFile(exportFile, json, StandardCharsets.UTF_8);
         log.info("{} wurde zur manuellen Pruefung in '{}' abgelegt", feld, exportFile);
-        MatcherAssert.assertThat(json, containsString(feld.getInhalt().trim()));
+        assertThat(json, containsString(feld.getInhalt().trim()));
         return json;
     }
 

@@ -21,16 +21,16 @@ package gdv.xport.util;
 import gdv.xport.Datenpaket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * JUnit-Test fuer HtmlFormatter.
@@ -48,7 +48,7 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
         return new HtmlFormatter();
     }
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpHtmlDir() {
         if (HTML_DIR.mkdirs()) {
             LOG.info("Verzeichnis '{}' wurde angelegt.", HTML_DIR);
@@ -66,8 +66,8 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
         String htmlString = HtmlFormatter.toString(datenpaket);
         LOG.debug(datenpaket + " as HTML:\n" + htmlString);
         XmlFormatterTest.checkXML(htmlString);
-        assertTrue("no <html> inside", htmlString.contains("<html"));
-        assertTrue("no </html> inside", htmlString.contains("</html"));
+        assertTrue(htmlString.contains("<html"), "no <html> inside");
+        assertTrue(htmlString.contains("</html"), "no </html> inside");
     }
 
     /**
@@ -81,7 +81,7 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
         Datenpaket datenpaket = new Datenpaket();
         datenpaket.setAbsender(absender);
         String htmlString = HtmlFormatter.toString(datenpaket);
-        assertFalse("Umlauts in '" + absender + "' not replaced!", htmlString.contains(absender));
+        assertFalse(htmlString.contains(absender), "Umlauts in '" + absender + "' not replaced!");
     }
 
     /**

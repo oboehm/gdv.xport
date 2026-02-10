@@ -17,7 +17,6 @@ package gdv.xport.srv.web.converter;/*
  */
 
 import gdv.xport.srv.web.*;
-import org.junit.*;
 import org.springframework.http.*;
 import org.springframework.mock.http.*;
 
@@ -26,8 +25,9 @@ import java.net.*;
 import java.nio.charset.*;
 
 import static gdv.xport.srv.config.AppConfig.MEDIA_TYPE_TEXT_CSV;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Unit-Tests fuer {@link ErrorDetailHttpMessageConverter}-Klasse.
@@ -43,7 +43,7 @@ public final class ErrorDetailHttpMessageConverterTest {
     /**
      * Testmethode fuer {@link ErrorDetailHttpMessageConverter#supports(Class)}.
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void testSupports() {
         ErrorDetailHttpMessageConverter converter = new ErrorDetailHttpMessageConverter(MediaType.TEXT_HTML);
         assertThat(converter.supports(ErrorDetail.class), is(true));
@@ -54,7 +54,7 @@ public final class ErrorDetailHttpMessageConverterTest {
      *
      * @throws IOException sollte nicht passieren
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void writeInternalHTML() throws IOException {
         String output = convertErrorDetailFor(MediaType.TEXT_HTML);
         assertThat(output, containsString("<html>"));
@@ -65,7 +65,7 @@ public final class ErrorDetailHttpMessageConverterTest {
      *
      * @throws IOException sollte nicht passieren
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void writeInternalText() throws IOException {
         String output = convertErrorDetailFor(MediaType.TEXT_PLAIN);
         assertEquals(TEST_ERROR_DETAIL.toString(), output.trim());
@@ -77,7 +77,7 @@ public final class ErrorDetailHttpMessageConverterTest {
      *
      * @throws IOException sollte nicht passieren
      */
-    @Test
+    @org.junit.jupiter.api.Test
     public void writeInternalCSV() throws IOException {
         String output = convertErrorDetailFor(MEDIA_TYPE_TEXT_CSV);
         assertThat(output, containsString("Status"));

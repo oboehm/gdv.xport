@@ -20,22 +20,20 @@ package gdv.xport.srv;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.resttestclient.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.net.URI;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 /**
@@ -46,7 +44,6 @@ import static org.junit.Assert.assertEquals;
  *
  * @author oboehm
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = XPortApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class XPortApplicationIT {
 
@@ -64,7 +61,7 @@ public class XPortApplicationIT {
     @Autowired private TestRestTemplate template;
     private URI converterURI;
 
-    @Before
+    @BeforeEach
     public void setUpBaseURI() {
         converterURI = URI.create("http://localhost:" + port);
     }
@@ -99,8 +96,8 @@ public class XPortApplicationIT {
     public void testDatenpaketError() {
         ResponseEntity<String> response =
                 template.postForEntity(converterURI + "/api/v1/Datenpaket.json", "xxxx", String.class);
-        assertThat(response.getStatusCodeValue(), not(500));
-        assertEquals(400, response.getStatusCodeValue());
+        assertThat(response.getStatusCode().value(), not(500));
+        assertEquals(400, response.getStatusCode().value());
         LOG.info("response = '{}'", response.getBody());
     }
 

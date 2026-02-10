@@ -203,8 +203,7 @@ public final class XmlFormatter extends AbstractFormatter {
         writeIndent(level);
         xmlStreamWriter.writeStartElement("satz");
         xmlStreamWriter.writeAttribute("satzart", satz.getSatzartFeld().getInhalt());
-        if (satz instanceof Datensatz) {
-            Datensatz datensatz = (Datensatz) satz;
+        if (satz instanceof Datensatz datensatz) {
             xmlStreamWriter.writeAttribute("sparte", datensatz.getSparteFeld().getInhalt());
         }
         xmlStreamWriter.writeCharacters("\n");

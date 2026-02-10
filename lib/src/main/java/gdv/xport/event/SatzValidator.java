@@ -58,8 +58,8 @@ public class SatzValidator implements ImportListener {
             LOG.warn("Record {} Satz {} {}:", tdsNr, satzNr, satz.toShortString());
             for (ConstraintViolation cv : constraintViolations) {
                 LOG.warn("\t* {}", cv);
-                if (cv instanceof SimpleConstraintViolation) {
-                    logViolations((SimpleConstraintViolation) cv);
+                if (cv instanceof SimpleConstraintViolation violation) {
+                    logViolations(violation);
                 }
             }
         }

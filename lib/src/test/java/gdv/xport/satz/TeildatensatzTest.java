@@ -28,9 +28,8 @@ import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 import javax.xml.stream.XMLStreamException;
@@ -41,8 +40,9 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
@@ -79,8 +79,8 @@ public class TeildatensatzTest extends AbstractSatzTest {
         while (iterator.hasNext()) {
             Feld next = iterator.next();
             LOG.info("Feld: {}", next);
-            assertTrue("wrong sorted: " + prev + " > " + next, prev.getByteAdresse() < next
-                    .getByteAdresse());
+            assertTrue(prev.getByteAdresse() < next
+                    .getByteAdresse(), "wrong sorted: " + prev + " > " + next);
             prev = next;
         }
     }
@@ -122,7 +122,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
         tds.remove(satznummer.getBezeichnung());
         Executable executable = () -> tds.getFeld(satznummer.getBezeichner());
         IllegalArgumentException assertThrows = assertThrows(IllegalArgumentException.class, executable);
-        MatcherAssert.assertThat("Exception sollte Bezeichner und Satzart beschreiben", assertThrows.getMessage(),
+        assertThat("Exception sollte Bezeichner und Satzart beschreiben", assertThrows.getMessage(),
                 allOf(containsString(satznummer.getBezeichner().toString()), containsString("Satzart 0100")));
     }
 
@@ -172,7 +172,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test
     public void testValidateIBAN() {
         Teildatensatz adressteil4 = SatzFactory.getSatz(SatzTyp.of("0100")).getTeildatensatz(4);
-        assertTrue("should be valid: " + adressteil4, adressteil4.isValid());
+        assertTrue(adressteil4.isValid(), "should be valid: " + adressteil4);
         Feld iban1 = adressteil4.getFeld(Bezeichner.IBAN1);
         iban1.setInhalt("DE99300606010006605605");
         List<ConstraintViolation> violations = adressteil4.validate();
@@ -183,11 +183,13 @@ public class TeildatensatzTest extends AbstractSatzTest {
      * Falls versucht wird, ueberlappende Felder hinzuzufuegen, sollte das
      * zurueckgewiesen werden.
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testAddOverlapping() {
-        Teildatensatz tds = new Teildatensatz(SatzTyp.of(4711), 1);
-        tds.add(new AlphaNumFeld(Bezeichner.NAME1, 10, ByteAdresse.of(100)));
-        tds.add(new AlphaNumFeld(Bezeichner.NAME2, 10, ByteAdresse.of(101)));
+        assertThrows(IllegalArgumentException.class, () -> {
+            Teildatensatz tds = new Teildatensatz(SatzTyp.of(4711), 1);
+            tds.add(new AlphaNumFeld(Bezeichner.NAME1, 10, ByteAdresse.of(100)));
+            tds.add(new AlphaNumFeld(Bezeichner.NAME2, 10, ByteAdresse.of(101)));
+        });
     }
 
     @Test
@@ -263,7 +265,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
         assertTrue(violations.isEmpty());
         tds.setFeld(ByteAdresse.of(256), "9");
         violations = tds.validate(Config.STRICT);
-        assertFalse("unterschiedliche Satznummern", violations.isEmpty());
+        assertFalse(violations.isEmpty(), "unterschiedliche Satznummern");
     }
 
     @Test
@@ -320,9 +322,9 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test
     public void testEOD() throws IOException {
         String exported = exportSatz100(Config.DEFAULT.withProperty("gdv.eod", "\t==ende==\n\n"));
-        MatcherAssert.assertThat(exported, containsString("==ende=="));
+        assertThat(exported, containsString("==ende=="));
         exported = exportSatz100(Config.DEFAULT);
-        MatcherAssert.assertThat(exported, not(containsString("==ende==")));
+        assertThat(exported, not(containsString("==ende==")));
     }
 
     private static String exportSatz100(Config cfg) throws IOException {
@@ -407,13 +409,14 @@ public class TeildatensatzTest extends AbstractSatzTest {
     }
 
     @Override
+    @Test
     public void testToJSON() throws IOException {
         Teildatensatz tds = SATZ_REGISTRY.getSatz(SatzTyp.of(100)).getTeildatensatz(1);
         tds.setFeld(Bezeichner.NAME1, "James");
         tds.setFeld(Bezeichner.NAME3, "Bond");
         String json = checkJSON(tds);
-        MatcherAssert.assertThat(json, Matchers.containsString("James"));
-        MatcherAssert.assertThat(json, Matchers.containsString("Bond"));
+        assertThat(json, Matchers.containsString("James"));
+        assertThat(json, Matchers.containsString("Bond"));
     }
 
 }

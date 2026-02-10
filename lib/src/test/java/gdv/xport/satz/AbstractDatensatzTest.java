@@ -21,14 +21,14 @@ package gdv.xport.satz;
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Dies ist die gemeinsame Oberklasse fuer alle Tests, die abgeleitete
@@ -76,7 +76,7 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
     /**
      * Hier legen wir einen Datensatz zum Testen an.
      */
-    @Before
+    @BeforeEach
     public void setUpDatensatz() {
         this.datensatz = this.getDatensatz();
     }
@@ -89,7 +89,7 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
     public void testVuNummer() {
         this.datensatz.setVuNummer("12345");
     Feld vuNummer = datensatz.getFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner());
-        assertTrue("expected: is valid", vuNummer.isValid());
+        assertTrue(vuNummer.isValid(), "expected: is valid");
         assertEquals("12345", vuNummer.getInhalt());
     }
 
@@ -112,8 +112,8 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
     @Test
     public void testSparte() {
         int sparte = this.datensatz.getSparte();
-        assertTrue(sparte + " >= 0", sparte >= 0);
-        assertTrue(sparte + " <= 999", sparte <= 999);
+        assertTrue(sparte >= 0, sparte + " >= 0");
+        assertTrue(sparte <= 999, sparte + " <= 999");
     Feld feld = this.datensatz.getFeld(Kopffelder1bis7.SPARTE.getBezeichner());
         assertEquals(sparte, Integer.parseInt(feld.getInhalt()));
     }

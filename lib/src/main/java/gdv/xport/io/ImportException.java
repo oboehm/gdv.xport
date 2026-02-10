@@ -19,6 +19,7 @@
 package gdv.xport.io;
 
 import java.io.IOException;
+import java.io.Serial;
 
 /**
  * Falls mal beim Import was schiefgeht.
@@ -28,7 +29,7 @@ import java.io.IOException;
  */
 public final class ImportException extends IOException {
 
-    private static final long serialVersionUID = 20091231L;
+    @Serial private static final long serialVersionUID = 20091231L;
 
     /**
      * Erzeugt eine neue {@link ImportException}.

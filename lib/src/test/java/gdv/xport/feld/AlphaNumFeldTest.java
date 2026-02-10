@@ -22,11 +22,11 @@ import gdv.xport.config.Config;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * JUnit-Test fuer AlphaNum-Klasse.
@@ -62,7 +62,7 @@ public final class AlphaNumFeldTest extends AbstractFeldTest {
     @Test
     public void testValidateIBAN() {
         AlphaNumFeld iban = new AlphaNumFeld(Bezeichner.IBAN1, 34, 209);
-        assertTrue("empty IBAN should be valid: " + iban, iban.isValid());
+        assertTrue(iban.isValid(), "empty IBAN should be valid: " + iban);
         iban.setInhalt("DE99300606010006605605");
         assertNotValid(iban);
     }
@@ -80,7 +80,7 @@ public final class AlphaNumFeldTest extends AbstractFeldTest {
     private void assertNotValid(AlphaNumFeld feld) {
         List<ConstraintViolation> violations = feld.validate();
         assertEquals(1, violations.size());
-        assertFalse("not a valid Feld: " + feld, feld.isValid());
+        assertFalse(feld.isValid(), "not a valid Feld: " + feld);
         LOG.info("Violoations = {}", violations);
     }
 

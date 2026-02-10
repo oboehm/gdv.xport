@@ -23,7 +23,6 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
@@ -36,11 +35,13 @@ import java.io.StringWriter;
 import static gdv.xport.srv.config.AppConfig.TEXT_CSV;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.startsWith;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 
 ;
 
@@ -70,7 +71,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         String response = getResponseStringFor(
                 "/api/v1/Abweichungen?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
                 MediaType.APPLICATION_JSON);
-        MatcherAssert.assertThat(response, equalTo("[]"));
+        assertThat(response, equalTo("[]"));
     }
 
     /**
@@ -82,7 +83,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testValidatePost() throws Exception {
         String response = callRestWithDummyDatenpaket("/api/v1/Abweichungen", MediaType.APPLICATION_JSON);
-        MatcherAssert.assertThat(response, containsString("VU-Nummer is not set"));
+        assertThat(response, containsString("VU-Nummer is not set"));
     }
 
     /**
@@ -94,7 +95,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testFormat() throws Exception {
         String response = callRestWithDummyDatenpaket("/api/v1/Datenpaket");
-        MatcherAssert.assertThat(response, not(emptyString()));
+        assertThat(response, not(emptyString()));
     }
 
     /**
@@ -105,13 +106,13 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testDatenpaketAsHtml() throws Exception {
         String response = callRestWithDummyDatenpaket("/api/v1/Datenpaket.html", MediaType.TEXT_HTML);
-        MatcherAssert.assertThat(response, containsString("<html"));
+        assertThat(response, containsString("<html"));
     }
 
     @Test
     public void testDatenpaketV2() throws Exception {
         String response = callRestWithDummyDatenpaket("/api/v2/Datenpaket", MediaType.TEXT_HTML);
-        MatcherAssert.assertThat(response, containsString("<html"));
+        assertThat(response, containsString("<html"));
     }
 
     /**
@@ -129,7 +130,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     public void testDatenpaketFromURI() throws Exception {
         String response = getResponseStringFor(
                 "/api/v1/Datenpaket.csv?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");
-        MatcherAssert.assertThat(response, containsString(";"));
+        assertThat(response, containsString(";"));
     }
 
     /**
@@ -170,8 +171,8 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         String response =
                 getResponseStringFor("/api/v1/Datenpaket." + format + "?uri=xxx:gibts.net");
         assertNotNull(response);
-        MatcherAssert.assertThat(response.toLowerCase(), containsString("bad"));
-        MatcherAssert.assertThat(response, not(containsString("500")));
+        assertThat(response.toLowerCase(), containsString("bad"));
+        assertThat(response, not(containsString("500")));
     }
 
     /**
@@ -190,7 +191,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         IllegalArgumentException cause = new IllegalArgumentException("test accepted");
         DatenpaketController controller = new DatenpaketController();
         ErrorDetail response = controller.handleException(request, cause);
-        MatcherAssert.assertThat(response.getStatus(), Matchers.is(HttpStatus.BAD_REQUEST));
+        assertThat(response.getStatus(), Matchers.is(HttpStatus.BAD_REQUEST));
     }
 
     /**
@@ -213,7 +214,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testGetDatenpaketAsXML() throws Exception {
         String response = checkGetDatenpaketAs(".xml");
-        MatcherAssert.assertThat(response, containsString("<"));
+        assertThat(response, containsString("<"));
     }
 
     /**
@@ -225,13 +226,13 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testGetDatenpaketAsCSV() throws Exception {
         String response = checkGetDatenpaketAs(".csv");
-        MatcherAssert.assertThat(response, containsString(";"));
+        assertThat(response, containsString(";"));
     }
 
     private String checkGetDatenpaketAs(String suffix) throws Exception {
         String response = callRestWithDummyDatenpaket("/api/v1/Datenpaket" + suffix);
-        MatcherAssert.assertThat(response, not(emptyString()));
-        MatcherAssert.assertThat(response, not(containsString("error")));
+        assertThat(response, not(emptyString()));
+        assertThat(response, not(containsString("error")));
         return response;
     }
 
@@ -241,8 +242,8 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         //String response = postResponseObjectFor(path, text, String.class, mediaTypes);
         String response = postResponseStringFor(path, text, mediaTypes);
         LOG.info("Response of '{}' is '{}'.", path, response);
-        MatcherAssert.assertThat(response, not(containsString("Internal Server Error")));
-        MatcherAssert.assertThat(response, notNullValue());
+        assertThat(response, not(containsString("Internal Server Error")));
+        assertThat(response, notNullValue());
         return response;
     }
 
@@ -277,7 +278,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testContentNegotiation() throws Exception {
         String response = postResponseStringFor("/api/v1/Datenpaket", createDummyDatenpaketText(), MediaType.TEXT_XML);
-        MatcherAssert.assertThat(response, containsString("<"));
+        assertThat(response, containsString("<"));
     }
 
     /**
@@ -290,7 +291,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         String response = getResponseStringFor(
                 "/api/v1/Datenpaket*?format=JSON&uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");
         String json = response.trim();
-        MatcherAssert.assertThat(json, startsWith("{"));
+        assertThat(json, startsWith("{"));
     }
 
 }

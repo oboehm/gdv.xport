@@ -19,6 +19,7 @@
 package gdv.xport.io;
 
 import java.io.EOFException;
+import java.io.Serial;
 
 /**
  * Im Gegensatz zur normalen {@link EOFException} erlaubt diese Exception hier
@@ -30,7 +31,7 @@ import java.io.EOFException;
 public class ExtendedEOFException extends EOFException {
 
     /** The Constant serialVersionUID. */
-    private static final long serialVersionUID = 20140201L;
+    @Serial private static final long serialVersionUID = 20140201L;
 
     /** The cause. */
     private final Throwable cause;

@@ -24,9 +24,8 @@ import gdv.xport.event.ImportListener;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.MatcherAssert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.junit.FileTester;
 
 import javax.xml.stream.XMLInputFactory;
@@ -37,6 +36,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.not;
 
@@ -71,7 +71,7 @@ public abstract class AbstractFormatterTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    @BeforeClass
+    @BeforeAll
     public static void loadMusterDatenpaket() throws IOException {
         MUSTER_DATENPAKET.importFrom(MUSTERDATEI, "ISO-8859-1");
     }
@@ -99,7 +99,7 @@ public abstract class AbstractFormatterTest {
         formatter.write(new Datenpaket("Test"));
         String output = ostream.toString();
         LOG.info("output = \"{}\"", StringUtils.abbreviate(output, 40));
-        MatcherAssert.assertThat(output, not(emptyString()));
+        assertThat(output, not(emptyString()));
     }
 
     /**

@@ -167,8 +167,7 @@ public enum Datentyp {
      * @since 5.0
      */
     public static String asString(Feld feld) {
-        if ((feld instanceof NumFeld) && !(feld instanceof Betrag) && !(feld instanceof Datum)) {
-            NumFeld n = (NumFeld) feld;
+        if ((feld instanceof NumFeld n) && !(feld instanceof Betrag) && !(feld instanceof Datum)) {
             if (n.getNachkommastellen() > 0) {
                 return FLIESSKOMMA.capitalize();
             } else {

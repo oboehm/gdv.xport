@@ -17,7 +17,7 @@
  */
 package gdv.xport.srv.web.converter;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import gdv.xport.srv.web.*;
 import org.apache.logging.log4j.*;
 import org.springframework.http.*;

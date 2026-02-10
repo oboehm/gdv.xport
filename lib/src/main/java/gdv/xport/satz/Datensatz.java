@@ -261,7 +261,7 @@ public class Datensatz extends Satz {
 			SatzTyp aktuell = getSatzTyp();
 			if (!aktuell.getErlaubteSparten().contains(x)) {
 				throw new IllegalArgumentException(
-						String.format("Sparte %d passt nicht zu SatzTyp %s, nur %s", x, aktuell, aktuell.getErlaubteSparten()));
+                    "Sparte %d passt nicht zu SatzTyp %s, nur %s".formatted(x, aktuell, aktuell.getErlaubteSparten()));
 			}
 		}
 	}
@@ -312,7 +312,7 @@ public class Datensatz extends Satz {
 	    String[] parts = x.split("\\.");
 	    this.setSparte(Integer.parseInt(parts[0]));
 	    if ((parts.length > 1) && getGdvSatzartName().isEmpty()) {
-			this.setGdvSatzartName(String.format("%04d.%s", getSatzart(), x));
+			this.setGdvSatzartName("%04d.%s".formatted(getSatzart(), x));
 	    }
 	}
 

@@ -22,8 +22,7 @@ import gdv.xport.Datenpaket;
 import gdv.xport.feld.*;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
-import org.hamcrest.MatcherAssert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,9 +30,10 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.Map;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author oliver
@@ -157,7 +157,7 @@ public final class VorsatzTest extends AbstractSatzTest {
     public void testImportReader() throws IOException {
         try (InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt")) {
             vorsatz.importFrom(istream);
-            assertTrue(vorsatz + " should be valid", vorsatz.isValid());
+            assertTrue(vorsatz.isValid(), vorsatz + " should be valid");
             assertEquals("9999", vorsatz.getVuNummer());
             assertEquals("XXX Versicherung AG", vorsatz.getAbsender());
             assertEquals("BRBRIENNEE,J\u00dcRGEN", vorsatz.getAdressat());
@@ -172,16 +172,16 @@ public final class VorsatzTest extends AbstractSatzTest {
      */
     @Test
     public void testExport() throws IOException {
-        String input = "00019999 XXX Versicherung AG           BRBRIENNEE,JURGEN        "
-            + "     220720042207200499990099991.91.91.92.12.12.12.12.1   1.51.3"
-            + "1.62.0      1.51.4                                              "
-            + "                                1.1         1 0000     Z0ZAG0011"
-            + "\n"
-            + "00019999 XXX Versicherung AG           BRBRIENNEE,JURGEN        "
-            + "     220720042207200499990099991.01.01.01.01.0      1.01.01.1   "
-            + "   1.01.0                                                       "
-            + "                                                       Z0ZAG0022"
-            + "\n";
+        String input = """
+            00019999 XXX Versicherung AG           BRBRIENNEE,JURGEN        \
+                 220720042207200499990099991.91.91.92.12.12.12.12.1   1.51.3\
+            1.62.0      1.51.4                                              \
+                                            1.1         1 0000     Z0ZAG0011
+            00019999 XXX Versicherung AG           BRBRIENNEE,JURGEN        \
+                 220720042207200499990099991.01.01.01.01.0      1.01.01.1   \
+               1.01.0                                                       \
+                                                                   Z0ZAG0022
+            """;
         vorsatz.importFrom(input);
         StringWriter swriter = new StringWriter(input.length());
         vorsatz.export(swriter);
@@ -288,7 +288,7 @@ public final class VorsatzTest extends AbstractSatzTest {
         dp.export(exportFile);
         vs.importFrom(exportFile);
         Map<SatzTyp, Version> versionen = vs.getSatzartVersionen();
-        MatcherAssert.assertThat(versionen.size(), greaterThan(160));
+        assertThat(versionen.size(), greaterThan(160));
         return versionen;
     }
 
@@ -300,12 +300,13 @@ public final class VorsatzTest extends AbstractSatzTest {
     }
 
     @Override
+    @Test
     public void testToJSON() throws IOException {
         vorsatz.setAbsender("J. Bond");
         vorsatz.setErstellungsZeitraum("08122024", "11012025");
         String json = checkJSON(vorsatz);
-        MatcherAssert.assertThat(json, containsString("J. Bond"));
-        MatcherAssert.assertThat(json, containsString(vorsatz.getErstellungsZeitraum()));
+        assertThat(json, containsString("J. Bond"));
+        assertThat(json, containsString(vorsatz.getErstellungsZeitraum()));
     }
 
 }

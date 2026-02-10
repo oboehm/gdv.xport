@@ -153,7 +153,7 @@ public final class Config implements Serializable {
             validators.put(feldClass, v);
             LOG.info("Validator {} wurde fuer {} registriert.", v, feldClass);
         } catch (ReflectiveOperationException ex) {
-            throw new ConfigException(String.format("Validator '%s' fuer '%s' nicht gefunden", validatorName, classname), ex);
+            throw new ConfigException("Validator '%s' fuer '%s' nicht gefunden".formatted(validatorName, classname), ex);
         }
     }
 
@@ -179,7 +179,7 @@ public final class Config implements Serializable {
             addGdvSystemProperties(properties);
             return properties;
         } catch (IOException ex) {
-            throw new IllegalArgumentException(String.format("'%s' ist fehlerhaft", resource), ex);
+            throw new IllegalArgumentException("'%s' ist fehlerhaft".formatted(resource), ex);
         }
     }
 
@@ -204,7 +204,7 @@ public final class Config implements Serializable {
             case "classpath":
                 return getInputStream(uri.getPath());
             default:
-                throw new UnsupportedOperationException(String.format("Schema '%s' in %s wird noch nicht unterstuetzt", scheme, uri));
+                throw new UnsupportedOperationException("Schema '%s' in %s wird noch nicht unterstuetzt".formatted(scheme, uri));
         }
     }
 

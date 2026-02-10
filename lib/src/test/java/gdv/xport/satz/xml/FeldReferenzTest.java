@@ -18,16 +18,16 @@
 
 package gdv.xport.satz.xml;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.IOException;
 import java.util.List;
 
 import javax.xml.stream.XMLEventReader;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import javax.xml.stream.XMLStreamException;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit-Tests fuer {@link FeldReferenz}-Klasse.
@@ -45,7 +45,7 @@ public class FeldReferenzTest extends AbstractXmlTest {
      * @throws XMLStreamException the XML stream exception
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    @BeforeClass
+    @BeforeAll
     public static void setUpFeldReferenz() throws XMLStreamException, IOException {
         feldReferenz = getFeldReferenzFrom("feldreferenz.xml");
     }

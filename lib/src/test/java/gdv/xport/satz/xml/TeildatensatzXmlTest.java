@@ -25,15 +25,15 @@ import gdv.xport.feld.Feld;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.TeildatensatzTest;
-import org.hamcrest.MatcherAssert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import javax.xml.stream.XMLStreamException;
 
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * JUnit-Tests fuer die {@link TeildatensatzXml}-Klasse.
@@ -51,7 +51,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
      *
      * @throws XMLStreamException the XML stream exception
      */
-    @BeforeClass
+    @BeforeAll
     public static void setUpTeildatensatz() throws XMLStreamException {
         satz100 = SatzXmlTest.getSatz("Satz100.xml");
         tds100 = (TeildatensatzXml) satz100.getTeildatensatz(1);
@@ -108,8 +108,8 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
 
     private static void checkFeld(final Bezeichner name, final int length, final int address) {
         Feld feld = tds100.getFeld(name);
-        assertEquals("Anzahl Bytes", length, feld.getAnzahlBytes());
-        assertEquals("Byte-Adresse", address, feld.getByteAdresse());
+        assertEquals(length, feld.getAnzahlBytes(), "Anzahl Bytes");
+        assertEquals(address, feld.getByteAdresse(), "Byte-Adresse");
     }
 
     /**
@@ -133,7 +133,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
             satz100.getTeildatensatz(1).getFeld(new Bezeichner("Leerstellen"));
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
-            MatcherAssert.assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
+            assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
                     allOf(containsString("Leerstellen"), containsString("Satzart 0100")));
         }
         

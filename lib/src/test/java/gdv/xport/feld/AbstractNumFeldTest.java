@@ -18,14 +18,14 @@
 package gdv.xport.feld;
 
 import gdv.xport.config.Config;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Locale;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * In dieser Klasse sind Tests zusammengefasst, die fuer NumFeld und
@@ -60,7 +60,7 @@ public abstract class AbstractNumFeldTest extends AbstractFeldTest {
     /**
      * Hier werden die Vorbedingungen ueberprueft, auf die die Tests basieren.
      */
-    @Before
+    @BeforeEach
     public void testPreConditions() {
         testBetrag = getTestBetrag();
         assertEquals(2, testBetrag.getNachkommastellen());

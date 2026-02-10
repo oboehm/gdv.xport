@@ -18,6 +18,8 @@
 
 package gdv.xport.config;
 
+import java.io.Serial;
+
 /**
  * Exception fuer Konfigurationsprobleme.
  *
@@ -26,7 +28,7 @@ package gdv.xport.config;
  */
 public class ConfigException extends RuntimeException {
 
-    private static final long serialVersionUID = 20091008L;
+    @Serial private static final long serialVersionUID = 20091008L;
 
     /**
      * Falls mal die Konfiguration nicht stimmt...

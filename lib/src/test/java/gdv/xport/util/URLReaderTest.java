@@ -18,7 +18,7 @@
 package gdv.xport.util;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.junit.FileTester;
 
 import java.io.File;

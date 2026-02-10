@@ -29,9 +29,9 @@ import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
@@ -39,7 +39,7 @@ import java.nio.file.Files;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit-Tests fuer gdv.xport.util.GdvXmlFormatter.
@@ -56,7 +56,7 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
         return new GdvXmlFormatter();
     }
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpXmlDir() {
         if (XML_DIR.mkdirs()) {
             LOG.info("Verzeichnis '{}' wurde angelegt.", XML_DIR);
@@ -178,7 +178,7 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
     }
 
     @Test
-    @Ignore // kein Unit-Test mehr, dauern zu lang (> 2s)
+    @Disabled // kein Unit-Test mehr, dauern zu lang (> 2s)
     public void testFormatAllSupportedSaetze20xxxL() throws IOException, XMLStreamException {
         formatDatenpaket("VUVM2023xL.xml", "datenpaket2023xL.xml");
         formatDatenpaket("VUVM2018xL.xml", "datenpaket2018xL.xml");

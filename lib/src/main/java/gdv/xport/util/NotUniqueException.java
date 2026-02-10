@@ -18,6 +18,8 @@
 
 package gdv.xport.util;
 
+import java.io.Serial;
+
 /**
  * Falls eine Satzart angefordert wird, die nicht eindeutig ist (z.B. weil
  * noch die Angabe der Sparte fehlt), kann diese Exception geworfen werden.
@@ -27,7 +29,7 @@ package gdv.xport.util;
  */
 public class NotUniqueException extends RuntimeException {
 
-    private static final long serialVersionUID = 20141113L;
+    @Serial private static final long serialVersionUID = 20141113L;
 
     /**
      * Instantiates a new not unique exception.

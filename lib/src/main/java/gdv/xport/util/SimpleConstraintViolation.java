@@ -55,7 +55,7 @@ public final class SimpleConstraintViolation extends ConstraintViolation {
     }
 
     public SimpleConstraintViolation(Satz satz, List<ConstraintViolation> violations) {
-        this(String.format("%s: %d Problem(e)", satz.toShortString(), violations.size()), satz, violations);
+        this("%s: %d Problem(e)".formatted(satz.toShortString(), violations.size()), satz, violations);
         this.violations.addAll(violations);
     }
 

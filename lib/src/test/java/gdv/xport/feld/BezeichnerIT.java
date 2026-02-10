@@ -19,10 +19,9 @@ package gdv.xport.feld;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -33,7 +32,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.*;
 
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * Klasse BezeichnerIT ueberpreuft die Konstanten in der {@link Bezeichner}-
@@ -45,23 +44,21 @@ import static org.junit.Assert.fail;
  * @author oboehm
  * @since 3.0 (08.11.2017)
  */
-@RunWith(Parameterized.class)
 public class BezeichnerIT {
 
     private static final Logger LOG = LogManager.getLogger(BezeichnerIT.class);
     private static final Set<String> TECHNISCHE_NAMEN = new TreeSet<>();
-    private final Bezeichner bezeichner;
+    private Bezeichner bezeichner;
 
     /**
      * Hierueber werden die Test-Werte per Konstruktor "injected".
      *
      * @param bezeichner Konstante aus der Bezeichner-Klasse
      */
-    public BezeichnerIT(Bezeichner bezeichner) {
+    public void initBezeichnerIT(Bezeichner bezeichner) {
         this.bezeichner = bezeichner;
     }
 
-    @Parameterized.Parameters(name = "{index}: {0}")
     public static Collection<Object[]> data() {
         Collection<Object[]> values = new ArrayList<>();
         for (Field field : Bezeichner.class.getFields()) {
@@ -110,7 +107,7 @@ public class BezeichnerIT {
      * @throws SAXException                 im Fehlerfall
      * @throws IOException                  im Fehlerfall
      */
-    @BeforeClass
+    @BeforeAll
     public static void readTechnischeNamen() throws ParserConfigurationException, SAXException, IOException {
         VuvmHandler handler = new VuvmHandler();
         handler.scan("src/main/resources/gdv/xport/satz/xml/VUVM2023.xml");
@@ -129,8 +126,10 @@ public class BezeichnerIT {
      * Das wird jetzt beruecksichtigt.
      * </p>
      */
-    @Test
-    public void testTechnischerName() {
+    @MethodSource("data")
+    @ParameterizedTest(name = "{index}: {0}")
+    public void testTechnischerName(Bezeichner bezeichner) {
+        initBezeichnerIT(bezeichner);
         if (!mapsTechnischerName(bezeichner)) {
             fail("wrong technischer Name: " + bezeichner);
         }

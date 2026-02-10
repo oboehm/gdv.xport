@@ -253,10 +253,10 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         if (feld.hasValue()) {
             writeElement("auspraegung", feld.getInhalt().trim());
         }
-        if (feld instanceof AlphaNumFeld) {
-            writeAlignment((AlphaNumFeld) feld);
-        } else if (feld instanceof Datum) {
-            writeElement("bemerkung", ((Datum) feld).getFormat());
+        if (feld instanceof AlphaNumFeld numFeld) {
+            writeAlignment(numFeld);
+        } else if (feld instanceof Datum datum) {
+            writeElement("bemerkung", datum.getFormat());
         }
         xmlStreamWriter.writeEndElement();
     }
@@ -268,8 +268,8 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     }
 
     private String toFeldReferenzId(Feld feld) {
-        return String.format("%03d-%03d-%s-%s", feld.getByteAdresse(), feld.getEndAdresse(),
-                feld.getBezeichner().getTechnischerName(), Datentyp.asString(feld));
+        return "%03d-%03d-%s-%s".formatted(feld.getByteAdresse(), feld.getEndAdresse(),
+            feld.getBezeichner().getTechnischerName(), Datentyp.asString(feld));
     }
 
     private void writeSparte(Satz satz) throws XMLStreamException {
@@ -304,8 +304,8 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         writeElement("name", feld.getBezeichner().getName());
         writeElement("bytes", Integer.toString(feld.getAnzahlBytes()));
         writeElement("datentyp", Datentyp.asString(feld));
-        if (feld instanceof NumFeld) {
-            writeNachkommastellen((NumFeld) feld);
+        if (feld instanceof NumFeld numFeld) {
+            writeNachkommastellen(numFeld);
         }
         xmlStreamWriter.writeEndElement();
     }

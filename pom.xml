@@ -11,7 +11,7 @@
   <groupId>com.github.oboehm</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>pom</packaging>
-  <version>7.2.4</version>
+  <version>7.2.5-SNAPSHOT</version>
   <name>GDV.XPort</name>
 
   <modules>
@@ -26,6 +26,14 @@
     <name>AOSD Labs</name>
     <url>http://www.aosd.de/</url>
   </organization>
+  <dependencies>
+      <dependency>
+          <groupId>org.hamcrest</groupId>
+          <artifactId>hamcrest-junit</artifactId>
+          <version>2.0.0.0</version>
+          <scope>test</scope>
+      </dependency>
+  </dependencies>
 
   <!-- see http://maven.apache.org/pom.html#Licenses -->
   <licenses>
@@ -39,12 +47,12 @@
 
   <properties>
 
-    <patterntesting.version>2.5.1</patterntesting.version>
-    <spring-boot.version>3.2.2</spring-boot.version>
+    <patterntesting.version>2.6.0</patterntesting.version>
+    <spring-boot.version>4.0.1</spring-boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>11</java.version>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <java.version>17</java.version>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
 
     <main.class>gdv.xport.Main</main.class>
 
@@ -88,7 +96,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.1</version>
+          <version>3.14.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -108,7 +116,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-war-plugin</artifactId>
-          <version>3.3.2</version>
+          <version>3.5.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -122,13 +130,8 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>2.9</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
-          <version>3.2.1</version>
+          <version>3.6.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -138,12 +141,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.1.2</version>
+          <version>3.5.4</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>3.1.2</version>
+          <version>3.5.4</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -158,7 +161,7 @@
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.10</version>
+          <version>0.8.14</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -212,11 +215,13 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>versions-maven-plugin</artifactId>
-        <version>2.18.0</version>
+        <version>2.20.1</version>
         <configuration>
           <ignoredVersions>
             <ignoredVersion>.*-alpha.*</ignoredVersion>
             <ignoredVersion>.*[-\.]beta.*</ignoredVersion>
+            <ignoredVersion>.*-M.*</ignoredVersion>
+            <ignoredVersion>.*-rc.*</ignoredVersion>
           </ignoredVersions>
         </configuration>
       </plugin>
@@ -315,7 +320,21 @@
         <version>4.3.0</version>
       </plugin>
 
-  	</plugins>
+      <plugin>
+        <groupId>org.cyclonedx</groupId>
+        <artifactId>cyclonedx-maven-plugin</artifactId>
+        <version>2.9.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>makeAggregateBom</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
   	
   </build>
 
@@ -324,13 +343,6 @@
   <reporting>
 
     <plugins>
-
-      <!-- Project Reports (like dependencies) -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>3.4.2</version>
-      </plugin>
 
       <!--
           Changes
@@ -389,89 +401,84 @@
       <dependency>
         <groupId>commons-cli</groupId>
         <artifactId>commons-cli</artifactId>
-        <version>1.9.0</version>
+        <version>1.11.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.httpcomponents.client5</groupId>
         <artifactId>httpclient5</artifactId>
-        <version>5.5</version>
+        <version>5.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.httpcomponents.client5</groupId>
         <artifactId>httpclient5-fluent</artifactId>
-        <version>5.5</version>
+        <version>5.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.httpcomponents.core5</groupId>
         <artifactId>httpcore5</artifactId>
-        <version>5.3.4</version>
+        <version>5.4</version>
       </dependency>
       <dependency>
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
-        <version>2.19.0</version>
+        <version>2.21.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
-        <version>3.17.0</version>
+        <version>3.20.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-text</artifactId>
-        <version>1.13.1</version>
+        <version>1.15.0</version>
       </dependency>
 
       <!-- Testing -->
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter</artifactId>
-        <version>5.13.1</version>
+        <version>6.0.2</version>
       </dependency>
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-api</artifactId>
-        <version>5.13.1</version>
+        <version>6.0.2</version>
       </dependency>
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-params</artifactId>
-        <version>5.13.1</version>
+        <version>6.0.2</version>
       </dependency>
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-engine</artifactId>
-        <version>5.13.1</version>
+        <version>6.0.2</version>
       </dependency>
       <dependency>
         <groupId>org.junit.vintage</groupId>
         <artifactId>junit-vintage-engine</artifactId>
-        <version>5.13.1</version>
+        <version>6.0.1</version>
       </dependency>
       <dependency>
         <groupId>org.junit.platform</groupId>
         <artifactId>junit-platform-commons</artifactId>
-        <version>1.13.1</version>
+        <version>6.0.1</version>
       </dependency>
       <dependency>
         <groupId>org.junit.platform</groupId>
         <artifactId>junit-platform-engine</artifactId>
-        <version>1.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.13.2</version>
+        <version>6.0.1</version>
       </dependency>
       <dependency>
         <groupId>org.testcontainers</groupId>
         <artifactId>testcontainers</artifactId>
-        <version>1.21.1</version>
+        <version>2.0.3</version>
       </dependency>
       <dependency>
         <groupId>org.testcontainers</groupId>
-        <artifactId>postgresql</artifactId>
-        <version>1.21.1</version>
+        <artifactId>testcontainers-postgresql</artifactId>
+        <version>2.0.3</version>
       </dependency>
 
       <!-- Logging -->
@@ -488,7 +495,7 @@
       <dependency>
         <groupId>org.apache.logging.log4j</groupId>
         <artifactId>log4j-core</artifactId>
-        <version>2.24.3</version>
+        <version>2.25.3</version>
       </dependency>
       <dependency>
         <groupId>org.hsqldb</groupId>
@@ -498,7 +505,7 @@
       <dependency>
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
-        <version>42.7.6</version>
+        <version>42.7.7</version>
       </dependency>
 
       <!-- Testing -->
@@ -506,16 +513,6 @@
         <groupId>org.patterntesting</groupId>
         <artifactId>patterntesting-rt</artifactId>
         <version>${patterntesting.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.github.netmikey.logunit</groupId>
-        <artifactId>logunit-core</artifactId>
-        <version>2.0.0</version>
-      </dependency>
-      <dependency>
-        <groupId>io.github.netmikey.logunit</groupId>
-        <artifactId>logunit-log4j2</artifactId>
-        <version>2.0.0</version>
       </dependency>
 
       <!-- Import dependency management from Spring Boot -->
@@ -529,29 +526,29 @@
       <dependency>
         <groupId>org.springdoc</groupId>
         <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-        <version>2.3.0</version>
+        <version>3.0.1</version>
       </dependency>
 
       <!-- Thymeleaf + WebJars (see https://igorski.co/java/spring-boot/layout-dialect-spring-boot-2/) -->
       <dependency>
         <groupId>nz.net.ultraq.thymeleaf</groupId>
         <artifactId>thymeleaf-layout-dialect</artifactId>
-        <version>3.3.0</version>
+        <version>3.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.thymeleaf</groupId>
         <artifactId>thymeleaf</artifactId>
-        <version>3.1.2.RELEASE</version>
+        <version>3.1.3.RELEASE</version>
       </dependency>
       <dependency>
         <groupId>org.thymeleaf</groupId>
         <artifactId>thymeleaf-spring6</artifactId>
-        <version>3.1.2.RELEASE</version>
+        <version>3.1.3.RELEASE</version>
       </dependency>
       <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>bootstrap</artifactId>
-        <version>5.3.6</version>
+        <version>5.3.8</version>
       </dependency>
       <dependency>
         <groupId>org.webjars</groupId>
@@ -568,39 +565,24 @@
       <dependency>
         <groupId>de.jfachwert</groupId>
         <artifactId>jfachwert</artifactId>
-        <version>6.3.0</version>
-      </dependency>
-      <dependency>
-        <groupId>javax.validation</groupId>
-        <artifactId>validation-api</artifactId>
-        <version>2.0.1.Final</version>
+        <version>6.6.0</version>
       </dependency>
 
       <!-- for JsonFormatter -->
       <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
+        <groupId>tools.jackson.core</groupId>
         <artifactId>jackson-core</artifactId>
-        <version>2.19.0</version>
+        <version>3.0.3</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-annotations</artifactId>
-        <version>2.19.0</version>
+        <version>2.20</version>
       </dependency>
       <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
+        <groupId>tools.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
-        <version>2.19.0</version>
-      </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-dataformat-xml</artifactId>
-        <version>2.19.0</version>
-      </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.jaxrs</groupId>
-        <artifactId>jackson-jaxrs-base</artifactId>
-        <version>2.19.0</version>
+        <version>3.0.3</version>
       </dependency>
 
     </dependencies>
@@ -756,6 +738,40 @@
     </mailingList>
   </mailingLists>
 
+  <profiles>
+    <profile>
+      <!-- mvn -Prewrite rewrite:run -->
+      <id>rewrite</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.openrewrite.maven</groupId>
+            <artifactId>rewrite-maven-plugin</artifactId>
+            <version>6.27.0</version>
+            <configuration>
+              <exportDatatables>true</exportDatatables>
+              <activeRecipes>
+                <recipe>org.openrewrite.java.spring.boot4.UpgradeSpringBoot_4_0</recipe>
+                <recipe>org.openrewrite.java.testing.testcontainers.Testcontainers2Migration</recipe>
+              </activeRecipes>
+            </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>org.openrewrite.recipe</groupId>
+                <artifactId>rewrite-spring</artifactId>
+                <version>6.22.0</version>
+              </dependency>
+              <dependency>
+                <groupId>org.openrewrite.recipe</groupId>
+                <artifactId>rewrite-testing-frameworks</artifactId>
+                <version>3.25.0</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
 
+  </profiles>
 
 </project>

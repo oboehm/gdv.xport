@@ -18,14 +18,14 @@
 
 package gdv.xport.util;
 
-import org.hamcrest.MatcherAssert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.junit.ObjectTester;
 
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItems;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * JUnit-Tests fuer {@link SatzTyp}.
@@ -130,14 +130,16 @@ public class SatzTypTest {
         assertEquals(SatzTyp.of("0220.010.13.1"), SatzTyp.of("0220.010.13"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testOfInvalid() {
-        SatzTyp.of("0001.a");
+        assertThrows(IllegalArgumentException.class, () ->
+            SatzTyp.of("0001.a"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testOfInvalidString() {
-        SatzTyp.of("0220.020.2.1");
+        assertThrows(IllegalArgumentException.class, () ->
+            SatzTyp.of("0220.020.2.1"));
     }
 
     @Test
@@ -325,7 +327,7 @@ public class SatzTypTest {
     public void testGetErlaubteSparten() {
         SatzTyp kfz = SatzTyp.of("0210.050");
         List<Integer> erlaubteSparten = kfz.getErlaubteSparten();
-        MatcherAssert.assertThat(erlaubteSparten, hasItems(50, 600));
+        assertThat(erlaubteSparten, hasItems(50, 600));
     }
 
 }

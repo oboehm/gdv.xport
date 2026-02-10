@@ -29,12 +29,11 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.MatcherAssert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
 
-import javax.validation.ValidationException;
+import jakarta.validation.ValidationException;
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -45,7 +44,7 @@ import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test-Klasse fuer Satz.
@@ -89,10 +88,12 @@ public final class SatzTest extends AbstractSatzTest {
      * Falls ein Feld hinzugefuegt wird, das ein anderes Feld (teilweise)
      * ueberschreiben wuerde, sollte eine Exception geworfen werden.
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testAdd() {
-        satz.add(new AlphaNumFeld((Bezeichner.NAME1), 30, ByteAdresse.of(44)));
-        satz.add(new AlphaNumFeld(Bezeichner.of("Bumm"), 4, ByteAdresse.of(50)));
+        assertThrows(IllegalArgumentException.class, () -> {
+            satz.add(new AlphaNumFeld((Bezeichner.NAME1), 30, ByteAdresse.of(44)));
+            satz.add(new AlphaNumFeld(Bezeichner.of("Bumm"), 4, ByteAdresse.of(50)));
+        });
     }
 
     /**
@@ -101,9 +102,10 @@ public final class SatzTest extends AbstractSatzTest {
      * kann nur ein Feld gesetzt werden, das vorher ueber "add(..)" hinzugefuegt
      * wurde.
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testSetUndefined() {
-        satz.setFeld(Bezeichner.of("gibtsnet"), "plopp");
+        assertThrows(IllegalArgumentException.class, () ->
+            satz.setFeld(Bezeichner.of("gibtsnet"), "plopp"));
     }
 
     @Test
@@ -142,16 +144,18 @@ public final class SatzTest extends AbstractSatzTest {
      * Fuer ein Feld, das nicht existiert, wird nicht mehr NULL_FELD als
      * Ergebnis erwartet sondern eine IllegalArgumentException.
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testGetFeld() {
-        try {
-            satz.getFeld(Bezeichner.of("hemmernet"));
-            fail("IllegalArgumentException bei fehlendem Feld erwartet");
-        } catch (IllegalArgumentException ex) {
-            assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
+        assertThrows(IllegalArgumentException.class, () -> {
+            try {
+                satz.getFeld(Bezeichner.of("hemmernet"));
+                fail("IllegalArgumentException bei fehlendem Feld erwartet");
+            } catch (IllegalArgumentException ex) {
+                assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
                     allOf(containsString("Hemmernet"), containsString(" 0210")));
-            throw ex;
-        }
+                throw ex;
+            }
+        });
     }
 
     /**
@@ -159,16 +163,18 @@ public final class SatzTest extends AbstractSatzTest {
      * Fuer ein Feld, das nicht existiert, wird nicht mehr NULL_FELD als
      * Ergebnis erwartet sondern eine IllegalArgumentException.
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testGetFeldBezeichner() {
-        try {
-            satz.getFeld(new Bezeichner("hemmernet"));
-            fail("IllegalArgumentException bei fehlendem Feld erwartet");
-        } catch (IllegalArgumentException ex) {
-            assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
+        assertThrows(IllegalArgumentException.class, () -> {
+            try {
+                satz.getFeld(new Bezeichner("hemmernet"));
+                fail("IllegalArgumentException bei fehlendem Feld erwartet");
+            } catch (IllegalArgumentException ex) {
+                assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
                     allOf(containsString("Hemmernet"), containsString(" 0210")));
-            throw ex;
-        }
+                throw ex;
+            }
+        });
     }
 
     @Test
@@ -353,7 +359,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testIsValid() {
         Satz a = new Datensatz(SatzTyp.of("0000"), 1);
-        assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
+        assertFalse(a.isValid(), "Diese Satzart gibt es nicht: " + a);
     }
 
     /**
@@ -363,7 +369,7 @@ public final class SatzTest extends AbstractSatzTest {
     public void testIsValidWithInvalidFeld() {
         NumFeld schrott = new NumFeld(Bezeichner.of("schrott"), ByteAdresse.of(1), "xxxx", 0);
         satz.add(schrott);
-        assertFalse(satz + " has invalid fields!", satz.isValid());
+        assertFalse(satz.isValid(), satz + " has invalid fields!");
     }
 
     @Test
@@ -371,11 +377,11 @@ public final class SatzTest extends AbstractSatzTest {
         Satz x = SatzRegistry.getInstance().getSatz(SatzTyp.of(200));
         x.setVermittler("James");
         List<ConstraintViolation> violations = x.validate();
-        MatcherAssert.assertThat(violations, is(empty()));
+        assertThat(violations, is(empty()));
         Teildatensatz tds = x.getTeildatensatz(2);
         tds.setVermittler("Bond");
         violations = x.validate();
-        MatcherAssert.assertThat(violations, is(not(empty())));
+        assertThat(violations, is(not(empty())));
     }
 
     @Test
@@ -385,7 +391,7 @@ public final class SatzTest extends AbstractSatzTest {
         Teildatensatz tds = x.getTeildatensatz(2);
         tds.setFeld(Bezeichner.VU_NR, "67890");
         List<ConstraintViolation> violations = x.validate();
-        MatcherAssert.assertThat(violations, is(not(empty())));
+        assertThat(violations, is(not(empty())));
     }
 
     @Test
@@ -483,7 +489,7 @@ public final class SatzTest extends AbstractSatzTest {
         Collection<Bezeichner> bezeichners = new HashSet<>();
         for (Feld feld : felder) {
             Bezeichner b = feld.getBezeichner();
-            assertFalse(feld + " found more than once", bezeichners.contains(b));
+            assertFalse(bezeichners.contains(b), feld + " found more than once");
             bezeichners.add(b);
         }
     }
@@ -498,8 +504,8 @@ public final class SatzTest extends AbstractSatzTest {
         Satz satz = SatzFactory.getSatz(expectedSatzTyp);
         satz.setFeld(Bezeichner.WAGNISART, "220456");
         SatzTyp satzTyp = satz.getSatzTyp();
-        assertFalse("SatzFactory.getDatensatz(220, 40) hat keine Wagnisart im SatzTyp", satzTyp.hasWagnisart());
-        assertEquals("SatzTyp von SatzFactory.getDatensatz(220, 40) sollte new SatzTyp(220, 40) entsprechen", expectedSatzTyp, satzTyp);
+        assertFalse(satzTyp.hasWagnisart(), "SatzFactory.getDatensatz(220, 40) hat keine Wagnisart im SatzTyp");
+        assertEquals(expectedSatzTyp, satzTyp, "SatzTyp von SatzFactory.getDatensatz(220, 40) sollte new SatzTyp(220, 40) entsprechen");
     }
 
     /**

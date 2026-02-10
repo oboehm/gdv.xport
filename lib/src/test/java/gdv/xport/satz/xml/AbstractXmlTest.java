@@ -18,11 +18,11 @@
 
 package gdv.xport.satz.xml;
 
-import static org.junit.Assert.assertNotNull;
-
 import java.io.InputStream;
 
 import javax.xml.stream.XMLEventReader;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 
@@ -47,7 +47,7 @@ public abstract class AbstractXmlTest {
      */
     protected static XMLEventReader createXMLEventReader(final String resourceName) throws XMLStreamException {
         InputStream istream = FeldReferenzTest.class.getResourceAsStream(resourceName);
-        assertNotNull("resource '" + resourceName + "' not found", istream);
+        assertNotNull(istream, "resource '" + resourceName + "' not found");
         XMLEventReader parser = xmlInputFactory.createXMLEventReader(istream);
         return parser;
     }

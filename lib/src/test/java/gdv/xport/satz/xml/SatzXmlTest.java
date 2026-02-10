@@ -29,9 +29,8 @@ import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.MatcherAssert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.junit.ObjectTester;
 
 import javax.xml.stream.XMLEventReader;
@@ -45,8 +44,9 @@ import java.util.List;
 import java.util.Map;
 
 import static gdv.xport.satz.xml.AbstractXmlTest.createXMLEventReader;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for {@link SatzXml} class.
@@ -66,7 +66,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
      *
      * @throws XMLStreamException the XML stream exception
      */
-    @BeforeClass
+    @BeforeAll
     public static void setUpSatz100() throws XMLStreamException {
         satz100 = getSatz("Satz100.xml");
     }
@@ -167,7 +167,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     private static void checkTeildatensatz(final Teildatensatz tds) {
         checkSatzart(tds);
         Feld feld = tds.getFeld(Bezeichner.VU_NR);
-        assertNotNull("VU-Nummer missing", feld);
+        assertNotNull(feld, "VU-Nummer missing");
         assertEquals(5, feld.getAnzahlBytes());
         assertEquals(5, feld.getByteAdresse());
         assertEquals(feld, tds.getFeld(2));
@@ -188,8 +188,8 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     public void testTeildatensatz1() {
         Teildatensatz tds = satz100.getTeildatensatz(1);
         Feld anrede = tds.getFeld(8);
-        assertEquals("wrong: " + anrede, 1, anrede.getAnzahlBytes());
-        assertEquals("wrong: " + anrede, 43, anrede.getByteAdresse());
+        assertEquals(1, anrede.getAnzahlBytes(), "wrong: " + anrede);
+        assertEquals(43, anrede.getByteAdresse(), "wrong: " + anrede);
     }
 
     /**
@@ -261,9 +261,10 @@ public class SatzXmlTest extends AbstractDatensatzTest {
      */
     @Test
     public void testEqualsWithSatzXml() throws XMLStreamException {
-        SatzXml satz = getSatz("Satz100.xml");
-        assertEquals(satz100.toLongString(), satz.toLongString());
-        ObjectTester.assertEquals(satz100, satz);
+        SatzXml a = getSatz("Satz100.xml");
+        SatzXml b = getSatz("Satz100.xml");
+        assertEquals(b.toLongString(), a.toLongString());
+        ObjectTester.assertEquals(b, a);
     }
 
     /**
@@ -394,7 +395,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         assertTrue(xmlFile.exists());
         SatzXml fromXML = SatzXml.of(xmlFile);
         assertNotNull(fromXML);
-        MatcherAssert.assertThat(fromXML.getFelder().size(), greaterThan(10));
+        assertThat(fromXML.getFelder().size(), greaterThan(10));
         assertEquals(100, fromXML.getSatzart());
     }
 

@@ -18,6 +18,8 @@
 
 package gdv.xport.util;
 
+import java.io.Serial;
+
 /**
  * Diese {@link RuntimeException} kommt dann zum Einsatz, wenn irgendewas
  * Unvorhergesehenes waehrend der Laufzeit aufgetreten ist.
@@ -27,7 +29,7 @@ package gdv.xport.util;
  */
 public final class ShitHappenedException extends RuntimeException {
 
-    private static final long serialVersionUID = 20141015L;
+    @Serial private static final long serialVersionUID = 20141015L;
 
     /**
      * Instanziiert eine neue Exception.
