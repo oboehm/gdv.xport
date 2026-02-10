@@ -25,26 +25,16 @@ Check-Liste für die Auslieferung eines neuen Releases:
 
 |D-Day
 |Finaler Release-Build und Release-Test (inkl. Signierung)
-|baue alle Artefakte auf dem Release-Branch 
-(`mvn -DskipTests clean install source:jar javadoc:jar gpg:sign -Dgpg.passphrase=xx`);
+|baue alle Artefakte auf dem Release-Branch und rolle sie aus
+(`mvn -Psign -DskipTests clean install source:jar javadoc:jar gpg:sign deploy -Dgpg.passphrase=xx`);
 
 |D-Day
 |Docker-Image bauen und pushen
 |s.u.
 
 |D-Day
-|JARs auf https://oss.sonatype.org/[oss.sonatype.org] hochladen
-|verwende das Skript link:../src/script/deploy.sh[src/script/deploy.sh], um die Artefakte nach
-https://oss.sonatype.org/[oss.sonatype.org] hochzuladen
-(aber nicht vergessen, vorher noch die VERSION-Variable in diesem Skript anzupassen).
-
-|D-Day
-|Release ins Maven Central
-|nach dem Hochladen ins Staging-Repository
-https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide#SonatypeOSSMavenRepositoryUsageGuide-8.ReleaseIt[release it]:
-selektiere "Staging Repositories" auf
-https://oss.sonatype.org/[oss.sonatype.org],
-drücke "Refresh" und dann "Close" und "Release".
+|JARs auf https://central.sonatype.com/p[central.sonatype.com] veröffentlichen
+|gehe zu https://central.sonatype.com/publishing[Publishing] und betätige _Publishing Component_
 
 |D-Day
 |Doku und -Reports generieren
@@ -57,8 +47,8 @@ Kopiere `/tmp/gdv-xport` anschließend auf die Web-Seite.
 
 |D-Day
 |Label setzen
-|`git tag gdv-xport-7.2.4` (lokal)
-`git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-7.2.4` (remote)
+|`git tag gdv-xport-7.3.0` (lokal)
+`git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-7.3.0` (remote)
 
 |nachher
 |Tickets schließen
@@ -87,9 +77,9 @@ Um ein Docker-Image auf https://hub.docker.com/r/oboehm/gdv.xport zu bringen, si
 
 * Docker-Image bauen: `docker build -t gdv.xport -f Dockerfile .`
 * Image-ID ermitteln: `docker images`
-* Docker-Image taggen: `docker tag <Image-ID> oboehm/gdv.xport:7.2.4`
+* Docker-Image taggen: `docker tag <Image-ID> oboehm/gdv.xport:7.3.0
 * Docker-Hub anmelden: `docker login`
-* Docker-Image pushen: `docker push oboehm/gdv.xport:7.2.4`
+* Docker-Image pushen: `docker push oboehm/gdv.xport:7.3.0`
 
 
 
