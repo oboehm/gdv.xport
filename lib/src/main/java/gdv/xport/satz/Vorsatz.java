@@ -24,6 +24,7 @@ import gdv.xport.feld.*;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.VersionHandler;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -214,7 +215,9 @@ public class Vorsatz extends Satz {
     public Datum getErstellungsZeitraumVon() {
         String vonBis = getErstellungsZeitraum();
         Datum von = new Datum(ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, ByteAdresse.of(70));
-        von.setInhalt(vonBis.substring(0, 8));
+        if (StringUtils.isNotBlank(vonBis)) {
+            von.setInhalt(vonBis.substring(0, 8));
+        }
         return von;
     }
 
@@ -225,7 +228,9 @@ public class Vorsatz extends Satz {
     public Datum getErstellungsZeitraumBis() {
         String vonBis = getErstellungsZeitraum();
         Datum bis = new Datum(ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, ByteAdresse.of(78));
-        bis.setInhalt(vonBis.substring(8));
+        if (StringUtils.isNotBlank(vonBis)) {
+            bis.setInhalt(vonBis.substring(8));
+        }
         return bis;
     }
 
