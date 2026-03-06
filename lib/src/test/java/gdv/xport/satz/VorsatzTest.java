@@ -113,6 +113,50 @@ public final class VorsatzTest extends AbstractSatzTest {
     }
 
     /**
+     * Prüft, ob eine Exception geworfen wird, wenn das Erstellungs-Datum nicht gesetzt/geliefert wurde.
+     */
+    @Test
+    public void testGetErstellungsZeitraumVonWithoutData() {
+        try {
+            Vorsatz vorsatz = new Vorsatz();
+            Datum von = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, ByteAdresse.of(70));
+            von.setInhalt("        ");
+            assertTrue(von.isValid(), "Von-Datum sollte valide sein");
+            Datum bis = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, ByteAdresse.of(78));
+            bis.setInhalt("        ");
+            assertTrue(bis.isValid(), "Bis-Datum sollte valide sein");
+            vorsatz.setErstellungsZeitraum(von, bis);
+
+            Datum datum = vorsatz.getErstellungsZeitraumVon();
+            assertThat("Ein leeres Datum wurde erwartet, da es zuvor nicht gesetzt wurde", datum.isEmpty());
+        } catch (Exception e) {
+            fail("getErstellungsZeitraumVon() sollte nicht fehlschlagen", e);
+        }
+    }
+
+    /**
+     * Prüft, ob eine Exception geworfen wird, wenn das Erstellungs-Datum nicht gesetzt/geliefert wurde.
+     */
+    @Test
+    public void testGetErstellungsZeitraumBisWithoutData() {
+        try {
+            Vorsatz vorsatz = new Vorsatz();
+            Datum von = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, ByteAdresse.of(70));
+            von.setInhalt("        ");
+            assertTrue(von.isValid(), "Von-Datum sollte valide sein");
+            Datum bis = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, ByteAdresse.of(78));
+            bis.setInhalt("        ");
+            assertTrue(bis.isValid(), "Bis-Datum sollte valide sein");
+            vorsatz.setErstellungsZeitraum(von, bis);
+
+            Datum datum = vorsatz.getErstellungsZeitraumBis();
+            assertThat("Ein leeres Datum wurde erwartet, da es zuvor nicht gesetzt wurde", datum.isEmpty());
+        } catch (Exception e) {
+            fail("getErstellungsZeitraumBis() sollte nicht fehlschlagen", e);
+        }
+    }
+
+    /**
      * Hier ueberpruefen wir den Export.
      * Damit ein Datensatz auch 256 Bytes lang ist, setzen wir das
      * EOD-Zeichen auf nichts ("").
