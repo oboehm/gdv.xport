@@ -152,7 +152,7 @@ public final class HtmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeAttribute("class", "Satz");
         if (satz instanceof Datensatz datensatz) {
             xmlStreamWriter.writeAttribute("title", "Satzart " + datensatz.getSatzartFeld().getInhalt() + "."
-                    + datensatz.getSparteFeld().getInhalt());
+                    + (datensatz.hasSparte()?datensatz.getSparteFeld().getInhalt():""));
         } else {
             xmlStreamWriter.writeAttribute("title", "Satzart " + satz.getSatzartFeld().getInhalt());
         }
