@@ -117,21 +117,17 @@ public final class VorsatzTest extends AbstractSatzTest {
      */
     @Test
     public void testGetErstellungsZeitraumVonWithoutData() {
-        try {
-            Vorsatz vorsatz = new Vorsatz();
-            Datum von = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, ByteAdresse.of(70));
-            von.setInhalt("        ");
-            assertTrue(von.isValid(), "Von-Datum sollte valide sein");
-            Datum bis = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, ByteAdresse.of(78));
-            bis.setInhalt("        ");
-            assertTrue(bis.isValid(), "Bis-Datum sollte valide sein");
-            vorsatz.setErstellungsZeitraum(von, bis);
+        Vorsatz vorsatz = new Vorsatz();
+        Datum von = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, ByteAdresse.of(70));
+        von.setInhalt("        ");
+        assertTrue(von.isValid(), "Von-Datum sollte valide sein");
+        Datum bis = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, ByteAdresse.of(78));
+        bis.setInhalt("        ");
+        assertTrue(bis.isValid(), "Bis-Datum sollte valide sein");
+        vorsatz.setErstellungsZeitraum(von, bis);
 
-            Datum datum = vorsatz.getErstellungsZeitraumVon();
-            assertThat("Ein leeres Datum wurde erwartet, da es zuvor nicht gesetzt wurde", datum.isEmpty());
-        } catch (Exception e) {
-            fail("getErstellungsZeitraumVon() sollte nicht fehlschlagen", e);
-        }
+        Datum datum = vorsatz.getErstellungsZeitraumVon();
+        assertThat("Ein leeres Datum wurde erwartet, da es zuvor nicht gesetzt wurde", datum.isEmpty());
     }
 
     /**
@@ -139,21 +135,17 @@ public final class VorsatzTest extends AbstractSatzTest {
      */
     @Test
     public void testGetErstellungsZeitraumBisWithoutData() {
-        try {
-            Vorsatz vorsatz = new Vorsatz();
-            Datum von = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, ByteAdresse.of(70));
-            von.setInhalt("        ");
-            assertTrue(von.isValid(), "Von-Datum sollte valide sein");
-            Datum bis = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, ByteAdresse.of(78));
-            bis.setInhalt("        ");
-            assertTrue(bis.isValid(), "Bis-Datum sollte valide sein");
-            vorsatz.setErstellungsZeitraum(von, bis);
+        Vorsatz vorsatz = new Vorsatz();
+        Datum von = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, ByteAdresse.of(70));
+        von.setInhalt("        ");
+        assertTrue(von.isValid(), "Von-Datum sollte valide sein");
+        Datum bis = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, ByteAdresse.of(78));
+        bis.setInhalt("        ");
+        assertTrue(bis.isValid(), "Bis-Datum sollte valide sein");
+        vorsatz.setErstellungsZeitraum(von, bis);
 
-            Datum datum = vorsatz.getErstellungsZeitraumBis();
-            assertThat("Ein leeres Datum wurde erwartet, da es zuvor nicht gesetzt wurde", datum.isEmpty());
-        } catch (Exception e) {
-            fail("getErstellungsZeitraumBis() sollte nicht fehlschlagen", e);
-        }
+        Datum datum = vorsatz.getErstellungsZeitraumBis();
+        assertThat("Ein leeres Datum wurde erwartet, da es zuvor nicht gesetzt wurde", datum.isEmpty());
     }
 
     /**
