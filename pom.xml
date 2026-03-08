@@ -48,7 +48,7 @@
   <properties>
 
     <patterntesting.version>2.6.0</patterntesting.version>
-    <spring-boot.version>4.0.1</spring-boot.version>
+    <spring-boot.version>4.0.3</spring-boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>17</java.version>
     <maven.compiler.source>17</maven.compiler.source>
@@ -583,7 +583,7 @@
       <dependency>
         <groupId>tools.jackson.core</groupId>
         <artifactId>jackson-core</artifactId>
-        <version>3.0.3</version>
+        <version>3.1.0</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
@@ -593,7 +593,7 @@
       <dependency>
         <groupId>tools.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
-        <version>3.0.3</version>
+        <version>3.1.0</version>
       </dependency>
 
     </dependencies>
