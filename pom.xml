@@ -550,7 +550,7 @@
       <dependency>
         <groupId>nz.net.ultraq.thymeleaf</groupId>
         <artifactId>thymeleaf-layout-dialect</artifactId>
-        <version>3.4.0</version>
+        <version>4.0.0</version>
       </dependency>
       <dependency>
         <groupId>org.thymeleaf</groupId>
@@ -582,7 +582,7 @@
       <dependency>
         <groupId>de.jfachwert</groupId>
         <artifactId>jfachwert</artifactId>
-        <version>6.6.0</version>
+        <version>6.6.1</version>
       </dependency>
 
       <!-- for JsonFormatter -->
