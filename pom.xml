@@ -32,6 +32,12 @@
           <artifactId>hamcrest-junit</artifactId>
           <version>2.0.0.0</version>
           <scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>junit</groupId>
+					<artifactId>junit</artifactId>
+				</exclusion>
+			</exclusions>
       </dependency>
   </dependencies>
 
@@ -96,7 +102,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.14.1</version>
+          <version>3.15.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -141,12 +147,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.5.4</version>
+          <version>3.5.5</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>3.5.4</version>
+          <version>3.5.5</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -449,37 +455,37 @@
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter</artifactId>
-        <version>6.0.2</version>
+        <version>6.0.3</version>
       </dependency>
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-api</artifactId>
-        <version>6.0.2</version>
+        <version>6.0.3</version>
       </dependency>
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-params</artifactId>
-        <version>6.0.2</version>
+        <version>6.0.3</version>
       </dependency>
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-engine</artifactId>
-        <version>6.0.2</version>
+        <version>6.0.3</version>
       </dependency>
       <dependency>
         <groupId>org.junit.vintage</groupId>
         <artifactId>junit-vintage-engine</artifactId>
-        <version>6.0.1</version>
+        <version>6.0.3</version>
       </dependency>
       <dependency>
         <groupId>org.junit.platform</groupId>
         <artifactId>junit-platform-commons</artifactId>
-        <version>6.0.1</version>
+        <version>6.0.3</version>
       </dependency>
       <dependency>
         <groupId>org.junit.platform</groupId>
         <artifactId>junit-platform-engine</artifactId>
-        <version>6.0.1</version>
+        <version>6.0.3</version>
       </dependency>
       <dependency>
         <groupId>org.testcontainers</groupId>
@@ -537,7 +543,7 @@
       <dependency>
         <groupId>org.springdoc</groupId>
         <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-        <version>3.0.1</version>
+        <version>3.0.2</version>
       </dependency>
 
       <!-- Thymeleaf + WebJars (see https://igorski.co/java/spring-boot/layout-dialect-spring-boot-2/) -->
@@ -584,11 +590,6 @@
         <groupId>tools.jackson.core</groupId>
         <artifactId>jackson-core</artifactId>
         <version>3.0.3</version>
-      </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-annotations</artifactId>
-        <version>2.20</version>
       </dependency>
       <dependency>
         <groupId>tools.jackson.core</groupId>
@@ -764,6 +765,7 @@
               <activeRecipes>
                 <recipe>org.openrewrite.java.spring.boot4.UpgradeSpringBoot_4_0</recipe>
                 <recipe>org.openrewrite.java.testing.testcontainers.Testcontainers2Migration</recipe>
+                <recipe>org.openrewrite.java.jackson.UpgradeJackson_2_3_Dependencies</recipe>
               </activeRecipes>
             </configuration>
             <dependencies>
@@ -776,6 +778,11 @@
                 <groupId>org.openrewrite.recipe</groupId>
                 <artifactId>rewrite-testing-frameworks</artifactId>
                 <version>3.25.0</version>
+              </dependency>
+              <dependency>
+                <groupId>org.openrewrite.recipe</groupId>
+                <artifactId>rewrite-jackson</artifactId>
+                <version>1.17.1</version>
               </dependency>
             </dependencies>
           </plugin>
