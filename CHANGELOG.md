@@ -9,6 +9,14 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
+## [Unreleased]
+
+### Fixed
+
+- Abhängigkeiten korrigiert, uberjar wird nicht mehr generiert
+  ([Issue #115](https://github.com/oboehm/gdv.xport/issues/115))
+
+  
 ## [7.3.0] - 2026-02-10
 
 ### Added
