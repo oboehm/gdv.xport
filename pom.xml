@@ -228,6 +228,13 @@
         </configuration>
       </plugin>
 
+      <!-- mvn dependency:analyze -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.11.0</version>
+      </plugin>
+
       <!-- see https://central.sonatype.org/publish/publish-portal-maven/ -->
       <plugin>
         <groupId>org.sonatype.central</groupId>
