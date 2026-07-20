@@ -780,6 +780,66 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>music</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>software.xdev</groupId>
+            <artifactId>music-maven-plugin</artifactId>
+            <version>2.0.1</version>
+            <!-- You might also want to add <inherited>false</inherited> so not every child executes this -->
+            <executions>
+              <execution>
+                <phase>validate</phase>
+                <goals>
+                  <goal>music</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <!-- see https://incompetech.com/music/royalty-free/music.html -->
+              <sources>
+                <source>
+                  <uri>
+                    <uri>https://incompetech.com/music/royalty-free/mp3-royaltyfree/Mesmerizing%20Galaxy%20Loop.mp3</uri>
+                  </uri>
+                </source>
+                <source>
+                  <uri>
+                    <uri>https://incompetech.com/music/royalty-free/mp3-royaltyfree/Sergio's%20Magic%20Dustbin.mp3</uri>
+                  </uri>
+                </source>
+                <source>
+                  <uri>
+                    <uri>https://incompetech.com/music/royalty-free/mp3-royaltyfree/Waltz%20Primordial%20.mp3</uri>
+                  </uri>
+                </source>
+                <source>
+                  <classpath>
+                    <classpath>/default/Andrew_Codeman_-_03_-_Mussels_short_version.ogg</classpath>
+                  </classpath>
+                </source>
+                <source>
+                  <classpath>
+                    <classpath>/default/First_Call.ogg</classpath>
+                  </classpath>
+                </source>
+                <source>
+                  <classpath>
+                    <classpath>/default/Local_Forecast_-_Elevator.ogg</classpath>
+                  </classpath>
+                </source>
+              </sources>
+              <shuffle>true</shuffle>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
 
   </profiles>
 
